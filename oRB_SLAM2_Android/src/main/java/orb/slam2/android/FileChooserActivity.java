@@ -40,7 +40,7 @@ public class FileChooserActivity extends Activity {
 		setContentView(R.layout.filechooser_show);
 
 		//mSdcardRootPath = Environment.getExternalStorageDirectory().getAbsolutePath();// �õ�sdcardĿ¼
-		mSdcardRootPath = "/sdcard"; // default to sdcard...
+		mSdcardRootPath = "/storage/emulated/0/Android/data/orb.slam2.android/files";
 
 		mBackView = findViewById(R.id.imgBackFolder);
 		mBackView.setOnClickListener(mClickListener);
