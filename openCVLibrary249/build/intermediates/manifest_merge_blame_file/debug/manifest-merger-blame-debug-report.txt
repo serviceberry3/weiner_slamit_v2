@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="14"
-8-->/home/nodog/Downloads/slamit_ORBSLAM2_on_Android-master(2)/slamit_ORBSLAM2_on_Android-master/107-master/openCVLibrary249/src/main/AndroidManifest.xml
+8-->/home/nodog/Documents/AndroidStudioProjects/master/openCVLibrary249/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="23" />
-9-->/home/nodog/Downloads/slamit_ORBSLAM2_on_Android-master(2)/slamit_ORBSLAM2_on_Android-master/107-master/openCVLibrary249/src/main/AndroidManifest.xml
+9-->/home/nodog/Documents/AndroidStudioProjects/master/openCVLibrary249/src/main/AndroidManifest.xml
 10
 11</manifest>
