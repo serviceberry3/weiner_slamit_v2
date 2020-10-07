@@ -1,0 +1,3 @@
+include ':openCVLibrary249'
+include ':oRB_SLAM2_Android'
+rootProject.name = "weiner_slamit_v2"

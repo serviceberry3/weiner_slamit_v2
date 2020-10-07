@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.0_3bf565ce15cec2f093de03199c6e2e7eb28406bb.jar" />
+    </item>
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.3.0_1cbcba0a1fd86f61dee114f3fe3577bc64d9b390.jar" />
+    </item>
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/internal_impl-23.3.0_ab11433ea8fcf336bb4e409dd96bee54ea77d77f.jar" />
+    </item>
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/107-master/openCVLibrary249/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="7194b595fc544eda65590f2c4c56d17a02302eb9">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/107-master-openCVLibrary249-unspecified_2796668ec257a821c38860b6c0e3928ef52281c2.jar" />
+    </item>
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/com.android.support/support-v13/23.3.0/jars/libs/internal_impl-23.3.0.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="8813bdcf7583107c4873150075d17c8072ec50cf">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/internal_impl-23.3.0_5da57fe1ea886a5af6e5461ae95a4a1d464745b4.jar" />
+    </item>
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.3.0_674d0ca9bdabf1ff2e3b4dc159cd8b6072c10598.jar" />
+    </item>
+    <item
+        jar="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/exploded-aar/com.android.support/support-v13/23.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="a809555a2599054c3dcd1bf82b089315ac3a11df">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/com.android.support-support-v13-23.3.0_d01b27757e507bd8ed8f7714fec50cb3e4590eb3.jar" />
+    </item>
+    <item
+        jar="/home/vijay/android/codeworks/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/build/intermediates/pre-dexed/debug/support-annotations-23.3.0_cd35c641369a17daa3cac18011757b2423a1c4e5.jar" />
+    </item>
+
+</items>
