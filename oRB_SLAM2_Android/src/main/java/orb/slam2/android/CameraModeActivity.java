@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +17,7 @@ import android.widget.Toast;
  * @author buptzhaofang@163.com Mar 24, 2016 1:00:27 PM
  *
  */
-public class TestModeActivity extends Activity implements OnClickListener{
+public class CameraModeActivity extends Activity implements OnClickListener{
     Button ChooseCalibration,finish;
     TextView CalibrationTxt,VOCPathText;
 
@@ -36,7 +35,9 @@ public class TestModeActivity extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+
         setContentView(R.layout.activity_camera_mode);
+
         ChooseCalibration=(Button)findViewById(R.id.choose_calibration);
 //        ChooseVOC=(Button)findViewById(R.id.choose_voc);
         finish=(Button)findViewById(R.id.finish);
@@ -65,7 +66,7 @@ public class TestModeActivity extends Activity implements OnClickListener{
                 if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
                     startActivityForResult(fileChooserIntent , REQUEST_CODE_2);
                 else
-                    Toast.makeText(TestModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CameraModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();
                 break;
 //            case R.id.choose_voc:
 //                if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
@@ -78,12 +79,12 @@ public class TestModeActivity extends Activity implements OnClickListener{
                     Bundle bundle=new Bundle();
                     bundle.putString("voc",VOCPath );
                     bundle.putString("calibration",TUMPath );
-                    Intent intent =new Intent(TestModeActivity.this,ORBSLAMForTestActivity.class);
+                    Intent intent =new Intent(CameraModeActivity.this,ORBSLAMForTestActivity.class);
                     intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(TestModeActivity.this, "None of image path or Calibration path can be empty!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CameraModeActivity.this, "None of image path or Calibration path can be empty!", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -91,7 +92,7 @@ public class TestModeActivity extends Activity implements OnClickListener{
 
     public void onActivityResult(int requestCode , int resultCode , Intent data){
         if(resultCode == RESULT_CANCELED){
-            Toast.makeText(TestModeActivity.this, "no return value", Toast.LENGTH_LONG).show();
+            Toast.makeText(CameraModeActivity.this, "no return value", Toast.LENGTH_LONG).show();
             return ;
         }
         if(resultCode == RESULT_OK && requestCode == REQUEST_CODE_2){

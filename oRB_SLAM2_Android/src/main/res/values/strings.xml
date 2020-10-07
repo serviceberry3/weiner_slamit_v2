@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Slamit</string>
+    <string name="app_name">Slamitv2</string>
     <string name="hello_world">Hello world!</string>
     <string name="main_title">ORB_SLAM2\n for Android</string>
     <string name="dataset_mode">Dataset Mode</string>

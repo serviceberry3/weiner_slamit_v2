@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener{
 	Button datasetMode, testMode;
@@ -42,7 +41,7 @@ public class MainActivity extends Activity implements OnClickListener{
 //			break;
 		case R.id.test_mode:
 			//Toast.makeText(MainActivity.this, "on the way...", Toast.LENGTH_LONG).show();
-			startActivity(new Intent(MainActivity.this,TestModeActivity.class));
+			startActivity(new Intent(MainActivity.this, CameraModeActivity.class));
 			break;
 		}
 	}

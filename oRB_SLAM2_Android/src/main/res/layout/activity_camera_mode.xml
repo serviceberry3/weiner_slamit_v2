@@ -25,7 +25,7 @@
             android:layout_width="250dip"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dip"
-            android:text="Default path is /SLAM/List3.yaml" />
+            android:text="Default path is /storage/emulated/0/Android/.../List3.yaml" />
     </LinearLayout>
 
     <LinearLayout

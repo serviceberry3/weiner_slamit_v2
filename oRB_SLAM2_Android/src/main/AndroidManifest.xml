@@ -60,11 +60,7 @@
             android:label="CameraMode"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
-            android:name="orb.slam2.android.TestModeActivity"
-            android:label="TestMode"
-            android:screenOrientation="landscape" >
-        </activity>
+
         <activity
             android:name="orb.slam2.android.FileChooserActivity"
             android:label="ChooseDirectory"
@@ -75,11 +71,13 @@
             android:label="ORB_SLAM2"
             android:screenOrientation="landscape" >
         </activity>
+        <!--
         <activity
             android:name="orb.slam2.android.ORBSLAMForCameraActivity"
             android:label="ORB_SLAM2"
             android:screenOrientation="landscape" >
         </activity>
+        -->
         <activity
             android:name="orb.slam2.android.ORBSLAMForTestActivity"
             android:label="ORB_SLAM2"
