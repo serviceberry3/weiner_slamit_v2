@@ -4,5 +4,4 @@
       android:versionCode="2490"
       android:versionName="2.4.9">
 
-    <uses-sdk android:minSdkVersion="14" />
 </manifest>

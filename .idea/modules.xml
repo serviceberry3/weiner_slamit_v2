@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/107-master.iml" filepath="$PROJECT_DIR$/107-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oRB_SLAM2_Android/oRB_SLAM2_Android.iml" filepath="$PROJECT_DIR$/oRB_SLAM2_Android/oRB_SLAM2_Android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/openCVLibrary249/openCVLibrary249.iml" filepath="$PROJECT_DIR$/openCVLibrary249/openCVLibrary249.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oRB_SLAM2_Android/oRB_SLAM2_Android.iml" filepath="$PROJECT_DIR$/oRB_SLAM2_Android/oRB_SLAM2_Android.iml" group="weiner_slamit_v2/oRB_SLAM2_Android" />
+      <module fileurl="file://$PROJECT_DIR$/openCVLibrary249/openCVLibrary249.iml" filepath="$PROJECT_DIR$/openCVLibrary249/openCVLibrary249.iml" group="weiner_slamit_v2/openCVLibrary249" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/weiner_slamit_v2.iml" filepath="$PROJECT_DIR$/.idea/modules/weiner_slamit_v2.iml" group="weiner_slamit_v2" />
     </modules>
   </component>
 </project>
