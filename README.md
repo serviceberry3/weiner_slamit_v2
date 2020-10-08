@@ -5,6 +5,6 @@ UPDATE(10/08/20): now running on Google Pixel 4. Main probem is that the so libr
 In FILE gradle.properties ADD android.useDeprecatedNdk=true  
 In FILE oRB_SLAM2_Android/build.gradle WITHIN android{} WITHIN defaultConfig{} WITHIN ndk{} ADD abiFilters 'armeabi-v7a', 'x86', 'mips', 'armeabi'  
 In FILE oRB_SLAM2_Android/src/main/jni/Android.mk VERIFY PATH OF OpenCV.mk  
-In FILE oRB_SLAM2_Android/src/main/jni/Application.mk CHANGE APP_ABI := armeabi TO APP_ABI := x86_64  
+In FILE oRB_SLAM2_Android/src/main/jni/Application.mk VERIFY THAT APP_ABI := armeabi (32-bit), NOT APP_ABI := x86_64 (64-bit) for future builds.    
   
 The app is still not running successfully. Upon tapping "Finish and start SLAM," we only see a blank screen, and the process restarts (the kernel reforks it) infinitely. Working on it.
