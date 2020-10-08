@@ -1,0 +1,1 @@
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/build/core/prebuilt-library.mk:45: *** Android NDK: Aborting    .  Stop.

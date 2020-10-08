@@ -1,44 +1,44 @@
 obj/local/armeabi-v7a/objs/DBoW2/Thirdparty/DBoW2/src/FORB.o: \
  jni/Thirdparty/DBoW2/src/FORB.cpp \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/Thirdparty/DBoW2/include/DBoW2/FORB.h \
- /home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp \
- /home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/types_c.h \
- /home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/version.hpp \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
- /home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp \
- /home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/mat.hpp \
+ /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp \
+ /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/types_c.h \
+ /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/version.hpp \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
+ /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp \
+ /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/mat.hpp \
  jni/Thirdparty/DBoW2/include/DBoW2/FClass.h
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
 jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:
 
-/home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:
 
-/home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/types_c.h:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/types_c.h:
 
-/home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/version.hpp:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/version.hpp:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
-/home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:
 
-/home/vijay/android/tadp/opencv-src/opencv-android-sdk-2.4.9/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/mat.hpp:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/mat.hpp:
 
 jni/Thirdparty/DBoW2/include/DBoW2/FClass.h:

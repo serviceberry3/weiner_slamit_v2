@@ -10,11 +10,12 @@ android {
 
     defaultConfig {
         applicationId "orb.slam2.android"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 30
 
         ndk {
             moduleName "lapack"
+            abiFilters 'armeabi-v7a', 'x86', 'mips', 'armeabi'
         }
         sourceSets.main {
             jniLibs.srcDir "src/main/jniLibs"
@@ -31,9 +32,10 @@ android {
             debuggable = true
         }
     }
+
 }
 
 dependencies {
-    compile project(':openCVLibrary249')
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation project(path: ':openCVLibrary249')
 }

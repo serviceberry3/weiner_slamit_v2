@@ -1,0 +1,20 @@
+[
+  {
+    "level": "INFO",
+    "message": "Start JSON generation. Platform version: 14 min SDK version: mips",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "debug|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "JSON \u0027/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/debug/mips/android_gradle_build.json\u0027 was up-to-date",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "debug|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "JSON generation completed without problems",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "debug|mips"
+  }
+]

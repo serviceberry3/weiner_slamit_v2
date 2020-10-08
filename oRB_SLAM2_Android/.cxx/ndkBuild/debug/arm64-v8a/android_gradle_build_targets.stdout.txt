@@ -1,0 +1,2 @@
+Android NDK: ERROR:/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/clapack/SRC/Android.mk:opencv_contrib: LOCAL_SRC_FILES points to a missing file    
+Android NDK: Check that /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/../libs/arm64-v8a/libopencv_contrib.a exists  or that its path is correct   

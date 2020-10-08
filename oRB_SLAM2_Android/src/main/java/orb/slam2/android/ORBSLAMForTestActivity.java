@@ -193,7 +193,9 @@ public class ORBSLAMForTestActivity extends Activity implements
             }
         }
     }
-    //maxiaoba
+
+
+    //callback fxn to execute when OpenCV is loaded
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -211,6 +213,7 @@ public class ORBSLAMForTestActivity extends Activity implements
         }
     };
 
+    //ERRORING
     static {
         System.loadLibrary("ORB_SLAM2_EXCUTOR");
     }

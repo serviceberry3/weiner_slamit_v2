@@ -25,7 +25,7 @@ MAIN_DIR:=$(LOCAL_PATH)
 OPENCV_LIB_TYPE:=STATIC
 ifeq ("$(wildcard $(OPENCV_MK_PATH))","")  
 #try to load OpenCV.mk from default install location  
-include /Users/Zack/AndroidStudioProjects/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
+include /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
 include $(OPENCV_MK_PATH)  
 endif 
 LOCAL_PATH:=$(MAIN_DIR)
@@ -73,7 +73,7 @@ MAIN_DIR:=$(LOCAL_PATH)
 OPENCV_LIB_TYPE:=STATIC
 ifeq ("$(wildcard $(OPENCV_MK_PATH))","")  
 #try to load OpenCV.mk from default install location  
-include /Users/Zack/AndroidStudioProjects/ORB_SLAM2_Android_Mac/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
+include /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
 else  
 include $(OPENCV_MK_PATH)  
 endif 
@@ -187,7 +187,7 @@ MAIN_DIR:=$(LOCAL_PATH)
 OPENCV_LIB_TYPE:=STATIC
 ifeq ("$(wildcard $(OPENCV_MK_PATH))","")  
 #try to load OpenCV.mk from default install location  
-include /Users/Zack/AndroidStudioProjects/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
+include /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
 else  
 include $(OPENCV_MK_PATH)  
 endif 
@@ -200,7 +200,7 @@ LOCAL_CPP_EXTENSION := .cc
 LOCAL_SHARED_LIBRARIES+=DBoW2
 LOCAL_SHARED_LIBRARIES+=DLib
 LOCAL_SHARED_LIBRARIES+=g2o
-LOCAL_SHARED_LIBRARIES+=pangolin
+#LOCAL_SHARED_LIBRARIES+=pangolin
 LOCAL_LDLIBS += -llog -landroid -lEGL -lGLESv1_CM 
 LOCAL_EXPORT_C_INCLUDES+=$(LOCAL_PATH)/ORB_SLAM2/include
 LOCAL_CPPFLAGS := -std=c++11 -pthread -frtti -fexceptions -ftemplate-backtrace-limit=0
@@ -215,7 +215,7 @@ MAIN_DIR:=$(LOCAL_PATH)
 OPENCV_LIB_TYPE:=STATIC
 ifeq ("$(wildcard $(OPENCV_MK_PATH))","")  
 #try to load OpenCV.mk from default install location  
-include /Users/Zack/AndroidStudioProjects/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
+include /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/OpenCV.mk
 else  
 include $(OPENCV_MK_PATH)  
 endif 
