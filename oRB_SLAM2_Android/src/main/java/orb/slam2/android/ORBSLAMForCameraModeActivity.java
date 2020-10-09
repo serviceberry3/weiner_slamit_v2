@@ -102,8 +102,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
     private static final int INIT_FINISHED = 0x00010001;
 
     private CameraBridgeViewBase mOpenCvCameraView;
-    private boolean              mIsJavaCamera = true;
-    private MenuItem             mItemSwitchCamera = null;
+    private boolean mIsJavaCamera = true;
+    private MenuItem mItemSwitchCamera = null;
 
     private final int CONTEXT_CLIENT_VERSION = 3;
 
@@ -220,6 +220,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         Log.i(TAG, "Success");
         //window settings: no title bar, fullscreen, keep screen on
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 隐藏标题
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -233,10 +234,10 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         displacement = 0;
         distanceIsStart = false;
         pos = new float[3];
-//        scale = new float[3];
-//        scale[0] = 1;
-//        scale[1] = 1;
-//        scale[2] = 1;
+        //scale = new float[3];
+        //scale[0] = 1;
+        //scale[1] = 1;
+        //scale[2] = 1;
         scale = 1;
         caliStartPos = new float[3];
         caliEndPos = new float[3];
@@ -252,49 +253,69 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         RCaptured = RMatrix;
 
 
-        /*
         dataTextView = (TextView) findViewById(R.id.dataTextView);
         distTextView = (TextView) findViewById(R.id.distTextView);
-        TrackOnly=(Button)findViewById(R.id.track_only);
-//        dataCollection = (Button) findViewById(R.id.data_collection);
+        TrackOnly = (Button) findViewById(R.id.track_only);
+        //dataCollection = (Button) findViewById(R.id.data_collection);
         calibrationStart = (Button) findViewById(R.id.calibrationStart);
         distanceStart = (Button) findViewById(R.id.distanceStart);
-//        calibrationEnd = (Button) findViewById(R.id.calibrationEnd);
+        //calibrationEnd = (Button) findViewById(R.id.calibrationEnd);
         TrackOnly.setOnClickListener(this);
-//        dataCollection.setOnClickListener(this);
+        //dataCollection.setOnClickListener(this);
         calibrationStart.setOnClickListener(this);
         distanceStart.setOnClickListener(this);
-//        calibrationEnd.setOnClickListener(this);
+        //calibrationEnd.setOnClickListener(this);
         //maxiaoba
 
         imgDealed = (ImageView) findViewById(R.id.img_dealed);
 
+        //mIsJavaCamera is bool describing whether or not we're using JavaCameraView. Which we always are, it seems.
         if (mIsJavaCamera)
             mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial1_activity_java_surface_view);
         else
             mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial1_activity_native_surface_view);
+
+        //check the the view was found by ID and all is well
+        if (mOpenCvCameraView == null) {
+            Log.e(TAG, "mOpenCvCameraView came up null");
+        } else {
+            Log.d(TAG, "mOpenCvCameraView non-null, OK");
+        }
+
+        //make our OpenCvCameraView visible and set the listener for the camera
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
 
+        //instantiate new GLSurfaceView
         mGLSurfaceView = new GLSurfaceView(this);
         linear = (LinearLayout) findViewById(R.id.surfaceLinear);
+
         //mGLSurfaceView.setEGLContextClientVersion(CONTEXT_CLIENT_VERSION);
+
+        //set the renderer for the GLSurfaceView
         mGLSurfaceView.setRenderer(this);
+
+
         linear.addView(mGLSurfaceView, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
 
+        //get the file paths: dataset path and calibration file path
         vocPath = getIntent().getStringExtra("voc");
         calibrationPath = getIntent().getStringExtra("calibration");
+
+        //make sure both dataset and calibration paths were set by user
         if (TextUtils.isEmpty(vocPath) || TextUtils.isEmpty(calibrationPath)) {
-            Toast.makeText(this, "null param,return!", Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(this, "null param, return!", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "One of paths is NULL!");
             finish();
         } else {
-            Toast.makeText(ORBSLAMForCameraModeActivity.this, "init has been started!",
-                    Toast.LENGTH_LONG).show();
-            new Thread(new Runnable() {
+            Log.i(TAG, "Both paths found, OK");
+            Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been started!", Toast.LENGTH_LONG).show();
 
+            /*
+            //start initialization on a new thread - CAUSING PROCESS CRASH
+            new Thread(new Runnable() {
                 @Override
                 public void run() {
                     // TODO Auto-generated method stub
@@ -305,6 +326,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                     myHandler.sendEmptyMessage(INIT_FINISHED);
                 }
             }).start();
+
+             */
         }
 
 //        //// GPS
@@ -326,6 +349,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 //            Toast.makeText(getApplicationContext(), "Location not achieved", Toast.LENGTH_SHORT).show();
 //        }
 
+        /*
         /// Motion Sensor
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         linearAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
@@ -337,7 +361,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         dataTextView.setText("No Data");
 
          */
-
+        finish();
     }
 
 
