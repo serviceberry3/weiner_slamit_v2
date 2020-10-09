@@ -1,11 +1,11 @@
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/stuff/timeutil.o: \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/timeutil.cpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/timeutil.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream
+obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/stuff/timeutil.o: \
+ jni/Thirdparty/g2o/g2o/stuff/timeutil.cpp \
+ jni/Thirdparty/g2o/g2o/stuff/timeutil.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/timeutil.h:
+jni/Thirdparty/g2o/g2o/stuff/timeutil.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:

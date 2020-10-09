@@ -1,14 +1,14 @@
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/core/batch_stats.o: \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/core/batch_stats.cpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/core/batch_stats.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring
+obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/core/batch_stats.o: \
+ jni/Thirdparty/g2o/g2o/core/batch_stats.cpp \
+ jni/Thirdparty/g2o/g2o/core/batch_stats.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/core/batch_stats.h:
+jni/Thirdparty/g2o/g2o/core/batch_stats.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:

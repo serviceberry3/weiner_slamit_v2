@@ -113,7 +113,7 @@ public class CameraModeActivity extends Activity implements OnClickListener{
         if(resultCode == RESULT_OK && requestCode == REQUEST_CODE_2){
             //获取路径名
             TUMPath = data.getStringExtra(EXTRA_FILE_CHOOSER);
-            CalibrationTxt.setText("calibration path is "+TUMPath);
+            CalibrationTxt.setText("The calibration path is " + TUMPath);
             return;
         }
         if(resultCode == RESULT_OK && requestCode == REQUEST_CODE_3){

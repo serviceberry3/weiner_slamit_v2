@@ -22,9 +22,13 @@ public class OrbNdkHelper {
     public native static void glesRender();  
     public native static void glesResize(int width, int height);
 
-	//maxiaoba
+
 	public native static void trackOnly();
+
+
 	public native static float[] startCurrentORBForCamera2(double curTimeStamp,long addr,int w,int h,float[] R);
-	//maxiaoba
-//	public native static void dataFusion(double curTimeStamp, double lat ,double lng, double accex, double accey,double accez,double gyrox, double gyroy,double gyroz);
+
+
+
+	//public native static void dataFusion(double curTimeStamp, double lat ,double lng, double accex, double accey,double accez,double gyrox, double gyroy,double gyroz);
 }

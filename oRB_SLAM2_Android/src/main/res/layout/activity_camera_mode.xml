@@ -15,7 +15,7 @@
             android:layout_width="200dp"
             android:layout_height="52dp"
             android:layout_marginTop="12dip"
-            android:text="choose_calibration"
+            android:text="SELECT CALIB PATH"
             android:background="@drawable/button3"
             android:textSize="20sp"
             android:textColor="#ffffff" />
@@ -38,7 +38,7 @@
             android:layout_width="200dp"
             android:layout_height="52dp"
             android:layout_marginTop="12dip"
-            android:text="finish and start SLAM"
+            android:text="Finish and start SLAM"
             android:background="@drawable/button3"
             android:textSize="20sp"
             android:textColor="#ffffff" />

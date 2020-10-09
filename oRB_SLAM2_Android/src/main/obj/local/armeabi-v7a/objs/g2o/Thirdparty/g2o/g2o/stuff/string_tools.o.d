@@ -1,41 +1,41 @@
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/stuff/string_tools.o: \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/string_tools.cpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/string_tools.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/macros.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/os_specific.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdarg \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdio \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iterator
+obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/stuff/string_tools.o: \
+ jni/Thirdparty/g2o/g2o/stuff/string_tools.cpp \
+ jni/Thirdparty/g2o/g2o/stuff/string_tools.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ jni/Thirdparty/g2o/g2o/stuff/macros.h \
+ jni/Thirdparty/g2o/g2o/stuff/os_specific.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdarg \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdio \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iterator
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/string_tools.h:
+jni/Thirdparty/g2o/g2o/stuff/string_tools.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/macros.h:
+jni/Thirdparty/g2o/g2o/stuff/macros.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/stuff/os_specific.h:
+jni/Thirdparty/g2o/g2o/stuff/os_specific.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdarg:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdarg:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdio:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdio:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iterator:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iterator:

@@ -1,647 +1,644 @@
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/types/types_six_dof_expmap.o: \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_vertex.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/list \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/limits \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/openmp_mutex.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../../config.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/hyper_graph.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/parameter.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/parameter_container.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Core \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Macros.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/MKL_support.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/functional \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/climits \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Constants.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Meta.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/StaticAssert.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/XprHelper.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Memory.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/NumTraits.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/MathFunctions.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SpecialFunctions.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/GenericPacketMath.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/Complex.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/Default/Settings.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/StlFunctors.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DenseBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/BlockMethods.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/MatrixBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/EigenBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Product.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CoreEvaluators.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/AssignEvaluator.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Assign.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ArrayBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/BlasUtil.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DenseStorage.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/NestByValue.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ReturnByValue.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/NoAlias.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/PlainObjectBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Matrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Array.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryView.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Dot.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/StableNorm.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Stride.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/MapBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Map.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Ref.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Block.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/VectorBlock.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Transpose.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Diagonal.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalProduct.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Redux.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Visitor.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Fuzzy.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/IO.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Swap.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CommaInitializer.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/GeneralProduct.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Solve.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Inverse.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SolverBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/PermutationMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Transpositions.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/TriangularMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SelfAdjointView.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/Parallelizer.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ProductEvaluators.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SolveTriangular.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/BandMatrix.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CoreIterators.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/BooleanRedux.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Select.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/VectorwiseOp.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Random.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Replicate.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Reverse.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ArrayWrapper.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/GlobalFunctions.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/StdVector \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Core \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/StlSupport/StdVector.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/StlSupport/details.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/creators.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Dense \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/LU \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/misc/Kernel.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/misc/Image.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/FullPivLU.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/PartialPivLU.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/Determinant.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/InverseImpl.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Cholesky \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Cholesky/LLT.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Cholesky/LDLT.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/QR \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Jacobi \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Jacobi/Jacobi.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Householder \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Householder/Householder.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Householder/HouseholderSequence.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Householder/BlockHouseholder.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/QR/HouseholderQR.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/SVD \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/SVDBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/JacobiSVD.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/BDCSVD.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Geometry \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/OrthoMethods.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/EulerAngles.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Homogeneous.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/RotationBase.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Rotation2D.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Quaternion.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/AngleAxis.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Transform.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Translation.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Scaling.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Hyperplane.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/AlignedBox.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Umeyama.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Eigenvalues \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealSchur.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealQZ.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Cholesky \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/stack \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_vertex.hpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_edge.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/robust_kernel.h \
- /opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/memory \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.hpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.hpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/se3_ops.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Geometry \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/se3_ops.hpp \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/se3quat.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/types_sba.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/factory.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../stuff/misc.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h \
- /home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../stuff/macros.h
-
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:
-
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_vertex.h:
-
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:
-
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
-
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
-
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/list:
-
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/limits:
-
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath:
-
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo:
+obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/types/types_six_dof_expmap.o: \
+ jni/Thirdparty/g2o/g2o/types/types_six_dof_expmap.cpp \
+ jni/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h \
+ jni/Thirdparty/g2o/g2o/types/../core/base_vertex.h \
+ jni/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/list \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/limits \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo \
+ jni/Thirdparty/g2o/g2o/types/../core/openmp_mutex.h \
+ jni/Thirdparty/g2o/g2o/types/../core/../../config.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
+ jni/Thirdparty/g2o/g2o/types/../core/hyper_graph.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map \
+ jni/Thirdparty/g2o/g2o/types/../core/parameter.h \
+ jni/Thirdparty/g2o/g2o/types/../core/parameter_container.h \
+ jni/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h \
+ jni/Thirdparty/eigen3/Eigen/Core \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/Macros.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/MKL_support.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/functional \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/climits \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/Constants.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/Meta.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/StaticAssert.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/XprHelper.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/Memory.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/NumTraits.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/MathFunctions.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/SpecialFunctions.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/GenericPacketMath.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/Complex.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/arch/Default/Settings.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/functors/StlFunctors.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/DenseBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/BlockMethods.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/MatrixBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/EigenBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Product.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CoreEvaluators.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/AssignEvaluator.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Assign.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/ArrayBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/BlasUtil.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/DenseStorage.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/NestByValue.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/ReturnByValue.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/NoAlias.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/PlainObjectBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Matrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Array.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryView.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Dot.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/StableNorm.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Stride.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/MapBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Map.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Ref.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Block.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/VectorBlock.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Transpose.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Diagonal.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalProduct.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Redux.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Visitor.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Fuzzy.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/IO.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Swap.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CommaInitializer.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/GeneralProduct.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Solve.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Inverse.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/SolverBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/PermutationMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Transpositions.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/TriangularMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/SelfAdjointView.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/Parallelizer.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/ProductEvaluators.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/SolveTriangular.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/BandMatrix.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/CoreIterators.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/BooleanRedux.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Select.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/VectorwiseOp.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Random.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Replicate.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/Reverse.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/ArrayWrapper.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/GlobalFunctions.h \
+ jni/Thirdparty/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
+ jni/Thirdparty/eigen3/Eigen/StdVector jni/Thirdparty/eigen3/Eigen/Core \
+ jni/Thirdparty/eigen3/Eigen/src/StlSupport/StdVector.h \
+ jni/Thirdparty/eigen3/Eigen/src/StlSupport/details.h \
+ jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h \
+ jni/Thirdparty/g2o/g2o/types/../core/creators.h \
+ jni/Thirdparty/eigen3/Eigen/Dense jni/Thirdparty/eigen3/Eigen/LU \
+ jni/Thirdparty/eigen3/Eigen/src/misc/Kernel.h \
+ jni/Thirdparty/eigen3/Eigen/src/misc/Image.h \
+ jni/Thirdparty/eigen3/Eigen/src/LU/FullPivLU.h \
+ jni/Thirdparty/eigen3/Eigen/src/LU/PartialPivLU.h \
+ jni/Thirdparty/eigen3/Eigen/src/LU/Determinant.h \
+ jni/Thirdparty/eigen3/Eigen/src/LU/InverseImpl.h \
+ jni/Thirdparty/eigen3/Eigen/Cholesky \
+ jni/Thirdparty/eigen3/Eigen/src/Cholesky/LLT.h \
+ jni/Thirdparty/eigen3/Eigen/src/Cholesky/LDLT.h \
+ jni/Thirdparty/eigen3/Eigen/QR jni/Thirdparty/eigen3/Eigen/Jacobi \
+ jni/Thirdparty/eigen3/Eigen/src/Jacobi/Jacobi.h \
+ jni/Thirdparty/eigen3/Eigen/Householder \
+ jni/Thirdparty/eigen3/Eigen/src/Householder/Householder.h \
+ jni/Thirdparty/eigen3/Eigen/src/Householder/HouseholderSequence.h \
+ jni/Thirdparty/eigen3/Eigen/src/Householder/BlockHouseholder.h \
+ jni/Thirdparty/eigen3/Eigen/src/QR/HouseholderQR.h \
+ jni/Thirdparty/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
+ jni/Thirdparty/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
+ jni/Thirdparty/eigen3/Eigen/SVD \
+ jni/Thirdparty/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
+ jni/Thirdparty/eigen3/Eigen/src/SVD/SVDBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/SVD/JacobiSVD.h \
+ jni/Thirdparty/eigen3/Eigen/src/SVD/BDCSVD.h \
+ jni/Thirdparty/eigen3/Eigen/Geometry \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/OrthoMethods.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/EulerAngles.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Homogeneous.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/RotationBase.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Rotation2D.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Quaternion.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/AngleAxis.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Transform.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Translation.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Scaling.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Hyperplane.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/AlignedBox.h \
+ jni/Thirdparty/eigen3/Eigen/src/Geometry/Umeyama.h \
+ jni/Thirdparty/eigen3/Eigen/Eigenvalues \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealSchur.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealQZ.h \
+ jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+ jni/Thirdparty/eigen3/Eigen/Cholesky \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/stack \
+ jni/Thirdparty/g2o/g2o/types/../core/base_vertex.hpp \
+ jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h \
+ jni/Thirdparty/g2o/g2o/types/../core/base_edge.h \
+ jni/Thirdparty/g2o/g2o/types/../core/robust_kernel.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/memory \
+ jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.hpp \
+ jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.h \
+ jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.hpp \
+ jni/Thirdparty/g2o/g2o/types/se3_ops.h \
+ jni/Thirdparty/eigen3/Eigen/Geometry \
+ jni/Thirdparty/g2o/g2o/types/se3_ops.hpp \
+ jni/Thirdparty/g2o/g2o/types/se3quat.h \
+ jni/Thirdparty/g2o/g2o/types/types_sba.h \
+ jni/Thirdparty/g2o/g2o/types/../core/factory.h \
+ jni/Thirdparty/g2o/g2o/types/../core/../stuff/misc.h \
+ jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h \
+ jni/Thirdparty/g2o/g2o/types/../stuff/macros.h
+
+jni/Thirdparty/g2o/g2o/types/types_six_dof_expmap.h:
+
+jni/Thirdparty/g2o/g2o/types/../core/base_vertex.h:
+
+jni/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:
+
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
+
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/list:
+
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/limits:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/openmp_mutex.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../../config.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
+jni/Thirdparty/g2o/g2o/types/../core/openmp_mutex.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/hyper_graph.h:
+jni/Thirdparty/g2o/g2o/types/../core/../../config.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset:
+jni/Thirdparty/g2o/g2o/types/../core/hyper_graph.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/parameter.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/parameter_container.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:
+jni/Thirdparty/g2o/g2o/types/../core/parameter.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Core:
+jni/Thirdparty/g2o/g2o/types/../core/parameter_container.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
+jni/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Macros.h:
+jni/Thirdparty/eigen3/Eigen/Core:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/MKL_support.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/Macros.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/MKL_support.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/functional:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/climits:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/functional:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Constants.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/climits:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Meta.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/ForwardDeclarations.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/Constants.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/StaticAssert.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/Meta.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/XprHelper.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/ForwardDeclarations.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/Memory.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/StaticAssert.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/NumTraits.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/XprHelper.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/MathFunctions.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/Memory.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SpecialFunctions.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/NumTraits.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/GenericPacketMath.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/MathFunctions.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/SpecialFunctions.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/GenericPacketMath.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/Complex.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/arch/Default/Settings.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/arch/NEON/Complex.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/arch/Default/Settings.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/StlFunctors.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/functors/NullaryFunctors.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/functors/StlFunctors.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DenseBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/BlockMethods.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/MatrixBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/DenseBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/BlockMethods.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/MatrixBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/EigenBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Product.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CoreEvaluators.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/EigenBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/AssignEvaluator.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Product.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Assign.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CoreEvaluators.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ArrayBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/AssignEvaluator.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Assign.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/ArrayBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/BlasUtil.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DenseStorage.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/NestByValue.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/BlasUtil.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ReturnByValue.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/DenseStorage.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/NoAlias.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/NestByValue.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/PlainObjectBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/ReturnByValue.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Matrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/NoAlias.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Array.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/PlainObjectBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseBinaryOp.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Matrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Array.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseNullaryOp.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CwiseBinaryOp.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryView.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryOp.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CwiseNullaryOp.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Dot.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CwiseUnaryView.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/StableNorm.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Stride.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Dot.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/MapBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/StableNorm.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Map.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Stride.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Ref.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/MapBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Block.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Map.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/VectorBlock.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Ref.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Transpose.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Block.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/VectorBlock.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Diagonal.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Transpose.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalProduct.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Redux.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Diagonal.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Visitor.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/DiagonalProduct.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Fuzzy.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Redux.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/IO.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Visitor.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Swap.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Fuzzy.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CommaInitializer.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/IO.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/GeneralProduct.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Swap.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Solve.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CommaInitializer.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Inverse.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/GeneralProduct.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SolverBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Solve.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/PermutationMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Inverse.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Transpositions.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/SolverBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/TriangularMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/PermutationMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SelfAdjointView.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Transpositions.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/TriangularMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/Parallelizer.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/SelfAdjointView.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ProductEvaluators.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/Parallelizer.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/ProductEvaluators.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/SolveTriangular.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/SolveTriangular.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointProduct.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointProduct.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/BandMatrix.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/CoreIterators.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/products/TriangularSolverVector.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/BooleanRedux.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/BandMatrix.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Select.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/CoreIterators.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/VectorwiseOp.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/BooleanRedux.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Random.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Select.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Replicate.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/VectorwiseOp.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/Reverse.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Random.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/ArrayWrapper.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Replicate.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/GlobalFunctions.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/Reverse.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h:
+jni/Thirdparty/eigen3/Eigen/src/Core/ArrayWrapper.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/StdVector:
+jni/Thirdparty/eigen3/Eigen/src/Core/GlobalFunctions.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Core:
+jni/Thirdparty/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/StlSupport/StdVector.h:
+jni/Thirdparty/eigen3/Eigen/StdVector:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/StlSupport/details.h:
+jni/Thirdparty/eigen3/Eigen/Core:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h:
+jni/Thirdparty/eigen3/Eigen/src/StlSupport/StdVector.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/creators.h:
+jni/Thirdparty/eigen3/Eigen/src/StlSupport/details.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Dense:
+jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/LU:
+jni/Thirdparty/g2o/g2o/types/../core/creators.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/misc/Kernel.h:
+jni/Thirdparty/eigen3/Eigen/Dense:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/misc/Image.h:
+jni/Thirdparty/eigen3/Eigen/LU:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/FullPivLU.h:
+jni/Thirdparty/eigen3/Eigen/src/misc/Kernel.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/PartialPivLU.h:
+jni/Thirdparty/eigen3/Eigen/src/misc/Image.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/Determinant.h:
+jni/Thirdparty/eigen3/Eigen/src/LU/FullPivLU.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/LU/InverseImpl.h:
+jni/Thirdparty/eigen3/Eigen/src/LU/PartialPivLU.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Cholesky:
+jni/Thirdparty/eigen3/Eigen/src/LU/Determinant.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Cholesky/LLT.h:
+jni/Thirdparty/eigen3/Eigen/src/LU/InverseImpl.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Cholesky/LDLT.h:
+jni/Thirdparty/eigen3/Eigen/Cholesky:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/QR:
+jni/Thirdparty/eigen3/Eigen/src/Cholesky/LLT.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Jacobi:
+jni/Thirdparty/eigen3/Eigen/src/Cholesky/LDLT.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Jacobi/Jacobi.h:
+jni/Thirdparty/eigen3/Eigen/QR:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Householder:
+jni/Thirdparty/eigen3/Eigen/Jacobi:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Householder/Householder.h:
+jni/Thirdparty/eigen3/Eigen/src/Jacobi/Jacobi.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Householder/HouseholderSequence.h:
+jni/Thirdparty/eigen3/Eigen/Householder:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Householder/BlockHouseholder.h:
+jni/Thirdparty/eigen3/Eigen/src/Householder/Householder.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/QR/HouseholderQR.h:
+jni/Thirdparty/eigen3/Eigen/src/Householder/HouseholderSequence.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/QR/FullPivHouseholderQR.h:
+jni/Thirdparty/eigen3/Eigen/src/Householder/BlockHouseholder.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/QR/ColPivHouseholderQR.h:
+jni/Thirdparty/eigen3/Eigen/src/QR/HouseholderQR.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/SVD:
+jni/Thirdparty/eigen3/Eigen/src/QR/FullPivHouseholderQR.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/UpperBidiagonalization.h:
+jni/Thirdparty/eigen3/Eigen/src/QR/ColPivHouseholderQR.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/SVDBase.h:
+jni/Thirdparty/eigen3/Eigen/SVD:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/JacobiSVD.h:
+jni/Thirdparty/eigen3/Eigen/src/SVD/UpperBidiagonalization.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/SVD/BDCSVD.h:
+jni/Thirdparty/eigen3/Eigen/src/SVD/SVDBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Geometry:
+jni/Thirdparty/eigen3/Eigen/src/SVD/JacobiSVD.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/OrthoMethods.h:
+jni/Thirdparty/eigen3/Eigen/src/SVD/BDCSVD.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/EulerAngles.h:
+jni/Thirdparty/eigen3/Eigen/Geometry:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Homogeneous.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/OrthoMethods.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/RotationBase.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/EulerAngles.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Rotation2D.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Homogeneous.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Quaternion.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/RotationBase.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/AngleAxis.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Rotation2D.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Transform.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Quaternion.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Translation.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/AngleAxis.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Scaling.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Transform.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Hyperplane.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Translation.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/ParametrizedLine.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Scaling.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/AlignedBox.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Hyperplane.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Geometry/Umeyama.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/ParametrizedLine.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Eigenvalues:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/AlignedBox.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h:
+jni/Thirdparty/eigen3/Eigen/src/Geometry/Umeyama.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealSchur.h:
+jni/Thirdparty/eigen3/Eigen/Eigenvalues:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealSchur.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealSchur.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/EigenSolver.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealSchur.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealQZ.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealQZ.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/RealQZ.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Cholesky:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/./RealQZ.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/stack:
+jni/Thirdparty/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_vertex.hpp:
+jni/Thirdparty/eigen3/Eigen/Cholesky:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/stack:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_edge.h:
+jni/Thirdparty/g2o/g2o/types/../core/base_vertex.hpp:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/robust_kernel.h:
+jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:
 
-/opt/android/ndk11/android-ndk-r11/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/memory:
+jni/Thirdparty/g2o/g2o/types/../core/base_edge.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.hpp:
+jni/Thirdparty/g2o/g2o/types/../core/robust_kernel.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.h:
+/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/memory:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.hpp:
+jni/Thirdparty/g2o/g2o/types/../core/base_binary_edge.hpp:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/se3_ops.h:
+jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/eigen3/Eigen/Geometry:
+jni/Thirdparty/g2o/g2o/types/../core/base_unary_edge.hpp:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/se3_ops.hpp:
+jni/Thirdparty/g2o/g2o/types/se3_ops.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/se3quat.h:
+jni/Thirdparty/eigen3/Eigen/Geometry:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/types_sba.h:
+jni/Thirdparty/g2o/g2o/types/se3_ops.hpp:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/factory.h:
+jni/Thirdparty/g2o/g2o/types/se3quat.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../stuff/misc.h:
+jni/Thirdparty/g2o/g2o/types/types_sba.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h:
+jni/Thirdparty/g2o/g2o/types/../core/factory.h:
 
-/home/vijay/working/slam/slamit/slamit_ORBSLAM2_on_Android/107-master/oRB_SLAM2_Android/src/main/jni/Thirdparty/g2o/g2o/types/../stuff/macros.h:
+jni/Thirdparty/g2o/g2o/types/../core/../stuff/misc.h:
+
+jni/Thirdparty/g2o/g2o/types/../core/../stuff/macros.h:
+
+jni/Thirdparty/g2o/g2o/types/../stuff/macros.h:

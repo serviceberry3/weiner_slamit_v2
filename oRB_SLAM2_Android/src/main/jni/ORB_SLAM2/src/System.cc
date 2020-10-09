@@ -28,7 +28,7 @@
 #include <android/log.h>
 #define LOG_TAG "ORB_SLAM_SYSTEM"
 
-#define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+#define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
 
 namespace ORB_SLAM2
 {
@@ -43,44 +43,44 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
                const bool bUseViewer):mSensor(sensor),mbReset(false),mbActivateLocalizationMode(false),
         mbDeactivateLocalizationMode(false)
 {
+
 	_instance = this;
-	LOG("ORB_initiate");
-    cout << endl <<
-    "ORB-SLAM2 Copyright (C) 2014-2016 Raul Mur-Artal, University of Zaragoza." << endl <<
-    "This program comes with ABSOLUTELY NO WARRANTY;" << endl  <<
-    "This is free software, and you are welcome to redistribute it" << endl <<
-    "under certain conditions. See LICENSE.txt." << endl << endl;
+	LOG("ORB_initiate (System() constructor called in System.cc)");
 
-    cout << "Input sensor was set to: ";
 
-    if(mSensor==MONOCULAR)
-        cout << "Monocular" << endl;
-    else if(mSensor==STEREO)
+    if(mSensor==MONOCULAR) {
+        LOG("Looking to initialize monocular system");
+    }
+    else if(mSensor==STEREO) {
         cout << "Stereo" << endl;
-    else if(mSensor==RGBD)
+    }
+    else if(mSensor==RGBD) {
         cout << "RGB-D" << endl;
+    }
 
     //Check settings file
     cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::READ);
+
     if(!fsSettings.isOpened())
     {
-       cerr << "Failed to open settings file at: " << strSettingsFile << endl;
+       "Failed to open settings file at: " << strSettingsFile << endl;
        exit(-1);
     }
 
-
     //Load ORB Vocabulary
-    cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
+    LOG("Loading ORB vocabulary. This could take a while...");
 
+    //instantiate a new
     mpVocabulary = new ORBVocabulary();
+
     bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
+
     if(!bVocLoad)
     {
-        cerr << "Wrong path to vocabulary. " << endl;
-        cerr << "Falied to open at: " << strVocFile << endl;
+        LOG("FAILED TO LOAD VOCAB");
         exit(-1);
     }
-    cout << "Vocabulary loaded!" << endl << endl;
+    LOG("VOCAB LOADED SUCCESSFULLY!");
 
     //Create KeyFrame Database
     mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
@@ -93,9 +93,8 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
 
     //Initialize the Tracking thread
-    //(it will live in the main thread of execution, the one that called this constructor)
-    mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer,
-                             mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
+    //It will live in the main thread of execution (the one that called this constructor)
+    mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer, mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
 
     //Initialize the Local Mapping thread and launch
     mpLocalMapper = new LocalMapping(mpMap, mSensor==MONOCULAR);
@@ -107,7 +106,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
 
     //Initialize the Viewer thread and launch
     mpViewer = new Viewer(this, mpFrameDrawer,mpMapDrawer,mpTracker,strSettingsFile);
-    if(bUseViewer)
+    if (bUseViewer)
         mptViewer = new thread(&Viewer::Run, mpViewer);
 
     mpTracker->SetViewer(mpViewer);
@@ -122,7 +121,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     mpLoopCloser->SetTracker(mpTracker);
     mpLoopCloser->SetLocalMapper(mpLocalMapper);
 
-    //maxiaoba
+
     Reb = cv::Mat::eye(3,3,CV_32F);
     RebOld = cv::Mat::eye(3,3,CV_32F);
     Rbc = cv::Mat::eye(3,3,CV_32F);
@@ -135,9 +134,12 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     Rbc.at<float>(2,0) = 0;
     Rbc.at<float>(2,1) = 0;
     Rbc.at<float>(2,2) = -1;
+
+
+    LOG("ORB_initiate System() constructor FINISHED!");
 }
 
-//maxiaoba
+
 cv::Mat System::getmVelocity(cv::Mat Rebin){
     Reb.copyTo(RebOld);
     Rebin.copyTo(Reb);
@@ -150,7 +152,7 @@ cv::Mat System::getmVelocity(cv::Mat Rebin){
 
 
 void System::drawGL(){
-	LOG("drawGL Thread has been started!");
+	LOG("DrawGL Thread has been started!");
 	mpViewer->drawGL();
 }
 

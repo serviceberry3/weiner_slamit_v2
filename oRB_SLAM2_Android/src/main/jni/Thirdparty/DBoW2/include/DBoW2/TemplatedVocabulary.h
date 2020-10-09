@@ -33,15 +33,23 @@
 
 #include <DUtils/Random.h>
 
+#include <android/log.h>
+#define LOG_TAG "TEMPLATED_VOC_H"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+#define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+
 using namespace std;
 
 namespace DBoW2 {
 
 /// @param TDescriptor class of descriptor
 /// @param F class of descriptor functions
-template<class TDescriptor, class F>
+template <class TDescriptor, class F> //TDescriptor and F are undefined data types
+
+
 /// Generic Vocabulary
-class TemplatedVocabulary
+class TemplatedVocabulary //a.k.a ORBVocabulary
 {		
 public:
   
@@ -84,8 +92,7 @@ public:
    * @param voc
    * @return reference to this vocabulary
    */
-  TemplatedVocabulary<TDescriptor, F>& operator=(
-    const TemplatedVocabulary<TDescriptor, F> &voc);
+  TemplatedVocabulary<TDescriptor, F>& operator = (const TemplatedVocabulary<TDescriptor, F> &voc);
   
   /** 
    * Creates a vocabulary from the training features with the already
@@ -1358,8 +1365,8 @@ bool TemplatedVocabulary<TDescriptor,F>::loadFromTextFile(const std::string &fil
 
     if(m_k<0 || m_k>20 || m_L<1 || m_L>10 || n1<0 || n1>5 || n2<0 || n2>3)
     {
-        std::cerr << "Vocabulary loading failure: This is not a correct text file!" << endl;
-	return false;
+        LOGE("Vocabulary loading failure: This is not a correct text file!");
+	    return false;
     }
     
     m_scoring = (ScoringType)n1;

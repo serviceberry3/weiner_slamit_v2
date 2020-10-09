@@ -28,6 +28,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.GLSurfaceView.Renderer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
@@ -265,7 +266,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         calibrationStart.setOnClickListener(this);
         distanceStart.setOnClickListener(this);
         //calibrationEnd.setOnClickListener(this);
-        //maxiaoba
 
         imgDealed = (ImageView) findViewById(R.id.img_dealed);
 
@@ -301,36 +301,47 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                 LinearLayout.LayoutParams.MATCH_PARENT));
 
         //get the file paths: dataset path and calibration file path
+        /*
         vocPath = getIntent().getStringExtra("voc");
         calibrationPath = getIntent().getStringExtra("calibration");
+         */
+
+        vocPath = "/storage/emulated/0/Android/data/orb.slam2.android/files/ORBvoc.txt";
+        calibrationPath = "/storage/emulated/0/Android/data/orb.slam2.android/files/List3.yaml";
+
 
         //make sure both dataset and calibration paths were set by user
         if (TextUtils.isEmpty(vocPath) || TextUtils.isEmpty(calibrationPath)) {
             Toast.makeText(this, "null param, return!", Toast.LENGTH_LONG).show();
             Log.e(TAG, "One of paths is NULL!");
             finish();
-        } else {
+        }
+        else {
+            Log.i(TAG, "Vocab path is " + vocPath);
+            Log.i(TAG, "Calib path is " + calibrationPath);
+
             Log.i(TAG, "Both paths found, OK");
             Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been started!", Toast.LENGTH_LONG).show();
 
-            /*
-            //start initialization on a new thread - CAUSING PROCESS CRASH
+
+            //start initialization on a new thread (in background)
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    // TODO Auto-generated method stub
-                    OrbNdkHelper.initSystemWithParameters(vocPath,
-                            calibrationPath);
-                    Log.e("information==========>",
-                            "init has been finished!");
+                    Log.i(TAG, "Trying to run initSystemWithParameters on auxiliary thread now...");
+
+                    //run native code fxn to initialize the SLAM system using the calibration parameters given
+                    OrbNdkHelper.initSystemWithParameters(vocPath, calibrationPath);
+
+                    Log.e(TAG, "Init has finished successfully!");
+
                     myHandler.sendEmptyMessage(INIT_FINISHED);
                 }
             }).start();
 
-             */
         }
 
-//        //// GPS
+//        ////GPS
 //        checkPermission = true;
 //        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 //        provider = locationManager.getBestProvider(new Criteria(), false);
@@ -349,7 +360,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 //            Toast.makeText(getApplicationContext(), "Location not achieved", Toast.LENGTH_SHORT).show();
 //        }
 
-        /*
+
         /// Motion Sensor
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         linearAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
@@ -360,15 +371,14 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
         dataTextView.setText("No Data");
 
-         */
-        finish();
+
+        //finish();
     }
 
 
-    //maxiaoba
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
+
         switch(v.getId()) {
             case R.id.track_only:
                 OrbNdkHelper.trackOnly();
@@ -431,102 +441,123 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
         }
     }
-    //maxiaoba
 
-    Handler myHandler = new Handler() {
+
+    Handler myHandler = new Handler(Looper.getMainLooper()) {
+        //process an incoming message (an object containing a bundle of data) to the handler
         public void handleMessage(Message msg) {
-//            switch (msg.what) {
-//                case INIT_FINISHED:
-//                    Toast.makeText(ORBSLAMForTestActivity.this,
-//                            "init has been finished!",
-//                            Toast.LENGTH_LONG).show();
-//                    new Thread(new Runnable() {
-//
-//                        @Override
-//                        public void run() {
-//                            while(isSLAMRunning){
-//                                timestamp = (double)System.currentTimeMillis()/1000.0;
-//                                // TODO Auto-generated method stub
-//                                int[] resultInt = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
-//                                resultImg = Bitmap.createBitmap(w, h,
-//                                        Config.RGB_565);
-//                                resultImg.setPixels(resultInt, 0, w, 0, 0, w, h);
-//                                runOnUiThread(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        // TODO Auto-generated method stub
-//                                        imgDealed.setImageBitmap(resultImg);
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    }).start();
-//                    break;
-//            }
-//            super.handleMessage(msg);
+            /*
             switch (msg.what) {
                 case INIT_FINISHED:
-                    Toast.makeText(ORBSLAMForCameraModeActivity.this,
-                            "init has been finished!",
-                            Toast.LENGTH_LONG).show();
-
-                    //maxiaoba
-                   // velocityCalculator.startFlag = 1;
-
+                    Toast.makeText(ORBSLAMForCameraModeActivity.this, "init has been finished!", Toast.LENGTH_LONG).show();
                     new Thread(new Runnable() {
 
-                        @Override
-                        public void run() {
-                            while(isSLAMRunning){
-                                timestampOld = timestamp;
-                                timestamp = (double)System.currentTimeMillis()/1000.0;
-                                timeStep = timestamp-timestampOld;
-                                // TODO Auto-generated method stub
-                                RCaptured=RMatrix;
-                                // resultfloat = OrbNdkHelper.startCurrentORBForCamera2(timestamp, addr, w, h, RCaptured);
-                                 resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
-//                                resultImg = Bitmap.createBitmap(w, h,
-//                                        Config.RGB_565);
-//                                resultImg.setPixels(resultInt, 0, w, 0, 0, w, h);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        // TODO Auto-generated method stub
-//                                        imgDealed.setImageBitmap(resultImg);
-//                                     //   dataTextView.setText("W: " + String.valueOf(w) + "\nH: " + String.valueOf(h)+ "\nTime: " + String.valueOf(timeStep));
-                                       // dataTextView.setText("Vx: " + String.valueOf(velocity[0]) + "\nVy: " + String.valueOf(velocity[1])+ "\nVz: " + String.valueOf(velocity[2]));
-                                       // dataTextView.setText("AcceSetp:"+String.valueOf(velocityCalculator.acceStep)+"\nAx: " + String.valueOf(acce[0]) + "\nAy: " + String.valueOf(acce[1])+ "\nAz: " + String.valueOf(acce[2]));
-                                       // if(resultfloat.length==16)
-                                       //     dataTextView.setText("X: " + String.valueOf(-resultfloat[3]) + "\nY: " + String.valueOf(-resultfloat[7]) + "\n" + "Z:"+ String.valueOf(-resultfloat[11]));
-                                        //maxiaoba
-                                        if(resultfloat.length==16) {
-                                            float[] OCc = {-resultfloat[3], -resultfloat[7], -resultfloat[11]};
-                                            float[] OCb = {-OCc[1], -OCc[0], -OCc[2]};
-                                            float[] OCe = {RCaptured[0] * OCb[0] + RCaptured[1] * OCb[1] + RCaptured[2] * OCb[2],RCaptured[3] * OCb[0] + RCaptured[4] * OCb[1] + RCaptured[5] * OCb[2],RCaptured[6] * OCb[0] + RCaptured[7] * OCb[1] + RCaptured[8] * OCb[2]};
-                                            for(int i=0;i<3;i++){
-                                                //pos[i] = scale[i]*OCe[i];
-                                                pos[i] = scale*OCe[i];
-                                            }
-                                            dataTextView.setText("Time Step: "+String.valueOf(timeStep)+"\nX: " + String.valueOf(pos[0]) + "\nY: " + String.valueOf(pos[1]) + "\n" + "Z:" + String.valueOf(pos[2])+"\n"+"Scale: "+String.valueOf(scale));
+                       @Override
+                       public void run() {
+                           while(isSLAMRunning) {
+                               timestamp = (double)System.currentTimeMillis()/1000.0;
 
+                               int[] resultInt = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
+                               resultImg = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
+                               resultImg.setPixels(resultInt, 0, w, 0, 0, w, h);
+                               runOnUiThread(new Runnable() {
+                                   @Override
+                                   public void run() {
+                                       imgDealed.setImageBitmap(resultImg);
+                                   }
+                               });
+                           }
+                       }
+                   }).start();
+                   break;
+            }
+            super.handleMessage(msg);
+            */
+
+
+            //check to see if we're getting a message saying that initialization has finished
+            if (msg.what == INIT_FINISHED) {
+                Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been finished successfully!",
+                        Toast.LENGTH_LONG).show();
+
+                //velocityCalculator.startFlag = 1;
+
+                //start up a new background thread
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //do this infinitely as long as SLAM is running
+                        while (isSLAMRunning) {
+                            timestampOld = timestamp;
+                            timestamp = (double) System.currentTimeMillis() / 1000.0;
+                            timeStep = timestamp - timestampOld;
+
+                            RCaptured = RMatrix;
+
+
+                            //resultfloat = OrbNdkHelper.startCurrentORBForCamera2(timestamp, addr, w, h, RCaptured);
+
+                            //start up the ORB
+                            resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
+
+                            /*
+                            resultImg = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
+                            resultImg.setPixels(resultInt, 0, w, 0, 0, w, h);
+                            */
+
+                            //run this part on the main thread
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                     //imgDealed.setImageBitmap(resultImg);
+                                    //dataTextView.setText("W: " + String.valueOf(w) + "\nH: " + String.valueOf(h)+ "\nTime: " + String.valueOf(timeStep));
+                                    // dataTextView.setText("Vx: " + String.valueOf(velocity[0]) + "\nVy: " + String.valueOf(velocity[1])+ "\nVz: " + String.valueOf(velocity[2]));
+                                    // dataTextView.setText("AcceSetp:"+String.valueOf(velocityCalculator.acceStep)+"\nAx: " + String.valueOf(acce[0]) + "\nAy: " + String.valueOf(acce[1])+ "\nAz: " + String.valueOf(acce[2]));
+                                    // if(resultfloat.length==16)
+                                    //dataTextView.setText("X: " + String.valueOf(-resultfloat[3]) + "\nY: " + String.valueOf(-resultfloat[7]) + "\n" + "Z:"+ String.valueOf(-resultfloat[11]));
+
+                                    if (resultfloat.length == 16) {
+                                        float[] OCc = {-resultfloat[3], -resultfloat[7], -resultfloat[11]};
+                                        float[] OCb = {-OCc[1], -OCc[0], -OCc[2]};
+                                        float[] OCe = {RCaptured[0] * OCb[0] + RCaptured[1] * OCb[1] + RCaptured[2] *
+                                                OCb[2], RCaptured[3] * OCb[0] + RCaptured[4] * OCb[1] + RCaptured[5] *
+                                                OCb[2], RCaptured[6] * OCb[0] + RCaptured[7] * OCb[1] + RCaptured[8] * OCb[2]};
+
+
+                                        for (int i = 0; i < 3; i++) {
+                                            //pos[i] = scale[i]*OCe[i];
+                                            pos[i] = scale * OCe[i];
                                         }
 
-                                        if (distanceIsStart) {
-                                            distTextView.setText("Moving Distance: " + String.valueOf(displacement));
-                                        }
-                                        //maxiaoba
-//                                    dataTextView.setText("X: " + String.valueOf(resultfloat.length));
-                                       /* if(resultfloat.length==6)
-                                            dataTextView.setText("X: " + String.valueOf(resultfloat[0]) + "\nY: " + String.valueOf(resultfloat[1]) + "\n" + "Z:"
-                                                    + String.valueOf(resultfloat[2])+"Roll: " + String.valueOf(resultfloat[3]) + "\nPitch: " + String.valueOf(resultfloat[4]) + "\n" + "Yaw:"
-                                                    + String.valueOf(resultfloat[5]));*/
+
+                                        dataTextView.setText("Time Step: " + String.valueOf(timeStep) + "\nX: " +
+                                                String.valueOf(pos[0]) + "\nY: " + String.valueOf(pos[1]) + "\n" + "Z:" +
+                                                String.valueOf(pos[2]) + "\n" + "Scale: " + String.valueOf(scale));
+
                                     }
-                                });
 
-                            }
+                                    if (distanceIsStart) {
+                                        distTextView.setText("Moving Distance: " + String.valueOf(displacement));
+                                    }
+
+
+                                    /*
+                                    dataTextView.setText("X: " + String.valueOf(resultfloat.length));
+                                    if(resultfloat.length==6)
+                                        dataTextView.setText("X: " + String.valueOf(resultfloat[0]) + "\nY: " +
+                                                String.valueOf(resultfloat[1]) + "\n" + "Z:" +
+                                                String.valueOf(resultfloat[2])+"Roll: " + String.valueOf(resultfloat[3])
+                                                + "\nPitch: " + String.valueOf(resultfloat[4]) + "\n" + "Yaw:"
+                                                + String.valueOf(resultfloat[5]));
+
+                                     */
+                                }
+                            });
+
                         }
-                    }).start();
-                    break;
+                    }
+                }).start();
             }
             super.handleMessage(msg);
         }
@@ -534,11 +565,10 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     private Bitmap tmp, resultImg;
     private float[] resultfloat;
-   //maxiaoba private double timestamp;
+    //private double timestamp;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        // TODO Auto-generated method stub
         //OrbNdkHelper.readShaderFile(mAssetMgr);
         OrbNdkHelper.glesInit();
     }
@@ -546,33 +576,32 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        // TODO Auto-generated method stub
         OrbNdkHelper.glesResize(width, height);
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        // TODO Auto-generated method stub
         OrbNdkHelper.glesRender();
     }
 
     @Override
     protected void onResume() {
-        // TODO Auto-generated method stub
+        Log.i(TAG, "onResume Called");
+
         super.onResume();
 
-        //mGLSurfaceView.onResume();
+
+        mGLSurfaceView.onResume();
 
         OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
-       // mSensorManager.registerListener(this, linearAccelerometer, 200000);
+        //mSensorManager.registerListener(this, linearAccelerometer, 200000);
 
-        /*
+        //register the listeners for all of the sensors we're using
         mSensorManager.registerListener(this, linearAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, gravitySensor, 50000);
         mSensorManager.registerListener(this, gyroscope, 100000);
         mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_FASTEST);
-         */
 
 
         //if (checkPermission) {
@@ -584,13 +613,11 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
     }
 
     @Override
     protected void onPause() {
-        // TODO Auto-generated method stub
         super.onPause();
         mGLSurfaceView.onPause();
 
