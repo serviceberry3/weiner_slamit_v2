@@ -21,8 +21,11 @@ class AsyncServiceHelper
             final LoaderCallbackInterface Callback)
     {
         AsyncServiceHelper helper = new AsyncServiceHelper(Version, AppContext, Callback);
+
         Intent intent = new Intent("org.opencv.engine.BIND");
+
         intent.setPackage("org.opencv.engine");
+
         if (AppContext.bindService(intent, helper.mServiceConnection, Context.BIND_AUTO_CREATE))
         {
             return true;
@@ -110,7 +113,7 @@ class AsyncServiceHelper
 
                 public void wait_install()
                 {
-                    Log.e(TAG, "Instalation was not started! Nothing to wait!");
+                    Log.e(TAG, "Installation was not started! Nothing to wait!");
                 }
             };
 
@@ -161,7 +164,7 @@ class AsyncServiceHelper
             mEngineService = OpenCVEngineInterface.Stub.asInterface(service);
             if (null == mEngineService)
             {
-                Log.d(TAG, "OpenCV Manager Service connection fails. May be service was not installed?");
+                Log.d(TAG, "OpenCV Manager Service connection fails. Maybe service was not installed?");
                 InstallService(mAppContext, mUserAppCallback);
             }
             else
@@ -180,7 +183,10 @@ class AsyncServiceHelper
                     }
 
                     Log.d(TAG, "Trying to get library path");
-                    String path = mEngineService.getLibPathByVersion(mOpenCVersion);
+
+                    //String path = mEngineService.getLibPathByVersion(mOpenCVersion);
+                    String path = "/data/app/org.opencv.lib_v24_armv7a-D0jPHICStZIIB9qGzhirSA==/lib/arm";
+
                     if ((null == path) || (path.length() == 0))
                     {
                         if (!mLibraryInstallationProgress)
@@ -247,7 +253,7 @@ class AsyncServiceHelper
                                 }
                                 public void cancel()
                                 {
-                                    Log.d(TAG, "OpenCV library installation was canceled");
+                                    Log.d(TAG, "OpenCV library installation was cancelled");
                                     mLibraryInstallationProgress = false;
                                     Log.d(TAG, "Init finished with status " + LoaderCallbackInterface.INSTALL_CANCELED);
                                     Log.d(TAG, "Unbind from service");
@@ -289,14 +295,25 @@ class AsyncServiceHelper
                         }
                         return;
                     }
+
                     else
                     {
-                        Log.d(TAG, "Trying to get library list");
+                        Log.d(TAG, "Library path is " + path + ", now trying to get library list, version is " + mOpenCVersion);
                         mLibraryInstallationProgress = false;
+
+                        //looks like this function is just set to always return null??
                         String libs = mEngineService.getLibraryList(mOpenCVersion);
+
+
                         Log.d(TAG, "Library list: \"" + libs + "\"");
+
+
                         Log.d(TAG, "First attempt to load libs");
+
                         int status;
+
+                        Log.d(TAG, "Hello??");
+
                         if (initOpenCVLibs(path, libs))
                         {
                             Log.d(TAG, "First attempt to load libs is OK");
@@ -344,13 +361,17 @@ class AsyncServiceHelper
         Log.d(TAG, "Trying to load library " + AbsPath);
         try
         {
-            System.load(AbsPath);
+            System.load("/data/app/org.opencv.lib_v24_armv7a-D0jPHICStZIIB9qGzhirSA==/lib/arm/libopencv_java.so");
+
             Log.d(TAG, "OpenCV libs init was ok!");
         }
         catch(UnsatisfiedLinkError e)
         {
+            //loading the library failed because of an UnsatisfiedLinkError
             Log.d(TAG, "Cannot load library \"" + AbsPath + "\"");
             e.printStackTrace();
+
+            //note down the failure
             result &= false;
         }
 
@@ -370,18 +391,23 @@ class AsyncServiceHelper
                 while(splitter.hasMoreTokens())
                 {
                     String AbsLibraryPath = Path + File.separator + splitter.nextToken();
+
+                    //try to load up the OpenCV library
                     result &= loadLibrary(AbsLibraryPath);
                 }
             }
             else
             {
-                // If the dependencies list is not defined or empty.
+                // If the dependencies list (libs) is not defined or empty.
                 String AbsLibraryPath = Path + File.separator + "libopencv_java.so";
+
                 result &= loadLibrary(AbsLibraryPath);
             }
 
             return result;
         }
+
+
         else
         {
             Log.d(TAG, "Library path \"" + Path + "\" is empty");

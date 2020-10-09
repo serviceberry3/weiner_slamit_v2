@@ -74,22 +74,37 @@ public class CameraModeActivity extends Activity implements OnClickListener{
 //                else
 //                    Toast.makeText(TestModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();
 //                break;
+
+            //start up actual SLAM
             case R.id.finish:
-                if(!TextUtils.isEmpty(TUMPath)&&!TextUtils.isEmpty(VOCPath)){
-                    Bundle bundle=new Bundle();
+                if(!TextUtils.isEmpty(TUMPath) && !TextUtils.isEmpty(VOCPath)){
+                    Bundle bundle = new Bundle();
+
+                    //add the calibration and dataset files as strings to the intent
                     bundle.putString("voc",VOCPath );
                     bundle.putString("calibration",TUMPath );
-                    Intent intent =new Intent(CameraModeActivity.this,ORBSLAMForTestActivity.class);
+
+                    //make an intent to send over to the newly spawned activity
+                    Intent intent = new Intent(CameraModeActivity.this, ORBSLAMForCameraModeActivity.class);
                     intent.putExtras(bundle);
+
+                    //start up ORBSLAMForTestActivity, not waiting for result
                     startActivity(intent);
+
+                    //end this activity
                     finish();
-                }else{
-                    Toast.makeText(CameraModeActivity.this, "None of image path or Calibration path can be empty!", Toast.LENGTH_LONG).show();
+                }
+
+                else {
+                    Toast.makeText(CameraModeActivity.this, "Dataset and calibration file path must both be selected!",
+                            Toast.LENGTH_LONG).show();
                 }
                 break;
         }
     }
 
+
+    //get result back from file selection activity
     public void onActivityResult(int requestCode , int resultCode , Intent data){
         if(resultCode == RESULT_CANCELED){
             Toast.makeText(CameraModeActivity.this, "no return value", Toast.LENGTH_LONG).show();

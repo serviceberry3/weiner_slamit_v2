@@ -16,15 +16,22 @@ public class MainActivity extends Activity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
           WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+
         setContentView(R.layout.activity_main);
+
         datasetMode=(Button)findViewById(R.id.dataset_mode);
 //        cameraMode=(Button)findViewById(R.id.camera_mode);
+
 		testMode=(Button)findViewById(R.id.test_mode);
+
         datasetMode.setOnClickListener(this);
 //        cameraMode.setOnClickListener(this);
+
 		testMode.setOnClickListener(this);
     }
 

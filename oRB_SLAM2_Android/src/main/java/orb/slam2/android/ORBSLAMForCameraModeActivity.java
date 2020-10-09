@@ -12,26 +12,20 @@ import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
-import org.w3c.dom.Text;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLSurfaceView.Renderer;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -52,12 +46,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 /**
- * ORB Test Activity For DataSetMode
- *
- * @author buptzhaofang@163.com Mar 24, 2016 4:13:32 PM
+ * ORB Test Activity For CameraMode
  *
  */
-public class ORBSLAMForTestActivity extends Activity implements
+public class ORBSLAMForCameraModeActivity extends Activity implements
         Renderer,CvCameraViewListener2, View.OnClickListener, LocationListener, SensorEventListener {
 
     //maxiaoba
@@ -99,28 +91,31 @@ public class ORBSLAMForTestActivity extends Activity implements
     public float scale;
     public float[] pos;
 
-    //maxiaoba
-    private static final String TAG = "OCVSample::Activity";
+
+    private static final String TAG = "CameraModeORB2";
     ImageView imgDealed;
 
     LinearLayout linear;
 
     String vocPath, calibrationPath;
 
-    private static final int INIT_FINISHED=0x00010001;
+    private static final int INIT_FINISHED = 0x00010001;
 
     private CameraBridgeViewBase mOpenCvCameraView;
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
 
     private final int CONTEXT_CLIENT_VERSION = 3;
+
+    //OpenGL SurfaceView
     private GLSurfaceView mGLSurfaceView;
 
     long addr;
     int w,h;
     boolean isSLAMRunning=true;
-    //maxiaoba
-    public class velocityVerlet{
+
+
+    public class velocityVerlet {
         public double acceTime;
         public double acceTimeOld;
         public double acceStep;
@@ -213,7 +208,7 @@ public class ORBSLAMForTestActivity extends Activity implements
         }
     };
 
-    //ERRORING
+    //ERRORING - FIXED 10/08
     static {
         System.loadLibrary("ORB_SLAM2_EXCUTOR");
     }
@@ -222,16 +217,18 @@ public class ORBSLAMForTestActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "Success");
+        //window settings: no title bar, fullscreen, keep screen on
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 隐藏标题
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+
+        //set the view
         setContentView(R.layout.activity_test_orb);
 
-
-
-        //maxiaoba
+        //declarations/initializations
         calibrationIsStart = false;
         displacement = 0;
         distanceIsStart = false;
@@ -253,6 +250,9 @@ public class ORBSLAMForTestActivity extends Activity implements
         IMatrix = new float[9];
         orientation = new float[3];
         RCaptured = RMatrix;
+
+
+        /*
         dataTextView = (TextView) findViewById(R.id.dataTextView);
         distTextView = (TextView) findViewById(R.id.distTextView);
         TrackOnly=(Button)findViewById(R.id.track_only);
@@ -291,7 +291,7 @@ public class ORBSLAMForTestActivity extends Activity implements
                     .show();
             finish();
         } else {
-            Toast.makeText(ORBSLAMForTestActivity.this, "init has been started!",
+            Toast.makeText(ORBSLAMForCameraModeActivity.this, "init has been started!",
                     Toast.LENGTH_LONG).show();
             new Thread(new Runnable() {
 
@@ -336,6 +336,8 @@ public class ORBSLAMForTestActivity extends Activity implements
 
         dataTextView.setText("No Data");
 
+         */
+
     }
 
 
@@ -346,7 +348,7 @@ public class ORBSLAMForTestActivity extends Activity implements
         switch(v.getId()) {
             case R.id.track_only:
                 OrbNdkHelper.trackOnly();
-                Toast.makeText(ORBSLAMForTestActivity.this, "Track Only", Toast.LENGTH_LONG).show();
+                Toast.makeText(ORBSLAMForCameraModeActivity.this, "Track Only", Toast.LENGTH_LONG).show();
                 break;
 //            case R.id.data_collection:
 //                Double lat = location.getLatitude();
@@ -440,7 +442,7 @@ public class ORBSLAMForTestActivity extends Activity implements
 //            super.handleMessage(msg);
             switch (msg.what) {
                 case INIT_FINISHED:
-                    Toast.makeText(ORBSLAMForTestActivity.this,
+                    Toast.makeText(ORBSLAMForCameraModeActivity.this,
                             "init has been finished!",
                             Toast.LENGTH_LONG).show();
 
@@ -534,18 +536,24 @@ public class ORBSLAMForTestActivity extends Activity implements
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        mGLSurfaceView.onResume();
 
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        //mGLSurfaceView.onResume();
+
+        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
        // mSensorManager.registerListener(this, linearAccelerometer, 200000);
+
+        /*
         mSensorManager.registerListener(this, linearAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, gravitySensor, 50000);
         mSensorManager.registerListener(this, gyroscope, 100000);
         mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_FASTEST);
-//        if (checkPermission) {
-//            locationManager.requestLocationUpdates(provider, 100, 0, this);
-//        }
+         */
+
+
+        //if (checkPermission) {
+        //      locationManager.requestLocationUpdates(provider, 100, 0, this);
+        //}
     }
 
 

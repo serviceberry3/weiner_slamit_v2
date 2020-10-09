@@ -81,7 +81,7 @@
         </activity>
         -->
         <activity
-            android:name="orb.slam2.android.ORBSLAMForTestActivity"
+            android:name="orb.slam2.android.ORBSLAMForCameraModeActivity"
             android:label="ORB_SLAM2"
             android:screenOrientation="landscape" >
         </activity>
