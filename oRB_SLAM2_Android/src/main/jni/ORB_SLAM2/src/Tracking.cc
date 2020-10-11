@@ -53,11 +53,22 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
 {
     // Load camera parameters from settings file
 
-    cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
+    //cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
+
+    /*
     float fx = fSettings["Camera.fx"];
     float fy = fSettings["Camera.fy"];
     float cx = fSettings["Camera.cx"];
     float cy = fSettings["Camera.cy"];
+    */
+
+
+    //HARDCODE
+    float fx =526.69;
+    float fy =540.36;
+    float cx =313.07;
+    float cy =238.39;
+
 
     cv::Mat K = cv::Mat::eye(3,3,CV_32F);
     K.at<float>(0,0) = fx;
@@ -67,27 +78,47 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     K.copyTo(mK);
 
     cv::Mat DistCoef(4,1,CV_32F);
+
+    /*
     DistCoef.at<float>(0) = fSettings["Camera.k1"];
     DistCoef.at<float>(1) = fSettings["Camera.k2"];
     DistCoef.at<float>(2) = fSettings["Camera.p1"];
     DistCoef.at<float>(3) = fSettings["Camera.p2"];
     const float k3 = fSettings["Camera.k3"];
-    if(k3!=0)
+    */
+
+    //HARDCODE
+    DistCoef.at<float>(0) = 0.262383;
+    DistCoef.at<float>(1) = -0.953104;
+    DistCoef.at<float>(2) = -0.005358;
+    DistCoef.at<float>(3) = 0.002628;
+    const float k3 = 1.163314;
+
+
+
+    if (k3!=0)
     {
         DistCoef.resize(5);
         DistCoef.at<float>(4) = k3;
     }
     DistCoef.copyTo(mDistCoef);
 
-    mbf = fSettings["Camera.bf"];
 
-    float fps = fSettings["Camera.fps"];
-    if(fps==0)
-        fps=30;
+    //mbf = fSettings["Camera.bf"];
+
+
+    //float fps = fSettings["Camera.fps"];
+
+    float fps = 30;
+
+    //default to 30 FPS
+    if (fps == 0)
+        fps = 30;
 
     // Max/Min Frames to insert keyframes and to check relocalisation
     mMinFrames = 0;
     mMaxFrames = fps;
+
 
     cout << endl << "Camera Parameters: " << endl;
     cout << "- fx: " << fx << endl;
@@ -103,7 +134,9 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     cout << "- fps: " << fps << endl;
 
 
-    int nRGB = fSettings["Camera.RGB"];
+    //int nRGB = fSettings["Camera.RGB"];
+    int nRGB = 1;
+
     mbRGB = nRGB;
 
     if(mbRGB)
@@ -112,12 +145,21 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
         cout << "- color order: BGR (ignored if grayscale)" << endl;
 
     // Load ORB parameters
-
+    /*
     int nFeatures = fSettings["ORBextractor.nFeatures"];
     float fScaleFactor = fSettings["ORBextractor.scaleFactor"];
     int nLevels = fSettings["ORBextractor.nLevels"];
     int fIniThFAST = fSettings["ORBextractor.iniThFAST"];
     int fMinThFAST = fSettings["ORBextractor.minThFAST"];
+    */
+
+    //HARDCODE
+    int nFeatures = 1000;
+    float fScaleFactor = 1.2;
+    int nLevels = 8;
+    int fIniThFAST = 20;
+    int fMinThFAST = 7;
+
 
     mpORBextractorLeft = new ORBextractor(nFeatures,fScaleFactor,nLevels,fIniThFAST,fMinThFAST);
 
@@ -134,12 +176,15 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     cout << "- Initial Fast Threshold: " << fIniThFAST << endl;
     cout << "- Minimum Fast Threshold: " << fMinThFAST << endl;
 
+/*
+    //ignored
     if(sensor==System::STEREO || sensor==System::RGBD)
     {
         mThDepth = mbf*(float)fSettings["ThDepth"]/fx;
         cout << endl << "Depth Threshold (Close/Far Points): " << mThDepth << endl;
     }
 
+    //ignored
     if(sensor==System::RGBD)
     {
         mDepthMapFactor = fSettings["DepthMapFactor"];
@@ -148,6 +193,8 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
         else
             mDepthMapFactor = 1.0f/mDepthMapFactor;
     }
+*/
+    LOG("Tracking(): finished loading camera parameters");
 
 }
 

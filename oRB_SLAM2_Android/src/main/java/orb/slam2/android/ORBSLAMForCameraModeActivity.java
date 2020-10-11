@@ -318,7 +318,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
 
         vocPath = "/system/files/SLAM/ORBvoc.txt";
-        calibrationPath = "/system/files/SLAM/List3.yml";
+        calibrationPath = "/system/files/SLAM/List3.yaml";
 
 
         //make sure both dataset and calibration paths were set by user
@@ -344,7 +344,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                     //run native code fxn to initialize the SLAM system using the calibration parameters given
                     OrbNdkHelper.initSystemWithParameters(vocPath, calibrationPath);
 
-                    Log.e(TAG, "Init has finished successfully!");
+                    Log.i(TAG, "Init has finished successfully!");
 
                     myHandler.sendEmptyMessage(INIT_FINISHED);
                 }
@@ -490,6 +490,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
             if (msg.what == INIT_FINISHED) {
                 Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been finished successfully!",
                         Toast.LENGTH_LONG).show();
+                Log.i(TAG, "Handler received message, starting up the ORB SLAM System using OpenGL...");
 
                 //velocityCalculator.startFlag = 1;
 
@@ -504,7 +505,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                             timeStep = timestamp - timestampOld;
 
                             RCaptured = RMatrix;
-
 
                             //resultfloat = OrbNdkHelper.startCurrentORBForCamera2(timestamp, addr, w, h, RCaptured);
 
@@ -542,14 +542,15 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                         }
 
 
-                                        dataTextView.setText("Time Step: " + String.valueOf(timeStep) + "\nX: " +
-                                                String.valueOf(pos[0]) + "\nY: " + String.valueOf(pos[1]) + "\n" + "Z:" +
-                                                String.valueOf(pos[2]) + "\n" + "Scale: " + String.valueOf(scale));
-
+                                        dataTextView.setText("Time Step: " + timeStep + "\nX: " +
+                                                pos[0] + "\nY: " + pos[1] + "\n" + "Z:" +
+                                                pos[2] + "\n" + "Scale: " + scale);
                                     }
 
+                                    dataTextView.setText("TESTING");
+
                                     if (distanceIsStart) {
-                                        distTextView.setText("Moving Distance: " + String.valueOf(displacement));
+                                        distTextView.setText("Moving Distance: " + displacement);
                                     }
 
 
@@ -562,7 +563,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                                 + "\nPitch: " + String.valueOf(resultfloat[4]) + "\n" + "Yaw:"
                                                 + String.valueOf(resultfloat[5]));
 
-                                     */
+                                    */
                                 }
                             });
 
@@ -581,6 +582,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         //OrbNdkHelper.readShaderFile(mAssetMgr);
+
+        //initialzie the OpenGL ES framework
         OrbNdkHelper.glesInit();
     }
 

@@ -61,10 +61,10 @@ mbDeactivateLocalizationMode(false)
         cout << "RGB-D" << endl;
     }
 
-    LOG("Checking/opening calibration file for reading... %s", strSettingsFile.c_str()); //c_str() get's a null-terminated char* from a c++
+    //LOG("Checking/opening calibration file for reading... %s", strSettingsFile.c_str()); //c_str() get's a null-terminated char* from a c++
                                                                                          //string (basically gets C string from C++ string)
 
-    LOG("Value of READ: %d", cv::FileStorage::READ);
+    //LOG("Value of READ: %d", cv::FileStorage::READ);
 
 
     /*
@@ -94,11 +94,11 @@ mbDeactivateLocalizationMode(false)
 
     //Check settings (calibration) file. Instantiate an OpenCV FileStorage object, which is
     //XML/YAML/JSON file storage class that encapsulates all info necessary for writing or reading data to/from a file
-    cv::FileStorage fsSettings;
-    fsSettings.open(strSettingsFile.c_str(), cv::FileStorage::APPEND);
+    //cv::FileStorage fsSettings;
+    //fsSettings.open(strSettingsFile.c_str(), cv::FileStorage::APPEND);
     //cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::APPEND); //open the file for reading
 
-
+    /*
     //check if the YAML file was opened successfully
     if (!fsSettings.isOpened())
     {
@@ -111,10 +111,11 @@ mbDeactivateLocalizationMode(false)
             exit(-1);
         }
     }
+    */
 
 
     //success
-    LOG("Finished opening calibration file successfully");
+    //LOG("Finished opening calibration file successfully");
 
     //instantiating a new ORBVocabulary
     LOG("Instantiating new ORBVocabulary");
@@ -158,6 +159,8 @@ mbDeactivateLocalizationMode(false)
 
     //Initialize the Viewer thread and launch
     mpViewer = new Viewer(this, mpFrameDrawer,mpMapDrawer,mpTracker,strSettingsFile);
+
+
     if (bUseViewer)
         mptViewer = new thread(&Viewer::Run, mpViewer);
 
@@ -205,6 +208,7 @@ cv::Mat System::getmVelocity(cv::Mat Rebin){
 
 void System::drawGL(){
 	LOG("DrawGL Thread has been started!");
+
 	mpViewer->drawGL();
 }
 
@@ -242,12 +246,12 @@ cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const
 
     // Check reset
     {
-    unique_lock<mutex> lock(mMutexReset);
-    if(mbReset)
-    {
-        mpTracker->Reset();
-        mbReset = false;
-    }
+        unique_lock<mutex> lock(mMutexReset);
+        if(mbReset)
+        {
+            mpTracker->Reset();
+            mbReset = false;
+        }
     }
 
     return mpTracker->GrabImageStereo(imLeft,imRight,timestamp);
@@ -298,6 +302,8 @@ cv::Mat System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const doub
     return mpTracker->GrabImageRGBD(im,depthmap,timestamp);
 }
 
+
+//actual used function for monocular ORB SLAM
 cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
 {
     if(mSensor!=MONOCULAR)
@@ -339,8 +345,10 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
         mbReset = false;
     }
     }
-   return mpTracker->GrabImageMonocular(im,timestamp);
-   // return mpFrameDrawer->DrawFrame();
+
+    //return the image from camera as Mat
+    return mpTracker->GrabImageMonocular(im,timestamp);
+    //return mpFrameDrawer->DrawFrame();
 }
 
 void System::ActivateLocalizationMode()

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="orb.slam2.android"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -41,7 +42,7 @@
         android:largeHeap="true"
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
+        android:theme="@android:style/Theme.NoTitleBar">
         <activity
             android:name="orb.slam2.android.MainActivity"
             android:label="@string/app_name"

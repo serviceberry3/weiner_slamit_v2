@@ -24,7 +24,7 @@
 #include <mutex>
 
 #include <android/log.h>
-#define LOG_TAG "ORB_SLAM_SYSTEM"
+#define LOG_TAG "ORB_SLAM_SYSTEM_VIEWER"
 
 #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
 
@@ -35,25 +35,39 @@ Viewer::Viewer(System* pSystem, FrameDrawer *pFrameDrawer, MapDrawer *pMapDrawer
     mpSystem(pSystem), mpFrameDrawer(pFrameDrawer),mpMapDrawer(pMapDrawer), mpTracker(pTracking),
     mbFinishRequested(false), mbFinished(true), mbStopped(false), mbStopRequested(false)
 {
-    cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
+    LOG("Viewer(): constructor called");
 
-    float fps = fSettings["Camera.fps"];
-    if(fps<1)
-        fps=30;
+    //cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
+
+    //float fps = fSettings["Camera.fps"];
+    float fps = 30;
+
+    if (fps < 1)
+        fps = 30;
     mT = 1e3/fps;
 
-    mImageWidth = fSettings["Camera.width"];
-    mImageHeight = fSettings["Camera.height"];
-    if(mImageWidth<1 || mImageHeight<1)
-    {
+    //mImageWidth = fSettings["Camera.width"];
+    //mImageHeight = fSettings["Camera.height"];
+
+    //if (mImageWidth < 1 || mImageHeight < 1)
+    //{
         mImageWidth = 640;
         mImageHeight = 480;
-    }
+    //}
 
+
+    /*
     mViewpointX = fSettings["Viewer.ViewpointX"];
     mViewpointY = fSettings["Viewer.ViewpointY"];
     mViewpointZ = fSettings["Viewer.ViewpointZ"];
     mViewpointF = fSettings["Viewer.ViewpointF"];
+    */
+
+    //HARDCODE
+    mViewpointX = 0;
+    mViewpointY = -0.7;
+    mViewpointZ = -1.8;
+    mViewpointF = 500;
 }
 
 void Viewer::Run()
@@ -173,23 +187,23 @@ void Viewer::Run()
 }
 
 void Viewer::drawGL(){
-	LOG("Viewer drawGL Thread has been started!");
-    LOG("Viewer drawGL --> STEP 1");
+	LOG("Viewer::drawGL() Thread has been started!");
 
-//     glEnable (GL_BLEND);
-//     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//     glClearColor(1.0f,1.0f,1.0f,1.0f);
+    //glEnable (GL_BLEND);
+    //glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //glClearColor(1.0f,1.0f,1.0f,1.0f);
 
-
-    LOG("Viewer drawGL ------> STEP 2");
-
+    LOG("Viewer::drawGL() calling mpMapDrawer->DrawCurrentCamera");
 
     mpMapDrawer->DrawCurrentCamera(mpMapDrawer->GetCurrentOpenGLCameraMatrix());
-    LOG("Viewer drawGL ---------------> STEP 3 -- DONE");
 
-    // mpMapDrawer->DrawKeyFrames(false,true);
-    // mpMapDrawer->DrawMapPoints();
+    LOG("Viewer::drawGL() calling mpMapDrawer->DrawKeyFrames");
 
+    mpMapDrawer->DrawKeyFrames(false, true);
+
+    LOG("Viewer::drawGL() calling mpMapDrawer->DrawMapPoints");
+
+    mpMapDrawer->DrawMapPoints();
 }
 
 void Viewer::RequestFinish()

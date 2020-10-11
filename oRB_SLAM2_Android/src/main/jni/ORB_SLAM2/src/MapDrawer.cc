@@ -35,9 +35,10 @@ namespace ORB_SLAM2 {
 MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath) :
     mpMap(pMap) {
 
-	LOG("MapDrawer instantiating FileStorage obj/opening the calib file...");
-	cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
+	//LOG("MapDrawer instantiating FileStorage obj/opening the calib file...");
+	//cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
 
+/*
 	//check if the YAML file was opened successfully
     if (!fSettings.isOpened())
     {
@@ -53,12 +54,23 @@ MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath) :
     LOG("MapDrawer successfully opened the calibration file.");
 
 
+
 	mKeyFrameSize = fSettings["Viewer.KeyFrameSize"];
 	mKeyFrameLineWidth = fSettings["Viewer.KeyFrameLineWidth"];
 	mGraphLineWidth = fSettings["Viewer.GraphLineWidth"];
 	mPointSize = fSettings["Viewer.PointSize"];
 	mCameraSize = fSettings["Viewer.CameraSize"];
 	mCameraLineWidth = fSettings["Viewer.CameraLineWidth"];
+	*/
+
+	//HARDCODE
+	mKeyFrameSize = 0.05;
+	mKeyFrameLineWidth = 1;
+    mGraphLineWidth = 0.9;
+    mPointSize = 2;
+    mCameraSize = 0.08;
+    mCameraLineWidth = 3;
+
 
 }
 
@@ -119,7 +131,9 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph) {
 	LOG("debug: ----->>>> MapDrawer::DrawKeyFrames -- START --------------");
 
 	const vector<KeyFrame*> vpKFs = mpMap->GetAllKeyFrames();
+
 	glEnable (GL_COLOR_MATERIAL);
+
 	glEnableClientState (GL_VERTEX_ARRAY);
 
 	LOG("debug: ----->>>> MapDrawer::DrawKeyFrames -- KF1 --------------");
@@ -205,6 +219,8 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph) {
 }
 
 void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
+    LOG("
+
 	const float &w = mCameraSize;
 	const float h = w * 0.75;
 	const float z = w * 0.6;
@@ -219,9 +235,12 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 
 	
 	cv::Mat temp = cv::Mat::eye(4,4,CV_32F);
+
 	glEnable (GL_COLOR_MATERIAL);
 	glEnableClientState (GL_VERTEX_ARRAY);
-	if(!mCameraPose.empty()){
+
+
+	if(!mCameraPose.empty()) {
 		cv::Mat Rwc(3,3,CV_32F);
 		cv::Mat twc(3,1,CV_32F);
 		cv::Mat viewPos(3,1,CV_32F);
@@ -252,7 +271,10 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 
 			viewPos = Rwc*viewPos+twc;
 		}
+
+
 		temp = mCameraPose.clone();
+
 		temp.at<float>(0,3) = 0.0;
 		temp.at<float>(1,3) = 0.0;
 		temp.at<float>(2,3) = 0.0;
@@ -260,6 +282,7 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 		temp.at<float>(3,1) = twc.at<float>(1);
 		temp.at<float>(3,2) = twc.at<float>(2);
 		temp.at<float>(3,3) = 1.0;
+
 		lookAtMat.at<float>(0,0) = sVec.at<float>(0);
 		lookAtMat.at<float>(1,0) = sVec.at<float>(1);
 		lookAtMat.at<float>(2,0) = sVec.at<float>(2);
@@ -276,6 +299,7 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 		lookAtMat.at<float>(1,3) = 0.0;
 		lookAtMat.at<float>(2,3) = 0.0;
 		lookAtMat.at<float>(3,3) = 1.0;
+
 		glMultMatrixf(lookAtMat.ptr<GLfloat>(0));
 		glTranslatef(-viewPos.at<float>(0),-viewPos.at<float>(1),-viewPos.at<float>(2));
 		//gluLookAt(viewPos.at<float>(0),viewPos.at<float>(1),viewPos.at<float>(2),twc.at<float>(0),twc.at<float>(1),twc.at<float>(2),0.0,1.0,0.0);
@@ -287,17 +311,19 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 
 	glLineWidth(mCameraLineWidth);
 	glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+
 	GLfloat vertexArray[] = { 0, 0, 0, w, h, z, 0, 0, 0, w, -h, z, 0, 0, 0, -w,
 			-h, z, 0, 0, 0, -w, h, z, w, h, z, w, -h, z, -w, h, z, -w, -h, z,
 			-w, h, z, w, h, z, -w, -h, z, w, -h, z, };
+
 	glVertexPointer(3, GL_FLOAT, 0, vertexArray);
 	glDrawArrays(GL_LINES, 0, 16);
 	glPopMatrix();
 	glFlush();
-////	DrawKeyFrames(false,true);
+    //DrawKeyFrames(false,true);
     DrawMapPoints();
-	// glDisableClientState (GL_VERTEX_ARRAY);
-	// glDisable (GL_COLOR_MATERIAL);
+	//glDisableClientState (GL_VERTEX_ARRAY);
+	//glDisable (GL_COLOR_MATERIAL);
 }
 
 void MapDrawer::SetCurrentCameraPose(const cv::Mat &Tcw) {

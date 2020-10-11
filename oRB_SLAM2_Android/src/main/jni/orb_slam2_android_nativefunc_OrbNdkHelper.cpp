@@ -147,6 +147,8 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesRender
 	glLoadIdentity ();
 	//glScalef (1.0, -1.0, 1.0);
 	if(init_end)
+
+	//draw the stuffs using System object
 	s->drawGL();
 }
 
@@ -172,8 +174,10 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesResize
  * Signature: (Landroid/content/res/AssetManager;)V
  */
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera
-(JNIEnv *env, jclass cls,jdouble timestamp, jlong addr,jint w,jint h) {
-/*	const cv::Mat *im = (cv::Mat *) addr;
+(JNIEnv *env, jclass cls, jdouble timestamp, jlong addr, jint w, jint h) {
+    LOGI("startCurrentORBForCamera(): called");
+
+    /*const cv::Mat *im = (cv::Mat *) addr;
 	cv::Mat ima = s->TrackMonocular(*im, timestamp);
 	jintArray resultArray = env->NewIntArray(ima.rows * ima.cols);
 	jint *resultPtr;
@@ -188,40 +192,45 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
 	env->ReleaseIntArrayElements(resultArray, resultPtr, 0);
 	return resultArray;*/
 	const cv::Mat *im = (cv::Mat *) addr;
-    	cv::Mat ima = s->TrackMonocular(*im, timestamp);
 
-   	            /*cv::Mat Rwc = Tcw.rowRange(0,3).colRange(0,3).t();
-                cv::Mat twc = -Rwc*Tcw.rowRange(0,3).col(3); //origin to camera in world frame
-                vector<float> q = Converter::toQuaternion(Rwc);
-                vector<float> rpy(3);
-                rpy[0] = atan2(2*(q[0]*q[1]+q[2]*q[3]),1-2*(q[1]*q[1]+q[2]*q[2]));
-                rpy[1] = asin(2*(q[0]*q[2]-q[3]*q[1]));
-                rpy[2] = atan2(2*(q[0]*q[3]+q[1]*q[2]),1-2*(q[2]*q[2]+q[3]*q[3]));
-                vector<float> p(3);
-                p[0] = twc.at <float> (0);
-                p[1] = twc.at <float> (1);
-                p[2] = twc.at <float> (2);*/
+	//call TrackMonocular() in System class, basically just get image frame from camera
+    cv::Mat ima = s->TrackMonocular(*im, timestamp);
 
-    	jfloatArray resultArray = env->NewFloatArray(ima.rows * ima.cols);
-                 	jfloat *resultPtr;
-                     resultPtr = env->GetFloatArrayElements(resultArray, false);
-                     	for (int i = 0; i < ima.rows; i++)
-                     	for (int j = 0; j < ima.cols; j++) {
+    /*cv::Mat Rwc = Tcw.rowRange(0,3).colRange(0,3).t();
+    cv::Mat twc = -Rwc*Tcw.rowRange(0,3).col(3); //origin to camera in world frame
+    vector<float> q = Converter::toQuaternion(Rwc);
+    vector<float> rpy(3);
+    rpy[0] = atan2(2*(q[0]*q[1]+q[2]*q[3]),1-2*(q[1]*q[1]+q[2]*q[2]));
+    rpy[1] = asin(2*(q[0]*q[2]-q[3]*q[1]));
+    rpy[2] = atan2(2*(q[0]*q[3]+q[1]*q[2]),1-2*(q[2]*q[2]+q[3]*q[3]));
+    vector<float> p(3);
+    p[0] = twc.at <float> (0);
+    p[1] = twc.at <float> (1);
+    p[2] = twc.at <float> (2);*/
 
-                     		resultPtr[i * ima.cols + j] = ima.at <float> (i,j);
-                     	}
-                     	/*jfloatArray resultArray = env->NewFloatArray(6);
-                     	jfloat *resultPtr;
-                        resultPtr = env->GetFloatArrayElements(resultArray, false);
-                        resultPtr[0] = p[0];
-                        resultPtr[1] = p[1];
-                        resultPtr[2] = p[2];
-                        resultPtr[3] = rpy[0];
-                        resultPtr[4] = rpy[1];
-                        resultPtr[5] = rpy[2];*/
+    jfloatArray resultArray = env->NewFloatArray(ima.rows * ima.cols);
+    jfloat* resultPtr;
 
-        env->ReleaseFloatArrayElements(resultArray, resultPtr, 0);
-    	return resultArray;
+    resultPtr = env->GetFloatArrayElements(resultArray, false);
+
+    for (int i = 0; i < ima.rows; i++)
+        for (int j = 0; j < ima.cols; j++) {
+            resultPtr[i * ima.cols + j] = ima.at <float> (i,j);
+        }
+
+
+    /*jfloatArray resultArray = env->NewFloatArray(6);
+    jfloat *resultPtr;
+    resultPtr = env->GetFloatArrayElements(resultArray, false);
+    resultPtr[0] = p[0];
+    resultPtr[1] = p[1];
+    resultPtr[2] = p[2];
+    resultPtr[3] = rpy[0];
+    resultPtr[4] = rpy[1];
+    resultPtr[5] = rpy[2];*/
+
+    env->ReleaseFloatArrayElements(resultArray, resultPtr, 0);
+    return resultArray;
 }
 
 
@@ -230,7 +239,8 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly
         s->ActivateLocalizationMode();
   }
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2
-      (JNIEnv *env, jclass cls,jdouble timestamp, jlong addr,jint w,jint h,jfloatArray R){
+      (JNIEnv *env, jclass cls,jdouble timestamp, jlong addr,jint w,jint h,jfloatArray R) {
+
         const cv::Mat *im = (cv::Mat *) addr;
         jfloat* Rdummy = env->GetFloatArrayElements(R, false);
     	cv::Mat Reb = cv::Mat::eye(4,4,CV_32F);
