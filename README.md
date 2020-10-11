@@ -8,3 +8,5 @@ In FILE oRB_SLAM2_Android/src/main/jni/Android.mk VERIFY PATH OF OpenCV.mk
 In FILE oRB_SLAM2_Android/src/main/jni/Application.mk VERIFY THAT APP_ABI := armeabi (32-bit), NOT APP_ABI := x86_64 (64-bit) for future builds.    
   
 The app is still not running successfully. Upon tapping "Finish and start SLAM," we only see a blank screen, and the process restarts (the kernel reforks it) infinitely. Working on it.
+
+UPDATE(10/09/30): we see the SLAM screen, but the cv::FileStorage constructor isn't working. It won't open the .yaml calibration file for some reason. If we try using ifstream instead to open it, that works. I'm working to resolve this issue.

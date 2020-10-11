@@ -1344,11 +1344,19 @@ int TemplatedVocabulary<TDescriptor,F>::stopWords(double minWeight)
 template<class TDescriptor, class F>
 bool TemplatedVocabulary<TDescriptor,F>::loadFromTextFile(const std::string &filename)
 {
+    LOGE("loadFromTextFile: called!");
+    //Input stream class to operate on files
     ifstream f;
-    f.open(filename.c_str());
-	
-    if(f.eof())
-	return false;
+
+    //try opening the calibration file
+    f.open(filename.c_str()); //if this fails then failbit will be set
+
+
+	if (f.fail())
+	    LOGE("Failed to open calibration file!");
+
+    if (f.eof())
+	    return false;
 
     m_words.clear();
     m_nodes.clear();

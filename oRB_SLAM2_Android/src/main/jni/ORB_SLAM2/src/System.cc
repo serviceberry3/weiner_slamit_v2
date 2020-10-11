@@ -39,9 +39,12 @@ System* System::get_instance() {
 	return _instance;
 }
 
-System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,
-               const bool bUseViewer):mSensor(sensor),mbReset(false),mbActivateLocalizationMode(false),
-        mbDeactivateLocalizationMode(false)
+System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor, const bool bUseViewer):
+//initialization list
+mSensor(sensor),
+mbReset(false),
+mbActivateLocalizationMode(false),
+mbDeactivateLocalizationMode(false)
 {
 
 	_instance = this;
@@ -58,20 +61,69 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
         cout << "RGB-D" << endl;
     }
 
-    //Check settings file
-    cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::READ);
+    LOG("Checking/opening calibration file for reading... %s", strSettingsFile.c_str()); //c_str() get's a null-terminated char* from a c++
+                                                                                         //string (basically gets C string from C++ string)
 
-    if(!fsSettings.isOpened())
+    LOG("Value of READ: %d", cv::FileStorage::READ);
+
+
+    /*
+    //// Method 1: cpp read file - ok
+    ifstream myfile(strSettingsFile.c_str());
+    string line;
+
+
+    if (myfile.is_open())
     {
-       "Failed to open settings file at: " << strSettingsFile << endl;
-       exit(-1);
+        LOG("SUCCESS OPENING FILE FOR C++ READING");
+
+        while (getline(myfile, line))
+        {
+            ////It does come here
+            cout << line <<'\n';
+        }
+        myfile.close();
+
+    }
+    else {
+        LOG("FAIL OPENING FOR C++ READING");
+    }
+    */
+
+
+
+    //Check settings (calibration) file. Instantiate an OpenCV FileStorage object, which is
+    //XML/YAML/JSON file storage class that encapsulates all info necessary for writing or reading data to/from a file
+    cv::FileStorage fsSettings;
+    fsSettings.open(strSettingsFile.c_str(), cv::FileStorage::APPEND);
+    //cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::APPEND); //open the file for reading
+
+
+    //check if the YAML file was opened successfully
+    if (!fsSettings.isOpened())
+    {
+        //failure
+        LOG("Failed to open calibration file, trying again...");
+        bool tryAgain = fsSettings.open(strSettingsFile.c_str(), cv::FileStorage::APPEND);
+        if (!tryAgain) {
+            LOG("Failed to open calibration file second time, exiting in 10 sec...");
+            sleep(10);
+            exit(-1);
+        }
     }
 
-    //Load ORB Vocabulary
-    LOG("Loading ORB vocabulary. This could take a while...");
+
+    //success
+    LOG("Finished opening calibration file successfully");
+
+    //instantiating a new ORBVocabulary
+    LOG("Instantiating new ORBVocabulary");
 
     //instantiate a new
     mpVocabulary = new ORBVocabulary();
+
+    //Load ORB Vocabulary
+    LOG("Loading ORB vocabulary. This could take a while...");
 
     bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
 

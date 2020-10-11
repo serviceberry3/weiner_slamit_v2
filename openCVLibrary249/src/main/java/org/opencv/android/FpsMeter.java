@@ -59,7 +59,7 @@ public class FpsMeter {
     }
 
     public void draw(Canvas canvas, float offsetx, float offsety) {
-        Log.d(TAG, mStrfps);
+        //Log.d(TAG, mStrfps);
         canvas.drawText(mStrfps, offsetx, offsety, mPaint);
     }
 

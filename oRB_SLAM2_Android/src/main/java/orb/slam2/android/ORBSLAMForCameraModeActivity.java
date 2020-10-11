@@ -304,15 +304,26 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         /*
         vocPath = getIntent().getStringExtra("voc");
         calibrationPath = getIntent().getStringExtra("calibration");
-         */
+
 
         vocPath = "/storage/emulated/0/Android/data/orb.slam2.android/files/ORBvoc.txt";
         calibrationPath = "/storage/emulated/0/Android/data/orb.slam2.android/files/List3.yaml";
 
 
+
+        vocPath = "/data/media/0/Android/data/orb.slam2.android/files/ORBvoc.txt";
+        calibrationPath = "/data/media/0/Android/data/orb.slam2.android/files/List3.yaml";
+         */
+
+
+
+        vocPath = "/system/files/SLAM/ORBvoc.txt";
+        calibrationPath = "/system/files/SLAM/List3.yml";
+
+
         //make sure both dataset and calibration paths were set by user
         if (TextUtils.isEmpty(vocPath) || TextUtils.isEmpty(calibrationPath)) {
-            Toast.makeText(this, "null param, return!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "One of file paths is NULL!", Toast.LENGTH_LONG).show();
             Log.e(TAG, "One of paths is NULL!");
             finish();
         }

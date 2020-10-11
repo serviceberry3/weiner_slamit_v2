@@ -26,15 +26,32 @@
 // #include <GLES/glu.h>
 #include <mutex>
 #include <android/log.h>
-#define LOG_TAG "ORB_SLAM_SYSTEM"
+#define LOG_TAG "ORB_SLAM_SYSTEM_MAPDRAWER"
 
 #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
 
 namespace ORB_SLAM2 {
 
 MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath) :
-		mpMap(pMap) {
+    mpMap(pMap) {
+
+	LOG("MapDrawer instantiating FileStorage obj/opening the calib file...");
 	cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
+
+	//check if the YAML file was opened successfully
+    if (!fSettings.isOpened())
+    {
+        //failure
+        LOG("MapDrawer failed to open calibration file, trying again...");
+        bool tryAgain = fSettings.open(strSettingPath, cv::FileStorage::APPEND);
+        if (!tryAgain) {
+            LOG("MapDrawer to open calibration file second time, exiting in 10 sec...");
+            sleep(10);
+            exit(-1);
+        }
+    }
+    LOG("MapDrawer successfully opened the calibration file.");
+
 
 	mKeyFrameSize = fSettings["Viewer.KeyFrameSize"];
 	mKeyFrameLineWidth = fSettings["Viewer.KeyFrameLineWidth"];
