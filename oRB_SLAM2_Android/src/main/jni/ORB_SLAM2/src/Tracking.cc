@@ -47,8 +47,14 @@ namespace ORB_SLAM2
 {
 
 Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer, MapDrawer *pMapDrawer, Map *pMap, KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor):
-    mState(NO_IMAGES_YET), mSensor(sensor), mbOnlyTracking(false), mbVO(false), mpORBVocabulary(pVoc),
-    mpKeyFrameDB(pKFDB), mpInitializer(static_cast<Initializer*>(NULL)), mpSystem(pSys),
+    mState(NO_IMAGES_YET),
+    mSensor(sensor),
+    mbOnlyTracking(false),
+    mbVO(false),
+    mpORBVocabulary(pVoc),
+    mpKeyFrameDB(pKFDB),
+    mpInitializer(static_cast<Initializer*>(NULL)),
+    mpSystem(pSys),
     mpFrameDrawer(pFrameDrawer), mpMapDrawer(pMapDrawer), mpMap(pMap), mnLastRelocFrameId(0)
 {
     // Load camera parameters from settings file
@@ -329,7 +335,7 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
 
 void Tracking::Track()
 {
-    if (mState==NO_IMAGES_YET)
+    if (mState == NO_IMAGES_YET)
     {
         //LOG("debug: ----------_>> Tracking::Track---- S0 ------------------------------------------------------------- START ************");
         mState = NOT_INITIALIZED;
@@ -345,7 +351,7 @@ void Tracking::Track()
     if (mState == NOT_INITIALIZED)
     {
         LOG("Track(): state of the Tracker is NOT_INITIALIZED!");
-        if (mSensor==System::STEREO || mSensor==System::RGBD){
+        if (mSensor==System::STEREO || mSensor==System::RGBD) {
             //LOG("debug: --------->>>>>> Tracking::Track -- ******* SteroInitialization S2");
 
             StereoInitialization();
@@ -367,17 +373,18 @@ void Tracking::Track()
     }
     else
     {
+        LOG("Track(): System is initialized");
         //System is initialized. Track Frame.
         bool bOK;
 
         //Initial camera pose estimation using motion model or relocalization (if tracking is lost)
-        if (!mbOnlyTracking)
+        if (!mbOnlyTracking) //"Track only" button is not selected
         {
             //LOG("debug: --------->>>>>> Tracking::Track -- *******  S7");
 
-            // Local Mapping is activated. This is the normal behaviour, unless
-            // you explicitly activate the "only tracking" mode.
-            if (mState==OK)
+            //Local Mapping is activated. This is the normal behaviour, unless
+            //you explicitly activate the "only tracking" mode.
+            if (mState == OK)
             {
                 //LOG("debug: --------->>>>>> Tracking::Track -- *******  S8");
 
@@ -398,8 +405,11 @@ void Tracking::Track()
                         bOK = TrackReferenceKeyFrame();
                 }
             }
+
+            //otherwise state is NOT OK, we need to run relocalization
             else
             {
+                LOG("Track(): local mapping, state is not okay, running relocalization...");
                 //LOG("debug: --------->>>>>> Tracking::Track -- *******  S11");
                 bOK = Relocalization();
             }
@@ -407,7 +417,7 @@ void Tracking::Track()
         else
         {
             //Only Tracking: Local Mapping is deactivated
-            if (mState==LOST) //if camera pose is lost then try to relocalize it
+            if (mState == LOST) //if camera pose is lost then try to relocalize it
             {
                 //LOG("debug: --------->>>>>> Tracking::Track -- *******  S12");
                 bOK = Relocalization();
@@ -505,46 +515,56 @@ void Tracking::Track()
         mCurrentFrame.mpReferenceKF = mpReferenceKF;
 
         // If we have an initial estimation of the camera pose and matching. Track the local map.
-        if(!mbOnlyTracking)
+        if (!mbOnlyTracking) //if "track only" button is selected
         {
             //LOG("debug: --------->>>>>> Tracking::Track -- *******  S24");
-
             if (bOK)
                 bOK = TrackLocalMap();
+            else
+                LOG("Track(): bOK is false (Relocalization failed), NOT running TrackLocalMap()!");
         }
+
+        //if "track only" is not selected -- NORMAL BEHAVIOUR
         else
         {
             //LOG("debug: --------->>>>>> Tracking::Track -- *******  S25");
 
-            // mbVO true means that there are few matches to MapPoints in the map. We cannot retrieve
-            // a local map and therefore we do not perform TrackLocalMap(). Once the system relocalizes
-            // the camera we will use the local map again.
-            if (bOK && !mbVO)
+            //If mbVO is true, there are few matches to MapPoints in the map. We cannot retrieve
+            //a local map and therefore we do not perform TrackLocalMap(). Once the system relocalizes
+            //the camera we will use the local map again.
+            if (bOK && !mbVO) {
+                LOG("Track(): bOK true and mbVO false, run TrackLocalMap()...");
                 bOK = TrackLocalMap();
+            }
+            else
+                LOG("Track(): mbVO came back true, there are too few matches to MapPoints in the map, can't retrieve local map.");
         }
 
         //LOG("debug: --------->>>>>> Tracking::Track -- *******  S26");
 
         if (bOK)
             mState = OK;
-        //I think this means the camera position was lost
-        else
-            mState = LOST;
 
+
+        //I think this means the camera position was lost
+        else {
+            LOG("Track(): bOK false, setting mState to LOST...");
+            mState = LOST;
+        }
 
         // Data fusion here?
 
         //LOG("debug: --------->>>>>> Tracking::Track -- *******  S27");
 
-        // Update drawer
+        //Update drawer
         mpFrameDrawer->Update(this);
 
-        //If tracking were good, check if we insert a keyframe
+        //If tracking was good, check if we insert a keyframe
         if (bOK)
         {
             //LOG("debug: --------->>>>>> Tracking::Track --  *******  S28 ###########################################");
 
-            // Update motion model
+            //Update motion model
             if (!mLastFrame.mTcw.empty())
             {
                 //LOG("debug: --------->>>>>> Tracking::Track -- *******  S29");
@@ -559,7 +579,7 @@ void Tracking::Track()
 
             //LOG("debug: --------->>>>>> Tracking::Track -- *******  S30");
 
-            LOG("Track(): calling SetCurrentCameraPose on mpMapDrawer...");
+            LOG("Track(): tracking was good, calling SetCurrentCameraPose on mpMapDrawer...");
             mpMapDrawer->SetCurrentCameraPose(mCurrentFrame.mTcw);
 
             // Clean temporal point matches
@@ -567,7 +587,7 @@ void Tracking::Track()
             {
                 MapPoint* pMP = mCurrentFrame.mvpMapPoints[i];
                 if(pMP)
-                    if(pMP->Observations()<1)
+                    if (pMP->Observations()<1)
                     {
                        // LOG("debug: --------->>>>>> Tracking::Track -- *******  S31");
 
@@ -608,7 +628,7 @@ void Tracking::Track()
         // Reset if the camera get lost soon after initialization
         if (mState==LOST)
         {
-
+            LOG("Track(): mState is LOST");
            // LOG("debug: --------->>>>>> Tracking::Track -- ******  S35");
 
             if (mpMap->KeyFramesInMap() <= 5)
@@ -625,6 +645,7 @@ void Tracking::Track()
         if (!mCurrentFrame.mpReferenceKF)
             mCurrentFrame.mpReferenceKF = mpReferenceKF;
 
+        //set the last frame to the current frame
         mLastFrame = Frame(mCurrentFrame);
     }
 
@@ -1530,20 +1551,24 @@ void Tracking::UpdateLocalKeyFrames()
 
 bool Tracking::Relocalization()
 {
-    // Compute Bag of Words Vector
+    LOG("Relocalization(): CALLED");
+
+    //Compute Bag of Words Vector
     mCurrentFrame.ComputeBoW();
 
-    // Relocalization is performed when tracking is lost
-    // Track Lost: Query KeyFrame Database for keyframe candidates for relocalisation
+    //Relocalization is performed when tracking is lost
+    //Track Lost: Query KeyFrame Database for keyframe candidates for relocalization
     vector<KeyFrame*> vpCandidateKFs = mpKeyFrameDB->DetectRelocalizationCandidates(&mCurrentFrame);
 
-    if(vpCandidateKFs.empty())
+    if (vpCandidateKFs.empty()) {
+        LOG("Relocalization(): no relocalization candidates found from KeyFrame database, return FALSE");
         return false;
+    }
 
     const int nKFs = vpCandidateKFs.size();
 
-    // We perform first an ORB matching with each candidate
-    // If enough matches are found we setup a PnP solver
+    //We perform first an ORB matching with each candidate
+    //If enough matches are found we setup a PnP solver
     ORBmatcher matcher(0.75,true);
 
     vector<PnPsolver*> vpPnPsolvers;
@@ -1557,14 +1582,14 @@ bool Tracking::Relocalization()
 
     int nCandidates=0;
 
-    for(int i=0; i<nKFs; i++)
+    for (int i = 0; i < nKFs; i++)
     {
         KeyFrame* pKF = vpCandidateKFs[i];
         if(pKF->isBad())
             vbDiscarded[i] = true;
         else
         {
-            int nmatches = matcher.SearchByBoW(pKF,mCurrentFrame,vvpMapPointMatches[i]);
+            int nmatches = matcher.SearchByBoW(pKF, mCurrentFrame, vvpMapPointMatches[i]);
             if(nmatches<15)
             {
                 vbDiscarded[i] = true;
@@ -1616,7 +1641,7 @@ bool Tracking::Relocalization()
 
                 const int np = vbInliers.size();
 
-                for(int j=0; j<np; j++)
+                for(int j = 0; j < np; j++)
                 {
                     if(vbInliers[j])
                     {
@@ -1637,16 +1662,17 @@ bool Tracking::Relocalization()
                         mCurrentFrame.mvpMapPoints[io]=static_cast<MapPoint*>(NULL);
 
                 // If few inliers, search by projection in a coarse window and optimize again
-                if(nGood<50)
+                if (nGood<50)
                 {
+                    LOG("Relocalization(): not enough inliers...");
                     int nadditional =matcher2.SearchByProjection(mCurrentFrame,vpCandidateKFs[i],sFound,10,100);
 
                     if(nadditional+nGood>=50)
                     {
                         nGood = Optimizer::PoseOptimization(&mCurrentFrame);
 
-                        // If many inliers but still not enough, search by projection again in a narrower window
-                        // the camera has been already optimized with many points
+                        //If many inliers but still not enough, search by projection again in a narrower window
+                        //the camera has been already optimized with many points
                         if(nGood>30 && nGood<50)
                         {
                             sFound.clear();
@@ -1655,8 +1681,8 @@ bool Tracking::Relocalization()
                                     sFound.insert(mCurrentFrame.mvpMapPoints[ip]);
                             nadditional =matcher2.SearchByProjection(mCurrentFrame,vpCandidateKFs[i],sFound,3,64);
 
-                            // Final optimization
-                            if(nGood+nadditional>=50)
+                            //Final optimization
+                            if (nGood + nadditional >= 50)
                             {
                                 nGood = Optimizer::PoseOptimization(&mCurrentFrame);
 
@@ -1669,8 +1695,8 @@ bool Tracking::Relocalization()
                 }
 
 
-                // If the pose is supported by enough inliers stop ransacs and continue
-                if(nGood>=50)
+                //If the pose is supported by enough inliers stop ransacs and continue
+                if (nGood>=50)
                 {
                     bMatch = true;
                     break;

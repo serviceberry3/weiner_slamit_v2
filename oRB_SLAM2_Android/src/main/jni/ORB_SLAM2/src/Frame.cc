@@ -58,8 +58,10 @@ Frame::Frame(const Frame &frame)
         for(int j=0; j<FRAME_GRID_ROWS; j++)
             mGrid[i][j]=frame.mGrid[i][j];
 
-    if(!frame.mTcw.empty())
+    if (!frame.mTcw.empty()) {
+        LOG("Frame() first constructor: this frame's mTcw matrix is not empty, so let's call SetPose()");
         SetPose(frame.mTcw);
+    }
 }
 
 

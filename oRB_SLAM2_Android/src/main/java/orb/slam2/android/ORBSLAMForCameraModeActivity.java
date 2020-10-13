@@ -528,8 +528,12 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                     //dataTextView.setText("X: " + String.valueOf(-resultfloat[3]) + "\nY: " + String.valueOf(-resultfloat[7]) + "\n" + "Z:"+ String.valueOf(-resultfloat[11]));
 
                                     if (resultfloat.length == 16) {
+                                        //doing something here with the first 3 elements of fourth column of returned matrix
                                         float[] OCc = {-resultfloat[3], -resultfloat[7], -resultfloat[11]};
+
+
                                         float[] OCb = {-OCc[1], -OCc[0], -OCc[2]};
+
                                         float[] OCe = {RCaptured[0] * OCb[0] + RCaptured[1] * OCb[1] + RCaptured[2] *
                                                 OCb[2], RCaptured[3] * OCb[0] + RCaptured[4] * OCb[1] + RCaptured[5] *
                                                 OCb[2], RCaptured[6] * OCb[0] + RCaptured[7] * OCb[1] + RCaptured[8] * OCb[2]};
