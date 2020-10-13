@@ -21,7 +21,7 @@
 #ifndef FRAME_H
 #define FRAME_H
 
-#include<vector>
+#include <vector>
 
 #include "MapPoint.h"
 #include <DBoW2/BowVector.h>
@@ -102,7 +102,7 @@ public:
     // Vocabulary used for relocalization.
     ORBVocabulary* mpORBvocabulary;
 
-    // Feature extractor. The right is used only in the stereo case.
+    //Key feature extractor. **The right is used only in the stereo case.
     ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
 
     // Frame timestamp.
@@ -160,7 +160,7 @@ public:
     static float mfGridElementHeightInv;
     std::vector<std::size_t> mGrid[FRAME_GRID_COLS][FRAME_GRID_ROWS];
 
-    // Camera pose.
+    //Camera pose.
     cv::Mat mTcw;
 
     // Current and Next Frame id.

@@ -23,6 +23,11 @@
 #include "ORBmatcher.h"
 #include <thread>
 
+#include <android/log.h>
+#define LOG_TAG "ORB_SLAM_FRAME"
+
+#define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+
 namespace ORB_SLAM2
 {
 
@@ -59,8 +64,14 @@ Frame::Frame(const Frame &frame)
 
 
 Frame::Frame(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractor* extractorLeft, ORBextractor* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth)
-    :mpORBvocabulary(voc),mpORBextractorLeft(extractorLeft),mpORBextractorRight(extractorRight), mTimeStamp(timeStamp), mK(K.clone()),mDistCoef(distCoef.clone()), mbf(bf), mThDepth(thDepth),
-     mpReferenceKF(static_cast<KeyFrame*>(NULL))
+    :mpORBvocabulary(voc),
+    mpORBextractorLeft(extractorLeft),
+    mpORBextractorRight(extractorRight),
+    mTimeStamp(timeStamp), mK(K.clone()),
+    mDistCoef(distCoef.clone()),
+    mbf(bf),
+    mThDepth(thDepth),
+    mpReferenceKF(static_cast<KeyFrame*>(NULL))
 {
     // Frame ID
     mnId=nNextId++;
@@ -74,7 +85,7 @@ Frame::Frame(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeSt
     mvLevelSigma2 = mpORBextractorLeft->GetScaleSigmaSquares();
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
-    // ORB extraction
+    //ORB extraction
     thread threadLeft(&Frame::ExtractORB,this,0,imLeft);
     thread threadRight(&Frame::ExtractORB,this,1,imRight);
     threadLeft.join();
@@ -170,15 +181,22 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
     AssignFeaturesToGrid();
 }
 
-
-Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth)
-    :mpORBvocabulary(voc),mpORBextractorLeft(extractor),mpORBextractorRight(static_cast<ORBextractor*>(NULL)),
-     mTimeStamp(timeStamp), mK(K.clone()),mDistCoef(distCoef.clone()), mbf(bf), mThDepth(thDepth)
+//MONOCULAR CONSTRUCTOR
+//This is probably constructor we're using***
+Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth)
+    :mpORBvocabulary(voc),
+    mpORBextractorLeft(extractor), //the key feature extractor
+    mpORBextractorRight(static_cast<ORBextractor*>(NULL)), //right is set to null since it's not used
+    mTimeStamp(timeStamp),
+    mK(K.clone()),
+    mDistCoef(distCoef.clone()),
+    mbf(bf),
+    mThDepth(thDepth)
 {
     // Frame ID
-    mnId=nNextId++;
+    mnId = nNextId++;
 
-    // Scale Level Info
+    //Scale Level Info
     mnScaleLevels = mpORBextractorLeft->GetLevels();
     mfScaleFactor = mpORBextractorLeft->GetScaleFactor();
     mfLogScaleFactor = log(mfScaleFactor);
@@ -187,24 +205,30 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extra
     mvLevelSigma2 = mpORBextractorLeft->GetScaleSigmaSquares();
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
-    // ORB extraction
-    ExtractORB(0,imGray);
+    //ORB extraction (key feature extraction)
+    ExtractORB(0, imGray);
 
+    //get number of key features found in image frame
     N = mvKeys.size();
 
-    if(mvKeys.empty())
+    LOG("Frame(): ExtractORB found %d key features in the frame", N);
+
+    //no key features found, return immediately
+    if (mvKeys.empty()) {
+        LOG("Frame(): ExtractORB found NO key features in the frame", N);
         return;
+    }
 
     UndistortKeyPoints();
 
-    // Set no stereo information
+    //Set no stereo information
     mvuRight = vector<float>(N,-1);
     mvDepth = vector<float>(N,-1);
 
-    mvpMapPoints = vector<MapPoint*>(N,static_cast<MapPoint*>(NULL));
+    mvpMapPoints = vector<MapPoint*>(N, static_cast<MapPoint*>(NULL));
     mvbOutlier = vector<bool>(N,false);
 
-    // This is done only for the first Frame (or after a change in the calibration)
+    //This is done only for the first Frame (or after a change in the calibration)
     if(mbInitialComputations)
     {
         ComputeImageBounds(imGray);
@@ -216,6 +240,7 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extra
         fy = K.at<float>(1,1);
         cx = K.at<float>(0,2);
         cy = K.at<float>(1,2);
+
         invfx = 1.0f/fx;
         invfy = 1.0f/fy;
 
@@ -244,12 +269,15 @@ void Frame::AssignFeaturesToGrid()
     }
 }
 
+//get the keyfeatures from the captured image
 void Frame::ExtractORB(int flag, const cv::Mat &im)
 {
-    if(flag==0)
-        (*mpORBextractorLeft)(im,cv::Mat(),mvKeys,mDescriptors);
+    if (flag == 0) {
+        LOG("ExtractORB(): Running mpORBextractorLeft to extract features into mvKeys...");
+        (*mpORBextractorLeft)(im, cv::Mat(), mvKeys, mDescriptors);
+    }
     else
-        (*mpORBextractorRight)(im,cv::Mat(),mvKeysRight,mDescriptorsRight);
+        (*mpORBextractorRight)(im,cv::Mat(), mvKeysRight, mDescriptorsRight);
 }
 
 //update the camera pose estimation matrices (pose is position and orientation in space)

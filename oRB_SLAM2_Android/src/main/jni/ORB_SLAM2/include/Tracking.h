@@ -93,7 +93,7 @@ public:
     // Input sensor
     int mSensor;
 
-    // Current Frame
+    //Current Frame
     Frame mCurrentFrame;
 
     //grayscale image taken from camera capture

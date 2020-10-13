@@ -1351,7 +1351,6 @@ bool TemplatedVocabulary<TDescriptor,F>::loadFromTextFile(const std::string &fil
     //try opening the calibration file
     f.open(filename.c_str()); //if this fails then failbit will be set
 
-
 	if (f.fail())
 	    LOGE("Failed to open calibration file!");
 
@@ -1362,8 +1361,12 @@ bool TemplatedVocabulary<TDescriptor,F>::loadFromTextFile(const std::string &fil
     m_nodes.clear();
 
     string s;
-    getline(f,s);
+
+    //read a line of the opened text file into the string s
+    getline(f, s);
+
     stringstream ss;
+
     ss << s;
     ss >> m_k;
     ss >> m_L;
@@ -1371,7 +1374,7 @@ bool TemplatedVocabulary<TDescriptor,F>::loadFromTextFile(const std::string &fil
     ss >> n1;
     ss >> n2;
 
-    if(m_k<0 || m_k>20 || m_L<1 || m_L>10 || n1<0 || n1>5 || n2<0 || n2>3)
+    if (m_k<0 || m_k>20 || m_L<1 || m_L>10 || n1<0 || n1>5 || n2<0 || n2>3)
     {
         LOGE("Vocabulary loading failure: This is not a correct text file!");
 	    return false;
@@ -1381,7 +1384,7 @@ bool TemplatedVocabulary<TDescriptor,F>::loadFromTextFile(const std::string &fil
     m_weighting = (WeightingType)n2;
     createScoringObject();
 
-    // nodes
+    //nodes
     int expected_nodes =
     (int)((pow((double)m_k, (double)m_L + 1) - 1)/(m_k - 1));
     m_nodes.reserve(expected_nodes);
@@ -1593,8 +1596,9 @@ void TemplatedVocabulary<TDescriptor,F>::load(const cv::FileStorage &fs,
   
   cv::FileNode fvoc = fs[name];
   
-  m_k = (int)fvoc["k"];
-  m_L = (int)fvoc["L"];
+  m_k = (int) fvoc["k"];
+  m_L = (int) fvoc["L"];
+
   m_scoring = (ScoringType)((int)fvoc["scoringType"]);
   m_weighting = (WeightingType)((int)fvoc["weightingType"]);
   

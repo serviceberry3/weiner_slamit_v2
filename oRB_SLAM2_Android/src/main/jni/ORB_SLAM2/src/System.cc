@@ -314,8 +314,10 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
 
     // Check mode change
     {
+        //get the lock on mMutexMode
         unique_lock<mutex> lock(mMutexMode);
-        if(mbActivateLocalizationMode)
+
+        if (mbActivateLocalizationMode)
         {
             mpLocalMapper->RequestStop();
 
@@ -328,7 +330,7 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
             mpTracker->InformOnlyTracking(true);
             mbActivateLocalizationMode = false;
         }
-        if(mbDeactivateLocalizationMode)
+        if (mbDeactivateLocalizationMode)
         {
             mpTracker->InformOnlyTracking(false);
             mpLocalMapper->Release();
@@ -338,12 +340,13 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
 
     // Check reset
     {
-    unique_lock<mutex> lock(mMutexReset);
-    if(mbReset)
-    {
-        mpTracker->Reset();
-        mbReset = false;
-    }
+        //get the lock on mMutexReset
+        unique_lock<mutex> lock(mMutexReset);
+        if (mbReset)
+        {
+            mpTracker->Reset();
+            mbReset = false;
+        }
     }
 
     //return the Mat that results from running GrabImageMonocular() on the captured image frame

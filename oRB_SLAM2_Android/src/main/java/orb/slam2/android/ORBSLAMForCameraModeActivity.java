@@ -316,9 +316,12 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
          */
 
 
+        //USED FOR AOSP DEV
+        //vocPath = "/system/files/SLAM/ORBvoc.txt";
+        //calibrationPath = "/system/files/SLAM/List3.yaml";
 
-        vocPath = "/system/files/SLAM/ORBvoc.txt";
-        calibrationPath = "/system/files/SLAM/List3.yaml";
+        vocPath = "/sdcard/SLAM/ORBvoc.txt";
+        calibrationPath = "/sdcard/SLAM/List3.yaml";
 
 
         //make sure both dataset and calibration paths were set by user
@@ -349,7 +352,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                     myHandler.sendEmptyMessage(INIT_FINISHED);
                 }
             }).start();
-
         }
 
 //        ////GPS
@@ -506,7 +508,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                             //resultfloat = OrbNdkHelper.startCurrentORBForCamera2(timestamp, addr, w, h, RCaptured);
 
                             //start up the ORB
-                            resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
+                            resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h); //ALWAYS COMES BACK EMPTY
 
                             /*
                             resultImg = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
@@ -538,10 +540,12 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                             pos[i] = scale * OCe[i];
                                         }
 
-
-                                        dataTextView.setText("Time Step: " + timeStep + "\nX: " +
-                                                pos[0] + "\nY: " + pos[1] + "\n" + "Z:" +
-                                                pos[2] + "\n" + "Scale: " + scale);
+                                        //display the camera position and scale
+                                        dataTextView.setText("Time Step: " + timeStep +
+                                                "\nX: " + pos[0] +
+                                                "\nY: " + pos[1] +
+                                                "\n" + "Z:" + pos[2] +
+                                                "\n" + "Scale: " + scale);
                                     }
 
                                     else {
