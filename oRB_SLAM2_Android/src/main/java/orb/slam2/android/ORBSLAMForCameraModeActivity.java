@@ -380,10 +380,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         magnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        dataTextView.setText("No Data");
-
-
-        //finish();
+        dataTextView.setText("No Data, running initialization...");
     }
 
 
@@ -516,7 +513,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                             resultImg.setPixels(resultInt, 0, w, 0, 0, w, h);
                             */
 
-                            //run this part on the main thread
+                            //run this part on the main thread so we can edit the text
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -547,8 +544,11 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                                 pos[2] + "\n" + "Scale: " + scale);
                                     }
 
-                                    dataTextView.setText("TESTING");
+                                    else {
+                                        dataTextView.setText("resultfloat.length is NOT 16");
+                                    }
 
+                                    //check if user has clicked "Start Distance"
                                     if (distanceIsStart) {
                                         distTextView.setText("Moving Distance: " + displacement);
                                     }
@@ -562,7 +562,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                                 String.valueOf(resultfloat[2])+"Roll: " + String.valueOf(resultfloat[3])
                                                 + "\nPitch: " + String.valueOf(resultfloat[4]) + "\n" + "Yaw:"
                                                 + String.valueOf(resultfloat[5]));
-
                                     */
                                 }
                             });
@@ -583,7 +582,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         //OrbNdkHelper.readShaderFile(mAssetMgr);
 
-        //initialzie the OpenGL ES framework
+        //initialize the OpenGL ES framework
+        Log.i(TAG, "Initializing the GL ES framework/starting drawing...");
         OrbNdkHelper.glesInit();
     }
 
@@ -595,6 +595,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        Log.i(TAG, "Drawing next GL frame...");
         OrbNdkHelper.glesRender();
     }
 
@@ -689,14 +690,18 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
     public void onCameraViewStopped() {
     }
 
+    //callback for when a camera frame is ready
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-        Mat im=inputFrame.rgba();
+        //get the frame as a mat
+        Mat im = inputFrame.rgba();
         synchronized (im) {
-            addr=im.getNativeObjAddr();
+            //get native pointer to the image mat
+            addr = im.getNativeObjAddr();
         }
 
-        w=im.cols();
-        h=im.rows();
+        //get width and height of image
+        w = im.cols();
+        h = im.rows();
         return inputFrame.rgba();
     }
 

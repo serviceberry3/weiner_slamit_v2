@@ -252,9 +252,11 @@ void Frame::ExtractORB(int flag, const cv::Mat &im)
         (*mpORBextractorRight)(im,cv::Mat(),mvKeysRight,mDescriptorsRight);
 }
 
+//update the camera pose estimation matrices (pose is position and orientation in space)
 void Frame::SetPose(cv::Mat Tcw)
 {
     mTcw = Tcw.clone();
+
     UpdatePoseMatrices();
 }
 
@@ -263,7 +265,7 @@ void Frame::UpdatePoseMatrices()
     mRcw = mTcw.rowRange(0,3).colRange(0,3);
     mRwc = mRcw.t();
     mtcw = mTcw.rowRange(0,3).col(3);
-    mOw = -mRcw.t()*mtcw;
+    mOw = -mRcw.t() * mtcw;
 }
 
 bool Frame::isInFrustum(MapPoint *pMP, float viewingCosLimit)
@@ -280,17 +282,17 @@ bool Frame::isInFrustum(MapPoint *pMP, float viewingCosLimit)
     const float &PcZ = Pc.at<float>(2);
 
     // Check positive depth
-    if(PcZ<0.0f)
+    if (PcZ < 0.0f)
         return false;
 
     // Project in image and check it is not outside
     const float invz = 1.0f/PcZ;
-    const float u=fx*PcX*invz+cx;
-    const float v=fy*PcY*invz+cy;
+    const float u = fx*PcX*invz+cx;
+    const float v = fy*PcY*invz+cy;
 
-    if(u<mnMinX || u>mnMaxX)
+    if (u < mnMinX || u > mnMaxX)
         return false;
-    if(v<mnMinY || v>mnMaxY)
+    if (v < mnMinY || v > mnMaxY)
         return false;
 
     // Check distance is in the scale invariance region of the MapPoint
@@ -299,7 +301,7 @@ bool Frame::isInFrustum(MapPoint *pMP, float viewingCosLimit)
     const cv::Mat PO = P-mOw;
     const float dist = cv::norm(PO);
 
-    if(dist<minDistance || dist>maxDistance)
+    if(dist < minDistance || dist > maxDistance)
         return false;
 
    // Check viewing angle
@@ -307,11 +309,11 @@ bool Frame::isInFrustum(MapPoint *pMP, float viewingCosLimit)
 
     const float viewCos = PO.dot(Pn)/dist;
 
-    if(viewCos<viewingCosLimit)
+    if(viewCos < viewingCosLimit)
         return false;
 
     // Predict scale in the image
-    const int nPredictedLevel = pMP->PredictScale(dist,mfLogScaleFactor);
+    const int nPredictedLevel = pMP->PredictScale(dist, mfLogScaleFactor);
 
     // Data used by the tracking
     pMP->mbTrackInView = true;

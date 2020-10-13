@@ -24,7 +24,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include<mutex>
+#include <mutex>
 
 namespace ORB_SLAM2
 {
@@ -163,16 +163,18 @@ void FrameDrawer::DrawTextInfo(cv::Mat &im, int nState, cv::Mat &imText)
 
 }
 
-void FrameDrawer::Update(Tracking *pTracker)
+void FrameDrawer::Update(Tracking* pTracker)
 {
     unique_lock<mutex> lock(mMutex);
+
+    //copy the grayscale image from the passed tracker to the mIm var for this FrameDrawer
     pTracker->mImGray.copyTo(mIm);
+
     mvCurrentKeys=pTracker->mCurrentFrame.mvKeys;
     N = mvCurrentKeys.size();
     mvbVO = vector<bool>(N,false);
     mvbMap = vector<bool>(N,false);
     mbOnlyTracking = pTracker->mbOnlyTracking;
-
 
     if(pTracker->mLastProcessedState==Tracking::NOT_INITIALIZED)
     {
@@ -196,7 +198,9 @@ void FrameDrawer::Update(Tracking *pTracker)
             }
         }
     }
-    mState=static_cast<int>(pTracker->mLastProcessedState);
+
+    //change the state
+    mState = static_cast<int>(pTracker->mLastProcessedState);
 }
 
 } //namespace ORB_SLAM

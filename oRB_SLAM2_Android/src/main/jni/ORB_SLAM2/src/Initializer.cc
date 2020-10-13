@@ -25,7 +25,12 @@
 #include "Optimizer.h"
 #include "ORBmatcher.h"
 
-#include<thread>
+#include <thread>
+#include <android/log.h>
+#define LOG_TAG "ORB_SLAM_INITIALIZER"
+
+#define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+
 
 namespace ORB_SLAM2
 {
@@ -44,6 +49,8 @@ Initializer::Initializer(const Frame &ReferenceFrame, float sigma, int iteration
 bool Initializer::Initialize(const Frame &CurrentFrame, const vector<int> &vMatches12, cv::Mat &R21, cv::Mat &t21,
                              vector<cv::Point3f> &vP3D, vector<bool> &vbTriangulated)
 {
+    LOG("Initialize() called...");
+
     // Fill structures with current keypoints and matches with reference frame
     // Reference Frame: 1, Current Frame: 2
     mvKeys2 = CurrentFrame.mvKeysUn;
@@ -53,7 +60,7 @@ bool Initializer::Initialize(const Frame &CurrentFrame, const vector<int> &vMatc
     mvbMatched1.resize(mvKeys1.size());
     for(size_t i=0, iend=vMatches12.size();i<iend; i++)
     {
-        if(vMatches12[i]>=0)
+        if (vMatches12[i]>=0)
         {
             mvMatches12.push_back(make_pair(i,vMatches12[i]));
             mvbMatched1[i]=true;
@@ -101,8 +108,8 @@ bool Initializer::Initialize(const Frame &CurrentFrame, const vector<int> &vMatc
     float SH, SF;
     cv::Mat H, F;
 
-    thread threadH(&Initializer::FindHomography,this,ref(vbMatchesInliersH), ref(SH), ref(H));
-    thread threadF(&Initializer::FindFundamental,this,ref(vbMatchesInliersF), ref(SF), ref(F));
+    thread threadH(&Initializer::FindHomography, this, ref(vbMatchesInliersH), ref(SH), ref(H));
+    thread threadF(&Initializer::FindFundamental, this, ref(vbMatchesInliersF), ref(SF), ref(F));
 
     // Wait until both threads have finished
     threadH.join();
@@ -112,7 +119,7 @@ bool Initializer::Initialize(const Frame &CurrentFrame, const vector<int> &vMatc
     float RH = SH/(SH+SF);
 
     // Try to reconstruct from homography or fundamental depending on the ratio (0.40-0.45)
-    if(RH>0.40)
+    if (RH>0.40)
         return ReconstructH(vbMatchesInliersH,H,mK,R21,t21,vP3D,vbTriangulated,1.0,50);
     else //if(pF_HF>0.6)
         return ReconstructF(vbMatchesInliersF,F,mK,R21,t21,vP3D,vbTriangulated,1.0,50);

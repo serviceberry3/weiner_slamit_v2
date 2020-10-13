@@ -123,15 +123,20 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesInit
 (JNIEnv *env, jclass cls) {
 	// 启用阴影平滑
 	glShadeModel(GL_SMOOTH);
-	// 黑色背景
+
+	//clear out the color (this is when it gets cleaned to white during init)
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
-	// 设置深度缓存
+
+	//specifies depth val used by glClear to clear depth buffer. Values specified by glClearDepth are clamped to the range [0,1].
 	glClearDepthf(1.0f);
+
 	// 启用深度测试
 	glEnable(GL_DEPTH_TEST);
+
 	// 所作深度测试的类型
 	glDepthFunc(GL_LEQUAL);
-	// 告诉系统对透视进行修正
+
+	//perspective correction. Trivial
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
@@ -174,7 +179,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesResize
  * Signature: (Landroid/content/res/AssetManager;)V
  */
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera
-(JNIEnv *env, jclass cls, jdouble timestamp, jlong addr, jint w, jint h) {
+(JNIEnv* env, jclass cls, jdouble timestamp, jlong addr, jint w, jint h) {
     LOGI("startCurrentORBForCamera(): called");
 
     /*const cv::Mat *im = (cv::Mat *) addr;
@@ -191,9 +196,11 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
 	}
 	env->ReleaseIntArrayElements(resultArray, resultPtr, 0);
 	return resultArray;*/
+
+	//get pointer to the input image
 	const cv::Mat *im = (cv::Mat *) addr;
 
-	//call TrackMonocular() in System class, basically just get image frame from camera
+	//call TrackMonocular() in System class, passing the image frame from camera, along w/timestamp
     cv::Mat ima = s->TrackMonocular(*im, timestamp);
 
     /*cv::Mat Rwc = Tcw.rowRange(0,3).colRange(0,3).t();
@@ -208,11 +215,16 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
     p[1] = twc.at <float> (1);
     p[2] = twc.at <float> (2);*/
 
+    //make a new native array of floats, length equal to # of slots in the matrix we got back from TrackMonocular()
     jfloatArray resultArray = env->NewFloatArray(ima.rows * ima.cols);
+
+    //pointer to the result array of floats
     jfloat* resultPtr;
 
+    //fill the pointer with correct address
     resultPtr = env->GetFloatArrayElements(resultArray, false);
 
+    //fill up the result float array with values obtained from the run of TrackMonocular()
     for (int i = 0; i < ima.rows; i++)
         for (int j = 0; j < ima.cols; j++) {
             resultPtr[i * ima.cols + j] = ima.at <float> (i,j);
@@ -229,7 +241,10 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
     resultPtr[4] = rpy[1];
     resultPtr[5] = rpy[2];*/
 
+    //release elements
     env->ReleaseFloatArrayElements(resultArray, resultPtr, 0);
+
+    //return the result array, we're looking for a length of 16
     return resultArray;
 }
 

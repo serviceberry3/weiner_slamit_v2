@@ -303,10 +303,10 @@ cv::Mat System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const doub
 }
 
 
-//actual used function for monocular ORB SLAM
+//actual used processing function for monocular ORB SLAM
 cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
 {
-    if(mSensor!=MONOCULAR)
+    if(mSensor != MONOCULAR)
     {
     	LOG("ERROR: you called TrackMonocular but input sensor was not set to Monocular." );
         exit(-1);
@@ -346,8 +346,8 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
     }
     }
 
-    //return the image from camera as Mat
-    return mpTracker->GrabImageMonocular(im,timestamp);
+    //return the Mat that results from running GrabImageMonocular() on the captured image frame
+    return mpTracker->GrabImageMonocular(im, timestamp);
     //return mpFrameDrawer->DrawFrame();
 }
 

@@ -86,6 +86,7 @@ public:
         LOST=3
     };
 
+    //the state of Tracking object, used for error checking??
     eTrackingState mState;
     eTrackingState mLastProcessedState;
 
@@ -94,6 +95,8 @@ public:
 
     // Current Frame
     Frame mCurrentFrame;
+
+    //grayscale image taken from camera capture
     cv::Mat mImGray;
 
     // Initialization Variables (Monocular)
@@ -101,6 +104,8 @@ public:
     std::vector<int> mvIniMatches;
     std::vector<cv::Point2f> mvbPrevMatched;
     std::vector<cv::Point3f> mvIniP3D;
+
+    //the very first frame taken
     Frame mInitialFrame;
 
     // Lists used to recover the full camera trajectory at the end of the execution.
@@ -162,7 +167,7 @@ protected:
     ORBVocabulary* mpORBVocabulary;
     KeyFrameDatabase* mpKeyFrameDB;
 
-    // Initalization (only for monocular)
+    //Initialization object (only for monocular)
     Initializer* mpInitializer;
 
     //Local Map
