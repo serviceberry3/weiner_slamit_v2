@@ -135,7 +135,7 @@ mbDeactivateLocalizationMode(false)
     }
     LOG("VOCAB LOADED SUCCESSFULLY!");
 
-    //Create KeyFrame Database
+    //Create KeyFrame Database from the vocab file
     mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
 
     //Create the Map

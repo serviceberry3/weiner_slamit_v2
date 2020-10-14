@@ -32,7 +32,7 @@ enum LNorm
   L2
 };
 
-/// Weighting type
+///Weighting type
 enum WeightingType
 {
   TF_IDF,
@@ -41,7 +41,7 @@ enum WeightingType
   BINARY
 };
 
-/// Scoring type
+///Scoring type
 enum ScoringType
 {
   L1_NORM,
@@ -52,7 +52,7 @@ enum ScoringType
   DOT_PRODUCT,
 };
 
-/// Vector of words to represent images
+///Vector of words to represent images
 class BowVector: 
 	public std::map<WordId, WordValue>
 {

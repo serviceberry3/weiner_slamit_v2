@@ -23,7 +23,12 @@
 #include "KeyFrame.h"
 #include <DBoW2/BowVector.h>
 
-#include<mutex>
+#include <mutex>
+
+#include <android/log.h>
+#define LOG_TAG "ORB_SLAM_KF_DATABASE"
+
+#define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
 
 using namespace std;
 
@@ -41,7 +46,7 @@ void KeyFrameDatabase::add(KeyFrame *pKF)
 {
     unique_lock<mutex> lock(mMutex);
 
-    for(DBoW2::BowVector::const_iterator vit= pKF->mBowVec.begin(), vend=pKF->mBowVec.end(); vit!=vend; vit++)
+    for (DBoW2::BowVector::const_iterator vit= pKF->mBowVec.begin(), vend=pKF->mBowVec.end(); vit!=vend; vit++)
         mvInvertedFile[vit->first].push_back(pKF);
 }
 
@@ -49,8 +54,8 @@ void KeyFrameDatabase::erase(KeyFrame* pKF)
 {
     unique_lock<mutex> lock(mMutex);
 
-    // Erase elements in the Inverse File for the entry
-    for(DBoW2::BowVector::const_iterator vit=pKF->mBowVec.begin(), vend=pKF->mBowVec.end(); vit!=vend; vit++)
+    //Erase elements in the Inverse File for the entry
+    for(DBoW2::BowVector::const_iterator vit = pKF->mBowVec.begin(), vend=pKF->mBowVec.end(); vit!=vend; vit++)
     {
         // List of keyframes that share the word
         list<KeyFrame*> &lKFs =   mvInvertedFile[vit->first];
@@ -104,16 +109,17 @@ vector<KeyFrame*> KeyFrameDatabase::DetectLoopCandidates(KeyFrame* pKF, float mi
         }
     }
 
-    if(lKFsSharingWords.empty())
+    if (lKFsSharingWords.empty())
         return vector<KeyFrame*>();
 
     list<pair<float,KeyFrame*> > lScoreAndMatch;
 
-    // Only compare against those keyframes that share enough words
-    int maxCommonWords=0;
-    for(list<KeyFrame*>::iterator lit=lKFsSharingWords.begin(), lend= lKFsSharingWords.end(); lit!=lend; lit++)
+    //Only compare against those keyframes that share enough words
+    int maxCommonWords = 0;
+
+    for (list<KeyFrame*>::iterator lit=lKFsSharingWords.begin(), lend = lKFsSharingWords.end(); lit!=lend; lit++)
     {
-        if((*lit)->mnLoopWords>maxCommonWords)
+        if ((*lit)->mnLoopWords>maxCommonWords)
             maxCommonWords=(*lit)->mnLoopWords;
     }
 
@@ -121,8 +127,8 @@ vector<KeyFrame*> KeyFrameDatabase::DetectLoopCandidates(KeyFrame* pKF, float mi
 
     int nscores=0;
 
-    // Compute similarity score. Retain the matches whose score is higher than minScore
-    for(list<KeyFrame*>::iterator lit=lKFsSharingWords.begin(), lend= lKFsSharingWords.end(); lit!=lend; lit++)
+    //Compute similarity score. Retain the matches whose score is higher than minScore
+    for (list<KeyFrame*>::iterator lit=lKFsSharingWords.begin(), lend= lKFsSharingWords.end(); lit!=lend; lit++)
     {
         KeyFrame* pKFi = *lit;
 
@@ -138,14 +144,14 @@ vector<KeyFrame*> KeyFrameDatabase::DetectLoopCandidates(KeyFrame* pKF, float mi
         }
     }
 
-    if(lScoreAndMatch.empty())
+    if (lScoreAndMatch.empty())
         return vector<KeyFrame*>();
 
     list<pair<float,KeyFrame*> > lAccScoreAndMatch;
     float bestAccScore = minScore;
 
     // Lets now accumulate score by covisibility
-    for(list<pair<float,KeyFrame*> >::iterator it=lScoreAndMatch.begin(), itend=lScoreAndMatch.end(); it!=itend; it++)
+    for (list<pair<float,KeyFrame*> >::iterator it=lScoreAndMatch.begin(), itend=lScoreAndMatch.end(); it!=itend; it++)
     {
         KeyFrame* pKFi = it->second;
         vector<KeyFrame*> vpNeighs = pKFi->GetBestCovisibilityKeyFrames(10);
@@ -198,31 +204,41 @@ vector<KeyFrame*> KeyFrameDatabase::DetectLoopCandidates(KeyFrame* pKF, float mi
 
 vector<KeyFrame*> KeyFrameDatabase::DetectRelocalizationCandidates(Frame *F)
 {
+    //declare a list of KeyFrames
     list<KeyFrame*> lKFsSharingWords;
 
-    // Search all keyframes that share a word with current frame
-    {
-        unique_lock<mutex> lock(mMutex);
+    //**Search all keyframes that share a word with current frame
+    {//critical section, locking mMutex ('''lock''' is the name of the unique_lock obj here)
+        unique_lock<mutex> lock(mMutex); //when the unique_lock is constructed it will lock the passed mutex, and when gets deconstructed
+                                         //(end of brackets) or exception is thrown (also gets deconstructed), it will unlock it
 
-        for(DBoW2::BowVector::const_iterator vit=F->mBowVec.begin(), vend=F->mBowVec.end(); vit != vend; vit++)
+        //iterate over the entire bag of words vector
+        for (DBoW2::BowVector::const_iterator vit = F->mBowVec.begin(), vend = F->mBowVec.end(); vit != vend; vit++)
         {
-            list<KeyFrame*> &lKFs =   mvInvertedFile[vit->first];
+            //get ptr to KeyFrames
+            list<KeyFrame*> &lKFs = mvInvertedFile[vit->first];
 
-            for(list<KeyFrame*>::iterator lit=lKFs.begin(), lend= lKFs.end(); lit!=lend; lit++)
+            for (list<KeyFrame*>::iterator lit = lKFs.begin(), lend= lKFs.end(); lit!=lend; lit++)
             {
-                KeyFrame* pKFi=*lit;
-                if(pKFi->mnRelocQuery!=F->mnId)
+                KeyFrame* pKFi = *lit;
+                if (pKFi->mnRelocQuery!=F->mnId)
                 {
                     pKFi->mnRelocWords=0;
                     pKFi->mnRelocQuery=F->mnId;
+
+                    //add this KeyFrame to the running list
                     lKFsSharingWords.push_back(pKFi);
                 }
                 pKFi->mnRelocWords++;
             }
         }
-    }
-    if(lKFsSharingWords.empty())
+    }//unlock mMutex
+
+    //if there are no keyframes found that share a word with current frame, then return empty
+    if (lKFsSharingWords.empty()) {
+        LOG("DetectRelocalizationCands(): no keyframes found that share word w/current frame!");
         return vector<KeyFrame*>();
+    }
 
     // Only compare against those keyframes that share enough words
     int maxCommonWords=0;
@@ -236,9 +252,9 @@ vector<KeyFrame*> KeyFrameDatabase::DetectRelocalizationCandidates(Frame *F)
 
     list<pair<float,KeyFrame*> > lScoreAndMatch;
 
-    int nscores=0;
+    int nscores = 0;
 
-    // Compute similarity score.
+    //Compute similarity score.
     for(list<KeyFrame*>::iterator lit=lKFsSharingWords.begin(), lend= lKFsSharingWords.end(); lit!=lend; lit++)
     {
         KeyFrame* pKFi = *lit;

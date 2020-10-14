@@ -29,10 +29,11 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY" />
 
+            <!--This is the camera image preview box in top left-->
             <org.opencv.android.JavaCameraView
                 android:id="@+id/tutorial1_activity_java_surface_view"
-                android:layout_width="170dip"
-                android:layout_height="150dip"
+                android:layout_width="270dip"
+                android:layout_height="250dip"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="5dip"
@@ -40,7 +41,7 @@
                 android:background="@drawable/border"
                 android:visibility="gone"
                 opencv:camera_id="any"
-                opencv:show_fps="true" />
+                opencv:show_fps="true" /> <!--show the fps of camera capture-->
 
             <org.opencv.android.NativeCameraView
                 android:id="@+id/tutorial1_activity_native_surface_view"
@@ -66,7 +67,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/dataTextView"
-                    android:text="data collection"/>
+                    android:text="data collection"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:layout_marginTop="20dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

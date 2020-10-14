@@ -28,10 +28,15 @@
 
 #include "ORBmatcher.h"
 
-#include<unistd.h>
+#include <unistd.h>
 
-#include<mutex>
-#include<thread>
+#include <mutex>
+#include <thread>
+
+#include <android/log.h>
+#define LOG_TAG "ORB_SLAM_LOOPCLOSING"
+
+#define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
 
 
 namespace ORB_SLAM2
@@ -61,7 +66,7 @@ void LoopClosing::Run()
 {
     mbFinished =false;
 
-    while(1)
+    while (1)
     {
         // Check if there are keyframes in the queue
         if(CheckNewKeyFrames())
@@ -81,7 +86,7 @@ void LoopClosing::Run()
 
         ResetIfRequested();
 
-        if(CheckFinish())
+        if (CheckFinish())
             break;
 
         usleep(5000);
@@ -105,17 +110,20 @@ bool LoopClosing::CheckNewKeyFrames()
 
 bool LoopClosing::DetectLoop()
 {
+    LOG("DetectLoop(): Called!");
     {
         unique_lock<mutex> lock(mMutexLoopQueue);
         mpCurrentKF = mlpLoopKeyFrameQueue.front();
         mlpLoopKeyFrameQueue.pop_front();
+
         // Avoid that a keyframe can be erased while it is being process by this thread
         mpCurrentKF->SetNotErase();
     }
 
-    //If the map contains less than 10 KF or less than 10 KF have passed from last loop detection
-    if(mpCurrentKF->mnId<mLastLoopKFid+10)
+    //If the map contains less than 10 KF or less than 10 KF have passed from last loop detection, automatically add this keyframe to DB
+    if (mpCurrentKF->mnId < mLastLoopKFid + 10)
     {
+        LOG("DetectLoop(): Adding mpCurrentKF to the KeyFrame database...");
         mpKeyFrameDB->add(mpCurrentKF);
         mpCurrentKF->SetErase();
         return false;
@@ -127,25 +135,30 @@ bool LoopClosing::DetectLoop()
     const vector<KeyFrame*> vpConnectedKeyFrames = mpCurrentKF->GetVectorCovisibleKeyFrames();
     const DBoW2::BowVector &CurrentBowVec = mpCurrentKF->mBowVec;
     float minScore = 1;
-    for(size_t i=0; i<vpConnectedKeyFrames.size(); i++)
+
+
+    for (size_t i = 0; i < vpConnectedKeyFrames.size(); i++)
     {
         KeyFrame* pKF = vpConnectedKeyFrames[i];
-        if(pKF->isBad())
+
+        if (pKF->isBad())
             continue;
+
         const DBoW2::BowVector &BowVec = pKF->mBowVec;
 
         float score = mpORBVocabulary->score(CurrentBowVec, BowVec);
 
-        if(score<minScore)
+        if (score < minScore)
             minScore = score;
     }
 
-    // Query the database imposing the minimum score
+    //Query the database imposing the minimum score
     vector<KeyFrame*> vpCandidateKFs = mpKeyFrameDB->DetectLoopCandidates(mpCurrentKF, minScore);
 
-    // If there are no loop candidates, just add new keyframe and return false
-    if(vpCandidateKFs.empty())
+    //If there are no loop candidates, just add new keyframe and return false
+    if (vpCandidateKFs.empty())
     {
+        LOG("DetectLoop(): no loop KeyFrame candidates, just adding this new KF (mpCurrentKF) and returning false...");
         mpKeyFrameDB->add(mpCurrentKF);
         mvConsistentGroups.clear();
         mpCurrentKF->SetErase();
@@ -239,7 +252,7 @@ bool LoopClosing::ComputeSim3()
 
     // We compute first ORB matches for each candidate
     // If enough matches are found, we setup a Sim3Solver
-    ORBmatcher matcher(0.75,true);
+    ORBmatcher matcher(0.75, true);
 
     vector<Sim3Solver*> vpSim3Solvers;
     vpSim3Solvers.resize(nInitialCandidates);

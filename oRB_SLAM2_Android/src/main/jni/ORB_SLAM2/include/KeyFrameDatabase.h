@@ -43,7 +43,7 @@ class KeyFrameDatabase
 {
 public:
 
-    KeyFrameDatabase(const ORBVocabulary &voc);
+   KeyFrameDatabase(const ORBVocabulary &voc);
 
    void add(KeyFrame* pKF);
 
@@ -51,21 +51,21 @@ public:
 
    void clear();
 
-   // Loop Detection
+   //Loop Detection
    std::vector<KeyFrame *> DetectLoopCandidates(KeyFrame* pKF, float minScore);
 
-   // Relocalization
+   //Relocalization
    std::vector<KeyFrame*> DetectRelocalizationCandidates(Frame* F);
 
 protected:
 
-  // Associated vocabulary
+  //Associated vocabulary
   const ORBVocabulary* mpVoc;
 
-  // Inverted file
+  //Inverted file/inverted index (a data structure). A vector of a list of KeyFrame pointers
   std::vector<list<KeyFrame*> > mvInvertedFile;
 
-  // Mutex
+  //Mutex for synchronization safety
   std::mutex mMutex;
 };
 

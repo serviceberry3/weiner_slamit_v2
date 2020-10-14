@@ -29,20 +29,24 @@
 namespace ORB_SLAM2
 {
 
-FrameDrawer::FrameDrawer(Map* pMap):mpMap(pMap)
+FrameDrawer::FrameDrawer(Map* pMap):
+mpMap(pMap)
 {
+    //initial state is NOT_READY
     mState = Tracking::SYSTEM_NOT_READY;
-    mIm = cv::Mat(480,640,CV_8UC3, cv::Scalar(0,0,0));
+
+    //initialize the image matrix to be drawn as 480x640 pixels, no color
+    mIm = cv::Mat(480, 640, CV_8UC3, cv::Scalar(0, 0, 0));
 }
 
 cv::Mat FrameDrawer::DrawFrame()
 {
     cv::Mat im;
-    vector<cv::KeyPoint> vIniKeys; // Initialization: KeyPoints in reference frame
-    vector<int> vMatches; // Initialization: correspondences with reference keypoints
-    vector<cv::KeyPoint> vCurrentKeys; // KeyPoints in current frame
-    vector<bool> vbVO, vbMap; // Tracked MapPoints in current frame
-    int state; // Tracking state
+    vector<cv::KeyPoint> vIniKeys; //Initialization: KeyPoints in reference frame
+    vector<int> vMatches; //Initialization: correspondences with reference keypoints
+    vector<cv::KeyPoint> vCurrentKeys; //KeyPoints in current frame
+    vector<bool> vbVO, vbMap; //Tracked MapPoints in current frame
+    int state; //Tracking state
 
     //Copy variables within scoped mutex
     {
@@ -86,7 +90,7 @@ cv::Mat FrameDrawer::DrawFrame()
             }
         }        
     }
-    else if(state==Tracking::OK) //TRACKING
+    else if (state==Tracking::OK) //TRACKING
     {
         mnTracked=0;
         mnTrackedVO=0;
@@ -124,7 +128,7 @@ cv::Mat FrameDrawer::DrawFrame()
     return imWithInfo;
 }
 
-
+//draw SLAM tracking update info using OpenCV
 void FrameDrawer::DrawTextInfo(cv::Mat &im, int nState, cv::Mat &imText)
 {
     stringstream s;
@@ -144,16 +148,20 @@ void FrameDrawer::DrawTextInfo(cv::Mat &im, int nState, cv::Mat &imText)
         if(mnTrackedVO>0)
             s << ", + VO matches: " << mnTrackedVO;
     }
-    else if(nState==Tracking::LOST)
+
+    else if (nState==Tracking::LOST)
     {
         s << " TRACK LOST. TRYING TO RELOCALIZE ";
     }
-    else if(nState==Tracking::SYSTEM_NOT_READY)
+
+    else if (nState==Tracking::SYSTEM_NOT_READY)
     {
         s << " LOADING ORB VOCABULARY. PLEASE WAIT...";
     }
 
-    int baseline=0;
+    int baseline = 0;
+
+
     cv::Size textSize = cv::getTextSize(s.str(),cv::FONT_HERSHEY_PLAIN,1,1,&baseline);
 
     imText = cv::Mat(im.rows+textSize.height+10,im.cols,im.type());
@@ -170,27 +178,33 @@ void FrameDrawer::Update(Tracking* pTracker)
     //copy the grayscale image from the passed tracker to the mIm var for this FrameDrawer
     pTracker->mImGray.copyTo(mIm);
 
-    mvCurrentKeys=pTracker->mCurrentFrame.mvKeys;
+    mvCurrentKeys = pTracker->mCurrentFrame.mvKeys;
     N = mvCurrentKeys.size();
     mvbVO = vector<bool>(N,false);
     mvbMap = vector<bool>(N,false);
     mbOnlyTracking = pTracker->mbOnlyTracking;
 
-    if(pTracker->mLastProcessedState==Tracking::NOT_INITIALIZED)
+    //if the tracker's state is NOT_INITIALIZED, get the keypoints from the first frame
+    if (pTracker->mLastProcessedState==Tracking::NOT_INITIALIZED)
     {
-        mvIniKeys=pTracker->mInitialFrame.mvKeys;
-        mvIniMatches=pTracker->mvIniMatches;
+        mvIniKeys = pTracker->mInitialFrame.mvKeys;
+        mvIniMatches = pTracker->mvIniMatches;
     }
-    else if(pTracker->mLastProcessedState==Tracking::OK)
+
+    //otherwise run through list of map points from current frame
+    else if (pTracker->mLastProcessedState == Tracking::OK)
     {
-        for(int i=0;i<N;i++)
+        for (int i=0; i<N; i++)
         {
             MapPoint* pMP = pTracker->mCurrentFrame.mvpMapPoints[i];
-            if(pMP)
+
+            //null checking
+            if (pMP)
             {
-                if(!pTracker->mCurrentFrame.mvbOutlier[i])
+                //make sure there's no outlier here
+                if (!pTracker->mCurrentFrame.mvbOutlier[i])
                 {
-                    if(pMP->Observations()>0)
+                    if( pMP->Observations() > 0)
                         mvbMap[i]=true;
                     else
                         mvbVO[i]=true;

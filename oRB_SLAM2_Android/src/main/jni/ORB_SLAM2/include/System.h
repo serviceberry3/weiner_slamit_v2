@@ -125,16 +125,16 @@ public:
 
 private:
 
-    // Input sensor
+    //Input sensor
     eSensor mSensor;
 
-    // ORB vocabulary used for place recognition and feature matching.
+    //ORB vocabulary used for place recognition and feature matching.
     ORBVocabulary* mpVocabulary;
 
-    // KeyFrame database for place recognition (relocalization and loop detection).
+    //KeyFrame database for place recognition (relocalization and loop detection).
     KeyFrameDatabase* mpKeyFrameDatabase;
 
-    // Map structure that stores the pointers to all KeyFrames and MapPoints.
+    //Map structure that stores the pointers to all KeyFrames and MapPoints.
     Map* mpMap;
 
     // Tracker. It receives a frame and computes the associated camera pose.
