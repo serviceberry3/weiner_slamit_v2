@@ -10,3 +10,5 @@ In FILE oRB_SLAM2_Android/src/main/jni/Application.mk VERIFY THAT APP_ABI := arm
 The app is still not running successfully. Upon tapping "Finish and start SLAM," we only see a blank screen, and the process restarts (the kernel reforks it) infinitely. Working on it.
 
 UPDATE(10/09/20): we see the SLAM screen, but the cv::FileStorage constructor isn't working. It won't open the .yaml calibration file for some reason. If we try using ifstream instead to open it, that works. I'm working to resolve this issue.
+
+UPDATE(10/12/20): hardcoded calibration data, everything is working now. The only problem is that the SLAM tracking stops frequently and the Tracking state changes to LOST. This seems to be due to the fact that the call to DetectRelocalizationCandidates() around line 1561 is repeatedly returning no KeyFrame candidates, causing the Relocalization attempts to fail. I'm working to resolve this issue.
