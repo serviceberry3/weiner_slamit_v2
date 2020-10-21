@@ -500,22 +500,26 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                         //do this infinitely as long as SLAM is running
                         while (isSLAMRunning) {
                             timestampOld = timestamp;
+
                             timestamp = (double) System.currentTimeMillis() / 1000.0;
+
                             timeStep = timestamp - timestampOld;
 
+                            //array of nine floats, rotation matrix R transforming a vector from the device coordinate
+                            //system to the world's coordinate system
                             RCaptured = RMatrix;
 
                             //resultfloat = OrbNdkHelper.startCurrentORBForCamera2(timestamp, addr, w, h, RCaptured);
 
-                            //start up the ORB
-                            resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h); //ALWAYS COMES BACK EMPTY
+                            //start up the ORB, getting back a 4x4 camera pose matrix
+                            resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
 
                             /*
                             resultImg = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
                             resultImg.setPixels(resultInt, 0, w, 0, 0, w, h);
                             */
 
-                            //run this part on the main thread so we can edit the text
+                            //run this part on the main thread so we can edit the text without getting error
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -527,28 +531,32 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                     // if(resultfloat.length==16)
                                     //dataTextView.setText("X: " + String.valueOf(-resultfloat[3]) + "\nY: " + String.valueOf(-resultfloat[7]) + "\n" + "Z:"+ String.valueOf(-resultfloat[11]));
 
+                                    //make sure the camera pose calculation succeeded
                                     if (resultfloat.length == 16) {
-                                        //doing something here with the first 3 elements of fourth column of returned matrix
-                                        float[] OCc = {-resultfloat[3], -resultfloat[7], -resultfloat[11]};
+                                        //doing something here with the first 3 elements of fourth column of returned matrix (translation vector)
+                                        float[] OCc = {-resultfloat[3], -resultfloat[7], -resultfloat[11]}; //the translation vector
 
-
+                                        //reorder to get proper x, y, z order
                                         float[] OCb = {-OCc[1], -OCc[0], -OCc[2]};
 
-                                        float[] OCe = {RCaptured[0] * OCb[0] + RCaptured[1] * OCb[1] + RCaptured[2] *
-                                                OCb[2], RCaptured[3] * OCb[0] + RCaptured[4] * OCb[1] + RCaptured[5] *
-                                                OCb[2], RCaptured[6] * OCb[0] + RCaptured[7] * OCb[1] + RCaptured[8] * OCb[2]};
+                                        //array of three floats. Multiplying the 3x3 rotation matrix (computed from the sensors) by the 3x1 translation matrix
+                                        //(computed from ORBslam)
+                                        float[] OCe = {(RCaptured[0] * OCb[0]) + (RCaptured[1] * OCb[1]) + (RCaptured[2] * OCb[2]),
+                                                (RCaptured[3] * OCb[0]) + (RCaptured[4] * OCb[1]) + (RCaptured[5] * OCb[2]),
+                                                (RCaptured[6] * OCb[0]) + (RCaptured[7] * OCb[1]) + (RCaptured[8] * OCb[2])
+                                        };
 
-
+                                        //set first three of pos array to corresponding entry from OCe mult by scale (1 in this case)
                                         for (int i = 0; i < 3; i++) {
                                             //pos[i] = scale[i]*OCe[i];
                                             pos[i] = scale * OCe[i];
                                         }
 
                                         //display the camera position and scale
-                                        dataTextView.setText("Time Step: " + timeStep +
+                                        dataTextView.setText("Seconds taken to run: " + timeStep +
                                                 "\nX: " + pos[0] +
                                                 "\nY: " + pos[1] +
-                                                "\n" + "Z:" + pos[2] +
+                                                "\n" + "Z: " + pos[2] +
                                                 "\n" + "Scale: " + scale);
                                     }
 
@@ -752,7 +760,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        long time= System.currentTimeMillis();
+        long time = System.currentTimeMillis();
         Sensor sensor = event.sensor;
         if (sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
             acce[0] = event.values[0];
@@ -769,24 +777,73 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 ////                new WriteData().writeToFile("Gravity.txt", "X: " + String.valueOf(event.values[0]) + "\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
 ////            }
 //        }
+
+        //if this is a gyroscope sensor event
         else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+            //angular speeds around x, y, and z axes (in rad/sec)
             gyro[0] = event.values[0];
             gyro[1] = event.values[1];
             gyro[2] = event.values[2];
-                // gyroTextView.setText("X: " + String.valueOf(event.values[0]) + "\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
+            //gyroTextView.setText("X: " + String.valueOf(event.values[0]) + "\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
         }
+
+        //if this is an accelerometer sensor event
         else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+            //we assume the device isn't accelerating, so these three values represent the gravity vector
             mGravity = event.values;
+
+        //if this is a magnetometer sensor event
         else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+            //All values are in micro-Tesla (uT) and measure the ambient magnetic field in the X, Y and Z axis.
             mGeomagnetic = event.values;
+
+        //accelerometer data was read in, so was magnetometer data
         if (mGravity != null && mGeomagnetic != null) {
-            boolean success = SensorManager.getRotationMatrix(RMatrix, IMatrix, mGravity, mGeomagnetic);
+
+            //mGravity: an array of 3 floats containing the gravity vector expressed in the device's coordinate
+            //mGeomagnetic: an array of 3 floats containing the geomagnetic vector expressed in the device's coordinate
+            //Computes the inclination matrix I as well as the rotation matrix R transforming a vector from the device coordinate
+            //system to the world's coordinate system
+
+            //R is the identity matrix when the device is aligned with the world's coordinate system, that is, when the
+            //device's X axis points toward East, the Y axis points to the North Pole and the device is facing the sky
+
+            //I is a rotation matrix transforming the geomagnetic vector into the same coordinate space as gravity (the
+            //world's coordinate space). I is a simple rotation around the X axis. The inclination angle in radians can be
+            //computed with getInclination(float[]).
+            boolean success = SensorManager.getRotationMatrix(RMatrix, IMatrix, mGravity, mGeomagnetic); //Rmatrix: how much device is rotating
+                                                                                                         //from X-East, Y-North, Z-UP
+
+
             if (success) {
+                //Computes the device's orientation based on the rotation matrix.
+
+                //When it returns, the array values are as follows:
+
+                //orientation[0]: Azimuth, angle of rotation about the -z axis. This value represents the angle between the device's
+                //y axis and the magnetic north pole. When facing north, this angle is 0, when facing south, this angle is π.
+                //Likewise, when facing east, this angle is π/2, and when facing west, this angle is -π/2. The range of values is -π to π.
+
+
+                //orientation[1]: Pitch, angle of rotation about the x axis. This value represents the angle between a plane parallel to the
+                //device's screen and a plane parallel to the ground. Assuming that the bottom edge of the device faces the user and
+                //that the screen is face-up, tilting the top edge of the device toward the ground creates a positive pitch angle. The
+                //range of values is -π to π.
+
+
+                //orientation[2]: Roll, angle of rotation about the y axis. This value represents the angle between a plane perpendicular to
+                //the device's screen and a plane perpendicular to the ground. Assuming that the bottom edge of the device faces the
+                //user and that the screen is face-up, tilting the left edge of the device toward the ground creates a positive roll angle.
+                //The range of values is -π/2 to π/2.
+
+                //**HINT: applying these three rotations in the azimuth, pitch, roll order transforms an identity matrix to the
+                //rotation matrix passed into this method.
                 SensorManager.getOrientation(RMatrix, orientation);
-                //azimut = orientation[0]; // orientation contains: azimut, pitch and roll
+
+                Log.i(TAG, String.format("RMatrix: %f  %f  %f\n%f  %f  %f\n%f  %f  %f", RMatrix[0], RMatrix[1],
+                        RMatrix[2], RMatrix[3], RMatrix[4], RMatrix[5], RMatrix[6], RMatrix[7], RMatrix[8]));
             }
         }
-//
     }
 
     @Override

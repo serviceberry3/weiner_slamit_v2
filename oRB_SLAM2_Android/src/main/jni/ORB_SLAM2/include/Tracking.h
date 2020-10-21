@@ -113,6 +113,8 @@ public:
     list<cv::Mat> mlRelativeFramePoses;
     list<KeyFrame*> mlpReferences;
     list<double> mlFrameTimes;
+
+
     list<bool> mlbLost;
 
     // True if local mapping is deactivated and we are performing only localization
@@ -195,9 +197,9 @@ protected:
     int mMinFrames;
     int mMaxFrames;
 
-    // Threshold close/far points
-    // Points seen as close by the stereo/RGBD sensor are considered reliable
-    // and inserted from just one frame. Far points requiere a match in two keyframes.
+    //Threshold close/far points
+    //Points seen as close by the stereo/RGBD sensor are considered reliable
+    //and inserted from just one frame. Far points requiere a match in two keyframes.
     float mThDepth;
 
     // For RGB-D inputs only. For some datasets (e.g. TUM) the depthmap values are scaled.

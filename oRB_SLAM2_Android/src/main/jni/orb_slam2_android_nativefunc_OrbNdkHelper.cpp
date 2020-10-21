@@ -201,7 +201,7 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
 	const cv::Mat *im = (cv::Mat *) addr;
 
 	//call TrackMonocular() in System class, passing the image frame from camera, along w/timestamp
-    cv::Mat ima = s->TrackMonocular(*im, timestamp); //ima ALWAYS COMES BACK EMPTY
+    cv::Mat ima = s->TrackMonocular(*im, timestamp);
 
     /*cv::Mat Rwc = Tcw.rowRange(0,3).colRange(0,3).t();
     cv::Mat twc = -Rwc*Tcw.rowRange(0,3).col(3); //origin to camera in world frame

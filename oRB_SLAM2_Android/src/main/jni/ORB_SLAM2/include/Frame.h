@@ -74,7 +74,7 @@ public:
         return mOw.clone();
     }
 
-    // Returns inverse of rotation
+    // Returns copy of inverse of rotation
     inline cv::Mat GetRotationInverse(){
         return mRwc.clone();
     }
@@ -201,10 +201,11 @@ private:
     // Assign keypoints to the grid for speed up feature matching (called in the constructor).
     void AssignFeaturesToGrid();
 
-    // Rotation, translation and camera center
-    cv::Mat mRcw; // cw: world to camera rotation
-    cv::Mat mtcw; // camera to origin in camera coordinate
-    cv::Mat mRwc; // wc: camera to world rotation
+    //Rotation, translation and camera center to be used locally only
+    cv::Mat mRcw; // cw: world to camera rotation matrix
+    cv::Mat mtcw; // camera to origin in camera coordinate (world to camera translation matrix)
+    cv::Mat mRwc; // wc: camera to world rotation matrix
+
     cv::Mat mOw; //==mtwc origin to camera in world coordinate
 };
 

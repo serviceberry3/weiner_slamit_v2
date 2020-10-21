@@ -55,10 +55,10 @@ mbDeactivateLocalizationMode(false)
         LOG("Looking to initialize monocular system");
     }
     else if(mSensor==STEREO) {
-        cout << "Stereo" << endl;
+
     }
     else if(mSensor==RGBD) {
-        cout << "RGB-D" << endl;
+
     }
 
     //LOG("Checking/opening calibration file for reading... %s", strSettingsFile.c_str()); //c_str() get's a null-terminated char* from a c++
@@ -321,7 +321,7 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
         {
             mpLocalMapper->RequestStop();
 
-            // Wait until Local Mapping has effectively stopped
+            //Wait until Local Mapping has effectively stopped
             while(!mpLocalMapper->isStopped())
             {
                 usleep(1000);

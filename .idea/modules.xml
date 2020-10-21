@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/oRB_SLAM2_Android/oRB_SLAM2_Android.iml" filepath="$PROJECT_DIR$/oRB_SLAM2_Android/oRB_SLAM2_Android.iml" group="weiner_slamit_v2/oRB_SLAM2_Android" />
-      <module fileurl="file://$PROJECT_DIR$/openCVLibrary249/openCVLibrary249.iml" filepath="$PROJECT_DIR$/openCVLibrary249/openCVLibrary249.iml" group="weiner_slamit_v2/openCVLibrary249" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openCVLibrary341/openCVLibrary341.iml" filepath="$PROJECT_DIR$/.idea/modules/openCVLibrary341/openCVLibrary341.iml" group="weiner_slamit_v2/openCVLibrary341" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/weiner_slamit_v2.iml" filepath="$PROJECT_DIR$/.idea/modules/weiner_slamit_v2.iml" group="weiner_slamit_v2" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/weiner_slamit_v2.iml" filepath="$PROJECT_DIR$/.idea/modules/weiner_slamit_v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oRB_SLAM2_Android/weiner_slamit_v2.oRB_SLAM2_Android.iml" filepath="$PROJECT_DIR$/.idea/modules/oRB_SLAM2_Android/weiner_slamit_v2.oRB_SLAM2_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openCVLibrary249/weiner_slamit_v2.openCVLibrary249.iml" filepath="$PROJECT_DIR$/.idea/modules/openCVLibrary249/weiner_slamit_v2.openCVLibrary249.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openCVLibrary341/weiner_slamit_v2.openCVLibrary341.iml" filepath="$PROJECT_DIR$/.idea/modules/openCVLibrary341/weiner_slamit_v2.openCVLibrary341.iml" />
     </modules>
   </component>
 </project>

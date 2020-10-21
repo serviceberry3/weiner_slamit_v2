@@ -44,7 +44,10 @@ KeyFrameDatabase::KeyFrameDatabase (const ORBVocabulary &voc):
 
 void KeyFrameDatabase::add(KeyFrame *pKF)
 {
+    //get the lock
     unique_lock<mutex> lock(mMutex);
+
+    LOG("add(): a KeyFrame is being added to database");
 
     for (DBoW2::BowVector::const_iterator vit= pKF->mBowVec.begin(), vend=pKF->mBowVec.end(); vit!=vend; vit++)
         mvInvertedFile[vit->first].push_back(pKF);
