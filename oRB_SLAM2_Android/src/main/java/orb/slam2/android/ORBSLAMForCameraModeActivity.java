@@ -561,7 +561,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                     }
 
                                     else {
-                                        dataTextView.setText("resultfloat.length is NOT 16");
+                                        dataTextView.setText("ERROR: lost camera pose, please backtrack");
                                     }
 
                                     //check if user has clicked "Start Distance"
