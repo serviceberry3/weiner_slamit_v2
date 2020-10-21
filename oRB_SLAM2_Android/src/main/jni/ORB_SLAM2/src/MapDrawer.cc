@@ -331,10 +331,10 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 		glTranslatef(-viewPos.at<float>(0),-viewPos.at<float>(1),-viewPos.at<float>(2));
 		//gluLookAt(viewPos.at<float>(0),viewPos.at<float>(1),viewPos.at<float>(2),twc.at<float>(0),twc.at<float>(1),twc.at<float>(2),0.0,1.0,0.0);
 	}
+
 	else {
 	    LOG("mCameraPose came up EMPTY");
 	}
-
 
     //glPushMatrix pushes current matrix stack down by one, duplicating current matrix. After a glPushMatrix call, the matrix on top
     //of the stack is identical to the one below it.
@@ -350,8 +350,8 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
     //set line width of the camera drawing
 	glLineWidth(mCameraLineWidth);
 
-    //set the color of the camera drawing
-	glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+    //set the color of the camera drawing (now GREEN)
+	glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
 
 
 	GLfloat vertexArray[] = { 0, 0, 0, w, h, z, 0, 0, 0, w, -h, z, 0, 0, 0, -w,

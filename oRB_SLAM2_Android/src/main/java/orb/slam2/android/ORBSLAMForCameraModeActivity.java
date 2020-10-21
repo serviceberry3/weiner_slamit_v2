@@ -554,6 +554,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
                                         //display the camera position and scale
                                         dataTextView.setText("Seconds taken to run: " + timeStep +
+                                                "\nPosition (rel to origin): " +
                                                 "\nX: " + pos[0] +
                                                 "\nY: " + pos[1] +
                                                 "\n" + "Z: " + pos[2] +
