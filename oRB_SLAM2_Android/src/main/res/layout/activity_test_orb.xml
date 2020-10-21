@@ -60,8 +60,10 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="170dp"
-                android:background="@android:color/black">
+                android:layout_marginTop="265dp"
+                android:layout_marginLeft="20dp"
+                android:background="@android:color/black"
+                android:layout_marginStart="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -69,7 +71,8 @@
                     android:id="@+id/dataTextView"
                     android:text="data collection"
                     android:textColor="@android:color/holo_blue_bright"
-                    android:layout_marginTop="20dp"/>
+                    />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,10 +81,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="270dp">
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="280dp">
 
                 <Button
                     android:id="@+id/start"
@@ -115,7 +120,8 @@
                     android:visibility="visible"
                     android:background="@drawable/button2"
                     android:textColor="#ffffff"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+                    android:layout_marginTop="20dp"/>
 
                 <Button
                     android:id="@+id/distanceStart"
@@ -125,7 +131,8 @@
                     android:visibility="visible"
                     android:background="@drawable/button2"
                     android:textColor="#ffffff"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+                    android:layout_marginTop="20dp"/>
             </LinearLayout>
         </RelativeLayout>
 

@@ -581,7 +581,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                                     */
                                 }
                             });
-
                         }
                     }
                 }).start();
@@ -762,21 +761,25 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
     public void onSensorChanged(SensorEvent event) {
         long time = System.currentTimeMillis();
         Sensor sensor = event.sensor;
+
+        //the acceleration of the device excluding gravity
         if (sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
             acce[0] = event.values[0];
             acce[1] = event.values[1];
             acce[2] = event.values[2];
-           // velocityCalculator.calculateVelocity();
+            //velocityCalculator.calculateVelocity();
+
+            //new WriteData().writeToFile("Acceleration.txt", String.valueOf(time));
+            //new WriteData().writeToFile("Acceleration.txt", "X: " + String.valueOf(event.values[0]) +"\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
+            //acceTextView.setText("X: " + String.valueOf(event.values[0]) +"\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
         }
-//                new WriteData().writeToFile("Acceleration.txt", String.valueOf(time));
-//                new WriteData().writeToFile("Acceleration.txt", "X: " + String.valueOf(event.values[0]) +"\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
-//                // acceTextView.setText("X: " + String.valueOf(event.values[0]) +"\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
-//        } else if (sensor.getType() == Sensor.TYPE_GRAVITY) {
-//
-////                new WriteData().writeToFile("Gravity.txt", String.valueOf(time));
-////                new WriteData().writeToFile("Gravity.txt", "X: " + String.valueOf(event.values[0]) + "\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
-////            }
-//        }
+
+        /*
+        else if (sensor.getType() == Sensor.TYPE_GRAVITY) {
+           new WriteData().writeToFile("Gravity.txt", String.valueOf(time));
+           new WriteData().writeToFile("Gravity.txt", "X: " + String.valueOf(event.values[0]) + "\nY: " + String.valueOf(event.values[1]) + "\nZ: " + String.valueOf(event.values[2]));
+
+        }*/
 
         //if this is a gyroscope sensor event
         else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
@@ -814,7 +817,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
             boolean success = SensorManager.getRotationMatrix(RMatrix, IMatrix, mGravity, mGeomagnetic); //Rmatrix: how much device is rotating
                                                                                                          //from X-East, Y-North, Z-UP
 
-
+            //make sure getRotationMatrix was successful
             if (success) {
                 //Computes the device's orientation based on the rotation matrix.
 
