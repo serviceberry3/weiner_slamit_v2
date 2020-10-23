@@ -90,7 +90,9 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/Initializer.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp \
  jni/ORB_SLAM2/include/KeyFrameDatabase.h \
  /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
- jni/ORB_SLAM2/include/Map.h jni/ORB_SLAM2/include/Optimizer.h \
+ jni/ORB_SLAM2/include/Map.h jni/ORB_SLAM2/include/Posenet.h \
+ jni/ORB_SLAM2/include/c_api.h jni/ORB_SLAM2/include/common.h \
+ jni/ORB_SLAM2/include/delegate.h jni/ORB_SLAM2/include/Optimizer.h \
  jni/ORB_SLAM2/include/LoopClosing.h jni/ORB_SLAM2/include/LocalMapping.h \
  jni/ORB_SLAM2/include/Tracking.h jni/ORB_SLAM2/include/Viewer.h \
  jni/ORB_SLAM2/include/FrameDrawer.h jni/ORB_SLAM2/include/MapDrawer.h \
@@ -477,6 +479,14 @@ jni/ORB_SLAM2/include/KeyFrameDatabase.h:
 /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 
 jni/ORB_SLAM2/include/Map.h:
+
+jni/ORB_SLAM2/include/Posenet.h:
+
+jni/ORB_SLAM2/include/c_api.h:
+
+jni/ORB_SLAM2/include/common.h:
+
+jni/ORB_SLAM2/include/delegate.h:
 
 jni/ORB_SLAM2/include/Optimizer.h:
 

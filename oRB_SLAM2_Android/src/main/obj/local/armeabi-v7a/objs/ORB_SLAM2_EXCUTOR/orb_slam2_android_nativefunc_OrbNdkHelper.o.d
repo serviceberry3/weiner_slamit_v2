@@ -80,7 +80,7 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2_EXCUTOR/orb_slam2_android_nativefunc_OrbNdk
  /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/deque \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/legacy/compat.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp \
- jni/ORB_SLAM2/include/Frame.h \
+ jni/ORB_SLAM2/include/Frame.h jni/ORB_SLAM2/include/Posenet.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/photo/photo.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/photo/photo_c.h \
@@ -460,6 +460,8 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp:
 
 jni/ORB_SLAM2/include/Frame.h:
+
+jni/ORB_SLAM2/include/Posenet.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp:
 

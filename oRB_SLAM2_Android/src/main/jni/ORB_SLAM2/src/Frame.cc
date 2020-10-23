@@ -22,6 +22,7 @@
 #include "Converter.h"
 #include "ORBmatcher.h"
 #include <thread>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include <android/log.h>
 #define LOG_TAG "ORB_SLAM_FRAME"
@@ -133,10 +134,10 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
     :mpORBvocabulary(voc),mpORBextractorLeft(extractor),mpORBextractorRight(static_cast<ORBextractor*>(NULL)),
      mTimeStamp(timeStamp), mK(K.clone()),mDistCoef(distCoef.clone()), mbf(bf), mThDepth(thDepth)
 {
-    // Frame ID
+    //Frame ID
     mnId=nNextId++;
 
-    // Scale Level Info
+    //Scale Level Info
     mnScaleLevels = mpORBextractorLeft->GetLevels();
     mfScaleFactor = mpORBextractorLeft->GetScaleFactor();    
     mfLogScaleFactor = log(mfScaleFactor);
@@ -145,8 +146,9 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
     mvLevelSigma2 = mpORBextractorLeft->GetScaleSigmaSquares();
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
+
     // ORB extraction
-    ExtractORB(0,imGray);
+    ExtractORB(0, imGray);
 
     N = mvKeys.size();
 
@@ -185,7 +187,8 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
 
 //MONOCULAR CONSTRUCTOR
 //This is probably constructor we're using***
-Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth)
+Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
+const float &bf, const float &thDepth, Posenet* posenet)
     :mpORBvocabulary(voc),
     mpORBextractorLeft(extractor), //the key feature extractor
     mpORBextractorRight(static_cast<ORBextractor*>(NULL)), //right is set to null since it's not used
@@ -193,9 +196,10 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extra
     mK(K.clone()),
     mDistCoef(distCoef.clone()),
     mbf(bf),
-    mThDepth(thDepth)
+    mThDepth(thDepth),
+    mPosenet(posenet)
 {
-    // Frame ID
+    //Assign this frame a frame ID
     mnId = nNextId++;
 
     //Scale Level Info
@@ -207,6 +211,16 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extra
     mvLevelSigma2 = mpORBextractorLeft->GetScaleSigmaSquares();
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
+
+    cv::Mat scaledImage = cv::Mat();
+    cv::Size size(257, 257);
+
+    //resize the copy into the new Mat so we can feed it to Posenet
+    resize(imGray, scaledImage, size);
+
+    //now we wanna feed the image into Posenet to see if there's a person in the image
+
+
     //ORB extraction (key feature extraction)
     ExtractORB(0, imGray);
 
@@ -217,18 +231,22 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extra
 
     //no key features found, return immediately
     if (mvKeys.empty()) {
-        LOG("Frame(): ExtractORB found NO key features in the frame", N);
+        LOG("Frame(): ExtractORB found NO key features in the frame");
         return;
     }
 
+    //run undistortion function
     UndistortKeyPoints();
 
     //Set no stereo information
     mvuRight = vector<float>(N,-1);
     mvDepth = vector<float>(N,-1);
 
+    //create array of MapPoints the size of num of 2D keypoints found by ExtractORB
     mvpMapPoints = vector<MapPoint*>(N, static_cast<MapPoint*>(NULL));
-    mvbOutlier = vector<bool>(N,false);
+
+    //create array of bools the size of num of 2D keypoints found by ExtractORB, initialized to false
+    mvbOutlier = vector<bool>(N, false);
 
     //This is done only for the first Frame (or after a change in the calibration)
     if(mbInitialComputations)
@@ -274,6 +292,7 @@ void Frame::AssignFeaturesToGrid()
 //get the keyfeatures from the captured image
 void Frame::ExtractORB(int flag, const cv::Mat &im)
 {
+    //IF MONOCULAR, ALWAYS 0
     if (flag == 0) {
         LOG("ExtractORB(): Running mpORBextractorLeft to extract features into mvKeys...");
         (*mpORBextractorLeft)(im, cv::Mat(), mvKeys, mDescriptors);

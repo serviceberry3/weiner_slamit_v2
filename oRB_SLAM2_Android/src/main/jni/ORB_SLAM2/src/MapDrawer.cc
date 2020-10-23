@@ -73,58 +73,84 @@ MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath) :
 }
 
 void MapDrawer::DrawMapPoints() {
+    //array of MapPoints - get all the map pts from the map
 	const vector<MapPoint*> &vpMPs = mpMap->GetAllMapPoints();
+
+	//second array of MapPoints - get all the reference map pts from the map
 	const vector<MapPoint*> &vpRefMPs = mpMap->GetReferenceMapPoints();
 
+    //make a set of MapPoints, copying all the reference map pts
 	set<MapPoint*> spRefMPs(vpRefMPs.begin(), vpRefMPs.end());
 
+    //make sure there are some points to be drawn
 	if (vpMPs.empty()) {
-	    LOG("DrawMapPoints(): vpMPs came up EMPTY, returning...");
+	    LOG("DrawMapPoints(): vpMPs came up EMPTY, no pts to draw, returning...");
 		return;
 	}
 
-	// 清除屏幕及深度缓存
-	// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	// 重置当前的模型观察矩阵
-	// glMatrixMode (GL_MODELVIEW);
-	// glLoadIdentity();
-	// glScalef(2.0f,2.0f,2.0f);
-	// glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	// glLineWidth(mKeyFrameLineWidth);
+	//清除屏幕及深度缓存
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//重置当前的模型观察矩阵
+	//glMatrixMode (GL_MODELVIEW);
+	//glLoadIdentity();
+	//glScalef(2.0f,2.0f,2.0f);
+	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	//glLineWidth(mKeyFrameLineWidth);
 
+    //set the size of the points for drawing
 	glPointSize(mPointSize);
-	glEnable (GL_COLOR_MATERIAL);
-	glEnableClientState (GL_VERTEX_ARRAY);
 
-	//glColor4f(0.0f, 0.0f, 0.0f, 1.0f); // black
-	glColor4f(0.0f, 0.0f, 1.0f, 1.0f); // blue
+	//enable colors
+	glEnable(GL_COLOR_MATERIAL);
 
+	//the vertex array is enabled for writing and now used during rendering when glDrawArrays, or glDrawElements is called.
+	glEnableClientState(GL_VERTEX_ARRAY);
+
+    //set color to BLUE for drawing the regular map points
+	glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+
+    //iterate over the map pts from the map
 	for (int i = 0, iend = vpMPs.size(); i < iend; i++) {
+	    //throw out the point if it's bad or there's a duplicate
 		if (vpMPs[i]->isBad() || spRefMPs.count(vpMPs[i]))
 			continue;
+
+	    //extract the world coordinates of this pt into a 3x1 Mat
 		cv::Mat pos = vpMPs[i]->GetWorldPos();
 
+        //set up the coordinates of this point in an array for drawing
 		GLfloat vertexArray[3] = { pos.at<float>(0), pos.at<float>(1), pos.at<float>(2) };
-		glVertexPointer(3, GL_FLOAT, 0, vertexArray);
+
+		//specifies location and data format of an array of vertex coordinates to use when rendering.
+		glVertexPointer(3, GL_FLOAT, 0, vertexArray); //3 coords/vertex, all floats, 0 byte stride from one vertex to next, loc at vertexArray
+
+		//draw the points on the screen
 		glDrawArrays(GL_POINTS, 0, 1);
 	}
 
 	//flush gl drawing command buffer
 	glFlush();
 
-	//set color for drawing the points (RED)
+	//set color for drawing the reference points (RED)
 	glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
 
-
+    //iterate over the reference map pts from the map (using the set)
 	for (set<MapPoint*>::iterator sit = spRefMPs.begin(), send = spRefMPs.end(); sit != send; sit++) {
+	    //if this pt is bad, throw it out
 		if ((*sit)->isBad())
 			continue;
-		cv::Mat pos = (*sit)->GetWorldPos();
-		GLfloat vertexArray[] = { pos.at<float>(0), pos.at<float>(1), pos.at<float>(2) };
-		glVertexPointer(3, GL_FLOAT, 0, vertexArray);
 
-		//draw the points
+		//extract world coordinates of this pt into a 3x1 Mat
+		cv::Mat pos = (*sit)->GetWorldPos();
+
+		//set up the coordinates of this pt in an array for drawing
+		GLfloat vertexArray[] = { pos.at<float>(0), pos.at<float>(1), pos.at<float>(2) };
+
+		//specifies location and data format of an array of vertex coordinates to use when rendering.
+		glVertexPointer(3, GL_FLOAT, 0, vertexArray); //3 coords/vertex, all floats, 0 byte stride from one vertex to next, loc at vertexArray
+
+		//draw the points on the screen
 		glDrawArrays(GL_POINTS, 0, 1);
 	}
 
@@ -227,7 +253,7 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph) {
 
 }
 
-//draw the current camera on the screen (the little box with x through it)
+//draw the current camera on the screen (the little box with x through it), as well as the points in the map
 void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
     LOG("DrawCurrentCamera() called");
 
@@ -258,16 +284,22 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 
 	if (!mCameraPose.empty()) {
 	    LOG("mCameraPose came up non-empty, creating rotation and translation matrices");
+
+	    //instantiate a 3x3 camera-to-world rotation matrix
 		cv::Mat Rwc(3,3,CV_32F);
+
+		//instantiate a 3x1 camera-to-world translation matrix
 		cv::Mat twc(3,1,CV_32F);
+
+		//instantiate a 3x1 lookAt matrix
 		cv::Mat viewPos(3,1,CV_32F);
 
-		//lookAt matrix generation
-		viewPos.at<float>(0)=0.0;
-		viewPos.at<float>(1)=0.0;
-		viewPos.at<float>(2)=0.3;
+		//lookAt matrix generation with these values
+		viewPos.at<float>(0) = 0.0;
+		viewPos.at<float>(1) = 0.0;
+		viewPos.at<float>(2) = 0.3;
 
-		//start it as a 4x4 identity matrix
+		//start lookAtMat it as a 4x4 identity matrix
 		cv::Mat lookAtMat = cv::Mat::eye(4, 4, CV_32F);
 
 		//a couple of 3x1 matrices (actually vectors)
@@ -276,11 +308,16 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 		cv::Mat uVec(3, 1, CV_32F);
 		
 		{
+		    //get the lock on mMutexCamera
 			unique_lock<mutex> lock(mMutexCamera);
 
             //rotation and translation
+
+            //rotation matrix will be transpose of first 3x3 of Tcw
 			Rwc = mCameraPose.rowRange(0,3).colRange(0,3).t();
-			twc = -Rwc*mCameraPose.rowRange(0,3).col(3);
+
+			//use last 3x1 for translation matrix
+			twc = -Rwc * mCameraPose.rowRange(0,3).col(3);
 
 			//lookAt matrix
 			zVec = -Rwc * viewPos;
@@ -297,7 +334,7 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
 			viewPos = Rwc * viewPos + twc;
 		}
 
-        //make a copy of the camera pose matrix
+        //make a copy of the camera pose matrix (basically Tcw)
 		temp = mCameraPose.clone();
 
         //fill the temp matrix with values
@@ -353,12 +390,13 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
     //set the color of the camera drawing (now GREEN)
 	glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
 
-
+    //vertices of the camera to be drawn
 	GLfloat vertexArray[] = { 0, 0, 0, w, h, z, 0, 0, 0, w, -h, z, 0, 0, 0, -w,
 			-h, z, 0, 0, 0, -w, h, z, w, h, z, w, -h, z, -w, h, z, -w, -h, z,
 			-w, h, z, w, h, z, -w, -h, z, w, -h, z, };
 
-	glVertexPointer(3, GL_FLOAT, 0, vertexArray);
+    //specifies location and data format of an array of vertex coordinates to use when rendering.
+	glVertexPointer(3, GL_FLOAT, 0, vertexArray); //3 coords/vertex, all floats, 0 byte stride from one vertex to next, loc at vertexArray
 
 	//draw the camera on the screen
 	glDrawArrays(GL_LINES, 0, 16);
@@ -374,11 +412,11 @@ void MapDrawer::DrawCurrentCamera(const cv::Mat &M) {
     //input that depends on the generated image.
 	glFlush();
 
-
     //DrawKeyFrames(false,true);
 
     //draw the 3D map/point cloud on the screen (red)
     DrawMapPoints();
+
 	//glDisableClientState (GL_VERTEX_ARRAY);
 	//glDisable (GL_COLOR_MATERIAL);
 }

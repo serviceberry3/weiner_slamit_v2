@@ -288,9 +288,10 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
 {
     LOG("GrabImageMonocular(): called!");
 
-    //shortcut
+    //shortcut to the passed incoming camera frame
     mImGray = im;
 
+    //do some color conversion
     if (mImGray.channels()==3)
     {
         if(mbRGB)
@@ -306,13 +307,17 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
             cvtColor(mImGray,mImGray,CV_BGRA2GRAY);
     }
 
+    //create posenet object using our model file, specifying to run it using a GPU delegate
+    Posenet posenet("/home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/assets/posenet_model.tflite", Device::GPU);
+
+    //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
     if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
         LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth);
+        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, &posenet);
     }
     else {
         LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth);
+        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, &posenet);
     }
 
     LOG("GrabImageMonocular(): now calling Tracking::Track()...");

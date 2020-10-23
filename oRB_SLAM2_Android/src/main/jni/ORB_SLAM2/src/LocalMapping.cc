@@ -29,6 +29,7 @@
 namespace ORB_SLAM2
 {
 
+//constructor
 LocalMapping::LocalMapping(Map *pMap, const float bMonocular):
     mbMonocular(bMonocular), mbResetRequested(false), mbFinishRequested(false), mbFinished(true), mpMap(pMap),
     mbAbortBA(false), mbStopped(false), mbStopRequested(false), mbNotStop(false), mbAcceptKeyFrames(true)
@@ -45,20 +46,21 @@ void LocalMapping::SetTracker(Tracking *pTracker)
     mpTracker=pTracker;
 }
 
+//main mapping loop
 void LocalMapping::Run()
 {
-
     mbFinished = false;
 
-    while(1)
+    //loop infinitely until stop
+    while (1)
     {
         // Tracking will see that Local Mapping is busy
         SetAcceptKeyFrames(false);
 
-        // Check if there are keyframes in the queue
+        //Check if there are keyframes in the queue
         if(CheckNewKeyFrames())
         {
-            // BoW conversion and insertion in Map
+            //BoW conversion and insertion in Map
             ProcessNewKeyFrame();
 
             // Check recent MapPoints
@@ -87,6 +89,7 @@ void LocalMapping::Run()
 
             mpLoopCloser->InsertKeyFrame(mpCurrentKeyFrame);
         }
+
         else if(Stop())
         {
             // Safe area to stop
@@ -123,6 +126,8 @@ void LocalMapping::InsertKeyFrame(KeyFrame *pKF)
 bool LocalMapping::CheckNewKeyFrames()
 {
     unique_lock<mutex> lock(mMutexNewKFs);
+
+    //if there are new keyframes, this will return true
     return(!mlNewKeyFrames.empty());
 }
 
@@ -161,10 +166,10 @@ void LocalMapping::ProcessNewKeyFrame()
         }
     }    
 
-    // Update links in the Covisibility Graph
+    //Update links in the Covisibility Graph
     mpCurrentKeyFrame->UpdateConnections();
 
-    // Insert Keyframe in Map
+    //Insert Keyframe in Map
     mpMap->AddKeyFrame(mpCurrentKeyFrame);
 }
 
@@ -207,7 +212,7 @@ void LocalMapping::MapPointCulling()
 
 void LocalMapping::CreateNewMapPoints()
 {
-    // Retrieve neighbor keyframes in covisibility graph
+    //Retrieve neighbor keyframes in covisibility graph
     int nn = 10;
     if(mbMonocular)
         nn=20;
@@ -444,6 +449,7 @@ void LocalMapping::CreateNewMapPoints()
 
             pMP->UpdateNormalAndDepth();
 
+            //add this point to the map
             mpMap->AddMapPoint(pMP);
             mlpRecentAddedMapPoints.push_back(pMP);
 

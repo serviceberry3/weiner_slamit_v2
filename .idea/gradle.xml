@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/oRB_SLAM2_Android" />
             <option value="$PROJECT_DIR$/openCVLibrary249" />
             <option value="$PROJECT_DIR$/openCVLibrary341" />
+            <option value="$PROJECT_DIR$/posenet" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

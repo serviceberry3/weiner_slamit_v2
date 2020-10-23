@@ -27,7 +27,7 @@ import org.opencv.core.Point;
 public class KeyPoint {
 
     /**
-     * Coordinates of the keypoint.
+     * Coordinates (2D) of the keypoint.
      */
     public Point pt;
     /**
@@ -52,6 +52,9 @@ public class KeyPoint {
      * belong to.
      */
     public int class_id;
+
+    //a bool telling whether this points belongs to a human
+    public boolean is_human;
 
 /**
  * <p>The keypoint constructors</p>

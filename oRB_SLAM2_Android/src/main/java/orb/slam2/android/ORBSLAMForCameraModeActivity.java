@@ -12,6 +12,8 @@ import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.tensorflow.lite.examples.noah.lib.Device;
+import org.tensorflow.lite.examples.noah.lib.Posenet;
 
 import android.app.Activity;
 import android.content.Context;
@@ -46,14 +48,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.Objects;
+
 /**
  * ORB Test Activity For CameraMode
  *
  */
-public class ORBSLAMForCameraModeActivity extends Activity implements
-        Renderer,CvCameraViewListener2, View.OnClickListener, LocationListener, SensorEventListener {
+public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,CvCameraViewListener2, View.OnClickListener, LocationListener,
+        SensorEventListener {
 
-    //maxiaoba
     Button TrackOnly,calibrationStart, distanceStart;
     boolean calibrationIsStart;
     boolean distanceIsStart;
@@ -91,6 +94,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
     //public float[] scale;
     public float scale;
     public float[] pos;
+
+    private Posenet posenet;
 
 
     private static final String TAG = "CameraModeORB2";
@@ -151,7 +156,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         }
     }
 
-    public class RK4{
+    public class RK4 {
         public double acceStep;
         public double[] acce0;
         public double[] acce1;
@@ -216,7 +221,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         Log.i(TAG, "Success");
         //window settings: no title bar, fullscreen, keep screen on
@@ -226,6 +230,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        //instantiate new Posenet session
+        posenet = new Posenet(this, "posenet_model.tflite", Device.GPU);
 
         //set the view
         setContentView(R.layout.activity_test_orb);
@@ -296,25 +302,19 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         mGLSurfaceView.setRenderer(this);
 
 
-        linear.addView(mGLSurfaceView, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
+        linear.addView(mGLSurfaceView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
 
         //get the file paths: dataset path and calibration file path
         /*
         vocPath = getIntent().getStringExtra("voc");
         calibrationPath = getIntent().getStringExtra("calibration");
 
-
         vocPath = "/storage/emulated/0/Android/data/orb.slam2.android/files/ORBvoc.txt";
         calibrationPath = "/storage/emulated/0/Android/data/orb.slam2.android/files/List3.yaml";
-
-
 
         vocPath = "/data/media/0/Android/data/orb.slam2.android/files/ORBvoc.txt";
         calibrationPath = "/data/media/0/Android/data/orb.slam2.android/files/List3.yaml";
          */
-
 
         //USED FOR AOSP DEV
         //vocPath = "/system/files/SLAM/ORBvoc.txt";
@@ -323,13 +323,13 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         vocPath = "/sdcard/SLAM/ORBvoc.txt";
         calibrationPath = "/sdcard/SLAM/List3.yaml";
 
-
         //make sure both dataset and calibration paths were set by user
         if (TextUtils.isEmpty(vocPath) || TextUtils.isEmpty(calibrationPath)) {
             Toast.makeText(this, "One of file paths is NULL!", Toast.LENGTH_LONG).show();
             Log.e(TAG, "One of paths is NULL!");
             finish();
         }
+
         else {
             Log.i(TAG, "Vocab path is " + vocPath);
             Log.i(TAG, "Calib path is " + calibrationPath);
@@ -374,7 +374,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 //        }
 
 
-        /// Motion Sensor
+        //Motion Sensor
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         linearAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         gravitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
@@ -484,11 +484,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
             super.handleMessage(msg);
             */
 
-
             //check to see if we're getting a message saying that initialization has finished
             if (msg.what == INIT_FINISHED) {
-                Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been finished successfully!",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been finished successfully!", Toast.LENGTH_LONG).show();
                 Log.i(TAG, "Handler received message, starting up the ORB SLAM System using OpenGL...");
 
                 //velocityCalculator.startFlag = 1;
@@ -511,7 +509,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
                             //resultfloat = OrbNdkHelper.startCurrentORBForCamera2(timestamp, addr, w, h, RCaptured);
 
-                            //start up the ORB, getting back a 4x4 camera pose matrix
+                            //start up the ORB, passing native address of incoming camera frame, getting back a 4x4 camera pose matrix
                             resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
 
                             /*
@@ -678,7 +676,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
         Log.i(TAG, "called onOptionsItemSelected; selected item: " + item);
 
         if (item == mItemSwitchCamera) {
-            isSLAMRunning=false;
+            isSLAMRunning = false;
 //	            mOpenCvCameraView.setVisibility(SurfaceView.GONE);
 //	            mIsJavaCamera = !mIsJavaCamera;
 //
@@ -708,16 +706,20 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
 
     //callback for when a camera frame is ready
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-        //get the frame as a mat
+        //get the frame as a mat in RGBA format
         Mat im = inputFrame.rgba();
+
+        //lock on the incoming frame Mat
         synchronized (im) {
-            //get native pointer to the image mat
+            //get native pointer to the image mat so we can pass to native code
             addr = im.getNativeObjAddr();
         }
 
         //get width and height of image
         w = im.cols();
         h = im.rows();
+
+
         return inputFrame.rgba();
     }
 
@@ -728,7 +730,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements
             case 10:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     checkPermission = true;
-                } else {
+                }
+
+                else {
                     checkPermission = false;
                 }
         }

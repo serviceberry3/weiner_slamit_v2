@@ -288,7 +288,10 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
         }
 
         public Mat rgba() {
+            //convert the Mat to RGBA
             Imgproc.cvtColor(mYuvFrameData, mRgba, Imgproc.COLOR_YUV2RGBA_NV21, 4);
+
+            //return the new RGBA-formatted Mat
             return mRgba;
         }
 
@@ -317,8 +320,9 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
                 synchronized (JavaCameraView.this) {
                     try {
                         JavaCameraView.this.wait();
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
+                    }
+
+                    catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }

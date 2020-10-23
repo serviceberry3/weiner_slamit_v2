@@ -61,7 +61,7 @@ public:
 
     std::mutex mMutexMapUpdate;
 
-    // This avoid that two points are created simultaneously in separate threads (id conflict)
+    //This avoids that two points are created simultaneously in separate threads (id conflict)
     std::mutex mMutexPointCreation;
 
 protected:

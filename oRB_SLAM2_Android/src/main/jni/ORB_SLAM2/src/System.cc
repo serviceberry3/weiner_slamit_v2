@@ -150,8 +150,10 @@ mbDeactivateLocalizationMode(false)
     mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer, mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
 
     //Initialize the Local Mapping thread and launch
-    mpLocalMapper = new LocalMapping(mpMap, mSensor==MONOCULAR);
-    mptLocalMapping = new thread(&ORB_SLAM2::LocalMapping::Run,mpLocalMapper);
+    mpLocalMapper = new LocalMapping(mpMap, mSensor == MONOCULAR);
+
+    //launch local mapping on new thread
+    mptLocalMapping = new thread(&ORB_SLAM2::LocalMapping::Run, mpLocalMapper);
 
     //Initialize the Loop Closing thread and launch
     mpLoopCloser = new LoopClosing(mpMap, mpKeyFrameDatabase, mpVocabulary, mSensor!=MONOCULAR);
@@ -159,7 +161,6 @@ mbDeactivateLocalizationMode(false)
 
     //Initialize the Viewer thread and launch
     mpViewer = new Viewer(this, mpFrameDrawer,mpMapDrawer,mpTracker,strSettingsFile);
-
 
     if (bUseViewer)
         mptViewer = new thread(&Viewer::Run, mpViewer);
@@ -306,13 +307,13 @@ cv::Mat System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const doub
 //actual used processing function for monocular ORB SLAM
 cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
 {
-    if(mSensor != MONOCULAR)
+    if (mSensor != MONOCULAR)
     {
     	LOG("ERROR: you called TrackMonocular but input sensor was not set to Monocular." );
         exit(-1);
     }
 
-    // Check mode change
+    //Check mode change
     {
         //get the lock on mMutexMode
         unique_lock<mutex> lock(mMutexMode);
@@ -322,7 +323,7 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
             mpLocalMapper->RequestStop();
 
             //Wait until Local Mapping has effectively stopped
-            while(!mpLocalMapper->isStopped())
+            while (!mpLocalMapper->isStopped())
             {
                 usleep(1000);
             }
@@ -330,6 +331,7 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
             mpTracker->InformOnlyTracking(true);
             mbActivateLocalizationMode = false;
         }
+
         if (mbDeactivateLocalizationMode)
         {
             mpTracker->InformOnlyTracking(false);
@@ -338,7 +340,7 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
         }
     }
 
-    // Check reset
+    //Check reset
     {
         //get the lock on mMutexReset
         unique_lock<mutex> lock(mMutexReset);

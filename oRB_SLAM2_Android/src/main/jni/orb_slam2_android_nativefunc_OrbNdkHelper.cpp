@@ -147,12 +147,16 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesInit
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesRender
 (JNIEnv * env, jclass cls) {
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glMatrixMode (GL_MODELVIEW);
-	glLoadIdentity ();
-	//glScalef (1.0, -1.0, 1.0);
-	if(init_end)
+    //clear out the OpenGL buffers
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//set the matrix mode
+	glMatrixMode(GL_MODELVIEW);
+
+	glLoadIdentity();
+	//glScalef (1.0, -1.0, 1.0);
+
+	if(init_end)
 	//draw the stuffs using System object
 	s->drawGL();
 }
@@ -255,6 +259,8 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly
   (JNIEnv *env, jclass cls) {
         s->ActivateLocalizationMode();
   }
+
+
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2
       (JNIEnv *env, jclass cls,jdouble timestamp, jlong addr,jint w,jint h,jfloatArray R) {
 
@@ -304,6 +310,7 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
         env->ReleaseFloatArrayElements(resultArray, resultPtr, 0);
     	return resultArray;
       }
+
 
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_dataFusion
   (JNIEnv *, jclass,jdouble curTimeStamp, jdouble lat ,jdouble lng, jdouble accex, jdouble accey,jdouble accez,jdouble gyrox, jdouble gyroy,jdouble gyroz){
