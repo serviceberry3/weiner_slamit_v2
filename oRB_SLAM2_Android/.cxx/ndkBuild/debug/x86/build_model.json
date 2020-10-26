@@ -1,6 +1,6 @@
 {
   "abi": "X86",
-  "abiPlatformVersion": 14,
+  "abiPlatformVersion": 24,
   "buildSettings": {
     "environmentVariables": []
   },
@@ -15,6 +15,7 @@
   "variant": {
     "buildSystemArgumentList": [],
     "buildTargetSet": [],
+    "implicitBuildTargetSet": [],
     "cFlagsList": [],
     "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
     "cppFlagsList": [],
@@ -144,11 +145,8 @@
     "validAbiList": [
       "ARMEABI",
       "ARMEABI_V7A",
-      "ARM64_V8A",
       "X86",
-      "X86_64",
-      "MIPS",
-      "MIPS64"
+      "MIPS"
     ],
     "prefabDirectory": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/debug/prefab",
     "prefabPackageDirectoryList": []

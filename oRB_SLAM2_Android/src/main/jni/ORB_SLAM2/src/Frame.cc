@@ -188,7 +188,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
 //MONOCULAR CONSTRUCTOR
 //This is probably constructor we're using***
 Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
-const float &bf, const float &thDepth, Posenet* posenet)
+const float &bf, const float &thDepth, Posenet posenet)
     :mpORBvocabulary(voc),
     mpORBextractorLeft(extractor), //the key feature extractor
     mpORBextractorRight(static_cast<ORBextractor*>(NULL)), //right is set to null since it's not used
@@ -196,8 +196,7 @@ const float &bf, const float &thDepth, Posenet* posenet)
     mK(K.clone()),
     mDistCoef(distCoef.clone()),
     mbf(bf),
-    mThDepth(thDepth),
-    mPosenet(posenet)
+    mThDepth(thDepth)
 {
     //Assign this frame a frame ID
     mnId = nNextId++;
@@ -219,7 +218,7 @@ const float &bf, const float &thDepth, Posenet* posenet)
     resize(imGray, scaledImage, size);
 
     //now we wanna feed the image into Posenet to see if there's a person in the image
-
+    //TfLiteInterpreter* mInterpreter = posenet->getInterpreter();
 
     //ORB extraction (key feature extraction)
     ExtractORB(0, imGray);

@@ -1,14 +1,14 @@
 obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/KeyFrameDatabase.o: \
  jni/ORB_SLAM2/src/KeyFrameDatabase.cc \
  jni/ORB_SLAM2/include/KeyFrameDatabase.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/list \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/list \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
  jni/ORB_SLAM2/include/KeyFrame.h jni/ORB_SLAM2/include/MapPoint.h \
  jni/ORB_SLAM2/include/Frame.h \
  jni/Thirdparty/DBoW2/include/DBoW2/BowVector.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/Thirdparty/DBoW2/include/DBoW2/FeatureVector.h \
  jni/Thirdparty/DBoW2/include/DBoW2/BowVector.h \
  jni/ORB_SLAM2/include/ORBVocabulary.h \
@@ -16,15 +16,15 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/KeyFrameDatabase.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/types_c.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/version.hpp \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/mat.hpp \
  jni/Thirdparty/DBoW2/include/DBoW2/FClass.h \
  jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
  jni/Thirdparty/DBoW2/include/DBoW2/FeatureVector.h \
  jni/Thirdparty/DBoW2/include/DBoW2/ScoringObject.h \
  jni/Thirdparty/DBoW2/DLib/include/DUtils/Random.h \
@@ -46,9 +46,9 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/KeyFrameDatabase.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/matrix.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/params.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/any.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/saving.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/nn_index.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/result_set.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/all_indices.h \
@@ -66,8 +66,8 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/KeyFrameDatabase.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/hierarchical_clustering_index.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/lsh_index.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/lsh_table.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_map \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_map \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/autotuned_index.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/ground_truth.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/index_testing.h \
@@ -75,7 +75,7 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/KeyFrameDatabase.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/sampling.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/calib3d/calib3d.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/objdetect/objdetect.hpp \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/deque \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/deque \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/legacy/compat.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp \
  jni/ORB_SLAM2/include/Posenet.h jni/ORB_SLAM2/include/c_api.h \
@@ -90,20 +90,20 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/KeyFrameDatabase.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/highgui/highgui.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/contrib.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/retina.hpp \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/valarray \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/valarray \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/openfabmap.hpp \
  jni/ORB_SLAM2/include/Map.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
  jni/ORB_SLAM2/include/KeyFrameDatabase.h \
  jni/ORB_SLAM2/include/KeyFrame.h
 
 jni/ORB_SLAM2/include/KeyFrameDatabase.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/list:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/list:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
 
 jni/ORB_SLAM2/include/KeyFrame.h:
 
@@ -113,9 +113,9 @@ jni/ORB_SLAM2/include/Frame.h:
 
 jni/Thirdparty/DBoW2/include/DBoW2/BowVector.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 jni/Thirdparty/DBoW2/include/DBoW2/FeatureVector.h:
 
@@ -131,11 +131,11 @@ jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/version.hpp:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:
 
@@ -145,9 +145,9 @@ jni/Thirdparty/DBoW2/include/DBoW2/FClass.h:
 
 jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
 
 jni/Thirdparty/DBoW2/include/DBoW2/FeatureVector.h:
 
@@ -191,11 +191,11 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/any.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/saving.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/nn_index.h:
 
@@ -231,9 +231,9 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/lsh_table.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_map:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/autotuned_index.h:
 
@@ -249,7 +249,7 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/objdetect/objdetect.hpp:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/deque:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/deque:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/legacy/compat.hpp:
 
@@ -283,13 +283,13 @@ jni/ORB_SLAM2/include/delegate.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/retina.hpp:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/valarray:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/valarray:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/openfabmap.hpp:
 
 jni/ORB_SLAM2/include/Map.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 
 jni/ORB_SLAM2/include/KeyFrameDatabase.h:
 

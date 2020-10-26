@@ -1,0 +1,75 @@
+{
+  "buildFiles": [
+    "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk"
+  ],
+  "cleanCommands": [
+    "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib clean"
+  ],
+  "buildTargetsCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "DLib-release-mips": {
+      "artifactName": "DLib",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libDLib.so",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libDLib.so",
+      "runtimeFiles": []
+    },
+    "clapack-release-mips": {
+      "artifactName": "clapack",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libclapack.a",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libclapack.a",
+      "runtimeFiles": []
+    },
+    "blas-release-mips": {
+      "artifactName": "blas",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libblas.a",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libblas.a",
+      "runtimeFiles": []
+    },
+    "f2c-release-mips": {
+      "artifactName": "f2c",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libf2c.a",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libf2c.a",
+      "runtimeFiles": []
+    },
+    "DBoW2-release-mips": {
+      "artifactName": "DBoW2",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libDBoW2.so",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libDBoW2.so",
+      "runtimeFiles": []
+    },
+    "g2o-release-mips": {
+      "artifactName": "g2o",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libg2o.so",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libg2o.so",
+      "runtimeFiles": []
+    },
+    "ORB_SLAM2_EXCUTOR-release-mips": {
+      "artifactName": "ORB_SLAM2_EXCUTOR",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libORB_SLAM2_EXCUTOR.so",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libORB_SLAM2_EXCUTOR.so",
+      "runtimeFiles": []
+    },
+    "ORB_SLAM2-release-mips": {
+      "artifactName": "ORB_SLAM2",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libORB_SLAM2.so",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/libORB_SLAM2.so",
+      "runtimeFiles": []
+    },
+    "lapack-release-mips": {
+      "artifactName": "lapack",
+      "buildCommand": "/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk APP_ABI\u003dmips NDK_ALL_ABIS\u003dmips NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-24 NDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/liblapack.so",
+      "abi": "mips",
+      "output": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj/local/mips/liblapack.so",
+      "runtimeFiles": []
+    }
+  }
+}

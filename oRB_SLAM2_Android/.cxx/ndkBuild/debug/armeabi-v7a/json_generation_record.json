@@ -1,7 +1,13 @@
 [
   {
+    "level": "WARN",
+    "message": "Platform version \u002728\u0027 is beyond \u002724\u0027, the maximum API level supported by this NDK.",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "debug|armeabi-v7a"
+  },
+  {
     "level": "INFO",
-    "message": "Start JSON generation. Platform version: 14 min SDK version: armeabi-v7a",
+    "message": "Start JSON generation. Platform version: 24 min SDK version: armeabi-v7a",
     "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
     "tag": "debug|armeabi-v7a"
   },

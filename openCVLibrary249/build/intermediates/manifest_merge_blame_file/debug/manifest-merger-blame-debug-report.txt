@@ -7,7 +7,7 @@
 7    <uses-sdk
 8        android:minSdkVersion="14"
 8-->/home/nodog/Documents/AndroidStudioProjects/master/openCVLibrary249/src/main/AndroidManifest.xml
-9        android:targetSdkVersion="23" />
+9        android:targetSdkVersion="30" />
 9-->/home/nodog/Documents/AndroidStudioProjects/master/openCVLibrary249/src/main/AndroidManifest.xml
 10
 11</manifest>

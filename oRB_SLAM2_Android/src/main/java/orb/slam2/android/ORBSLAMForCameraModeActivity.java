@@ -216,7 +216,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
     //ERRORING - FIXED 10/08
     static {
-        System.loadLibrary("ORB_SLAM2_EXCUTOR");
+        //System.loadLibrary("tensorflowlite_jni");
+        //System.loadLibrary("tensorflowlite_gpu_jni");
+        System.loadLibrary("ORB_SLAM2_EXECUTOR");
     }
 
     @Override
@@ -317,11 +319,11 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
          */
 
         //USED FOR AOSP DEV
-        //vocPath = "/system/files/SLAM/ORBvoc.txt";
-        //calibrationPath = "/system/files/SLAM/List3.yaml";
+        vocPath = "/system/files/SLAM/ORBvoc.txt";
+        calibrationPath = "/system/files/SLAM/List3.yaml";
 
-        vocPath = "/sdcard/SLAM/ORBvoc.txt";
-        calibrationPath = "/sdcard/SLAM/List3.yaml";
+        //vocPath = "/sdcard/SLAM/ORBvoc.txt";
+       //calibrationPath = "/sdcard/SLAM/List3.yaml";
 
         //make sure both dataset and calibration paths were set by user
         if (TextUtils.isEmpty(vocPath) || TextUtils.isEmpty(calibrationPath)) {

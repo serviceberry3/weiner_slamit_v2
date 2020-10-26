@@ -115,6 +115,11 @@ public:
     list<KeyFrame*> mlpReferences;
     list<double> mlFrameTimes;
 
+    //Posenet
+    Posenet mPosenet;
+
+    TfLiteInterpreter* mInterpreter;
+
 
     list<bool> mlbLost;
 

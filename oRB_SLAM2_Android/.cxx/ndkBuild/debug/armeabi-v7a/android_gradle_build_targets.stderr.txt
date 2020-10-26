@@ -1,0 +1,519 @@
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/src/ScoringObject.cpp:11:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/src/FORB.cpp:18:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Viewer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:30,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Viewer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Viewer.cc:27:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_SYSTEM_VIEWER"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:30,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Viewer.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrameDatabase.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrameDatabase.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:31,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrameDatabase.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrameDatabase.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrameDatabase.cc:29:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_KF_DATABASE"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrameDatabase.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrameDatabase.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrameDatabase.cc:31:0: warning: "LOG" redefined
+ #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrameDatabase.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrameDatabase.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:40:0: note: this is the location of the previous definition
+ #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Converter.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Converter.cc:22:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Map.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Map.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/System.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/System.cc:23:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/System.h:30,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/System.cc:23:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/System.cc:29:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_SYSTEM"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/System.h:30,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/System.cc:23:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/System.cc:31:0: warning: "LOG" redefined
+ #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/System.h:30,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/System.cc:23:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:40:0: note: this is the location of the previous definition
+ #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/ORBextractor.cc:57:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/highgui/highgui_c.h:45:0,
+                 from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/highgui/highgui.hpp:47,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/ORBextractor.cc:58:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Posenet.h:4,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Posenet.cc:1:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/LoopClosing.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LoopClosing.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:31,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/LoopClosing.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LoopClosing.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LoopClosing.cc:37:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_LOOPCLOSING"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/LoopClosing.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LoopClosing.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LoopClosing.cc:39:0: warning: "LOG" redefined
+ #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/LoopClosing.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LoopClosing.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:40:0: note: this is the location of the previous definition
+ #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/MapDrawer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/MapDrawer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/MapDrawer.cc:29:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_SYSTEM_MAPDRAWER"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/MapDrawer.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrame.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:31,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/KeyFrame.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp:46:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Sim3Solver.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Sim3Solver.cc:22:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp:47,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Sim3Solver.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Sim3Solver.cc:22:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/MapPoint.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/MapPoint.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/PnPsolver.h:54,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/PnPsolver.cc:53:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/PnPsolver.h:55,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/PnPsolver.cc:53:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Tracking.cc:22:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Tracking.cc:22:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Tracking.cc:40:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_TRACKING"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Tracking.cc:22:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Tracking.cc:42:0: warning: "LOG" redefined
+ #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Tracking.cc:22:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:40:0: note: this is the location of the previous definition
+ #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp:46:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Initializer.h:23,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Initializer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp:47,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Initializer.h:23,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Initializer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Initializer.cc:30:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_INITIALIZER"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Initializer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Initializer.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Initializer.cc:32:0: warning: "LOG" redefined
+ #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Initializer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Initializer.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:40:0: note: this is the location of the previous definition
+ #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/FrameDrawer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Viewer.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Tracking.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/FrameDrawer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/FrameDrawer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/LocalMapping.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LocalMapping.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:31,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/LocalMapping.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/LocalMapping.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Optimizer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Optimizer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Map.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Optimizer.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Optimizer.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBmatcher.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/ORBmatcher.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBmatcher.h:29,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/ORBmatcher.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core.hpp:4855:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/FORB.h:13,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:25,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Frame.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/operations.hpp:2998:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node.node->tag) ? node.node->data.f : 1e300;
+         ^
+In file included from /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv/cv.h:63:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBextractor.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:28,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Frame.cc:21:
+/home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/core_c.h:1612:9: warning: floating constant exceeds range of 'float' [-Woverflow]
+         CV_NODE_IS_REAL(node->tag) ? node->data.f : 1e300;
+         ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Frame.cc:28:0: warning: "LOG_TAG" redefined
+ #define LOG_TAG "ORB_SLAM_FRAME"
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Frame.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:37:0: note: this is the location of the previous definition
+ #define LOG_TAG "TEMPLATED_VOC_H"
+ ^
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Frame.cc:30:0: warning: "LOG" redefined
+ #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+ ^
+In file included from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/ORBVocabulary.h:26:0,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/KeyFrame.h:27,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/MapPoint.h:24,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/include/Frame.h:26,
+                 from /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/ORB_SLAM2/src/Frame.cc:21:
+/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Thirdparty/DBoW2/include/DBoW2/TemplatedVocabulary.h:40:0: note: this is the location of the previous definition
+ #define LOG(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG, __VA_ARGS__)
+ ^

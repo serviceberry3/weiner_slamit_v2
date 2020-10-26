@@ -55,7 +55,10 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     mpKeyFrameDB(pKFDB),
     mpInitializer(static_cast<Initializer*>(NULL)),
     mpSystem(pSys),
-    mpFrameDrawer(pFrameDrawer), mpMapDrawer(pMapDrawer), mpMap(pMap), mnLastRelocFrameId(0)
+    mpFrameDrawer(pFrameDrawer),
+    mpMapDrawer(pMapDrawer),
+    mpMap(pMap),
+    mnLastRelocFrameId(0)
 {
     // Load camera parameters from settings file
 
@@ -126,20 +129,6 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     mMaxFrames = fps;
 
 
-    cout << endl << "Camera Parameters: " << endl;
-    cout << "- fx: " << fx << endl;
-    cout << "- fy: " << fy << endl;
-    cout << "- cx: " << cx << endl;
-    cout << "- cy: " << cy << endl;
-    cout << "- k1: " << DistCoef.at<float>(0) << endl;
-    cout << "- k2: " << DistCoef.at<float>(1) << endl;
-    if(DistCoef.rows==5)
-        cout << "- k3: " << DistCoef.at<float>(4) << endl;
-    cout << "- p1: " << DistCoef.at<float>(2) << endl;
-    cout << "- p2: " << DistCoef.at<float>(3) << endl;
-    cout << "- fps: " << fps << endl;
-
-
     //int nRGB = fSettings["Camera.RGB"];
     int nRGB = 1;
 
@@ -194,6 +183,12 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
             mDepthMapFactor = 1.0f/mDepthMapFactor;
     }
 */
+
+    //create posenet
+    //create posenet object using our model file, specifying to run it using a GPU delegate
+    mPosenet = Posenet("/home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/assets/posenet_model.tflite", Device::GPU);
+    mInterpreter = mPosenet.getInterpreter();
+
     LOG("Tracking(): finished loading camera parameters");
 }
 
@@ -307,17 +302,16 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
             cvtColor(mImGray,mImGray,CV_BGRA2GRAY);
     }
 
-    //create posenet object using our model file, specifying to run it using a GPU delegate
-    Posenet posenet("/home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/assets/posenet_model.tflite", Device::GPU);
+
 
     //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
     if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
         LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, &posenet);
+        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet);
     }
     else {
         LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, &posenet);
+        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet);
     }
 
     LOG("GrabImageMonocular(): now calling Tracking::Track()...");

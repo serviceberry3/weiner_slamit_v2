@@ -3,37 +3,37 @@ obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/core/optimization_algorithm_do
  jni/Thirdparty/g2o/g2o/core/optimization_algorithm_dogleg.h \
  jni/Thirdparty/g2o/g2o/core/optimization_algorithm_with_hessian.h \
  jni/Thirdparty/g2o/g2o/core/optimization_algorithm.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/utility \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iosfwd \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/utility \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iosfwd \
  jni/Thirdparty/g2o/g2o/core/../stuff/property.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/Thirdparty/g2o/g2o/core/../stuff/string_tools.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
  jni/Thirdparty/g2o/g2o/core/../stuff/macros.h \
  jni/Thirdparty/g2o/g2o/core/hyper_graph.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/limits \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/limits \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map \
  jni/Thirdparty/g2o/g2o/core/sparse_block_matrix.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip \
  jni/Thirdparty/eigen3/Eigen/Core \
  jni/Thirdparty/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
  jni/Thirdparty/eigen3/Eigen/src/Core/util/Macros.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex \
  jni/Thirdparty/eigen3/Eigen/src/Core/util/MKL_support.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/functional \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/climits \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/functional \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/climits \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
  jni/Thirdparty/eigen3/Eigen/src/Core/util/Constants.h \
  jni/Thirdparty/eigen3/Eigen/src/Core/util/Meta.h \
  jni/Thirdparty/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
@@ -153,7 +153,7 @@ obj/local/armeabi-v7a/objs/g2o/Thirdparty/g2o/g2o/core/optimization_algorithm_do
  jni/Thirdparty/g2o/g2o/core/sparse_optimizer.h \
  jni/Thirdparty/g2o/g2o/core/../stuff/macros.h \
  jni/Thirdparty/g2o/g2o/core/optimizable_graph.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/list \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/list \
  jni/Thirdparty/g2o/g2o/core/parameter.h \
  jni/Thirdparty/g2o/g2o/core/parameter_container.h \
  jni/Thirdparty/g2o/g2o/core/jacobian_workspace.h \
@@ -172,47 +172,47 @@ jni/Thirdparty/g2o/g2o/core/optimization_algorithm_with_hessian.h:
 
 jni/Thirdparty/g2o/g2o/core/optimization_algorithm.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/utility:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/utility:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iosfwd:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iosfwd:
 
 jni/Thirdparty/g2o/g2o/core/../stuff/property.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
 jni/Thirdparty/g2o/g2o/core/../stuff/string_tools.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib:
 
 jni/Thirdparty/g2o/g2o/core/../stuff/macros.h:
 
 jni/Thirdparty/g2o/g2o/core/hyper_graph.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/set:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/bitset:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/limits:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/limits:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstddef:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/tr1/unordered_map:
 
 jni/Thirdparty/g2o/g2o/core/sparse_block_matrix.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/iomanip:
 
 jni/Thirdparty/eigen3/Eigen/Core:
 
@@ -220,19 +220,19 @@ jni/Thirdparty/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
 
 jni/Thirdparty/eigen3/Eigen/src/Core/util/Macros.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/complex:
 
 jni/Thirdparty/eigen3/Eigen/src/Core/util/MKL_support.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cerrno:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/functional:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/functional:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/climits:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/climits:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
 jni/Thirdparty/eigen3/Eigen/src/Core/util/Constants.h:
 
@@ -474,7 +474,7 @@ jni/Thirdparty/g2o/g2o/core/../stuff/macros.h:
 
 jni/Thirdparty/g2o/g2o/core/optimizable_graph.h:
 
-/home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/sources/cxx-stl/gnu-libstdc++/4.9/include/list:
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/list:
 
 jni/Thirdparty/g2o/g2o/core/parameter.h:
 

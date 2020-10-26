@@ -1,11 +1,16 @@
-#ifndef WEINER_SLAMIT_V2_POSENET_H
-#define WEINER_SLAMIT_V2_POSENET_H
+#ifndef POSENET_H
+#define POSENET_H
 
-extern "C" {
+#include <opencv2/core/core.hpp>
+#include <vector>
+
 #include "c_api.h"
-#include "delegate.h" }
+#include "delegate.h"
+
 
 namespace ORB_SLAM2 {
+
+    //TfLiteInterpreterOptions* TfLiteInterpreterOptionsCreate();
 
     enum class Device {
           CPU,
@@ -31,13 +36,13 @@ namespace ORB_SLAM2 {
 
 
         public:
+            Posenet();
             Posenet(const char* pFilename, Device pDevice);
             void close();
             TfLiteInterpreter* getInterpreter();
             std::vector<float> initInputArray(cv::Mat incomingImg);
-
     };
 
 }
 
-#endif //WEINER_SLAMIT_V2_POSENET_H
+#endif //POSENET_H

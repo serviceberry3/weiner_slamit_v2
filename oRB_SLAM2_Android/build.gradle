@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion '24.0.0'
+    buildToolsVersion '26.0.2'
 
     sourceSets.main {
         jni.srcDirs = []
@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "orb.slam2.android"
-        minSdkVersion 16
+        minSdkVersion 28
         targetSdkVersion 30
 
         ndk {
@@ -32,6 +32,7 @@ android {
             debuggable = true
         }
     }
+
 
 }
 

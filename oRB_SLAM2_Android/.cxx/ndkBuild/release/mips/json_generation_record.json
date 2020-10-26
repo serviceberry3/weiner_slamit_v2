@@ -1,0 +1,98 @@
+[
+  {
+    "level": "WARN",
+    "message": "Platform version \u002728\u0027 is beyond \u002724\u0027, the maximum API level supported by this NDK.",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "Start JSON generation. Platform version: 24 min SDK version: mips",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "rebuilding JSON /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips/android_gradle_build.json due to:",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "- expected json /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips/android_gradle_build.json file is not present, will remove stale json folder",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "- missing previous command file /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips/build_command.txt, will remove stale json folder",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "- command changed from previous, will remove stale json folder",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "removing stale contents from \u0027/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips\u0027",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "created folder \u0027/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips\u0027",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "executing ndkBuild Executable : /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build\narguments : \nNDK_PROJECT_PATH\u003dnull\nAPP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk\nNDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk\nAPP_ABI\u003dmips\nNDK_ALL_ABIS\u003dmips\nNDK_DEBUG\u003d0\nAPP_PLATFORM\u003dandroid-24\nNDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj\nNDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib\nAPP_SHORT_COMMANDS\u003dfalse\nLOCAL_SHORT_COMMANDS\u003dfalse\n-B\n-n\njvmArgs : \n\n",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "Executable : /home/nodog/Android/Sdk/ndk/android-ndk-r11c-linux-x86_64/android-ndk-r11c/ndk-build\narguments : \nNDK_PROJECT_PATH\u003dnull\nAPP_BUILD_SCRIPT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk\nNDK_APPLICATION_MK\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk\nAPP_ABI\u003dmips\nNDK_ALL_ABIS\u003dmips\nNDK_DEBUG\u003d0\nAPP_PLATFORM\u003dandroid-24\nNDK_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/obj\nNDK_LIBS_OUT\u003d/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/release/lib\nAPP_SHORT_COMMANDS\u003dfalse\nLOCAL_SHORT_COMMANDS\u003dfalse\n-B\n-n\njvmArgs : \n\n",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "done executing ndkBuild",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "write build output /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips/build_output.txt",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "parse and convert ndk-build output to build configuration JSON",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "found application make file /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Application.mk",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "write command file /home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/release/mips/build_command.txt",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  },
+  {
+    "level": "INFO",
+    "message": "JSON generation completed without problems",
+    "file": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/src/main/jni/Android.mk",
+    "tag": "release|mips"
+  }
+]

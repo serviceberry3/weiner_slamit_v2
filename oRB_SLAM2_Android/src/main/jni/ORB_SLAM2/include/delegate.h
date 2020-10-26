@@ -120,8 +120,7 @@ TFL_CAPI_EXPORT TfLiteGpuDelegateOptionsV2 TfLiteGpuDelegateOptionsV2Default();
 // make use of the fastest available on a device.
 //
 // When `options` is set to `nullptr`, then default options are used.
-TFL_CAPI_EXPORT TfLiteDelegate* TfLiteGpuDelegateV2Create(
-    const TfLiteGpuDelegateOptionsV2* options);
+TFL_CAPI_EXPORT TfLiteDelegate* TfLiteGpuDelegateV2Create(const TfLiteGpuDelegateOptionsV2* options);
 
 // Destroys a delegate created with `TfLiteGpuDelegateV2Create` call.
 TFL_CAPI_EXPORT void TfLiteGpuDelegateV2Delete(TfLiteDelegate* delegate);

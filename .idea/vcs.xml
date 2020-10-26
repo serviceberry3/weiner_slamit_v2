@@ -2,6 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/oRB_SLAM2_Android/src/main/tensorflow" vcs="Git" />
   </component>
 </project>

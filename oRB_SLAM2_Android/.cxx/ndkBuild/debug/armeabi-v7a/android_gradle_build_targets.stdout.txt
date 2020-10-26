@@ -1,3 +1,38 @@
+[armeabi-v7a] Compile++ thumb: DBoW2 <= FeatureVector.cpp
+[armeabi-v7a] Compile++ thumb: DBoW2 <= ScoringObject.cpp
+[armeabi-v7a] Compile++ thumb: DBoW2 <= BowVector.cpp
+[armeabi-v7a] Compile++ thumb: DBoW2 <= FORB.cpp
+[armeabi-v7a] Compile++ thumb: DLib <= Random.cpp
+[armeabi-v7a] Compile++ thumb: DLib <= Timestamp.cpp
+[armeabi-v7a] SharedLibrary  : libDLib.so
+[armeabi-v7a] SharedLibrary  : libDBoW2.so
 make: Nothing to be done for 'DLib'.
-make: Nothing to be done for 'g2o'.
-make: Nothing to be done for 'lapack'.
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Viewer.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= KeyFrameDatabase.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Converter.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Map.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= System.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= ORBextractor.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Posenet.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= LoopClosing.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= MapDrawer.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= KeyFrame.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Sim3Solver.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= MapPoint.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= PnPsolver.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Tracking.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Initializer.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= FrameDrawer.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= LocalMapping.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Optimizer.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= ORBmatcher.cc
+[armeabi-v7a] Compile++ thumb: ORB_SLAM2 <= Frame.cc
+[armeabi-v7a] Compile++ thumb: g2o <= parameter.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= solver.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= estimate_propagator.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= factory.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= marginal_covariance_cholesky.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= sparse_block_matrix_test.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= jacobian_workspace.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= batch_stats.cpp
+[armeabi-v7a] Compile++ thumb: g2o <= robust_kernel_factory.cpp

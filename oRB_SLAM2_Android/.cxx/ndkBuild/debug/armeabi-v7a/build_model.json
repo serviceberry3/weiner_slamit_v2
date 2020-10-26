@@ -1,6 +1,6 @@
 {
   "abi": "ARMEABI_V7A",
-  "abiPlatformVersion": 14,
+  "abiPlatformVersion": 24,
   "buildSettings": {
     "environmentVariables": []
   },
@@ -15,6 +15,7 @@
   "variant": {
     "buildSystemArgumentList": [],
     "buildTargetSet": [],
+    "implicitBuildTargetSet": [],
     "cFlagsList": [],
     "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
     "cppFlagsList": [],
@@ -96,6 +97,7 @@
       "project": {
         "compilerSettingsCacheFolder": "/home/nodog/Documents/AndroidStudioProjects/master/.cxx",
         "cxxFolder": "/home/nodog/Documents/AndroidStudioProjects/master/.cxx",
+        "ideBuildTargetAbi": "arm64-v8a,armeabi-v7a,armeabi",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
@@ -142,13 +144,7 @@
     "objFolder": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/build/intermediates/ndkBuild/debug/obj/local",
     "variantName": "debug",
     "validAbiList": [
-      "ARMEABI",
-      "ARMEABI_V7A",
-      "ARM64_V8A",
-      "X86",
-      "X86_64",
-      "MIPS",
-      "MIPS64"
+      "ARMEABI_V7A"
     ],
     "prefabDirectory": "/home/nodog/Documents/AndroidStudioProjects/master/oRB_SLAM2_Android/.cxx/ndkBuild/debug/prefab",
     "prefabPackageDirectoryList": []

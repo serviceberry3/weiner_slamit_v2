@@ -1,18 +1,18 @@
-#include <vector>
+#include "Posenet.h"
 #include <string>
 #include <stdio.h>
-#include <opencv2/core/core.hpp>
 #include <android/log.h>
-#include "Posenet.h"
 #define LOG_TAG "POSENET.CC"
 
 #define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
 
-
+//TfLiteInterpreterOptions* TfLiteInterpreterOptionsCreate();
 using namespace std;
 
 namespace ORB_SLAM2
 {
+
+
 
 
 //std::unique_ptr<TfLiteInterpreter> interpreter;
@@ -57,10 +57,15 @@ class Person {
 };
 
 
-    Posenet::Posenet(const char* pFilename, Device pDevice) {
-        this->filename = pFilename;
-        this->device = pDevice;
-    }
+Posenet::Posenet(const char* pFilename, Device pDevice) {
+    this->filename = pFilename;
+    this->device = pDevice;
+    this->model = TfLiteModelCreateFromFile(pFilename);
+}
+
+//default constructor to avoid errors when we declare a new posenet in header files
+Posenet::Posenet()
+{}
 
 
     //set up the Tensorflow inference interpreter
@@ -81,17 +86,15 @@ class Person {
 
         if (this->device == Device::GPU) {
             //set up GPU delegate
-            /*
-            gpuDelegate = GpuDelegate()
-            options.addDelegate(gpuDelegate)*/
+
+            //gpuDelegate = GpuDelegate()
+            //options.addDelegate(gpuDelegate)
         }
         else if (device == Device::NNAPI) {
             //what to do here?
             //Device.NNAPI -> options.setUseNNAPI(true)
         }
 
-        //Set up interpreter.
-        model = TfLiteModelCreateFromFile(this->filename);
 
 
         //customize the gpu delegate
@@ -104,7 +107,7 @@ class Person {
         }; //TfLiteGpuDelegateOptionsV2Default() doesn't fix the error either
 
 
-        TfLiteDelegate* delegate = TfLiteGpuDelegateV2Create(&gpuDelegate);
+        //TfLiteDelegate* delegate = TfLiteGpuDelegateV2Create(&gpuDelegate);
 
         //TfLiteDelegate* delegate = TfLiteGpuDelegateV2Default(&gpuDelegate);
 
@@ -112,19 +115,21 @@ class Person {
         //if (interpreter->ModifyGraphWithDelegate(delegate) != kTfLiteOk) return false;
 
 
-        TfLiteInterpreterOptionsAddDelegate(options, delegate);
+        //TfLiteInterpreterOptionsAddDelegate(options, delegate);
 
-
+        //instantiate the interpreter using the model we loaded
         TfLiteInterpreter* interpreter = TfLiteInterpreterCreate(model, options);
+
+        //allocate tensors for the interpreter
         TfLiteInterpreterAllocateTensors(interpreter);
-
-
+        return interpreter;
+/*
         TfLiteTensor* input_tensor = TfLiteInterpreterGetInputTensor(interpreter, 0);
         const TfLiteTensor* output_tensor = TfLiteInterpreterGetOutputTensor(interpreter, 0);
         //TfLiteStatus from_status = TfLiteTensorCopyFromBuffer(input_tensor, input_data, TfLiteTensorByteSize(input_tensor));
 
 
-        TfLiteStatus interpreter_invoke_status = TfLiteInterpreterInvoke(interpreter);
+        //TfLiteStatus interpreter_invoke_status = TfLiteInterpreterInvoke(interpreter);
 
 
         //TfLiteStatus to_status = TfLiteTensorCopyToBuffer(output_tensor, output_data, TfLiteTensorByteSize(output_tensor));
@@ -132,15 +137,15 @@ class Person {
 
         //if (interpreter->ModifyGraphWithDelegate(delegate) != kTfLiteOk) return;
 
-/*
-        ops::builtin::BuiltinOpResolver op_resolver;
 
-        TfLiteInterpreter* interpreter;
+        //ops::builtin::BuiltinOpResolver op_resolver;
 
-        InterpreterBuilder(*model, op_resolver)(&interpreter);
-*/
+        //TfLiteInterpreter* interpreter;
 
-        return interpreter;
+        //InterpreterBuilder(*model, op_resolver)(&interpreter);
+
+
+        return interpreter;*/
 }
 
     //clean up the interpreter and possibly the gpuDelegate
@@ -151,8 +156,8 @@ class Person {
         TfLiteModelDelete(model);
     }
 
-   //Scale the image pixels to a float array of [-1,1] values.
-   std::vector<float> Posenet::initInputArray(cv::Mat incomingImg) { //the mat will be in RGBA format
+    //Scale the image pixels to a float array of [-1,1] values.
+    std::vector<float> Posenet::initInputArray(cv::Mat incomingImg) { //the mat will be in RGBA format
     int bytesPerChannel = 4;
     int inputChannels = incomingImg.channels();
     LOG("incoming Mat has %d channels", inputChannels);
@@ -191,50 +196,36 @@ class Person {
     return inputBuffer;
   }
 
-/*
 
-
- //Returns value within [0,1].
-  private fun sigmoid(x: Float): Float {
+  //Returns value within [0,1].
+  private float sigmoid(float x) {
     return (1.0f / (1.0f + exp(-x)))
   }
 
 
-
-
-  // Preload and memory map the model file, returning a MappedByteBuffer containing the model.
-  private fun loadModelFile(path: String, context: Context): MappedByteBuffer {
-    //open up the file
-    val fileDescriptor = context.assets.openFd(path)
-
-    //start an input stream to write into the file
-    val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
-
-    return inputStream.channel.map(FileChannel.MapMode.READ_ONLY, fileDescriptor.startOffset, fileDescriptor.declaredLength)
-  }
-
-
   //Initializes an outputMap of 1 * x * y * z FloatArrays for the model processing to populate.
+  private std::unordered_map initOutputMap(TfLiteInterpreter* interpreter) {
+    std::unordered_map outputMap = HashMap<Int, Any>()
 
-  private fun initOutputMap(interpreter: Interpreter): HashMap<Int, Any> {
-    val outputMap = HashMap<Int, Any>()
+    TfLiteTensor* t0 = TfLiteInterpreterGetOutputTensor(interpreter, 0);
 
-    // 1 * 9 * 9 * 17 contains heatmaps
-    val heatmapsShape = interpreter.getOutputTensor(0).shape()
-    outputMap[0] = Array(heatmapsShape[0]) {
-      Array(heatmapsShape[1]) {
-        Array(heatmapsShape[2]) { FloatArray(heatmapsShape[3]) }
-      }
-    }
+    //1 * 9 * 9 * 17 contains heatmaps
+    int32_t numDims = TfLiteTensorNumDims(t0);
+
+    int[] heatmapsShape;
+
+
+    outputMap[0] = Array(heatmapsShape[0]) { Array(heatmapsShape[1]) { Array(heatmapsShape[2]) { FloatArray(heatmapsShape[3]) } } }
 
     // 1 * 9 * 9 * 34 contains offsets
-    val offsetsShape = interpreter.getOutputTensor(1).shape()
+    int[] offsetsShape = interpreter.getOutputTensor(1).shape()
     outputMap[1] = Array(offsetsShape[0]) {
       Array(offsetsShape[1]) { Array(offsetsShape[2]) { FloatArray(offsetsShape[3]) } }
     }
 
     // 1 * 9 * 9 * 32 contains forward displacements
-    val displacementsFwdShape = interpreter.getOutputTensor(2).shape()
+    int[] displacementsFwdShape = interpreter.getOutputTensor(2).shape()
+
     outputMap[2] = Array(offsetsShape[0]) {
       Array(displacementsFwdShape[1]) {
         Array(displacementsFwdShape[2]) { FloatArray(displacementsFwdShape[3]) }
@@ -242,17 +233,17 @@ class Person {
     }
 
     //1 * 9 * 9 * 32 contains backward displacements
-    val displacementsBwdShape = interpreter.getOutputTensor(3).shape()
+    int[] displacementsBwdShape = interpreter.getOutputTensor(3).shape()
     outputMap[3] = Array(displacementsBwdShape[0]) {
       Array(displacementsBwdShape[1]) {
         Array(displacementsBwdShape[2]) { FloatArray(displacementsBwdShape[3]) }
       }
     }
 
-    return outputMap
+    return outputMap;
   }
 
-
+/*
     Estimates the pose for a single person.
     args:
          bitmap: image bitmap of frame that should be processed

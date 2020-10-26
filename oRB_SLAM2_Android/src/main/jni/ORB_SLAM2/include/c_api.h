@@ -66,14 +66,14 @@ limitations under the License.
 /// TfLiteInterpreterOptionsDelete(options);
 /// TfLiteModelDelete(model);
 
-//#ifdef __cplusplus
+#ifdef __cplusplus
 extern "C" {
-//#endif  // __cplusplus
+#endif  // __cplusplus
 
 // --------------------------------------------------------------------------
 // TfLiteVersion returns a string describing version information of the
 // TensorFlow Lite library. TensorFlow Lite uses semantic versioning.
-TFL_CAPI_EXPORT extern const char* TfLiteVersion(void);
+TFL_CAPI_EXPORT const char* TfLiteVersion(void);
 
 // --------------------------------------------------------------------------
 // TfLiteModel wraps a loaded TensorFlow Lite model.
@@ -95,8 +95,7 @@ TFL_CAPI_EXPORT extern void TfLiteModelDelete(TfLiteModel* model);
 typedef struct TfLiteInterpreterOptions TfLiteInterpreterOptions;
 
 // Returns a new interpreter options instances.
-TFL_CAPI_EXPORT extern TfLiteInterpreterOptions*
-TfLiteInterpreterOptionsCreate();
+TFL_CAPI_EXPORT extern TfLiteInterpreterOptions* TfLiteInterpreterOptionsCreate();
 
 // Destroys the interpreter options instance.
 TFL_CAPI_EXPORT extern void TfLiteInterpreterOptionsDelete(
@@ -248,8 +247,8 @@ TFL_CAPI_EXPORT extern TfLiteStatus TfLiteTensorCopyToBuffer(
     const TfLiteTensor* output_tensor, void* output_data,
     size_t output_data_size);
 
-//#ifdef __cplusplus
+#ifdef __cplusplus
 }  // extern "C"
-//#endif  // __cplusplus
+#endif  // __cplusplus
 
 #endif  // TENSORFLOW_LITE_C_C_API_H_
