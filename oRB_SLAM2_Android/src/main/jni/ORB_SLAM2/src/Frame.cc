@@ -220,7 +220,7 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     resize(imGray, scaledImage, size, CV_INTER_NN);
 
     //now we wanna feed the scaled image into Posenet to see if there's a person in the image
-    posenet.initInputArray(scaledImage);
+    Person person = posenet.estimateSinglePose(scaledImage);
 
     //ORB extraction (key feature extraction)
     ExtractORB(0, imGray);

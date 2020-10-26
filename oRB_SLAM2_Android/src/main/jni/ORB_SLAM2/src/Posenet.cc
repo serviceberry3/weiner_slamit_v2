@@ -18,43 +18,9 @@ namespace ORB_SLAM2
 //std::unique_ptr<TfLiteInterpreter> interpreter;
 //TfLiteInterpreter interpreter;
 
-enum class BodyPart {
-   NOSE,
-   LEFT_EYE,
-   RIGHT_EYE,
-   LEFT_EAR,
-   RIGHT_EAR,
-   LEFT_SHOULDER,
-   RIGHT_SHOULDER,
-   LEFT_ELBOW,
-   RIGHT_ELBOW,
-   LEFT_WRIST,
-   RIGHT_WRIST,
-   LEFT_HIP,
-   RIGHT_HIP,
-   LEFT_KNEE,
-   RIGHT_KNEE,
-   LEFT_ANKLE,
-   RIGHT_ANKLE
-};
 
 
-class Position {
-    TfLiteModel* model;
-    float x;
-    float y;
-};
 
-class KeyPoint {
-  BodyPart bodyPart;
-  Position position;
-  float score;
-};
-
-class Person {
-  std::vector<KeyPoint> keyPoints;
-  float score;
-};
 
 
 Posenet::Posenet(const char* pFilename, Device pDevice) {
@@ -369,40 +335,96 @@ Posenet::Posenet()
             outputMap[3] = displacementsBwd;
 
 
-  
+
     return outputMap;
   }
 
-/*
-    Estimates the pose for a single person.
-    args:
-         bitmap: image bitmap of frame that should be processed
-   returns:
-        person: a Person object containing data about keypoint locations and confidence scores
 
-  @Suppress("UNCHECKED_CAST")
-  fun estimateSinglePose(bitmap: Bitmap): Person {
-    val estimationStartTimeNanos = SystemClock.elapsedRealtimeNanos()
-    val inputArray = arrayOf(initInputArray(bitmap))
+  void Posenet::runForMultipleInputsOutputs(std::vector<float> inputs
+  , std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputs) {
+  /*
+        this.inferenceDurationNanoseconds = -1L;
+                if (inputs != null && inputs.length != 0) {
+                    if (outputs != null && !outputs.isEmpty()) {
+                        for(int i = 0; i < inputs.length; ++i) {
+                            Tensor tensor = this.getInputTensor(i);
+                            int[] newShape = tensor.getInputShapeIfDifferent(inputs[i]);
+                            if (newShape != null) {
+                                this.resizeInput(i, newShape);
+                            }
+                        }
+
+                        boolean needsAllocation = !this.isMemoryAllocated;
+                        if (needsAllocation) {
+                            allocateTensors(this.interpreterHandle, this.errorHandle);
+                            this.isMemoryAllocated = true;
+                        }
+
+                        for(int i = 0; i < inputs.length; ++i) {
+                            this.getInputTensor(i).setTo(inputs[i]);
+                        }
+
+                        long inferenceStartNanos = System.nanoTime();
+
+                        //invoke
+                        run(this.interpreterHandle, this.errorHandle);
+
+
+                        long inferenceDurationNanoseconds = System.nanoTime() - inferenceStartNanos;
+                        if (needsAllocation) {
+                            for(int i = 0; i < this.outputTensors.length; ++i) {
+                                if (this.outputTensors[i] != null) {
+                                    this.outputTensors[i].refreshShape();
+                                }
+                            }
+                        }
+
+                        Iterator var13 = outputs.entrySet().iterator();
+
+                        while(var13.hasNext()) {
+                            Entry<Integer, Object> output = (Entry)var13.next();
+                            this.getOutputTensor((Integer)output.getKey()).copyTo(output.getValue());
+                        }
+
+                        this.inferenceDurationNanoseconds = inferenceDurationNanoseconds;
+                    } else {
+                        throw new IllegalArgumentException("Input error: Outputs should not be null or empty.");
+                    }
+                } else {
+                    throw new IllegalArgumentException("Input error: Inputs should not be null or empty.");
+                }
+                */
+  }
+
+
+
+
+ Person Posenet::estimateSinglePose(cv::Mat img) {
+    clock_t estimationStartTimeNanos = clock();
+
+    std::vector<float> inputArray = initInputArray(img);
 
     //print out how long scaling took
     //Log.i("posenet", String.format("Scaling to [-1,1] took %.2f ms", 1.0f * (SystemClock.elapsedRealtimeNanos() - estimationStartTimeNanos) / 1_000_000))
 
-    val outputMap = initOutputMap(getInterpreter())
+    std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputMap = initOutputMap(getInterpreter());
 
     //get the elapsed time since system boot
-    val inferenceStartTimeNanos = SystemClock.elapsedRealtimeNanos()
+    clock_t inferenceStartTimeNanos = clock();
 
     //from https://www.tensorflow.org/lite/guide/inference: each entry in inputArray corresponds to an input tensor and
     //outputMap maps indices of output tensors to the corresponding output data.
-    getInterpreter().runForMultipleInputsOutputs(inputArray, outputMap)
+    runForMultipleInputsOutputs(inputArray, outputMap);
 
     //get the elapsed time since system boot again, and subtract the first split we took to find how long running the model took
-    lastInferenceTimeNanos = SystemClock.elapsedRealtimeNanos() - inferenceStartTimeNanos
+    clock_t lastInferenceTimeNanos = clock() - inferenceStartTimeNanos;
 
     //print out how long the interpreter took
     //Log.i("posenet", String.format("Interpreter took %.2f ms", 1.0f * lastInferenceTimeNanos / 1_000_000))
 
+
+
+    /*
     val heatmaps = outputMap[0] as Array<Array<Array<FloatArray>>>
     val offsets = outputMap[1] as Array<Array<Array<FloatArray>>>
 
@@ -443,7 +465,8 @@ Posenet::Posenet()
       confidenceScores[idx] = sigmoid(heatmaps[0][positionY][positionX][idx])
     }
 
-    val person = Person()
+    Person person = Person();
+
     val keypointList = Array(numKeypoints) { KeyPoint() }
     var totalScore = 0.0f
 
@@ -458,8 +481,20 @@ Posenet::Posenet()
     person.keyPoints = keypointList.toList()
     person.score = totalScore / numKeypoints
 
-    return person
+    return person;*/
   }
+
+
+
+
+
+
+
+
+
+
+/*
+  //FROM GITHUB
 
   int i, x, y, j;
          static Point Pnt[17];                       //heatmap
