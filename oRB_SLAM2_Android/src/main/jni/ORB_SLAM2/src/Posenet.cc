@@ -158,88 +158,218 @@ Posenet::Posenet()
 
     //Scale the image pixels to a float array of [-1,1] values.
     std::vector<float> Posenet::initInputArray(cv::Mat incomingImg) { //the mat will be in RGBA format
-    int bytesPerChannel = 4;
-    int inputChannels = incomingImg.channels();
-    LOG("incoming Mat has %d channels", inputChannels);
-    int batchSize = 1;
+        int bytesPerChannel = 4;
+        int inputChannels = incomingImg.channels();
+        LOG("incoming Mat has %d channels", inputChannels);
+        int batchSize = 1;
 
-    int cols = incomingImg.cols;
-    int rows = incomingImg.rows;
+        int cols = incomingImg.cols;
+        int rows = incomingImg.rows;
 
-    LOG("incoming Mat has %d rows, %d cols", rows, cols);
+        LOG("incoming Mat has %d rows, %d cols", rows, cols);
 
-    //allocate a float array for all 3 input channels (for each channel allocate space for the entire Mat)
-    std::vector<float> inputBuffer(batchSize * bytesPerChannel * cols * rows * inputChannels / 4, 0); //div by 4 because we were doing bytes
+        //allocate a float array for all 3 input channels (for each channel allocate space for the entire Mat)
+        std::vector<float> inputBuffer(batchSize * bytesPerChannel * cols * rows * inputChannels / 4, 0); //div by 4 because we were doing bytes
 
-    float mean = 128.0;
-    float std = 128.0;
+        float mean = 128.0;
+        float std = 128.0;
 
-    //create an int array that's size of the bitmap
-    //int intValues[cols * rows];
+        //create an int array that's size of the bitmap
+        //int intValues[cols * rows];
 
-    //convert the incoming image to 32-bit signed integers (combines the channels)
-    incomingImg.convertTo(incomingImg, CV_32SC1);
+        //convert the incoming image to 32-bit signed integers (combines the channels)
+        incomingImg.convertTo(incomingImg, CV_32SC1);
 
-    //get pointer to the data (array of ints)
-    const int* intValues = (int*) incomingImg.data;
+        int cols2 = incomingImg.cols;
+        int rows2 = incomingImg.rows;
 
-    //get all pixels from Mat and store them in intValues
-    //bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+        LOG("incoming Mat AFTER CONVERSION has %d rows, %d cols", rows2, cols2);
 
-    //put one float into the ByteBuffer for I'm guessing each input channel
-    for (int i = 0; i < cols * rows; i++) {
-      inputBuffer.push_back(((intValues[i] >> 16 & 0xFF) - mean) / std);
-      inputBuffer.push_back(((intValues[i] >> 8 & 0xFF) - mean) / std);
-      inputBuffer.push_back(((intValues[i] & 0xFF) - mean) / std);
-    }
+        //get pointer to the data (array of ints)
+        const int* intValues = (int*) incomingImg.data;
 
-    return inputBuffer;
+        //get all pixels from Mat and store them in intValues
+        //bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+
+        //put one float into the ByteBuffer for I'm guessing each input channel
+        for (int i = 0; i < cols * rows; i++) {
+          inputBuffer.push_back(((intValues[i] >> 16 & 0xFF) - mean) / std);
+          inputBuffer.push_back(((intValues[i] >> 8 & 0xFF) - mean) / std);
+          inputBuffer.push_back(((intValues[i] & 0xFF) - mean) / std);
+        }
+
+        return inputBuffer;
   }
 
 
   //Returns value within [0,1].
-  private float sigmoid(float x) {
-    return (1.0f / (1.0f + exp(-x)))
+  float Posenet::sigmoid(float x) {
+    return (1.0 / (1.0 + exp(-x)));
   }
 
 
-  //Initializes an outputMap of 1 * x * y * z FloatArrays for the model processing to populate.
-  private std::unordered_map initOutputMap(TfLiteInterpreter* interpreter) {
-    std::unordered_map outputMap = HashMap<Int, Any>()
+  //Initializes a 4D outputMap of 1 * x * y * z float arrays for the model processing to populate.
+  std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > Posenet::initOutputMap(
+  TfLiteInterpreter* interpreter) {
 
-    TfLiteTensor* t0 = TfLiteInterpreterGetOutputTensor(interpreter, 0);
+    //make a map from int to something (some object)
+    std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputMap;
 
-    //1 * 9 * 9 * 17 contains heatmaps
+
+    //HEATMAP -- 1 * 9 * 9 * 17 contains heatmaps
+
+    const TfLiteTensor* t0 = TfLiteInterpreterGetOutputTensor(interpreter, 0);
+
     int32_t numDims = TfLiteTensorNumDims(t0);
 
-    int[] heatmapsShape;
+    //initialize int array to hold all dimens
+    std::vector<int32_t> heatmapsShape;
 
-
-    outputMap[0] = Array(heatmapsShape[0]) { Array(heatmapsShape[1]) { Array(heatmapsShape[2]) { FloatArray(heatmapsShape[3]) } } }
-
-    // 1 * 9 * 9 * 34 contains offsets
-    int[] offsetsShape = interpreter.getOutputTensor(1).shape()
-    outputMap[1] = Array(offsetsShape[0]) {
-      Array(offsetsShape[1]) { Array(offsetsShape[2]) { FloatArray(offsetsShape[3]) } }
+    //iterate over the num of dimensions this tensor has, getting each one and storing it
+    for (int i = 0; i < numDims; i++) {
+        //get this dimension and add it to the list
+        heatmapsShape.push_back(TfLiteTensorDim(t0, i));
     }
 
-    // 1 * 9 * 9 * 32 contains forward displacements
-    int[] displacementsFwdShape = interpreter.getOutputTensor(2).shape()
+    //4D array of floats for the keypoints heatmap
 
-    outputMap[2] = Array(offsetsShape[0]) {
-      Array(displacementsFwdShape[1]) {
-        Array(displacementsFwdShape[2]) { FloatArray(displacementsFwdShape[3]) }
-      }
+    //intialize level 0
+    std::vector<std::vector<std::vector<std::vector<float>>>> heatmaps(heatmapsShape[0]);
+
+    //initialize level 1
+    for (int l0 = 0; l0 < heatmapsShape[0]; l0++) {
+        heatmaps[l0] = std::vector<std::vector<std::vector<float>>>(heatmapsShape[1]);
+
+        //initialize level 2
+        for (int l1 = 0; l1 < heatmapsShape[1]; l1++) {
+            heatmaps[l0][l1] = std::vector<std::vector<float>>(heatmapsShape[2]);
+
+            //initialize level 3
+            for (int l2 = 0; l2 < heatmapsShape[2]; l2++) {
+                heatmaps[l0][l1][l2] = std::vector<float>(heatmapsShape[3]);
+            }
+        }
     }
 
-    //1 * 9 * 9 * 32 contains backward displacements
-    int[] displacementsBwdShape = interpreter.getOutputTensor(3).shape()
-    outputMap[3] = Array(displacementsBwdShape[0]) {
-      Array(displacementsBwdShape[1]) {
-        Array(displacementsBwdShape[2]) { FloatArray(displacementsBwdShape[3]) }
-      }
-    }
+    outputMap[0] = heatmaps;
 
+
+    //OFFSETS -- 1 * 9 * 9 * 34 contains offsets
+
+    const TfLiteTensor* t1 = TfLiteInterpreterGetOutputTensor(interpreter, 1);
+
+
+        numDims = TfLiteTensorNumDims(t1);
+
+        //initialize int array to hold all dimens
+        std::vector<int32_t> offsetsShape;
+
+        //iterate over the num of dimensions this tensor has, getting each one and storing it
+        for (int i = 0; i < numDims; i++) {
+            //get this dimension and add it to the list
+            offsetsShape.push_back(TfLiteTensorDim(t1, i));
+        }
+
+        //4D array of floats for the keypoints heatmap
+
+        //intialize level 0
+        std::vector<std::vector<std::vector<std::vector<float>>>> offsets(offsetsShape[0]);
+
+        //initialize level 1
+        for (int l0 = 0; l0 < offsetsShape[0]; l0++) {
+            offsets[l0] = std::vector<std::vector<std::vector<float>>>(offsetsShape[1]);
+
+            //initialize level 2
+            for (int l1 = 0; l1 < offsetsShape[1]; l1++) {
+                offsets[l0][l1] = std::vector<std::vector<float>>(offsetsShape[2]);
+
+                //initialize level 3
+                for (int l2 = 0; l2 < offsetsShape[2]; l2++) {
+                    offsets[l0][l1][l2] = std::vector<float>(offsetsShape[3]);
+                }
+            }
+        }
+
+        outputMap[1] = offsets;
+
+    //FORWARD DISPLACEMENTS -- 1 * 9 * 9 * 32 contains forward displacements
+    const TfLiteTensor* t2 = TfLiteInterpreterGetOutputTensor(interpreter, 2);
+
+
+            numDims = TfLiteTensorNumDims(t2);
+
+            //initialize int array to hold all dimens
+            std::vector<int32_t> displacementsFwdShape;
+
+            //iterate over the num of dimensions this tensor has, getting each one and storing it
+            for (int i = 0; i < numDims; i++) {
+                //get this dimension and add it to the list
+                displacementsFwdShape.push_back(TfLiteTensorDim(t2, i));
+            }
+
+            //4D array of floats for the keypoints heatmap
+
+            //intialize level 0
+            std::vector<std::vector<std::vector<std::vector<float>>>> displacementsFwd(displacementsFwdShape[0]);
+
+            //initialize level 1
+            for (int l0 = 0; l0 < displacementsFwdShape[0]; l0++) {
+                displacementsFwd[l0] = std::vector<std::vector<std::vector<float>>>(displacementsFwdShape[1]);
+
+                //initialize level 2
+                for (int l1 = 0; l1 < displacementsFwdShape[1]; l1++) {
+                    displacementsFwd[l0][l1] = std::vector<std::vector<float>>(displacementsFwdShape[2]);
+
+                    //initialize level 3
+                    for (int l2 = 0; l2 < displacementsFwdShape[2]; l2++) {
+                        displacementsFwd[l0][l1][l2] = std::vector<float>(displacementsFwdShape[3]);
+                    }
+                }
+            }
+
+            outputMap[2] = displacementsFwd;
+
+
+
+    //BACKWARD DISPLACEMENTS -- 1 * 9 * 9 * 32 contains backward displacements
+    const TfLiteTensor* t3 = TfLiteInterpreterGetOutputTensor(interpreter, 3);
+
+
+            numDims = TfLiteTensorNumDims(t3);
+
+            //initialize int array to hold all dimens
+            std::vector<int32_t> displacementsBwdShape;
+
+            //iterate over the num of dimensions this tensor has, getting each one and storing it
+            for (int i = 0; i < numDims; i++) {
+                //get this dimension and add it to the list
+                displacementsBwdShape.push_back(TfLiteTensorDim(t3, i));
+            }
+
+            //4D array of floats for the keypoints heatmap
+
+            //intialize level 0
+            std::vector<std::vector<std::vector<std::vector<float>>>> displacementsBwd(displacementsBwdShape[0]);
+
+            //initialize level 1
+            for (int l0 = 0; l0 < displacementsBwdShape[0]; l0++) {
+                displacementsBwd[l0] = std::vector<std::vector<std::vector<float>>>(displacementsBwdShape[1]);
+
+                //initialize level 2
+                for (int l1 = 0; l1 < displacementsBwdShape[1]; l1++) {
+                    displacementsBwd[l0][l1] = std::vector<std::vector<float>>(displacementsBwdShape[2]);
+
+                    //initialize level 3
+                    for (int l2 = 0; l2 < displacementsBwdShape[2]; l2++) {
+                        displacementsBwd[l0][l1][l2] = std::vector<float>(displacementsBwdShape[3]);
+                    }
+                }
+            }
+
+            outputMap[3] = displacementsBwd;
+
+
+  
     return outputMap;
   }
 
@@ -329,7 +459,104 @@ Posenet::Posenet()
     person.score = totalScore / numKeypoints
 
     return person
-  }*/
+  }
+
+  int i, x, y, j;
+         static Point Pnt[17];                       //heatmap
+          static float Cnf[17];                       //confidence table
+          static Point Loc[17];                       //location in image
+          const float confidence_threshold = -1.0;    //confidence can be negative
+
+
+          GetImageTFLite(
+              //get tensor as float* from first of inputs
+              interpreter->typed_tensor<float>(interpreter->inputs()[0]), src);
+
+          //run the model
+          interpreter->Invoke();
+
+          //the model run is now complete
+
+          //1 * 9 * 9 * 17 contains heatmaps
+          const float* heatmapShape = interpreter->tensor(interpreter->outputs()[0])->data.f;
+
+          //1 * 9 * 9 * 34 contains offsets
+          const float* offsetShape = interpreter->tensor(interpreter->outputs()[1])->data.f;
+
+
+          //1 * 9 * 9 * 32 contains forward displacements
+          //const float* dispFwdShape = interpreter->tensor(interpreter->outputs()[2])->data.f;
+
+
+          //1 * 9 * 9 * 32 contains backward displacements
+          //const float* dispBckShape = interpreter->tensor(interpreter->outputs()[3])->data.f;
+
+          //Finds the (row, col) locations of where the keypoints are most likely to be.
+          for (i = 0; i < 17; i++) {
+              //copy from heatmaps array to the confidence table
+              Cnf[i] = heatmapShape[i];     //x = y = 0 -> j = 17 * (9 * 0 + 0) + i; -> j = i
+
+
+              for (y = 0; y < 9; y++) {
+                  for (x = 0; x < 9; x++) {
+                      j = 17 * (9 * y + x) + i;
+                      if (heatmapShape[j] > Cnf[i]) {
+                          Cnf[i] = heatmapShape[j];
+                          Pnt[i].x = x;
+                          Pnt[i].y=y;
+                      }
+                  }
+              }
+          }
+
+          //Calculating the x and y coordinates of the keypoints with offset adjustment.
+          for(i=0;i<17;i++){
+              x=Pnt[i].x; y=Pnt[i].y; j=34*(9*y+x)+i;
+              Loc[i].y=(y*src.rows)/8 + offsetShape[j   ];
+              Loc[i].x=(x*src.cols)/8 + offsetShape[j+17];
+          }
+
+
+          //DRAWING
+          for (i=5;i<17;i++){
+              if (Cnf[i]>confidence_threshold){
+                  circle(src,Loc[i],4,Scalar( 255, 255, 0 ),FILLED);
+              }
+          }
+
+
+          if(Cnf[ 5]>confidence_threshold){
+              if(Cnf[ 6]>confidence_threshold) line(src,Loc[ 5],Loc[ 6],Scalar( 255, 255, 0 ),2);
+              if(Cnf[ 7]>confidence_threshold) line(src,Loc[ 5],Loc[ 7],Scalar( 255, 255, 0 ),2);
+              if(Cnf[11]>confidence_threshold) line(src,Loc[ 5],Loc[11],Scalar( 255, 255, 0 ),2);
+          }
+          if(Cnf[ 6]>confidence_threshold){
+              if(Cnf[ 8]>confidence_threshold) line(src,Loc[ 6],Loc[ 8],Scalar( 255, 255, 0 ),2);
+              if(Cnf[12]>confidence_threshold) line(src,Loc[ 6],Loc[12],Scalar( 255, 255, 0 ),2);
+          }
+          if(Cnf[ 7]>confidence_threshold){
+              if(Cnf[ 9]>confidence_threshold) line(src,Loc[ 7],Loc[ 9],Scalar( 255, 255, 0 ),2);
+          }
+          if(Cnf[ 8]>confidence_threshold){
+              if(Cnf[10]>confidence_threshold) line(src,Loc[ 8],Loc[10],Scalar( 255, 255, 0 ),2);
+          }
+          if(Cnf[11]>confidence_threshold){
+              if(Cnf[12]>confidence_threshold) line(src,Loc[11],Loc[12],Scalar( 255, 255, 0 ),2);
+              if(Cnf[13]>confidence_threshold) line(src,Loc[11],Loc[13],Scalar( 255, 255, 0 ),2);
+          }
+          if(Cnf[13]>confidence_threshold){
+              if(Cnf[15]>confidence_threshold) line(src,Loc[13],Loc[15],Scalar( 255, 255, 0 ),2);
+          }
+          if(Cnf[14]>confidence_threshold){
+              if(Cnf[12]>confidence_threshold) line(src,Loc[14],Loc[12],Scalar( 255, 255, 0 ),2);
+              if(Cnf[16]>confidence_threshold) line(src,Loc[14],Loc[16],Scalar( 255, 255, 0 ),2);
+          }
+
+
+
+
+
+  */
 
 }
 

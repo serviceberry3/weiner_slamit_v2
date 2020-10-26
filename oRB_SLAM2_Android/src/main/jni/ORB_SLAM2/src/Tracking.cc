@@ -307,11 +307,11 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
     //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
     if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
         LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet);
+        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
     }
     else {
         LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet);
+        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
     }
 
     LOG("GrabImageMonocular(): now calling Tracking::Track()...");
