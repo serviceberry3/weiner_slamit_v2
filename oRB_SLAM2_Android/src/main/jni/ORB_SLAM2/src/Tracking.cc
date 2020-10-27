@@ -184,12 +184,15 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     }
 */
 
-    //create posenet
-    //create posenet object using our model file, specifying to run it using a GPU delegate
-    mPosenet = Posenet("/home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/assets/posenet_model.tflite", Device::GPU);
+
+    //create posenet object using our model file, specifying to run it using a GPU delegate (coming soon)
+    LOG("Tracking(): creating posenet object");
+    mPosenet = Posenet("/system/files/posenet_model.tflite", Device::GPU);
+
+    LOG("Tracking(): posenet created, now creating interpreter...");
     mInterpreter = mPosenet.getInterpreter();
 
-    LOG("Tracking(): finished loading camera parameters");
+    LOG("Tracking(): finished loading interpreter and camera parameters");
 }
 
 void Tracking::SetLocalMapper(LocalMapping *pLocalMapper)
@@ -289,17 +292,30 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
     //do some color conversion
     if (mImGray.channels()==3)
     {
-        if(mbRGB)
+        LOG("GrabImageMonocular(): image came in from camera with three channels");
+        if (mbRGB) {
+            LOG("GrabImageMonocular(): converting from RGB 2 GRAY");
             cvtColor(mImGray,mImGray,CV_RGB2GRAY);
-        else
+        }
+        else {
+        LOG("GrabImageMonocular(): converting from BGR 2 GRAY");
             cvtColor(mImGray,mImGray,CV_BGR2GRAY);
+        }
     }
     else if (mImGray.channels()==4)
     {
-        if(mbRGB)
-            cvtColor(mImGray,mImGray,CV_RGBA2GRAY);
-        else
+        LOG("GrabImageMonocular(): image came in from camera with four channels");
+        if (mbRGB) {
+            LOG("GrabImageMonocular(): converting from RGBA 2 GRAY"); //**THIS IS THE ONE WE DO
+            //save copy of original mat first
+            mImRgb = mImGray;
+
+            cvtColor(mImGray, mImGray, CV_RGBA2GRAY);
+        }
+        else {
+            LOG("GrabImageMonocular(): converting from BGRA 2 GRAY");
             cvtColor(mImGray,mImGray,CV_BGRA2GRAY);
+        }
     }
 
 
@@ -307,11 +323,11 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
     //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
     if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
         LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
+        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
     }
     else {
         LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
-        mCurrentFrame = Frame(mImGray, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
+        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
     }
 
     LOG("GrabImageMonocular(): now calling Tracking::Track()...");

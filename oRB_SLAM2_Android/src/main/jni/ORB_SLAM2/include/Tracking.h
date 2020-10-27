@@ -97,6 +97,9 @@ public:
     //Current Frame
     Frame mCurrentFrame;
 
+    //original RGBA image taken from camera capture
+    cv::Mat mImRgb;
+
     //grayscale image taken from camera capture
     cv::Mat mImGray;
 

@@ -24,9 +24,15 @@ namespace ORB_SLAM2
 
 
 Posenet::Posenet(const char* pFilename, Device pDevice) {
-    this->filename = pFilename;
-    this->device = pDevice;
-    this->model = TfLiteModelCreateFromFile(pFilename);
+    filename = pFilename;
+    device = pDevice;
+    model = TfLiteModelCreateFromFile(pFilename);
+    if (model == NULL) {
+        LOG("Posenet model initialization failed");
+    }
+    else {
+        LOG("Posenet model init success");
+    }
 }
 
 //default constructor to avoid errors when we declare a new posenet in header files
@@ -36,13 +42,14 @@ Posenet::Posenet()
 
     //set up the Tensorflow inference interpreter
     TfLiteInterpreter* Posenet::getInterpreter() {
-
+        LOG("checking..");
         //get the Posenet Interpreter instance if it already exists
         if (interpreter != NULL) {
             return interpreter;
         }
 
         //otherwise we need to create a new interpreter
+        LOG("getInterpreter(): need to create new");
 
         //create interpreter options
         options = TfLiteInterpreterOptionsCreate();
@@ -50,7 +57,7 @@ Posenet::Posenet()
         //set number of threads to use
         TfLiteInterpreterOptionsSetNumThreads(options, NUM_LITE_THREADS);
 
-        if (this->device == Device::GPU) {
+        if (device == Device::GPU) {
             //set up GPU delegate
 
             //gpuDelegate = GpuDelegate()
@@ -62,7 +69,7 @@ Posenet::Posenet()
         }
 
 
-
+/*
         //customize the gpu delegate
         const TfLiteGpuDelegateOptionsV2 gpuDelegate = {
                 .is_precision_loss_allowed = false,
@@ -71,7 +78,7 @@ Posenet::Posenet()
                 .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
                 .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO
         }; //TfLiteGpuDelegateOptionsV2Default() doesn't fix the error either
-
+*/
 
         //TfLiteDelegate* delegate = TfLiteGpuDelegateV2Create(&gpuDelegate);
 
@@ -83,12 +90,32 @@ Posenet::Posenet()
 
         //TfLiteInterpreterOptionsAddDelegate(options, delegate);
 
+        LOG("getInterpreter(): running interpretercreate()");
+
         //instantiate the interpreter using the model we loaded
-        TfLiteInterpreter* interpreter = TfLiteInterpreterCreate(model, options);
+        TfLiteInterpreter* newInterpreter = TfLiteInterpreterCreate(model, options);
+
+        if (newInterpreter == NULL) {
+            LOG("interpreter create failed");
+            return NULL;
+        }
+
+        LOG("Interpreter create success");
+
+        LOG("getInterpreter(): allocating tensors for new interpreter");
 
         //allocate tensors for the interpreter
-        TfLiteInterpreterAllocateTensors(interpreter);
-        return interpreter;
+        if (TfLiteInterpreterAllocateTensors(newInterpreter) != kTfLiteOk) {
+            LOG("TfLite allocate tensors failed");
+            return NULL;
+        }
+
+        LOG("getInterpreter(): tensor allocation finished successfully");
+
+        //save the newly created interpreter
+        interpreter = newInterpreter;
+
+        return newInterpreter;
 /*
         TfLiteTensor* input_tensor = TfLiteInterpreterGetInputTensor(interpreter, 0);
         const TfLiteTensor* output_tensor = TfLiteInterpreterGetOutputTensor(interpreter, 0);
@@ -116,17 +143,27 @@ Posenet::Posenet()
 
     //clean up the interpreter and possibly the gpuDelegate
     void Posenet::close() {
-        //delete the interpreter we made
-        TfLiteInterpreterDelete(interpreter);
-        TfLiteInterpreterOptionsDelete(options);
-        TfLiteModelDelete(model);
+        //delete the interpreter we made, if it exists
+        if (interpreter != NULL) {
+            TfLiteInterpreterDelete(interpreter);
+        }
+
+        if (options != NULL) {
+            TfLiteInterpreterOptionsDelete(options);
+        }
+
+        if (model != NULL) {
+            TfLiteModelDelete(model);
+        }
     }
 
     //Scale the image pixels to a float array of [-1,1] values.
-    std::vector<float> Posenet::initInputArray(cv::Mat incomingImg) { //the mat will be in RGBA format
+    std::vector<float> Posenet::initInputArray(cv::Mat incomingImg) { //the mat will be in RGBA format WRONG it will be in grayscale!!
         int bytesPerChannel = 4;
         int inputChannels = incomingImg.channels();
+
         LOG("incoming Mat has %d channels", inputChannels);
+
         int batchSize = 1;
 
         int cols = incomingImg.cols;
@@ -135,14 +172,14 @@ Posenet::Posenet()
         LOG("incoming Mat has %d rows, %d cols", rows, cols);
 
         //allocate a float array for all 3 input channels (for each channel allocate space for the entire Mat)
-        std::vector<float> inputBuffer(batchSize * bytesPerChannel * cols * rows * inputChannels / 4, 0); //div by 4 because we were doing bytes
+        std::vector<float> inputBuffer(batchSize * bytesPerChannel * cols * rows * inputChannels / 4); //div by 4 because we were doing bytes
 
         float mean = 128.0;
         float std = 128.0;
 
         //create an int array that's size of the bitmap
         //int intValues[cols * rows];
-
+/*
         //convert the incoming image to 32-bit signed integers (combines the channels)
         incomingImg.convertTo(incomingImg, CV_32SC1);
 
@@ -157,11 +194,19 @@ Posenet::Posenet()
         //get all pixels from Mat and store them in intValues
         //bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
 
+
         //put one float into the ByteBuffer for I'm guessing each input channel
         for (int i = 0; i < cols * rows; i++) {
           inputBuffer.push_back(((intValues[i] >> 16 & 0xFF) - mean) / std);
           inputBuffer.push_back(((intValues[i] >> 8 & 0xFF) - mean) / std);
           inputBuffer.push_back(((intValues[i] & 0xFF) - mean) / std);
+        }*/
+
+        uint8_t* in = incomingImg.data;
+        int Len = rows * cols * inputChannels;
+
+        for (int i = 0; i < Len; i++) {
+            inputBuffer.push_back((in[i] - 127.5) / 127.5);
         }
 
         return inputBuffer;
@@ -175,15 +220,17 @@ Posenet::Posenet()
 
 
   //Initializes a 4D outputMap of 1 * x * y * z float arrays for the model processing to populate.
-  std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > Posenet::initOutputMap(
-  TfLiteInterpreter* interpreter) {
+  std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > Posenet::initOutputMap() {
+    LOG("initoutputmap called");
 
     //make a map from int to something (some object)
     std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputMap;
 
+    int32_t out = TfLiteInterpreterGetOutputTensorCount(interpreter);
+
+    LOG("initOutputMap(): interpreter has %d output tensors", out);
 
     //HEATMAP -- 1 * 9 * 9 * 17 contains heatmaps
-
     const TfLiteTensor* t0 = TfLiteInterpreterGetOutputTensor(interpreter, 0);
 
     int32_t numDims = TfLiteTensorNumDims(t0);
@@ -217,7 +264,10 @@ Posenet::Posenet()
         }
     }
 
+    LOG("Heatmaps shape is %d x %d x %d x %d", heatmapsShape[0], heatmapsShape[1], heatmapsShape[2], heatmapsShape[3]);
+
     outputMap[0] = heatmaps;
+
 
 
     //OFFSETS -- 1 * 9 * 9 * 34 contains offsets
@@ -256,6 +306,8 @@ Posenet::Posenet()
             }
         }
 
+         LOG("Offsets shape is %d x %d x %d x %d", offsetsShape[0], offsetsShape[1], offsetsShape[2], offsetsShape[3]);
+
         outputMap[1] = offsets;
 
     //FORWARD DISPLACEMENTS -- 1 * 9 * 9 * 32 contains forward displacements
@@ -293,6 +345,8 @@ Posenet::Posenet()
                 }
             }
 
+            LOG("Disp fwd shape is %d x %d x %d x %d", displacementsFwdShape[0], displacementsFwdShape[1], displacementsFwdShape[2], displacementsFwdShape[3]);
+
             outputMap[2] = displacementsFwd;
 
 
@@ -301,105 +355,191 @@ Posenet::Posenet()
     const TfLiteTensor* t3 = TfLiteInterpreterGetOutputTensor(interpreter, 3);
 
 
-            numDims = TfLiteTensorNumDims(t3);
+        numDims = TfLiteTensorNumDims(t3);
 
-            //initialize int array to hold all dimens
-            std::vector<int32_t> displacementsBwdShape;
+        //initialize int array to hold all dimens
+        std::vector<int32_t> displacementsBwdShape;
 
-            //iterate over the num of dimensions this tensor has, getting each one and storing it
-            for (int i = 0; i < numDims; i++) {
-                //get this dimension and add it to the list
-                displacementsBwdShape.push_back(TfLiteTensorDim(t3, i));
-            }
+        //iterate over the num of dimensions this tensor has, getting each one and storing it
+        for (int i = 0; i < numDims; i++) {
+            //get this dimension and add it to the list
+            displacementsBwdShape.push_back(TfLiteTensorDim(t3, i));
+        }
 
-            //4D array of floats for the keypoints heatmap
+        //4D array of floats for the keypoints heatmap
 
-            //intialize level 0
-            std::vector<std::vector<std::vector<std::vector<float>>>> displacementsBwd(displacementsBwdShape[0]);
+        //initialize level 0
+        std::vector<std::vector<std::vector<std::vector<float>>>> displacementsBwd(displacementsBwdShape[0]);
 
-            //initialize level 1
-            for (int l0 = 0; l0 < displacementsBwdShape[0]; l0++) {
-                displacementsBwd[l0] = std::vector<std::vector<std::vector<float>>>(displacementsBwdShape[1]);
+        //initialize level 1
+        for (int l0 = 0; l0 < displacementsBwdShape[0]; l0++) {
+            displacementsBwd[l0] = std::vector<std::vector<std::vector<float>>>(displacementsBwdShape[1]);
 
-                //initialize level 2
-                for (int l1 = 0; l1 < displacementsBwdShape[1]; l1++) {
-                    displacementsBwd[l0][l1] = std::vector<std::vector<float>>(displacementsBwdShape[2]);
+            //initialize level 2
+            for (int l1 = 0; l1 < displacementsBwdShape[1]; l1++) {
+                displacementsBwd[l0][l1] = std::vector<std::vector<float>>(displacementsBwdShape[2]);
 
-                    //initialize level 3
-                    for (int l2 = 0; l2 < displacementsBwdShape[2]; l2++) {
-                        displacementsBwd[l0][l1][l2] = std::vector<float>(displacementsBwdShape[3]);
-                    }
+                //initialize level 3
+                for (int l2 = 0; l2 < displacementsBwdShape[2]; l2++) {
+                    displacementsBwd[l0][l1][l2] = std::vector<float>(displacementsBwdShape[3]);
                 }
             }
-
-            outputMap[3] = displacementsBwd;
-
+        }
+        LOG("Disp bwd shape is %d x %d x %d x %d", displacementsBwdShape[0], displacementsBwdShape[1], displacementsBwdShape[2], displacementsBwdShape[3]);
+        outputMap[3] = displacementsBwd;
 
 
     return outputMap;
   }
 
 
+  void Posenet::readFlatIntoMultiDimensionalArray(float* data, std::vector<std::vector<std::vector<std::vector<float>>>> map) {
+        //the map is already initialized, so we'll know what dimensions/cutoffs we're looking for
+
+        int counter = 0;
+
+        //topmost level (should just be one)
+        for (int l0 = 0; l0 < map.size(); l0++) {
+            //second level (should be 9)
+            for (int l1 = 0; l1 < map[0].size(); l1++) {
+                for (int l2 = 0; l2 < map[0][0].size(); l2++) {
+
+                    //lowest level (i.e. should be 17, 32, or 34)
+                    for (int l3 = 0; l3 < map[0][0][0].size(); l3++) {
+                        //copy data into the 4D map
+                        map[l0][l1][l2][l3] = data[counter++];
+                    }
+                }
+            }
+        }
+  }
+
+
   void Posenet::runForMultipleInputsOutputs(std::vector<float> inputs
   , std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputs) {
-  /*
-        this.inferenceDurationNanoseconds = -1L;
-                if (inputs != null && inputs.length != 0) {
-                    if (outputs != null && !outputs.isEmpty()) {
-                        for(int i = 0; i < inputs.length; ++i) {
-                            Tensor tensor = this.getInputTensor(i);
-                            int[] newShape = tensor.getInputShapeIfDifferent(inputs[i]);
-                            if (newShape != null) {
-                                this.resizeInput(i, newShape);
-                            }
-                        }
 
-                        boolean needsAllocation = !this.isMemoryAllocated;
-                        if (needsAllocation) {
-                            allocateTensors(this.interpreterHandle, this.errorHandle);
-                            this.isMemoryAllocated = true;
-                        }
+        //this.inferenceDurationNanoseconds = -1L;
 
-                        for(int i = 0; i < inputs.length; ++i) {
-                            this.getInputTensor(i).setTo(inputs[i]);
-                        }
+        //make sure we have some input data
+        if (inputs.size() != 0) {
+            //make sure we have output map initialized
+            if (!outputs.empty()) {
+                /*
+                //iterate over all floats in input
+                for (int i = 0; i < inputs.size(); ++i) {
+                    //get each input tensor
+                    Tensor tensor = TfLiteInterpreterGetInputTensor(interpreter, i);
 
-                        long inferenceStartNanos = System.nanoTime();
+                    int[] newShape = tensor.getInputShapeIfDifferent(inputs[i]);
 
-                        //invoke
-                        run(this.interpreterHandle, this.errorHandle);
-
-
-                        long inferenceDurationNanoseconds = System.nanoTime() - inferenceStartNanos;
-                        if (needsAllocation) {
-                            for(int i = 0; i < this.outputTensors.length; ++i) {
-                                if (this.outputTensors[i] != null) {
-                                    this.outputTensors[i].refreshShape();
-                                }
-                            }
-                        }
-
-                        Iterator var13 = outputs.entrySet().iterator();
-
-                        while(var13.hasNext()) {
-                            Entry<Integer, Object> output = (Entry)var13.next();
-                            this.getOutputTensor((Integer)output.getKey()).copyTo(output.getValue());
-                        }
-
-                        this.inferenceDurationNanoseconds = inferenceDurationNanoseconds;
-                    } else {
-                        throw new IllegalArgumentException("Input error: Outputs should not be null or empty.");
+                    if (newShape != null) {
+                        this.resizeInput(i, newShape);
                     }
-                } else {
-                    throw new IllegalArgumentException("Input error: Inputs should not be null or empty.");
+                }*/
+
+                LOG("model has %d input tensors", TfLiteInterpreterGetInputTensorCount(interpreter));
+
+                LOG("Inputs size is %d", inputs.size());
+
+
+                TfLiteTensor* curr_input_tensor = TfLiteInterpreterGetInputTensor(interpreter, 0);
+                if (curr_input_tensor == NULL) {
+                    LOG("This input tensor came up NULL");
+                    return;
                 }
-                */
+
+                //copy the input float data to the input tensor
+                if (TfLiteTensorCopyFromBuffer(curr_input_tensor, inputs.data(), TfLiteTensorByteSize(curr_input_tensor)) != kTfLiteOk) {
+                    LOG("TfLite copyFROMbuffer failure! Returning...");
+                    return;
+                }
+                else {
+                    LOG("TfLite copyFROMbuffer success");
+                }
+
+                //long inferenceStartNanos = System.nanoTime();
+
+                LOG("Running inference...");
+                //invoke interpreter to run the model
+                if (TfLiteInterpreterInvoke(interpreter) != kTfLiteOk) {
+                    LOG("TfLiteInterpreterInvoke FAILED");
+                    return;
+                }
+                else {
+                    LOG("TfLiteInterpreterInvoke SUCCESS");
+                }
+
+
+                //long inferenceDurationNanoseconds = System.nanoTime() - inferenceStartNanos;
+
+                int ctr = 0;
+
+                //check how many output tensors -- FOUR
+                int32_t out_tens = TfLiteInterpreterGetOutputTensorCount(interpreter);
+                LOG("We have %d output tensors", out_tens);
+
+                LOG("Our map size is %d", outputs.size());
+
+
+                //iterate over each key-value pair in the output map (should iterate 4 times)
+                for (std::pair<int, std::vector<std::vector<std::vector<std::vector<float>> > > > element : outputs) {
+                    LOG("Running pair iteration...");
+                    //copy output tensor data into output map
+                    const TfLiteTensor* curr_output_tensor = TfLiteInterpreterGetOutputTensor(interpreter, element.first);
+
+
+                    if (curr_output_tensor == NULL) {
+                        LOG("This output tensor came up NULL");
+                        return;
+                    }
+                    else {
+                        LOG("This output tensor found successfully");
+                    }
+
+                    LOG("This output tensor has size %d, or %d floats", TfLiteTensorByteSize(curr_output_tensor), TfLiteTensorByteSize(curr_output_tensor)/4);
+
+
+                    //get underlying data as float*
+                    float* data = (float*)TfLiteTensorData(curr_output_tensor);
+
+                    //make sure we got data successfully
+                    if (data == NULL) {
+                        LOG("Problem getting underlying data buffer from this output tensor");
+                        return;
+                    }
+
+
+
+                    //I think we need a function similar to
+                    //private static native void readMultiDimensionalArray(long var0, Object var2), since our output tensors have one FLAT data buffer and we want
+                    //to copy the data into our multidimensional (4D) initialized output arrays
+                    readFlatIntoMultiDimensionalArray(data, element.second);
+
+
+
+
+                    ctr++;
+                    LOG("Iteration #%d complete", ctr);
+
+                }
+
+                //this.inferenceDurationNanoseconds = inferenceDurationNanoseconds;
+            }
+
+            else {
+                LOG("runForMultipleInputsOutpus: Input error: Outputs should not be null or empty.");
+            }
+        }
+
+        else {
+            LOG("runForMultipleInputsOutputs: Inputs should not be null or empty.");
+        }
   }
 
 
 
 
- Person Posenet::estimateSinglePose(cv::Mat img) {
+ Person Posenet::estimateSinglePose(cv::Mat img, TfLiteInterpreter* pInterpreter) {
     clock_t estimationStartTimeNanos = clock();
 
     std::vector<float> inputArray = initInputArray(img);
@@ -407,7 +547,17 @@ Posenet::Posenet()
     //print out how long scaling took
     //Log.i("posenet", String.format("Scaling to [-1,1] took %.2f ms", 1.0f * (SystemClock.elapsedRealtimeNanos() - estimationStartTimeNanos) / 1_000_000))
 
-    std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputMap = initOutputMap(getInterpreter());
+    TfLiteInterpreter* mInterpreter;
+
+    if (interpreter == NULL) {
+        mInterpreter = getInterpreter();
+    }
+    else {
+        LOG("estimateSinglePose: already have interpreter");
+        mInterpreter = interpreter;
+    }
+
+    std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputMap = initOutputMap();
 
     //get the elapsed time since system boot
     clock_t inferenceStartTimeNanos = clock();
@@ -415,6 +565,8 @@ Posenet::Posenet()
     //from https://www.tensorflow.org/lite/guide/inference: each entry in inputArray corresponds to an input tensor and
     //outputMap maps indices of output tensors to the corresponding output data.
     runForMultipleInputsOutputs(inputArray, outputMap);
+
+    LOG("Runformult complete");
 
     //get the elapsed time since system boot again, and subtract the first split we took to find how long running the model took
     clock_t lastInferenceTimeNanos = clock() - inferenceStartTimeNanos;
@@ -424,33 +576,49 @@ Posenet::Posenet()
 
 
 
-    /*
-    val heatmaps = outputMap[0] as Array<Array<Array<FloatArray>>>
-    val offsets = outputMap[1] as Array<Array<Array<FloatArray>>>
+    //at this point the output data we need from the model is in outputMap
 
-    val height = heatmaps[0].size
-    val width = heatmaps[0][0].size
-    val numKeypoints = heatmaps[0][0][0].size
+    std::vector<std::vector<std::vector<std::vector<float>>>> heatmaps = outputMap[0];
+    std::vector<std::vector<std::vector<std::vector<float>>>> offsets = outputMap[1];
 
-    // Finds the (row, col) locations of where the keypoints are most likely to be.
-    val keypointPositions = Array(numKeypoints) { Pair(0, 0) }
-    for (keypoint in 0 until numKeypoints) {
-      var maxVal = heatmaps[0][0][0][keypoint]
-      var maxRow = 0
-      var maxCol = 0
-      for (row in 0 until height) {
-        for (col in 0 until width) {
-          if (heatmaps[0][row][col][keypoint] > maxVal) {
-            maxVal = heatmaps[0][row][col][keypoint]
-            maxRow = row
-            maxCol = col
+    //get dimensions of levels 1 and 2 of heatmap (should be 9 and 9)
+    int height = heatmaps[0].size();
+    int width = heatmaps[0][0].size();
+
+    //get dim of level 3 of heatmap (should be 17, for 17 joints found by the model)
+    int numKeypoints = heatmaps[0][0][0].size();
+
+    //Finds the (row, col) locations of where the keypoints are most likely to be.
+    std::vector<std::pair<int, int>> keypointPositions(numKeypoints, std::pair<int, int>(0, 0));
+
+
+    //iterate over the number of keypoints (17?)
+    for (int keypoint = 0; keypoint < numKeypoints; keypoint++) {
+      float maxVal = heatmaps[0][0][0][keypoint];
+
+      int maxRow = 0;
+      int maxCol = 0;
+
+      //iterate over every vector in our 9x9 grid of float vectors
+      for (int row = 0; row < height; row++) {
+        for (int col = 0; col < width; col++) {
+            //check the float at this joint slot at this place in our 9x9 grid
+            if (heatmaps[0][row][col][keypoint] > maxVal) {
+                //if this float was higher than our running max, then we accept this location as our current "most likely to hold joint" location
+                maxVal = heatmaps[0][row][col][keypoint];
+                maxRow = row;
+                maxCol = col;
           }
         }
       }
-      keypointPositions[keypoint] = Pair(maxRow, maxCol)
+
+      //add the location that was most likely to contain this joint point to our keypoint positions array
+      keypointPositions[keypoint] = std::pair<int, int>(maxRow, maxCol);
     }
 
-    // Calculating the x and y coordinates of the keypoints with offset adjustment.
+/*
+
+    //Calculating the x and y coordinates of the keypoints with offset adjustment.
     val xCoords = IntArray(numKeypoints)
     val yCoords = IntArray(numKeypoints)
     val confidenceScores = FloatArray(numKeypoints)
@@ -480,8 +648,8 @@ Posenet::Posenet()
 
     person.keyPoints = keypointList.toList()
     person.score = totalScore / numKeypoints
-
-    return person;*/
+*/
+    return Person();
   }
 
 

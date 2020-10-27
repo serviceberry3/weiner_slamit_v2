@@ -50,8 +50,6 @@ class KeyPoint {
       float score;
     };
 
-
-
     enum class Device {
           CPU,
           NNAPI,
@@ -70,7 +68,7 @@ class KeyPoint {
         TfLiteInterpreterOptions* options;
 
         //interpreter for tflite model
-        TfLiteInterpreter* interpreter;
+        TfLiteInterpreter* interpreter = NULL;
 
         int NUM_LITE_THREADS = 4;
 
@@ -82,10 +80,11 @@ class KeyPoint {
             TfLiteInterpreter* getInterpreter();
             std::vector<float> initInputArray(cv::Mat incomingImg);
             float sigmoid(float x);
-            std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>>> initOutputMap(TfLiteInterpreter* interpreter);
+            std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>>> initOutputMap();
             void runForMultipleInputsOutputs(std::vector<float> inputs, std::unordered_map<int,
             std::vector<std::vector<std::vector<std::vector<float>>>> > outputs);
-            Person estimateSinglePose(cv::Mat img);
+            Person estimateSinglePose(cv::Mat img, TfLiteInterpreter* pInterpreter);
+            void readFlatIntoMultiDimensionalArray(float* data, std::vector<std::vector<std::vector<std::vector<float>>>> map);
     };
 
 }

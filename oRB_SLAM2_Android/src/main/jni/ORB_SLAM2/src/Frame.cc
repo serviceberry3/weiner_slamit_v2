@@ -187,7 +187,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
 
 //MONOCULAR CONSTRUCTOR
 //This is probably constructor we're using***
-Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
+Frame::Frame(const cv::Mat &imGray, const cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
 const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter)
     :mpORBvocabulary(voc),
     mpORBextractorLeft(extractor), //the key feature extractor
@@ -217,10 +217,18 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     cv::Size size(257, 257);
 
     //resize the copy into the new Mat so we can feed it to Posenet, using nearest neighbor interpolation
-    resize(imGray, scaledImage, size, CV_INTER_NN);
+    resize(imRgb, scaledImage, size, CV_INTER_NN);
+
+    LOG("Frame(): finished resizing incoming RGBA frame");
 
     //now we wanna feed the scaled image into Posenet to see if there's a person in the image
-    Person person = posenet.estimateSinglePose(scaledImage);
+    Person person = posenet.estimateSinglePose(scaledImage, interpreter);
+
+    LOG("Frame(): finished Posenet creation");
+
+    //posenet.close();
+
+    LOG("Frame(): closed Posenet");
 
     //ORB extraction (key feature extraction)
     ExtractORB(0, imGray);
