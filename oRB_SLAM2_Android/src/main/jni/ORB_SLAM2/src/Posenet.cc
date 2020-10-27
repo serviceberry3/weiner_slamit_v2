@@ -616,40 +616,58 @@ Posenet::Posenet()
       keypointPositions[keypoint] = std::pair<int, int>(maxRow, maxCol);
     }
 
-/*
+
 
     //Calculating the x and y coordinates of the keypoints with offset adjustment.
-    val xCoords = IntArray(numKeypoints)
-    val yCoords = IntArray(numKeypoints)
-    val confidenceScores = FloatArray(numKeypoints)
-    keypointPositions.forEachIndexed { idx, position ->
-      val positionY = keypointPositions[idx].first
-      val positionX = keypointPositions[idx].second
+    std::vector<int> xCoords(numKeypoints);
 
-      yCoords[idx] = (position.first / (height - 1).toFloat() * bitmap.height + offsets[0][positionY][positionX][idx]).toInt()
+    std::vector<int> yCoords(numKeypoints);
 
-      xCoords[idx] = (position.second / (width - 1).toFloat() * bitmap.width + offsets[0][positionY][positionX][idx + numKeypoints]).toInt()
 
-      confidenceScores[idx] = sigmoid(heatmaps[0][positionY][positionX][idx])
+    std::vector<float> confidenceScores(numKeypoints);
+
+
+    for (int i = 0; i < numKeypoints; i++) {
+        std::pair<int, int> thisKP = keypointPositions[i];
+        int positionY = thisKP.first;
+        int positionX = thisKP.second;
+
+        //store the y coordinate of these keypoint in the image as calculated offset + the most likely position of this joint div by (9 * 257)
+        yCoords[i] = (int)(positionY / (float)(height - 1) * img.rows + offsets[0][positionY][positionX][i]);
+
+        //store the y coordinate of these keypoint in the image as calculated offset + the most likely position of this joint div by (9 * 257)
+        xCoords[i] = (int)(positionX / (float)(width - 1) * img.cols + offsets[0][positionY][positionX][i + numKeypoints]);
+
+        //compute arbitrary confidence value between 0 and 1
+        confidenceScores[i] = sigmoid(heatmaps[0][positionY][positionX][i]);
     }
 
+    //instantiate new person to return
     Person person = Person();
 
-    val keypointList = Array(numKeypoints) { KeyPoint() }
-    var totalScore = 0.0f
+    //initialize array of KeyPoints of size 17
+    std::vector<KeyPoint> keypointList(numKeypoints, KeyPoint());
 
-    enumValues<BodyPart>().forEachIndexed { idx, it ->
-      keypointList[idx].bodyPart = it
-      keypointList[idx].position.x = xCoords[idx].toFloat();
-      keypointList[idx].position.y = yCoords[idx].toFloat();
-      keypointList[idx].score = confidenceScores[idx]
-      totalScore += confidenceScores[idx]
+    float totalScore = 0.0;
+
+    //copy data into the keypoint list
+    for (int i = 0; i < numKeypoints; i++) {
+        KeyPoint thisKeypoint = keypointList[i];
+
+        thisKeypoint.bodyPart = static_cast<BodyPart>(i);
+        thisKeypoint.position.x = (float)xCoords[i];
+        thisKeypoint.position.y = (float)yCoords[i];
+
+        thisKeypoint.score = confidenceScores[i];
+        totalScore += confidenceScores[i];
     }
 
-    person.keyPoints = keypointList.toList()
-    person.score = totalScore / numKeypoints
-*/
-    return Person();
+
+    person.keyPoints = keypointList;
+
+    person.score = totalScore / numKeypoints;
+
+    return person;
   }
 
 
