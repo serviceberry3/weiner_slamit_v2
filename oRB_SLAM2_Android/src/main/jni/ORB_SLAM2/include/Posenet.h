@@ -34,7 +34,6 @@ namespace ORB_SLAM2 {
 
     class Position {
         public:
-            TfLiteModel* model;
             float x;
             float y;
     };

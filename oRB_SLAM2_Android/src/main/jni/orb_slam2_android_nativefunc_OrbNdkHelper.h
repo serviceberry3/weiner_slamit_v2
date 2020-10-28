@@ -58,14 +58,15 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesResize
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera
   (JNIEnv *, jclass,jdouble, jlong,jint,jint);
 
-   //maxiaoba
+
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly
   (JNIEnv *, jclass);
   JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2
     (JNIEnv *, jclass,jdouble, jlong,jint,jint,jfloatArray);
-  //maxiaoba
+
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_dataFusion
   (JNIEnv *, jclass,jdouble, jdouble ,jdouble, jdouble , jdouble ,jdouble,jdouble , jdouble ,jdouble);
+
 
 #ifdef __cplusplus
 }

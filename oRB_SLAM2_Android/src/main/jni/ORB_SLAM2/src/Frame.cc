@@ -226,9 +226,7 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
 
     LOG("Frame(): finished Posenet creation");
 
-    //posenet.close();
 
-    LOG("Frame(): closed Posenet");
 
     //ORB extraction (key feature extraction)
     ExtractORB(0, imGray);

@@ -387,7 +387,10 @@ void System::Shutdown()
         usleep(5000);
     }
 
-//    pangolin::BindToContext("ORB-SLAM2: Map Viewer");
+    //clean up posenet
+    if (mpTracker) {
+        mpTracker->mPosenet.close();
+    }
 }
 
 void System::SaveTrajectoryTUM(const string &filename)

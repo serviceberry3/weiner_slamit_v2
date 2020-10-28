@@ -721,7 +721,10 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         w = im.cols();
         h = im.rows();
 
+        //I want to run posenet now and draw it onto the img preview
 
+
+        //whatever gets returned here is what's displayed
         return inputFrame.rgba();
     }
 

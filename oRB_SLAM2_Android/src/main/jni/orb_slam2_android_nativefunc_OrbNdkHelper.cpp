@@ -262,7 +262,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly
 
 
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2
-      (JNIEnv *env, jclass cls,jdouble timestamp, jlong addr,jint w,jint h,jfloatArray R) {
+      (JNIEnv *env, jclass cls, jdouble timestamp, jlong addr,jint w,jint h,jfloatArray R) {
 
         const cv::Mat *im = (cv::Mat *) addr;
         jfloat* Rdummy = env->GetFloatArrayElements(R, false);
@@ -316,3 +316,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_dataFusion
   (JNIEnv *, jclass,jdouble curTimeStamp, jdouble lat ,jdouble lng, jdouble accex, jdouble accey,jdouble accez,jdouble gyrox, jdouble gyroy,jdouble gyroz){
 
   }
+
+JNIEXPORT jobjectArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_getRawPosenetPts(JNIEnv* env, jlong addr) {
+
+}
