@@ -513,6 +513,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
                             //start up the ORB, passing native address of incoming camera frame, getting back a 4x4 camera pose matrix
                             resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
+                            Log.i(TAG, "Returned from startCurrentORB");
 
                             /*
                             resultImg = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
@@ -865,8 +866,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                 //rotation matrix passed into this method.
                 SensorManager.getOrientation(RMatrix, orientation);
 
-                Log.i(TAG, String.format("RMatrix: %f  %f  %f\n%f  %f  %f\n%f  %f  %f", RMatrix[0], RMatrix[1],
-                        RMatrix[2], RMatrix[3], RMatrix[4], RMatrix[5], RMatrix[6], RMatrix[7], RMatrix[8]));
+                //Log.i(TAG, String.format("RMatrix: %f  %f  %f\n%f  %f  %f\n%f  %f  %f", RMatrix[0], RMatrix[1],
+                        //RMatrix[2], RMatrix[3], RMatrix[4], RMatrix[5], RMatrix[6], RMatrix[7], RMatrix[8]));
             }
         }
     }

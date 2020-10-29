@@ -333,7 +333,7 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_get
         return NULL;
     }
     else {
-        LOG("Got back Posenet keypoints");
+        //LOG("Got back Posenet keypoints");
     }
 
     jfloatArray resultArray = env->NewFloatArray(34);

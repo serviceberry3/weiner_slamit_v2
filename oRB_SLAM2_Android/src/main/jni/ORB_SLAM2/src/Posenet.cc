@@ -164,7 +164,7 @@ Posenet::Posenet()
     }
 
     //Scale the image pixels to a float array of [-1,1] values.
-    std::vector<float> Posenet::initInputArray(cv::Mat incomingImg) { //the mat will be in RGBA format WRONG it will be in grayscale!!
+    std::vector<float> Posenet::initInputArray(const cv::Mat &incomingImg) { //the mat will be in RGBA format WRONG it will be in grayscale!!
         int bytesPerChannel = 4;
         int inputChannels = incomingImg.channels();
 
@@ -395,14 +395,15 @@ Posenet::Posenet()
         outputMap[3] = displacementsBwd;
 
 
-    return outputMap;
+       return outputMap;
   }
 
 
-  void Posenet::readFlatIntoMultiDimensionalArray(float* data, std::vector<std::vector<std::vector<std::vector<float>>>> map) {
+  void Posenet::readFlatIntoMultiDimensionalArray(float* data, std::vector<std::vector<std::vector<std::vector<float>>>> &map) {
         //the map is already initialized, so we'll know what dimensions/cutoffs we're looking for
 
         int counter = 0;
+
 
         //topmost level (should just be one)
         for (int l0 = 0; l0 < map.size(); l0++) {
@@ -422,8 +423,8 @@ Posenet::Posenet()
   }
 
 
-  void Posenet::runForMultipleInputsOutputs(std::vector<float> inputs
-  , std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > outputs) {
+  void Posenet::runForMultipleInputsOutputs(std::vector<float> &inputs
+  , std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > &outputs) {
 
         //this.inferenceDurationNanoseconds = -1L;
 
@@ -489,7 +490,8 @@ Posenet::Posenet()
 
 
                 //iterate over each key-value pair in the output map (should iterate 4 times)
-                for (std::pair<int, std::vector<std::vector<std::vector<std::vector<float>> > > > element : outputs) {
+                //for (std::pair<int, std::vector<std::vector<std::vector<std::vector<float>> > > > element : outputs) {
+                for (auto& element : outputs) {
                     LOG("Running pair iteration...");
                     //copy output tensor data into output map
                     const TfLiteTensor* curr_output_tensor = TfLiteInterpreterGetOutputTensor(interpreter, element.first);
@@ -523,7 +525,7 @@ Posenet::Posenet()
                     readFlatIntoMultiDimensionalArray(data, element.second);
 
 
-
+                    //LOG("Testing readFlatIntoMult this float %f", element.second
 
                     ctr++;
                     LOG("Iteration #%d complete", ctr);
@@ -546,7 +548,7 @@ Posenet::Posenet()
 
 
 
- Person Posenet::estimateSinglePose(cv::Mat img, TfLiteInterpreter* pInterpreter) {
+ Person Posenet::estimateSinglePose(const cv::Mat &img, TfLiteInterpreter* pInterpreter) {
     clock_t estimationStartTimeNanos = clock();
 
     std::vector<float> inputArray = initInputArray(img);

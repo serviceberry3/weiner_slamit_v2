@@ -221,10 +221,13 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     //resize the copy into the new Mat so we can feed it to Posenet, using nearest neighbor interpolation
     resize(imRgb, scaledImage, size);
 
-    LOG("Frame(): finished resizing incoming RGBA frame, new size is %d x %d", scaledImage.rows, scaledImage.cols);
+    LOG("Frame(): finished resizing incoming RGBA frame, new size is %d x %d, call posenet", scaledImage.rows, scaledImage.cols);
+
 
     //now we wanna feed the scaled image into Posenet to see if there's a person in the image
     Person person = posenet.estimateSinglePose(scaledImage, interpreter);
+
+    LOG("Frame(): posenet finished!");
 
     //copy the keypoints into our 2D float array so they can be drawn on camera preview box in Java
     std::vector<KeyPoint> keyPts = person.getKeyPoints();
