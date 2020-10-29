@@ -187,7 +187,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
 
 //MONOCULAR CONSTRUCTOR
 //This is probably constructor we're using***
-Frame::Frame(const cv::Mat &imGray, const cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
+Frame::Frame(const cv::Mat &imGray, cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
 const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter, std::vector<float> &keyPoints)
     :mpORBvocabulary(voc),
     mpORBextractorLeft(extractor), //the key feature extractor
@@ -211,7 +211,7 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
     //new mat
-    cv::Mat scaledImage = cv::Mat();
+    //cv::Mat scaledImage = cv::Mat();
 
     //required size for posenet model
     cv::Size size(257, 257);
@@ -219,13 +219,13 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     LOG("Frame(): input Mat to be resized is %d rows by %d cols", imRgb.rows, imRgb.cols);
 
     //resize the copy into the new Mat so we can feed it to Posenet, using nearest neighbor interpolation
-    resize(imRgb, scaledImage, size);
+    resize(imRgb, imRgb, size);
 
-    LOG("Frame(): finished resizing incoming RGBA frame, new size is %d x %d, call posenet", scaledImage.rows, scaledImage.cols);
+    //LOG("Frame(): finished resizing incoming RGBA frame, new size is %d x %d, call posenet", scaledImage.rows, scaledImage.cols);
 
 
     //now we wanna feed the scaled image into Posenet to see if there's a person in the image
-    Person person = posenet.estimateSinglePose(scaledImage, interpreter);
+    Person person = posenet.estimateSinglePose(imRgb, interpreter);
 
     LOG("Frame(): posenet finished!");
 

@@ -212,8 +212,10 @@ Posenet::Posenet()
         int Len = rows * cols * inputChannels;
 
         for (int i = 0; i < Len; i++) {
-            inputBuffer.push_back((in[i] - 127.5) / 127.5);
+            inputBuffer[i] = (((float)in[i] - 127.5f) / 127.5f);
         }
+
+        LOG("First three floats in input are %f, %f, %f", inputBuffer[0], inputBuffer[1], inputBuffer[2]);
 
         return inputBuffer;
   }
@@ -600,7 +602,7 @@ Posenet::Posenet()
     LOG("numKeypoints is %d", numKeypoints);
 
     //Finds the (row, col) locations of where the keypoints are most likely to be.
-    std::vector<std::pair<int, int>> keypointPositions(numKeypoints, std::pair<int, int>(0, 0));
+    std::vector<std::pair<int, int>> keypointPositions(numKeypoints);
 
 
     //iterate over the number of keypoints (17?)
@@ -616,18 +618,20 @@ Posenet::Posenet()
       for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
             float test = heatmaps[0][row][col][keypoint];
-            LOG("Testing float %f against maxVal %f", test, maxVal);
+            //LOG("Testing float %f against maxVal %f", test, maxVal);
 
             //check the float at this joint slot at this place in our 9x9 grid
             if (heatmaps[0][row][col][keypoint] > maxVal) {
                 //if this float was higher than our running max, then we accept this location as our current "most likely to hold joint" location
-                LOG("Replacing maxVal");
+                //LOG("Replacing maxVal");
                 maxVal = heatmaps[0][row][col][keypoint];
                 maxRow = row;
                 maxCol = col;
           }
         }
       }
+
+     LOG("Maxrow finished as %d", maxRow);
 
       //add the location that was most likely to contain this joint point to our keypoint positions array
       keypointPositions[keypoint] = std::pair<int, int>(maxRow, maxCol);
@@ -646,14 +650,16 @@ Posenet::Posenet()
 
     for (int i = 0; i < numKeypoints; i++) {
         std::pair<int, int> thisKP = keypointPositions[i];
-        int positionY = thisKP.first;
-        int positionX = thisKP.second;
+
+        int positionY = thisKP.first; //which row
+        LOG("Got position Y as %d", positionY);
+        int positionX = thisKP.second; //which column
 
         //store the y coordinate of these keypoint in the image as calculated offset + the most likely position of this joint div by (9 * 257)
-        yCoords[i] = (int)(positionY / (float)(height - 1) * img.rows + offsets[0][positionY][positionX][i]);
+        yCoords[i] = (int)(positionY / ((float)(height - 1)) * img.rows + offsets[0][positionY][positionX][i]);
 
         //store the y coordinate of these keypoint in the image as calculated offset + the most likely position of this joint div by (9 * 257)
-        xCoords[i] = (int)(positionX / (float)(width - 1) * img.cols + offsets[0][positionY][positionX][i + numKeypoints]);
+        xCoords[i] = (int)(positionX / ((float)(width - 1)) * img.cols + offsets[0][positionY][positionX][i + numKeypoints]);
 
         //compute arbitrary confidence value between 0 and 1
         confidenceScores[i] = sigmoid(heatmaps[0][positionY][positionX][i]);

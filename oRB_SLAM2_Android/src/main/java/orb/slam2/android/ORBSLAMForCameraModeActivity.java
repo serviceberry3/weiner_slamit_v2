@@ -730,6 +730,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         if (pts != null) {
             for (int i = 0; i < pts.length; i+=2) {
                 if (pts[i] == -1) {
+                    if (i==0) {
+                        Log.i(TAG, "No valid posenet pts found");
+                    }
                     break;
                 }
                 Log.i(TAG, String.format("Posenet points found: (%f, %f)", pts[i], pts[i+1]));

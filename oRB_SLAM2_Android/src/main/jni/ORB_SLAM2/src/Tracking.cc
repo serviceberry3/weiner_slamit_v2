@@ -299,7 +299,7 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         LOG("GrabImageMonocular(): image came in from camera with three channels");
         if (mbRGB) {
             LOG("GrabImageMonocular(): converting from RGB 2 GRAY");
-            cvtColor(mImGray,mImGray,CV_RGB2GRAY);
+            cvtColor(mImGray, mImGray, CV_RGB2GRAY);
         }
         else {
         LOG("GrabImageMonocular(): converting from BGR 2 GRAY");
@@ -314,6 +314,7 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
             //save copy of original mat first
             mImRgb = mImGray;
 
+            //convert mImGray to grayscale (one channel)
             cvtColor(mImGray, mImGray, CV_RGBA2GRAY);
         }
         else {
@@ -324,6 +325,8 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
 
     //reset keypoints array
     std::fill(currKeyPoints.begin(), currKeyPoints.end(), -1);
+
+    LOG("GrabImageMonocular(): address of grabbed color image is %p", &im);
 
     //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
     if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
