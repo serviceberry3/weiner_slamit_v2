@@ -19,7 +19,13 @@ namespace ORB_SLAM2
 //TfLiteInterpreter interpreter;
 
 
+std::vector<KeyPoint> Person::getKeyPoints() {
+    return keyPoints;
+}
 
+float Person::getScore() {
+    return score;
+}
 
 
 
@@ -407,6 +413,7 @@ Posenet::Posenet()
                     //lowest level (i.e. should be 17, 32, or 34)
                     for (int l3 = 0; l3 < map[0][0][0].size(); l3++) {
                         //copy data into the 4D map
+                        //LOG("This data is %f", data[counter]);
                         map[l0][l1][l2][l3] = data[counter++];
                     }
                 }
@@ -584,9 +591,11 @@ Posenet::Posenet()
     //get dimensions of levels 1 and 2 of heatmap (should be 9 and 9)
     int height = heatmaps[0].size();
     int width = heatmaps[0][0].size();
+    LOG("Heatmap dimensions are %d x %d", height, width);
 
     //get dim of level 3 of heatmap (should be 17, for 17 joints found by the model)
     int numKeypoints = heatmaps[0][0][0].size();
+    LOG("numKeypoints is %d", numKeypoints);
 
     //Finds the (row, col) locations of where the keypoints are most likely to be.
     std::vector<std::pair<int, int>> keypointPositions(numKeypoints, std::pair<int, int>(0, 0));
@@ -594,17 +603,23 @@ Posenet::Posenet()
 
     //iterate over the number of keypoints (17?)
     for (int keypoint = 0; keypoint < numKeypoints; keypoint++) {
+      //take an initial max value
       float maxVal = heatmaps[0][0][0][keypoint];
 
+      //initialize these maxes to 0
       int maxRow = 0;
       int maxCol = 0;
 
       //iterate over every vector in our 9x9 grid of float vectors
       for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
+            float test = heatmaps[0][row][col][keypoint];
+            LOG("Testing float %f against maxVal %f", test, maxVal);
+
             //check the float at this joint slot at this place in our 9x9 grid
             if (heatmaps[0][row][col][keypoint] > maxVal) {
                 //if this float was higher than our running max, then we accept this location as our current "most likely to hold joint" location
+                LOG("Replacing maxVal");
                 maxVal = heatmaps[0][row][col][keypoint];
                 maxRow = row;
                 maxCol = col;
@@ -655,8 +670,11 @@ Posenet::Posenet()
         KeyPoint thisKeypoint = keypointList[i];
 
         thisKeypoint.bodyPart = static_cast<BodyPart>(i);
+
         thisKeypoint.position.x = (float)xCoords[i];
         thisKeypoint.position.y = (float)yCoords[i];
+
+        LOG("estimateSinglePose(): adding this keypoint at %d, %d", thisKeypoint.position.x, thisKeypoint.position.y);
 
         thisKeypoint.score = confidenceScores[i];
         totalScore += confidenceScores[i];

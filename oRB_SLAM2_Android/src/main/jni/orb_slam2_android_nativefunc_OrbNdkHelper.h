@@ -16,7 +16,7 @@ JavaVM* jvm;
  * Signature: (Ljava/lang/String;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_initSystemWithParameters
-  (JNIEnv *, jclass, jstring, jstring);
+  (JNIEnv*, jclass, jstring, jstring);
 
 /*
  * Class:     orb_slam2_android_nativefunc_OrbNdkHelper
@@ -24,7 +24,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_initSystem
  * Signature: (D[III)[I
  */
 JNIEXPORT jintArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORB
-  (JNIEnv *, jclass, jdouble, jintArray, jint, jint);
+  (JNIEnv*, jclass, jdouble, jintArray, jint, jint);
 
 /*
  * Class:     orb_slam2_android_nativefunc_OrbNdkHelper
@@ -32,7 +32,7 @@ JNIEXPORT jintArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_start
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesInit
-  (JNIEnv *, jclass);
+  (JNIEnv*, jclass);
 
 /*
  * Class:     orb_slam2_android_nativefunc_OrbNdkHelper
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesInit
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesRender
-  (JNIEnv *, jclass);
+  (JNIEnv*, jclass);
 
 /*
  * Class:     orb_slam2_android_nativefunc_OrbNdkHelper
@@ -48,7 +48,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesRender
  * Signature: (II)V
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesResize
-  (JNIEnv *, jclass, jint, jint);
+  (JNIEnv*, jclass, jint, jint);
 
 /*
  * Class:     orb_slam2_android_nativefunc_OrbNdkHelper
@@ -56,19 +56,23 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesResize
  * Signature: (Landroid/content/res/AssetManager;)V
  */
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera
-  (JNIEnv *, jclass,jdouble, jlong,jint,jint);
+  (JNIEnv*, jclass,jdouble, jlong,jint,jint);
 
 
-JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly
-  (JNIEnv *, jclass);
-  JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2
-    (JNIEnv *, jclass,jdouble, jlong,jint,jint,jfloatArray);
+JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly(JNIEnv*, jclass);
 
-JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_dataFusion
-  (JNIEnv *, jclass,jdouble, jdouble ,jdouble, jdouble , jdouble ,jdouble,jdouble , jdouble ,jdouble);
+
+JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2(JNIEnv*, jclass, jdouble, jlong,
+jint, jint, jfloatArray);
+
+JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_dataFusion(JNIEnv *, jclass, jdouble, jdouble, jdouble,
+ jdouble, jdouble, jdouble, jdouble, jdouble, jdouble);
+
+JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_getRawPosenetPts(JNIEnv*, jclass);
 
 
 #ifdef __cplusplus
 }
-#endif
-#endif
+#endif //__cplusplus
+
+#endif //_Included_orb_slam2_android_nativefunc_OrbNdkHelper

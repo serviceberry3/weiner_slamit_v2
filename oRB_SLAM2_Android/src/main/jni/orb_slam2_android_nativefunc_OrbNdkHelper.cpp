@@ -59,7 +59,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_initSystem
         LOGE("Java VM came back NULL");
     }
 
-    //attach this thread to JVM and obtain JNI interface pointer of current thrd, which will be placed in '''env'''
+    //attach this thread to JVM and obtain JNI interface pointer of current thread, which will be placed in '''env'''
 	jvm->AttachCurrentThread(&env, NULL);
 
 
@@ -262,7 +262,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_trackOnly
 
 
 JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_startCurrentORBForCamera2
-      (JNIEnv *env, jclass cls, jdouble timestamp, jlong addr,jint w,jint h,jfloatArray R) {
+      (JNIEnv *env, jclass cls, jdouble timestamp, jlong addr, jint w, jint h, jfloatArray R) {
 
         const cv::Mat *im = (cv::Mat *) addr;
         jfloat* Rdummy = env->GetFloatArrayElements(R, false);
@@ -313,10 +313,45 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
 
 
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_dataFusion
-  (JNIEnv *, jclass,jdouble curTimeStamp, jdouble lat ,jdouble lng, jdouble accex, jdouble accey,jdouble accez,jdouble gyrox, jdouble gyroy,jdouble gyroz){
+  (JNIEnv *, jclass cls,jdouble curTimeStamp, jdouble lat ,jdouble lng, jdouble accex, jdouble accey,jdouble accez,
+  jdouble gyrox, jdouble gyroy,jdouble gyroz){
 
   }
 
-JNIEXPORT jobjectArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_getRawPosenetPts(JNIEnv* env, jlong addr) {
 
+JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_getRawPosenetPts(JNIEnv* env, jclass cls) {
+    //make sure construction finished
+    if (!s) {
+        return NULL;
+    }
+
+    //run posenet externally on the image
+    float* keyPoints = s->posenetExternal();
+
+    if (keyPoints == NULL) {
+        LOG("keypoints NULL");
+        return NULL;
+    }
+    else {
+        LOG("Got back Posenet keypoints");
+    }
+
+    jfloatArray resultArray = env->NewFloatArray(34);
+
+    //pointer to the result array of floats
+    jfloat* resultPtr;
+
+    //fill the pointer with correct address
+    resultPtr = env->GetFloatArrayElements(resultArray, false);
+
+    //fill up the result float array with keypoints values from posenet
+    for (int i = 0; i < 34; i++) {
+        resultPtr[i] = keyPoints[i];
+    }
+
+    //release elements
+    env->ReleaseFloatArrayElements(resultArray, resultPtr, 0);
+
+    //return the result array
+    return resultArray;
 }

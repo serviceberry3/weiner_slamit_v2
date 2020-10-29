@@ -113,6 +113,10 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
     DistCoef.copyTo(mDistCoef);
 
 
+    //initialize the posenet keypoints array
+    currKeyPoints = std::vector<float>(34, -1);
+
+
     //mbf = fSettings["Camera.bf"];
 
 
@@ -318,17 +322,22 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         }
     }
 
-
+    //reset keypoints array
+    std::fill(currKeyPoints.begin(), currKeyPoints.end(), -1);
 
     //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
     if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
         LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
-        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpIniORBextractor, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
+        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpIniORBextractor, mpORBVocabulary,
+        mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
     }
     else {
         LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
-        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter);
+        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpORBextractorLeft, mpORBVocabulary,
+        mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
     }
+
+    //posenet keypoints are now in currKeyPoints
 
     LOG("GrabImageMonocular(): now calling Tracking::Track()...");
 
@@ -339,6 +348,43 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
     LOG("mTcw now has %d rows, %d cols", mCurrentFrame.mTcw.rows, mCurrentFrame.mTcw.cols);
 
     return mCurrentFrame.mTcw.clone(); //mTcw is a matrix containing the camera pose for that frame
+}
+
+float* Tracking::posenetExternalGetPts() {
+    //since we're in C let's convert the keypoints now to be the correct coords for
+    int screenWidth = 780;
+    int screenHeight = 420;
+
+
+
+    //divide the available screen width pixels by PoseNet's required number of width pixels to get the number of real screen pixels
+    //widthwise per posenet input image "pixel"
+    float widthRatio = (float) screenWidth / 257; //should be 1080/257
+
+    //divide the available screen height pixels by PoseNet's required number of height pixels to get number of real screen pixels
+    //heightwise per posenet input image "pixel"
+    float heightRatio = (float) screenHeight / 257; //should be 1080/257
+
+    //scale the points
+    for (int i = 0; i < currKeyPoints.size(); i++) {
+        if (currKeyPoints[i] == -1) {
+            break;
+        }
+        //x coord
+        if (i % 2 == 0) {
+            //adjust x value for actual camera preview
+            currKeyPoints[i] *= widthRatio;
+        }
+        //y coord
+        else {
+            //adjust y value for actual camera preview
+            currKeyPoints[i] *= heightRatio;
+        }
+    }
+
+
+    //return ptr to first float in currKeyPoints
+    return currKeyPoints.data();
 }
 
 void Tracking::Track()
@@ -353,7 +399,7 @@ void Tracking::Track()
     //Get Map Mutex->Map cannot be changed
     unique_lock<mutex> lock(mpMap->mMutexMapUpdate);
 
-    //the monocular tracking system still hasn't been intialized
+    //the monocular tracking system still hasn't been initialized
     if (mState == NOT_INITIALIZED)
     {
         LOG("Track(): state of the Tracker is NOT_INITIALIZED!");

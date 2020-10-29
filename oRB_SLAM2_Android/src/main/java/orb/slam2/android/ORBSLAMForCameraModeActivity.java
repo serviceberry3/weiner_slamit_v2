@@ -721,7 +721,19 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         w = im.cols();
         h = im.rows();
 
-        //I want to run posenet now and draw it onto the img preview
+        Log.i(TAG, String.format("Camera preview is width %d height %d", w, h));
+
+        //get the last Posenet pts found
+        float[] pts = OrbNdkHelper.getRawPosenetPts();
+
+        if (pts != null) {
+            for (int i = 0; i < pts.length; i+=2) {
+                if (pts[i] == -1) {
+                    break;
+                }
+                Log.i(TAG, String.format("Posenet points found: (%f, %f)", pts[i], pts[i+1]));
+            }
+        }
 
 
         //whatever gets returned here is what's displayed

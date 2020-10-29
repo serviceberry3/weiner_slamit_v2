@@ -356,6 +356,10 @@ cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
     //return mpFrameDrawer->DrawFrame();
 }
 
+float* System::posenetExternal() { //the & here just means pass by reference, so DON'T make copy of passed Mat
+    return mpTracker->posenetExternalGetPts();
+}
+
 void System::ActivateLocalizationMode()
 {
     unique_lock<mutex> lock(mMutexMode);

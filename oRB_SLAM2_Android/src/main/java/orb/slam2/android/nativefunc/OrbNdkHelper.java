@@ -28,7 +28,7 @@ public class OrbNdkHelper {
 	public native static float[] startCurrentORBForCamera2(double curTimeStamp, long addr, int w, int h, float[] R);
 
 	//get a double float points containing Posenet pts to be drawn
-	public native static float[][] getRawPosenetPts(long addr);
+	public native static float[] getRawPosenetPts();
 
 
 

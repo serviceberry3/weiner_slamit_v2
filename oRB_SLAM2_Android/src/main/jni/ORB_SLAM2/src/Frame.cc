@@ -188,7 +188,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
 //MONOCULAR CONSTRUCTOR
 //This is probably constructor we're using***
 Frame::Frame(const cv::Mat &imGray, const cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
-const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter)
+const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter, std::vector<float> &keyPoints)
     :mpORBvocabulary(voc),
     mpORBextractorLeft(extractor), //the key feature extractor
     mpORBextractorRight(static_cast<ORBextractor*>(NULL)), //right is set to null since it's not used
@@ -216,17 +216,30 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     //required size for posenet model
     cv::Size size(257, 257);
 
-    //resize the copy into the new Mat so we can feed it to Posenet, using nearest neighbor interpolation
-    resize(imRgb, scaledImage, size, CV_INTER_NN);
+    LOG("Frame(): input Mat to be resized is %d rows by %d cols", imRgb.rows, imRgb.cols);
 
-    LOG("Frame(): finished resizing incoming RGBA frame");
+    //resize the copy into the new Mat so we can feed it to Posenet, using nearest neighbor interpolation
+    resize(imRgb, scaledImage, size);
+
+    LOG("Frame(): finished resizing incoming RGBA frame, new size is %d x %d", scaledImage.rows, scaledImage.cols);
 
     //now we wanna feed the scaled image into Posenet to see if there's a person in the image
     Person person = posenet.estimateSinglePose(scaledImage, interpreter);
 
-    LOG("Frame(): finished Posenet creation");
+    //copy the keypoints into our 2D float array so they can be drawn on camera preview box in Java
+    std::vector<KeyPoint> keyPts = person.getKeyPoints();
 
+    int head = 0;
 
+    for (int i = 0; i < keyPts.size(); i++) {
+        //if model was pretty confident this was a pt
+        if (keyPts[i].score > 0.7) {
+            //add this keypoint to the array
+            keyPoints[head++] = keyPts[i].position.x;
+            keyPoints[head++] = keyPts[i].position.y;
+        }
+    }
+    //the keypoints that were found are now in keyPoints and are tied to the instance of Tracking that called this Frame constructor
 
     //ORB extraction (key feature extraction)
     ExtractORB(0, imGray);

@@ -50,6 +50,9 @@ namespace ORB_SLAM2 {
        public:
           std::vector<KeyPoint> keyPoints;
           float score;
+
+          std::vector<KeyPoint> getKeyPoints();
+          float getScore();
     };
 
     enum class Device {
