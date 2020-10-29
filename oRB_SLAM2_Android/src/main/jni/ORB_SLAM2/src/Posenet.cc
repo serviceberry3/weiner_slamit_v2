@@ -688,17 +688,19 @@ Posenet::Posenet()
 
     //copy data into the keypoint list
     for (int i = 0; i < numKeypoints; i++) {
-        KeyPoint thisKeypoint = keypointList[i];
+        keypointList[i].bodyPart = static_cast<BodyPart>(i);
 
-        thisKeypoint.bodyPart = static_cast<BodyPart>(i);
+        keypointList[i].position.x = (float)xCoords[i];
 
-        thisKeypoint.position.x = (float)xCoords[i];
-        thisKeypoint.position.y = (float)yCoords[i];
+        keypointList[i].position.y = (float)yCoords[i];
 
-        LOG("estimateSinglePose(): adding this keypoint at %f, %f, score %f", thisKeypoint.position.x, thisKeypoint.position.y,
+
+        LOG("estimateSinglePose(): adding this keypoint at %f, %f, score %f", keypointList[i].position.x, keypointList[i].position.y,
         confidenceScores[i]);
 
-        thisKeypoint.score = confidenceScores[i];
+
+        keypointList[i].score = confidenceScores[i];
+
         totalScore += confidenceScores[i];
     }
 

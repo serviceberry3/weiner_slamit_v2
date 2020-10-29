@@ -363,11 +363,11 @@ float* Tracking::posenetExternalGetPts() {
 
     //divide the available screen width pixels by PoseNet's required number of width pixels to get the number of real screen pixels
     //widthwise per posenet input image "pixel"
-    float widthRatio = (float) screenWidth / 257; //should be 1080/257
+    float widthRatio = (float) screenWidth / 257; //should be 780/257
 
     //divide the available screen height pixels by PoseNet's required number of height pixels to get number of real screen pixels
     //heightwise per posenet input image "pixel"
-    float heightRatio = (float) screenHeight / 257; //should be 1080/257
+    float heightRatio = (float) screenHeight / 257; //should be 780/257
 
     //scale the points
     for (int i = 0; i < currKeyPoints.size(); i++) {
@@ -382,11 +382,13 @@ float* Tracking::posenetExternalGetPts() {
         //x coord
         if (i % 2 == 0) {
             //adjust x value for actual camera preview
+            LOG("Scaling x coord %f", currKeyPoints[i]);
             currKeyPoints[i] *= widthRatio;
         }
         //y coord
         else {
             //adjust y value for actual camera preview
+            LOG("Scaling x coord %f", currKeyPoints[i]);
             currKeyPoints[i] *= heightRatio;
         }
     }
