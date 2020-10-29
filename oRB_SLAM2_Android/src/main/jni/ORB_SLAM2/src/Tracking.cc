@@ -311,8 +311,9 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         LOG("GrabImageMonocular(): image came in from camera with four channels");
         if (mbRGB) {
             LOG("GrabImageMonocular(): converting from RGBA 2 GRAY"); //**THIS IS THE ONE WE DO
-            //save copy of original mat first
-            mImRgb = mImGray;
+            //save copy of original mat (but converted to three channels) first
+            cvtColor(mImGray, mImRgb, CV_RGBA2RGB);
+            //mImRgb = mImGray;
 
             //convert mImGray to grayscale (one channel)
             cvtColor(mImGray, mImGray, CV_RGBA2GRAY);
@@ -371,8 +372,13 @@ float* Tracking::posenetExternalGetPts() {
     //scale the points
     for (int i = 0; i < currKeyPoints.size(); i++) {
         if (currKeyPoints[i] == -1) {
+            if (i == 0) {
+                LOG("posenetExternalGetPts(): no valid points found");
+            }
             break;
         }
+
+        LOG("posenetExternalGetPts(): found a valid keypoint, now scaling it");
         //x coord
         if (i % 2 == 0) {
             //adjust x value for actual camera preview
@@ -387,7 +393,7 @@ float* Tracking::posenetExternalGetPts() {
 
 
     //return ptr to first float in currKeyPoints
-    return currKeyPoints.data();
+    return (float*)currKeyPoints.data();
 }
 
 void Tracking::Track()

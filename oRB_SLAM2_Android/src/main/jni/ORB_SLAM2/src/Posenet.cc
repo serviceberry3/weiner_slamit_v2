@@ -18,6 +18,10 @@ namespace ORB_SLAM2
 //std::unique_ptr<TfLiteInterpreter> interpreter;
 //TfLiteInterpreter interpreter;
 
+float KeyPoint::getScore() {
+    return score;
+}
+
 
 std::vector<KeyPoint> Person::getKeyPoints() {
     return keyPoints;
@@ -75,7 +79,7 @@ Posenet::Posenet()
         }
 
 
-/*
+        /*
         //customize the gpu delegate
         const TfLiteGpuDelegateOptionsV2 gpuDelegate = {
                 .is_precision_loss_allowed = false,
@@ -84,7 +88,7 @@ Posenet::Posenet()
                 .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
                 .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO
         }; //TfLiteGpuDelegateOptionsV2Default() doesn't fix the error either
-*/
+        */
 
         //TfLiteDelegate* delegate = TfLiteGpuDelegateV2Create(&gpuDelegate);
 
@@ -492,9 +496,8 @@ Posenet::Posenet()
 
 
                 //iterate over each key-value pair in the output map (should iterate 4 times)
-                //for (std::pair<int, std::vector<std::vector<std::vector<std::vector<float>> > > > element : outputs) {
-                for (auto& element : outputs) {
-                    LOG("Running pair iteration...");
+                for (auto& element : outputs) { //make sure we're modifying the actual element
+                    LOG("Running unordered_map iteration...");
                     //copy output tensor data into output map
                     const TfLiteTensor* curr_output_tensor = TfLiteInterpreterGetOutputTensor(interpreter, element.first);
 
@@ -518,7 +521,6 @@ Posenet::Posenet()
                         LOG("Problem getting underlying data buffer from this output tensor");
                         return;
                     }
-
 
 
                     //I think we need a function similar to
@@ -546,8 +548,6 @@ Posenet::Posenet()
             LOG("runForMultipleInputsOutputs: Inputs should not be null or empty.");
         }
   }
-
-
 
 
  Person Posenet::estimateSinglePose(const cv::Mat &img, TfLiteInterpreter* pInterpreter) {
@@ -632,6 +632,7 @@ Posenet::Posenet()
       }
 
      LOG("Maxrow finished as %d", maxRow);
+     LOG("Maxcol finished as %d", maxCol);
 
       //add the location that was most likely to contain this joint point to our keypoint positions array
       keypointPositions[keypoint] = std::pair<int, int>(maxRow, maxCol);
@@ -654,15 +655,27 @@ Posenet::Posenet()
         int positionY = thisKP.first; //which row
         LOG("Got position Y as %d", positionY);
         int positionX = thisKP.second; //which column
+        LOG("Got position X as %d", positionX);
 
         //store the y coordinate of these keypoint in the image as calculated offset + the most likely position of this joint div by (9 * 257)
-        yCoords[i] = (int)(positionY / ((float)(height - 1)) * img.rows + offsets[0][positionY][positionX][i]);
+        yCoords[i] = (int)(positionY / ((float)(height - 1.0f)) * img.rows + offsets[0][positionY][positionX][i]);
 
         //store the y coordinate of these keypoint in the image as calculated offset + the most likely position of this joint div by (9 * 257)
-        xCoords[i] = (int)(positionX / ((float)(width - 1)) * img.cols + offsets[0][positionY][positionX][i + numKeypoints]);
+        xCoords[i] = (int)(positionX / ((float)(width - 1.0f)) * img.cols + offsets[0][positionY][positionX][i + numKeypoints]);
 
-        //compute arbitrary confidence value between 0 and 1
+        LOG("Now we have point (%d, %d) from heatmap", xCoords[i], yCoords[i]);
+
+        //compute arbitrary confidence value between 0 and 1 for this keypoint
         confidenceScores[i] = sigmoid(heatmaps[0][positionY][positionX][i]);
+
+
+
+        /*
+        yCoords[idx] = (position.first / (height - 1).toFloat() * bitmap.height + offsets[0][positionY][positionX][idx]).toInt()
+
+              xCoords[idx] = (position.second / (width - 1).toFloat() * bitmap.width + offsets[0][positionY][positionX][idx + numKeypoints]).toInt()
+
+              confidenceScores[idx] = sigmoid(heatmaps[0][positionY][positionX][idx])*/
     }
 
     //instantiate new person to return
@@ -682,7 +695,8 @@ Posenet::Posenet()
         thisKeypoint.position.x = (float)xCoords[i];
         thisKeypoint.position.y = (float)yCoords[i];
 
-        LOG("estimateSinglePose(): adding this keypoint at %d, %d", thisKeypoint.position.x, thisKeypoint.position.y);
+        LOG("estimateSinglePose(): adding this keypoint at %f, %f, score %f", thisKeypoint.position.x, thisKeypoint.position.y,
+        confidenceScores[i]);
 
         thisKeypoint.score = confidenceScores[i];
         totalScore += confidenceScores[i];

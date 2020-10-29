@@ -235,8 +235,10 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     int head = 0;
 
     for (int i = 0; i < keyPts.size(); i++) {
+        LOG("This keypoint #%d score is %f", i, keyPts[i].getScore());
         //if model was pretty confident this was a pt
         if (keyPts[i].score > 0.7) {
+            LOG("Frame(): found confident enough Posenet keypoint, now adding it");
             //add this keypoint to the array
             keyPoints[head++] = keyPts[i].position.x;
             keyPoints[head++] = keyPts[i].position.y;

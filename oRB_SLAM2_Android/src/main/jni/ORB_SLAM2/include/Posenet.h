@@ -43,6 +43,8 @@ namespace ORB_SLAM2 {
           BodyPart bodyPart;
           Position position;
           float score;
+
+          float getScore();
     };
 
     //TfLiteInterpreterOptions* TfLiteInterpreterOptionsCreate();
