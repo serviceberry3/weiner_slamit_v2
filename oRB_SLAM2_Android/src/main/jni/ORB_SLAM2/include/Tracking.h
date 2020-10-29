@@ -103,6 +103,8 @@ public:
     //current person keypoints (accessible to Java activity for drawing on camera preview box)
     std::vector<float> currKeyPoints;
 
+    std::mutex mMutex;
+
 
     //Current Frame
     Frame mCurrentFrame;

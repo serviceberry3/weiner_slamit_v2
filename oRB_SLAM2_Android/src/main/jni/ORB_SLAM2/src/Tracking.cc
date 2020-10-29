@@ -324,8 +324,15 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         }
     }
 
-    //reset keypoints array
-    std::fill(currKeyPoints.begin(), currKeyPoints.end(), -1);
+
+
+    {//critical section, locking mMutex ('''lock''' is the name of the unique_lock obj here)
+        unique_lock<mutex> lock(mMutex); //when the unique_lock is constructed it will lock the passed mutex, and when gets deconstructed
+                                         //(end of brackets) or exception is thrown (also gets deconstructed), it will unlock it
+
+        //reset keypoints array
+        std::fill(currKeyPoints.begin(), currKeyPoints.end(), -1);
+
 
     LOG("GrabImageMonocular(): address of grabbed color image is %p", &im);
 
@@ -341,7 +348,17 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
     }
 
+     }//unlock mMutex
+/*
+    LOG("currKeyPoints size is %d", currKeyPoints.size());
+
     //posenet keypoints are now in currKeyPoints
+
+
+    LOG("GrabImageMonocular(): reading out keypoints:");
+    for (int i = 0; i < currKeyPoints.size(); i+=2) {
+        LOG("GrabImageMonocular(): this keypt is (%f, %f)", currKeyPoints[i], currKeyPoints[i+1]);
+    }*/
 
     LOG("GrabImageMonocular(): now calling Tracking::Track()...");
 
@@ -355,47 +372,22 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
 }
 
 float* Tracking::posenetExternalGetPts() {
-    //since we're in C let's convert the keypoints now to be the correct coords for
-    int screenWidth = 780;
-    int screenHeight = 420;
+
+
+    float* ret;
+
+{//critical section, locking mMutex ('''lock''' is the name of the unique_lock obj here)
+        unique_lock<mutex> lock(mMutex); //when the unique_lock is constructed it will lock the passed mutex, and when gets deconstructed
+                                         //(end of brackets) or exception is thrown (also gets deconstructed), it will unlock it
 
 
 
-    //divide the available screen width pixels by PoseNet's required number of width pixels to get the number of real screen pixels
-    //widthwise per posenet input image "pixel"
-    float widthRatio = (float) screenWidth / 257; //should be 780/257
+    ret = (float*)(currKeyPoints.data());
 
-    //divide the available screen height pixels by PoseNet's required number of height pixels to get number of real screen pixels
-    //heightwise per posenet input image "pixel"
-    float heightRatio = (float) screenHeight / 257; //should be 780/257
-
-    //scale the points
-    for (int i = 0; i < currKeyPoints.size(); i++) {
-        if (currKeyPoints[i] == -1) {
-            if (i == 0) {
-                LOG("posenetExternalGetPts(): no valid points found");
-            }
-            break;
-        }
-
-        LOG("posenetExternalGetPts(): found a valid keypoint, now scaling it");
-        //x coord
-        if (i % 2 == 0) {
-            //adjust x value for actual camera preview
-            LOG("Scaling x coord %f", currKeyPoints[i]);
-            currKeyPoints[i] *= widthRatio;
-        }
-        //y coord
-        else {
-            //adjust y value for actual camera preview
-            LOG("Scaling x coord %f", currKeyPoints[i]);
-            currKeyPoints[i] *= heightRatio;
-        }
-    }
-
+} //unlock mMutex
 
     //return ptr to first float in currKeyPoints
-    return (float*)currKeyPoints.data();
+    return ret;
 }
 
 void Tracking::Track()

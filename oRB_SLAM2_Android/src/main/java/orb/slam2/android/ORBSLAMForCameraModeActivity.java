@@ -740,6 +740,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         }
 
 
+
+
         //whatever gets returned here is what's displayed
         return inputFrame.rgba();
     }

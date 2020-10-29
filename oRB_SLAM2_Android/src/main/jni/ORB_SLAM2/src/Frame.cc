@@ -238,10 +238,18 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
         LOG("This keypoint #%d score is %f", i, keyPts[i].getScore());
         //if model was pretty confident this was a pt
         if (keyPts[i].score > 0.7) {
-            LOG("Frame(): found confident enough Posenet keypoint, now adding it");
+            LOG("Frame(): found confident enough Posenet keypoint (%f, %f), now adding it", keyPts[i].position.x, keyPts[i].position.y);
+
+            //since we're in C let's convert the keypoints now to be the correct coords for 720x480
+
+
+            LOG("Frame(): head1 is %d", head);
             //add this keypoint to the array
-            keyPoints[head++] = keyPts[i].position.x;
-            keyPoints[head++] = keyPts[i].position.y;
+            keyPoints[head++] = keyPts[i].position.x * widthRatio;
+            LOG("Frame(): head2 is %d", head);
+
+            keyPoints[head++] = keyPts[i].position.y * heightRatio;
+            LOG("Frame(): head3 is %d", head);
         }
     }
     //the keypoints that were found are now in keyPoints and are tied to the instance of Tracking that called this Frame constructor
