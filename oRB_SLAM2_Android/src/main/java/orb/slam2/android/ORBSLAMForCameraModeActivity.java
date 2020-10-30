@@ -55,7 +55,6 @@ import java.util.Objects;
 
 /**
  * ORB Test Activity For CameraMode
- *
  */
 public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,CvCameraViewListener2, View.OnClickListener, LocationListener,
         SensorEventListener {

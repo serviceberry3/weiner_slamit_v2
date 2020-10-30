@@ -26,12 +26,13 @@ public class CameraModeActivity extends Activity implements OnClickListener{
     private Intent fileChooserIntent ;
     public static final String EXTRA_FILE_CHOOSER = "file_chooser";
 
-//    private String PICPath = "/storage/emulated/0/SLAM/Data_set/rgbd1/rgb";
+    //private String PICPath = "/storage/emulated/0/SLAM/Data_set/rgbd1/rgb";
     private String VOCPath = "/storage/emulated/0/SLAM/ORBvoc.txt";
     private String TUMPath = "/storage/emulated/0/SLAM/List3.yaml";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
@@ -39,41 +40,43 @@ public class CameraModeActivity extends Activity implements OnClickListener{
         setContentView(R.layout.activity_camera_mode);
 
         ChooseCalibration=(Button)findViewById(R.id.choose_calibration);
-//        ChooseVOC=(Button)findViewById(R.id.choose_voc);
+        //ChooseVOC = (Button)findViewById(R.id.choose_voc);
         finish=(Button)findViewById(R.id.finish);
         finish.setOnClickListener(this);
         ChooseCalibration.setOnClickListener(this);
-//        ChooseVOC.setOnClickListener(this);
+        //ChooseVOC.setOnClickListener(this);
         CalibrationTxt=(TextView)findViewById(R.id.cal_path_txt);
-//        VOCPathText=(TextView)findViewById(R.id.voc_path_txt);
+        //VOCPathText = (TextView)findViewById(R.id.voc_path_txt);
 
-        fileChooserIntent =  new Intent(this ,
-                FileChooserActivity.class);
+        fileChooserIntent =  new Intent(this, FileChooserActivity.class);
 
-//        // Choose voc
-//        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-//            startActivityForResult(fileChooserIntent , REQUEST_CODE_3);
-//        else
-//            Toast.makeText(TestModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();
-
+        //Choose vocabulary file
+        /*
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+            startActivityForResult(fileChooserIntent , REQUEST_CODE_3);
+        else
+            Toast.makeText(CameraModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();*/
     }
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
-        switch(v.getId()){
+        switch (v.getId()) {
+            //if the "Choose calibration file" button is clicked
             case R.id.choose_calibration:
+                //open the file explorer after checking that SD card is where we think it is
+                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+                    startActivityForResult(fileChooserIntent, REQUEST_CODE_2);
+                else
+                    Toast.makeText(CameraModeActivity.this, "Can't find SDcard", Toast.LENGTH_LONG).show();
+                break;
+
+            /*
+            case R.id.choose_voc:
                 if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-                    startActivityForResult(fileChooserIntent , REQUEST_CODE_2);
+                    startActivityForResult(fileChooserIntent , REQUEST_CODE_3);
                 else
                     Toast.makeText(CameraModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();
-                break;
-//            case R.id.choose_voc:
-//                if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-//                    startActivityForResult(fileChooserIntent , REQUEST_CODE_3);
-//                else
-//                    Toast.makeText(TestModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();
-//                break;
+                break;*/
 
             //start up actual SLAM
             case R.id.finish:
@@ -106,20 +109,19 @@ public class CameraModeActivity extends Activity implements OnClickListener{
 
     //get result back from file selection activity
     public void onActivityResult(int requestCode , int resultCode , Intent data){
-        if(resultCode == RESULT_CANCELED){
+        if (resultCode == RESULT_CANCELED){
             Toast.makeText(CameraModeActivity.this, "no return value", Toast.LENGTH_LONG).show();
             return ;
         }
-        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE_2){
-            //获取路径名
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_2) {
             TUMPath = data.getStringExtra(EXTRA_FILE_CHOOSER);
             CalibrationTxt.setText("The calibration path is " + TUMPath);
             return;
         }
-        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE_3){
-            //获取路径名
+
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_3) {
             VOCPath = data.getStringExtra(EXTRA_FILE_CHOOSER);
-//            VOCPathText.setText("calibration path is "+VOCPath);
+            //VOCPathText.setText("calibration path is " + VOCPath);
             return;
         }
 

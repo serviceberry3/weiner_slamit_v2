@@ -17,35 +17,35 @@ public class MainActivity extends Activity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+          WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
 
         datasetMode=(Button)findViewById(R.id.dataset_mode);
-//        cameraMode=(Button)findViewById(R.id.camera_mode);
+		//cameraMode=(Button)findViewById(R.id.camera_mode);
 
 		testMode=(Button)findViewById(R.id.test_mode);
 
         datasetMode.setOnClickListener(this);
-//        cameraMode.setOnClickListener(this);
+		//cameraMode.setOnClickListener(this);
 
 		testMode.setOnClickListener(this);
     }
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch(v.getId()){
 		case R.id.dataset_mode:
-			startActivity(new Intent(MainActivity.this,DataSetModeActivity.class));
+			startActivity(new Intent(MainActivity.this, DataSetModeActivity.class));
 			break;
-//		case R.id.camera_mode:
-//			//Toast.makeText(MainActivity.this, "on the way...", Toast.LENGTH_LONG).show();
-//			startActivity(new Intent(MainActivity.this,CameraModeActivity.class));
-//			break;
+		/*
+		case R.id.camera_mode:
+			Toast.makeText(MainActivity.this, "on the way...", Toast.LENGTH_LONG).show();
+			startActivity(new Intent(MainActivity.this,CameraModeActivity.class));
+			break;*/
 		case R.id.test_mode:
 			//Toast.makeText(MainActivity.this, "on the way...", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(MainActivity.this, CameraModeActivity.class));
