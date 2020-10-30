@@ -80,12 +80,12 @@ public class CameraModeActivity extends Activity implements OnClickListener{
 
             //start up actual SLAM
             case R.id.finish:
-                if(!TextUtils.isEmpty(TUMPath) && !TextUtils.isEmpty(VOCPath)){
+                if(!TextUtils.isEmpty(TUMPath) && !TextUtils.isEmpty(VOCPath)) {
                     Bundle bundle = new Bundle();
 
                     //add the calibration and dataset files as strings to the intent
-                    bundle.putString("voc",VOCPath );
-                    bundle.putString("calibration",TUMPath );
+                    bundle.putString("voc", VOCPath );
+                    bundle.putString("calibration", TUMPath );
 
                     //make an intent to send over to the newly spawned activity
                     Intent intent = new Intent(CameraModeActivity.this, ORBSLAMForCameraModeActivity.class);

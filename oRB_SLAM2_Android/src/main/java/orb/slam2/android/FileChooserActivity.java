@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,21 +28,31 @@ public class FileChooserActivity extends Activity {
 	private View mBtExit,mBtOk;
 	private TextView mTvPath ;
 	
-	private String mSdcardRootPath ;  //sdcard 根路径
-	private String mLastFilePath ;    //当前显示的路径
+	private String mSdcardRootPath;
+	private String mLastFilePath;
 	
-	private ArrayList<FileInfo> mFileLists  ;
-	private FileChooserAdapter mAdatper ;
+	private ArrayList<FileInfo> mFileLists;
+
+	//our adapter
+	private FileChooserAdapter mAdapter;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				  WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+
+		//make it fullscreen
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+		//set content to "filechooser_show.xml"
 		setContentView(R.layout.filechooser_show);
 
-		//mSdcardRootPath = Environment.getExternalStorageDirectory().getAbsolutePath();// �õ�sdcardĿ¼
+		//get the path to external storage directory/sd card
+		//mSdcardRootPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 		mSdcardRootPath = "/storage/emulated/0/Android/data/orb.slam2.android/files";
 
+		//log what was found
+		Log.i("DBUG", mSdcardRootPath);
+
+		//find the views for each of the buttons
 		mBackView = findViewById(R.id.imgBackFolder);
 		mBackView.setOnClickListener(mClickListener);
 		mBtExit = findViewById(R.id.btExit);
@@ -54,68 +65,107 @@ public class FileChooserActivity extends Activity {
 		mGridView = (GridView)findViewById(R.id.gvFileChooser);
 		mGridView.setEmptyView(findViewById(R.id.tvEmptyHint));
 		mGridView.setOnItemClickListener(mItemClickListener);
+
+		//set up the file explorer view using the path found above
 		setGridViewAdapter(mSdcardRootPath);
 	}
-	//配置适配器
+
+	//instantiate an adapter for the gridview, and load the files in this folder
 	private void setGridViewAdapter(String filePath) {
+		//load the files that should be here
 		updateFileItems(filePath);
-		mAdatper = new FileChooserAdapter(this , mFileLists);
-		mGridView.setAdapter(mAdatper);
+
+		mAdapter = new FileChooserAdapter(this , mFileLists);
+		mGridView.setAdapter(mAdapter);
 	}
-	//根据路径更新数据，并且通知Adatper数据改变
+
+
 	private void updateFileItems(String filePath) {
+		//show pwd in upper left cnr
 		mLastFilePath = filePath ;
 		mTvPath.setText(mLastFilePath);
-		
+
+		//if the file list hasn't ever been allocated yet, do so now
 		if(mFileLists == null)
-			mFileLists = new ArrayList<FileInfo>() ;
+			mFileLists = new ArrayList<FileInfo>();
+
+		//clear out old junk data from the file ArrayList
 		if(!mFileLists.isEmpty())
-			mFileLists.clear() ;
+			mFileLists.clear();
 		
 		File[] files = folderScan(filePath);
-		if(files == null) 
-			return ;
-		
+		if (files == null)
+			//this is not a directory
+			return;
+
+		//go through the list of files returned
 		for (int i = 0; i < files.length; i++) {
-			if(files[i].isHidden())  // 不显示隐藏文件
-				continue ;
-			
-			String fileAbsolutePath = files[i].getAbsolutePath() ;
+			if(files[i].isHidden())
+				//jump to next iteration of loop
+				continue;
+
+			//get the path of this file
+			String fileAbsolutePath = files[i].getAbsolutePath();
+
+			//get name of file
 			String fileName = files[i].getName();
-		    boolean isDirectory = false ;
-			if (files[i].isDirectory()){
-				isDirectory = true ;
+
+			//check if this is a directory
+		    boolean isDirectory = false;
+
+			if (files[i].isDirectory()) {
+				isDirectory = true;
 			}
-		    FileInfo fileInfo = new FileInfo(fileAbsolutePath , fileName , isDirectory) ;
+
+			//instantiate a FileInfo object from this file
+		    FileInfo fileInfo = new FileInfo(fileAbsolutePath, fileName, isDirectory);
+
+			//add this file to the list of files
 			mFileLists.add(fileInfo);
 		}
-		//When first enter , the object of mAdatper don't initialized
-		if(mAdatper != null)
-		    mAdatper.notifyDataSetChanged();  //重新刷新
+
+		//When we enter for first time, the mAdapter object isn't initialized, so do it now
+		if (mAdapter != null)
+		    mAdapter.notifyDataSetChanged();
 	}
-	//获得当前路径的所有文件
+
+
+	//get files from this directory
 	private File[] folderScan(String path) {
+		//converts given pathname into abstract pathname
 		File file = new File(path);
+
+		//Returns array of abstract pathnames denoting files in directory denoted by this abstract pathname. Returns null if this isn't a directory
 		File[] files = file.listFiles();
+
 		return files;
 	}
 	
 	private View.OnClickListener mClickListener = new  OnClickListener() {
 		public void onClick(View v) {
 			switch (v.getId()) {
-			case R.id.imgBackFolder:
-				backProcess();
-				break;
-			case R.id.btExit :
-				setResult(RESULT_CANCELED);
-				finish();
-			    break ;
-			case R.id.btOK:
-				Intent intent = new Intent();
-			    intent.putExtra(DataSetModeActivity.EXTRA_FILE_CHOOSER , mLastFilePath);
-			    setResult(RESULT_OK , intent);
-			    finish();
-				break;
+				//go back to previous screen if BACK clicked
+				case R.id.imgBackFolder:
+					backProcess();
+					break;
+
+				//exit file selection activity if EXIT clicked
+				case R.id.btExit :
+					setResult(RESULT_CANCELED);
+
+					//end activity
+					finish();
+					break;
+
+				//set the new path and exit if SELECT clicked
+				case R.id.btOK:
+					Intent intent = new Intent();
+					intent.putExtra(DataSetModeActivity.EXTRA_FILE_CHOOSER , mLastFilePath);
+					setResult(RESULT_OK, intent);
+
+					//end activity
+					finish();
+					break;
 			}
 		}
 	};
@@ -124,7 +174,7 @@ public class FileChooserActivity extends Activity {
 		public void onItemClick(AdapterView<?> adapterView, View view, int position,
 				long id) {
 			FileInfo fileInfo = (FileInfo)(((FileChooserAdapter)adapterView.getAdapter()).getItem(position));
-			if(fileInfo.isDirectory())   //点击项为文件夹, 显示该文件夹下所有文件
+			if(fileInfo.isDirectory())
 				updateFileItems(fileInfo.getFilePath()) ;
 			else{
 				Intent intent = new Intent();
@@ -143,15 +193,16 @@ public class FileChooserActivity extends Activity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	//返回上一层目录的操作
-	public void backProcess(){
-		//判断当前路径是不是sdcard路径 ， 如果不是，则返回到上一层。
+
+
+	public void backProcess() {
 		if (!mLastFilePath.equals(mSdcardRootPath)) {  
 			File thisFile = new File(mLastFilePath);
 			String parentFilePath = thisFile.getParent();
 			updateFileItems(parentFilePath);
-		} 
-		else {   //是sdcard路径 ，直接结束
+		}
+
+		else {
 			setResult(RESULT_CANCELED);
 			finish();
 		}

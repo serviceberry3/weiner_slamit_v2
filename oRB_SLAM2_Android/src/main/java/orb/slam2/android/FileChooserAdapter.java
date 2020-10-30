@@ -65,11 +65,11 @@ public class FileChooserAdapter extends BaseAdapter {
 		
 		holder.tvFileName.setText(fileInfo.getFileName());
 		
-		if(fileInfo.isDirectory()){      //文件夹
+		if(fileInfo.isDirectory()){
 			holder.imgFileIcon.setImageResource(R.drawable.ic_folder);
 			holder.tvFileName.setTextColor(Color.GRAY);
 		}
-		else {                           //未知文件
+		else {
 			holder.imgFileIcon.setImageResource(R.drawable.ic_file_unknown);
 			holder.tvFileName.setTextColor(Color.GRAY);
 		}
@@ -86,14 +86,12 @@ public class FileChooserAdapter extends BaseAdapter {
 		}
 	}
 
-	
+	//enum class FileType tells whether the file is a file or a directory
 	enum FileType {
 		FILE , DIRECTORY;
 	}
 
-	// =========================
-	// Model
-	// =========================
+	//make our own class fileinfo to hold info about the file
 	static class FileInfo {
 		private FileType fileType;
 		private String fileName;
@@ -130,8 +128,7 @@ public class FileChooserAdapter extends BaseAdapter {
 
 		@Override
 		public String toString() {
-			return "FileInfo [fileType=" + fileType + ", fileName=" + fileName
-					+ ", filePath=" + filePath + "]";
+			return "FileInfo [fileType=" + fileType + ", fileName=" + fileName + ", filePath=" + filePath + "]";
 		}
 	}
 
