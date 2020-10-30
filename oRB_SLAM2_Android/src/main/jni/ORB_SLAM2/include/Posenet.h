@@ -39,28 +39,29 @@ namespace ORB_SLAM2 {
     };
 
     class KeyPoint {
-      public :
+        public:
           BodyPart bodyPart;
           Position position;
           float score;
 
+          //convenient but unnecessary functions for retrieving the score of a given KeyPoint instance
           float getScore();
     };
 
-    //TfLiteInterpreterOptions* TfLiteInterpreterOptionsCreate();
     class Person {
-       public:
+        public:
           std::vector<KeyPoint> keyPoints;
           float score;
 
+          //convenient but unnecessary functions for retrieving the KeyPoints and score for a Person object
           std::vector<KeyPoint> getKeyPoints();
           float getScore();
     };
 
     enum class Device {
-      CPU,
-      NNAPI,
-      GPU
+        CPU,
+        NNAPI,
+        GPU
     };
 
     class Posenet {
@@ -77,9 +78,10 @@ namespace ORB_SLAM2 {
         //interpreter for tflite model
         TfLiteInterpreter* interpreter = NULL;
 
+        //number of threads to run on
         int NUM_LITE_THREADS = 4;
 
-
+        //helper functions for running a cv::Mat through the TfLite Posenet model
         public:
             Posenet();
             Posenet(const char* pFilename, Device pDevice);
@@ -90,10 +92,11 @@ namespace ORB_SLAM2 {
             std::unordered_map<int, std::vector<std::vector<std::vector<std::vector<float>>>> > initOutputMap();
             void runForMultipleInputsOutputs(std::vector<float> &inputs, std::unordered_map<int,
             std::vector<std::vector<std::vector<std::vector<float>>>> > &outputs);
+
+            //"main" function for human pose estimation using the model
             Person estimateSinglePose(const cv::Mat &img, TfLiteInterpreter* pInterpreter);
             void readFlatIntoMultiDimensionalArray(float* data, std::vector<std::vector<std::vector<std::vector<float>>>> &map);
     };
-
 }
 
 #endif //POSENET_H
