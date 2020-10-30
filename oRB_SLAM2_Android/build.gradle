@@ -40,5 +40,6 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation project(path: ':openCVLibrary249')
     implementation project(path: ':posenet')
+    implementation project(path: ':openCVLibrary341')
 }
 

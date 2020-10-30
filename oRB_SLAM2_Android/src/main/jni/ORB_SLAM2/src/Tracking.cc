@@ -270,15 +270,15 @@ cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const d
     else if (mImGray.channels() == 4)
     {
         if (mbRGB)
-            cvtColor(mImGray,mImGray,CV_RGBA2GRAY);
+            cvtColor(mImGray, mImGray, CV_RGBA2GRAY);
         else
-            cvtColor(mImGray,mImGray,CV_BGRA2GRAY);
+            cvtColor(mImGray, mImGray, CV_BGRA2GRAY);
     }
 
-    if (mDepthMapFactor!=1 || imDepth.type()!=CV_32F);
-    imDepth.convertTo(imDepth,CV_32F,mDepthMapFactor);
+    if (mDepthMapFactor != 1 || imDepth.type() != CV_32F);
+    imDepth.convertTo(imDepth, CV_32F, mDepthMapFactor);
 
-    mCurrentFrame = Frame(mImGray,imDepth,timestamp,mpORBextractorLeft,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth);
+    mCurrentFrame = Frame(mImGray, imDepth, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth);
 
     Track();
 
@@ -294,7 +294,7 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
     mImGray = im;
 
     //do some color conversion
-    if (mImGray.channels()==3)
+    if (mImGray.channels() == 3)
     {
         LOG("GrabImageMonocular(): image came in from camera with three channels");
         if (mbRGB) {
@@ -303,10 +303,10 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         }
         else {
         LOG("GrabImageMonocular(): converting from BGR 2 GRAY");
-            cvtColor(mImGray,mImGray,CV_BGR2GRAY);
+            cvtColor(mImGray, mImGray, CV_BGR2GRAY);
         }
     }
-    else if (mImGray.channels()==4)
+    else if (mImGray.channels() == 4)
     {
         LOG("GrabImageMonocular(): image came in from camera with four channels");
         if (mbRGB) {
@@ -320,7 +320,7 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         }
         else {
             LOG("GrabImageMonocular(): converting from BGRA 2 GRAY");
-            cvtColor(mImGray,mImGray,CV_BGRA2GRAY);
+            cvtColor(mImGray, mImGray, CV_BGRA2GRAY);
         }
     }
 
@@ -330,66 +330,62 @@ cv::Mat Tracking::GrabImageMonocular(const cv::Mat &im, const double &timestamp)
         unique_lock<mutex> lock(mMutex); //when the unique_lock is constructed it will lock the passed mutex, and when gets deconstructed
                                          //(end of brackets) or exception is thrown (also gets deconstructed), it will unlock it
 
+        //now we have the lock on currKeyPoints
+
         //reset keypoints array
         std::fill(currKeyPoints.begin(), currKeyPoints.end(), -1);
 
 
-    LOG("GrabImageMonocular(): address of grabbed color image is %p", &im);
-
-    //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
-    if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
-        LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
-        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpIniORBextractor, mpORBVocabulary,
-        mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
-    }
-    else {
-        LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
-        mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpORBextractorLeft, mpORBVocabulary,
-        mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
-    }
+        //construct a Frame using the passed incoming camera capture, which also does the ORB feature extraction
+        if (mState == NOT_INITIALIZED || mState == NO_IMAGES_YET) {
+            LOG("Setting mCurrentFrame to new Frame obj using IniORBextractor...");
+            mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpIniORBextractor, mpORBVocabulary,
+            mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
+        }
+        else {
+            LOG("Setting mCurrentFrame to new Frame obj using ORBextractorLeft...");
+            mCurrentFrame = Frame(mImGray, mImRgb, timestamp, mpORBextractorLeft, mpORBVocabulary,
+            mK, mDistCoef, mbf, mThDepth, mPosenet, mInterpreter, currKeyPoints);
+        }
 
      }//unlock mMutex
-/*
-    LOG("currKeyPoints size is %d", currKeyPoints.size());
+
 
     //posenet keypoints are now in currKeyPoints
 
+    //LOG("GrabImageMonocular(): now calling Tracking::Track()...");
 
-    LOG("GrabImageMonocular(): reading out keypoints:");
-    for (int i = 0; i < currKeyPoints.size(); i+=2) {
-        LOG("GrabImageMonocular(): this keypt is (%f, %f)", currKeyPoints[i], currKeyPoints[i+1]);
-    }*/
-
-    LOG("GrabImageMonocular(): now calling Tracking::Track()...");
-
+    //run the tracking algorithms to get the camera pose
     Track();
 
-    LOG("GrabImageMonocular(): Track() finished!");
+    //LOG("GrabImageMonocular(): Track() finished!");
 
-    LOG("mTcw now has %d rows, %d cols", mCurrentFrame.mTcw.rows, mCurrentFrame.mTcw.cols);
+    //LOG("mTcw now has %d rows, %d cols", mCurrentFrame.mTcw.rows, mCurrentFrame.mTcw.cols);
 
     return mCurrentFrame.mTcw.clone(); //mTcw is a matrix containing the camera pose for that frame
 }
 
+//read currKeyPoints and return float* to the data there (this fxn is in case Java code wants to extract the pts for drawing, etc)
 float* Tracking::posenetExternalGetPts() {
 
 
     float* ret;
 
-{//critical section, locking mMutex ('''lock''' is the name of the unique_lock obj here)
+    {//critical section, locking mMutex ('''lock''' is the name of the unique_lock obj here)
         unique_lock<mutex> lock(mMutex); //when the unique_lock is constructed it will lock the passed mutex, and when gets deconstructed
                                          //(end of brackets) or exception is thrown (also gets deconstructed), it will unlock it
 
 
+        //now we have the lock on currKeyPoints
+        ret = (float*)(currKeyPoints.data());
 
-    ret = (float*)(currKeyPoints.data());
-
-} //unlock mMutex
+    } //unlock mMutex
 
     //return ptr to first float in currKeyPoints
     return ret;
 }
 
+//run actual tracking algorithms and do state checking, relocalization, and MapDrawer interaction
 void Tracking::Track()
 {
     if (mState == NO_IMAGES_YET)

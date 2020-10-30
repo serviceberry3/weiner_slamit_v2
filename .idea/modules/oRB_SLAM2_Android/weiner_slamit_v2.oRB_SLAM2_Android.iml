@@ -46,5 +46,6 @@
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.1.0" level="project" />
     <orderEntry type="module" module-name="weiner_slamit_v2.openCVLibrary249" />
     <orderEntry type="module" module-name="weiner_slamit_v2.posenet" />
+    <orderEntry type="module" module-name="weiner_slamit_v2.openCVLibrary341" />
   </component>
 </module>

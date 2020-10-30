@@ -11,7 +11,10 @@ import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 import org.tensorflow.lite.examples.noah.lib.Device;
 import org.tensorflow.lite.examples.noah.lib.Posenet;
 
@@ -721,7 +724,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         //get width and height of image
         w = im.cols();
         h = im.rows();
-
+/*
         Log.i(TAG, String.format("Camera preview is width %d height %d", w, h));
 
         //get the last Posenet pts found
@@ -736,14 +739,16 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                     break;
                 }
                 Log.i(TAG, String.format("Posenet points found: (%f, %f)", pts[i], pts[i+1]));
+
+
+                //draw this point on the preview
+                Core.circle(im, new Point((int)pts[i], (int)pts[i+1]), 4, new Scalar(0, 0, 255), 5);
             }
-        }
-
-
+        }*/
 
 
         //whatever gets returned here is what's displayed
-        return inputFrame.rgba();
+        return im;
     }
 
 
