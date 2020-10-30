@@ -132,14 +132,16 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         public int velocityVerletFlag;
         public int startFlag;
 
-        public velocityVerlet(){
+        public velocityVerlet() {
             velocityVerletFlag = 0;
             startFlag = 0;
             acceOld = new double[3];
         }
-        public void calculateVelocity(){
+
+
+        public void calculateVelocity() {
             if(startFlag == 0) return;
-            if(velocityVerletFlag == 0){
+            if(velocityVerletFlag == 0) {
                 velocityVerletFlag = 1;
                 acceTimeOld =  (double)System.currentTimeMillis()/1000.0;
                 for(int i = 0;i<3;i++){
@@ -147,7 +149,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                     velocity[i] = 0;
                 }
             }
-            else{
+            else {
                 acceTime = (double)System.currentTimeMillis()/1000.0;
                 acceStep = acceTime - acceTimeOld;
                 acceTimeOld = acceTime;
@@ -166,15 +168,17 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         public int RK4Flag;
         public int startFlag;
 
-        public RK4(){
+        //constructor
+        public RK4() {
             RK4Flag = 0;
             startFlag = 0;
             acce0 = new double[3];
             acce1 = new double[3];
             acceStep = 0.01;
         }
-        public void calculateVelocity(){
-            if(startFlag == 0) return;
+
+        public void calculateVelocity() {
+            if (startFlag == 0) return;
             if(RK4Flag == 0){
                 RK4Flag = 1;
                 for(int i = 0;i<3;i++){
@@ -209,6 +213,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                     Log.i(TAG, "OpenCV loaded successfully");
                     mOpenCvCameraView.enableView();
                 } break;
+
                 default:
                 {
                     super.onManagerConnected(status);
@@ -246,10 +251,13 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         displacement = 0;
         distanceIsStart = false;
         pos = new float[3];
+
+        //scale array?
         //scale = new float[3];
         //scale[0] = 1;
         //scale[1] = 1;
         //scale[2] = 1;
+
         scale = 1;
         caliStartPos = new float[3];
         caliEndPos = new float[3];
@@ -263,7 +271,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         IMatrix = new float[9];
         orientation = new float[3];
         RCaptured = RMatrix;
-
 
         dataTextView = (TextView) findViewById(R.id.dataTextView);
         distTextView = (TextView) findViewById(R.id.distTextView);
@@ -326,7 +333,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         calibrationPath = "/system/files/SLAM/List3.yaml";
 
         //vocPath = "/sdcard/SLAM/ORBvoc.txt";
-       //calibrationPath = "/sdcard/SLAM/List3.yaml";
+        //calibrationPath = "/sdcard/SLAM/List3.yaml";
 
         //make sure both dataset and calibration paths were set by user
         if (TextUtils.isEmpty(vocPath) || TextUtils.isEmpty(calibrationPath)) {
@@ -359,27 +366,36 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
             }).start();
         }
 
-//        ////GPS
-//        checkPermission = true;
-//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//        provider = locationManager.getBestProvider(new Criteria(), false);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//                requestPermissions(new String[]{
-//                        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
-//                }, 10);
-//                return;
-//            }
-//        }
-//        location = locationManager.getLastKnownLocation(provider);
-//        if (location != null) {
-//            Toast.makeText(getApplicationContext(), "Location achieved", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Location not achieved", Toast.LENGTH_SHORT).show();
-//        }
+        //GPS configuration
+        /*
+        checkPermission = true;
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        provider = locationManager.getBestProvider(new Criteria(), false);
 
 
-        //Motion Sensor
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[] {
+                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+                }, 10);
+
+                return;
+            }
+        }
+
+        location = locationManager.getLastKnownLocation(provider);
+
+        if (location != null) {
+            Toast.makeText(getApplicationContext(), "Location obtained", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Location not obtained", Toast.LENGTH_SHORT).show();
+        }*/
+
+
+        //Motion Sensor configuration
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         linearAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         gravitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
@@ -387,7 +403,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         magnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        dataTextView.setText("No Data, running initialization...");
+        dataTextView.setText("Running initialization, please wait...");
     }
 
 
@@ -399,13 +415,14 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                 OrbNdkHelper.trackOnly();
                 Toast.makeText(ORBSLAMForCameraModeActivity.this, "Track Only", Toast.LENGTH_LONG).show();
                 break;
-//            case R.id.data_collection:
-//                Double lat = location.getLatitude();
-//                Double lng = location.getLongitude();
-//                dataTextView.setText("Lat: " + String.valueOf(lat) + "\nLng: " + String.valueOf(lng) + "\n" + "accex:"
-//                        + String.valueOf(acce[0])+"\naccey:"+String.valueOf(acce[1])+"\naccez:"+String.valueOf(acce[2]));
+            /*
+            case R.id.data_collection:
+                Double lat = location.getLatitude();
+                Double lng = location.getLongitude();
+                dataTextView.setText("Lat: " + String.valueOf(lat) + "\nLng: " + String.valueOf(lng) + "\n" + "accex:"
+                + String.valueOf(acce[0])+"\naccey:"+String.valueOf(acce[1])+"\naccez:"+String.valueOf(acce[2]));
 
-//                break;
+                break;*/
             case R.id.calibrationStart:
                 if (!calibrationIsStart) {
                     calibrationIsStart = true;
@@ -421,8 +438,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                     calibrationStart.setText("Start Calibration");
                     for (int i = 0; i < 3; i++) {
                         caliEndPos[i] = pos[i];
-//                    float displacement = (float) Math.sqrt(Math.pow(caliEndPos[i]-caliStartPos[i],2));
-//                    scale[i] = (float) 0.5/displacement*scale[i];
+                        //float displacement = (float) Math.sqrt(Math.pow(caliEndPos[i]-caliStartPos[i],2));
+                        //scale[i] = (float) 0.5/displacement*scale[i];
                     }
                     displacement = (float) Math.sqrt(Math.pow(caliEndPos[0] - caliStartPos[0], 2) + Math.pow(caliEndPos[1] - caliStartPos[1], 2) + Math.pow(caliEndPos[2] - caliStartPos[2], 2));
                     scale = (float) (2.0 / displacement) * scale;
@@ -453,7 +470,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                             .show();
                 }
                 break;
-
         }
     }
 
@@ -528,11 +544,11 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
                                 @Override
                                 public void run() {
 
-                                     //imgDealed.setImageBitmap(resultImg);
+                                    //imgDealed.setImageBitmap(resultImg);
                                     //dataTextView.setText("W: " + String.valueOf(w) + "\nH: " + String.valueOf(h)+ "\nTime: " + String.valueOf(timeStep));
-                                    // dataTextView.setText("Vx: " + String.valueOf(velocity[0]) + "\nVy: " + String.valueOf(velocity[1])+ "\nVz: " + String.valueOf(velocity[2]));
-                                    // dataTextView.setText("AcceSetp:"+String.valueOf(velocityCalculator.acceStep)+"\nAx: " + String.valueOf(acce[0]) + "\nAy: " + String.valueOf(acce[1])+ "\nAz: " + String.valueOf(acce[2]));
-                                    // if(resultfloat.length==16)
+                                    //dataTextView.setText("Vx: " + String.valueOf(velocity[0]) + "\nVy: " + String.valueOf(velocity[1])+ "\nVz: " + String.valueOf(velocity[2]));
+                                    //dataTextView.setText("AcceSetp:"+String.valueOf(velocityCalculator.acceStep)+"\nAx: " + String.valueOf(acce[0]) + "\nAy: " + String.valueOf(acce[1])+ "\nAz: " + String.valueOf(acce[2]));
+                                    //if(resultfloat.length==16)
                                     //dataTextView.setText("X: " + String.valueOf(-resultfloat[3]) + "\nY: " + String.valueOf(-resultfloat[7]) + "\n" + "Z:"+ String.valueOf(-resultfloat[11]));
 
                                     //make sure the camera pose calculation succeeded
@@ -637,13 +653,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         mSensorManager.registerListener(this, gyroscope, 100000);
         mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_FASTEST);
-
-
-        //if (checkPermission) {
-        //      locationManager.requestLocationUpdates(provider, 100, 0, this);
-        //}
     }
-
 
 
     @Override
@@ -658,10 +668,13 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
+
         mSensorManager.unregisterListener(this);
-//        if (checkPermission) {
-//            locationManager.removeUpdates(this);
-//        }
+
+        /*
+        if (checkPermission) {
+            locationManager.removeUpdates(this);
+        }*/
     }
 
     public void onDestroy() {
@@ -669,6 +682,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         if (mOpenCvCameraView != null)
             mOpenCvCameraView.disableView();
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.i(TAG, "called onCreateOptionsMenu");
@@ -678,27 +693,33 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        String toastMesage = new String();
-        Log.i(TAG, "called onOptionsItemSelected; selected item: " + item);
+        String toastMessage = new String();
+        Log.i(TAG, "Called onOptionsItemSelected; selected item: " + item);
 
+        //can switch camera view between JavaCameraView and NativeCameraView
         if (item == mItemSwitchCamera) {
             isSLAMRunning = false;
-//	            mOpenCvCameraView.setVisibility(SurfaceView.GONE);
-//	            mIsJavaCamera = !mIsJavaCamera;
-//
-//	            if (mIsJavaCamera) {
-//	                mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial1_activity_java_surface_view);
-//	                toastMesage = "Java Camera";
-//	            } else {
-//	                mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial1_activity_native_surface_view);
-//	                toastMesage = "Native Camera";
-//	            }
-//
-//	            mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
-//	            mOpenCvCameraView.setCvCameraViewListener(this);
-//	            mOpenCvCameraView.enableView();
-//	            Toast toast = Toast.makeText(this, toastMesage, Toast.LENGTH_LONG);
-//	            toast.show();
+
+            /*
+            mOpenCvCameraView.setVisibility(SurfaceView.GONE);
+            mIsJavaCamera = !mIsJavaCamera;
+
+            if (mIsJavaCamera) {
+                mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial1_activity_java_surface_view);
+                toastMessage = "Java Camera";
+            }
+
+            else {
+                mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial1_activity_native_surface_view);
+                toastMessage = "Native Camera";
+            }
+
+
+            mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
+            mOpenCvCameraView.setCvCameraViewListener(this);
+            mOpenCvCameraView.enableView();
+            Toast toast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
+            toast.show();*/
         }
 
         return true;
@@ -724,7 +745,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         //get width and height of image
         w = im.cols();
         h = im.rows();
-/*
+
+        //OPTIONAL: plot posenet points directly onto the camera frame preview (currently very slow)
+        /*
         Log.i(TAG, String.format("Camera preview is width %d height %d", w, h));
 
         //get the last Posenet pts found
@@ -746,7 +769,6 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
             }
         }*/
 
-
         //whatever gets returned here is what's displayed
         return im;
     }
@@ -766,13 +788,14 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         }
     }
 
+    //location reader callback fxn
     @Override
     public void onLocationChanged(Location location) {
-//
-//        long time = System.currentTimeMillis();
-//            lat = location.getLatitude();
-//            lng = location.getLongitude();
-//        dataTextView.setText("Lat: " + String.valueOf(lat) + "\nLng: " + String.valueOf(lng) + "\n");
+        /*
+        long time = System.currentTimeMillis();
+        lat = location.getLatitude();
+        lng = location.getLongitude();
+        dataTextView.setText("Lat: " + String.valueOf(lat) + "\nLng: " + String.valueOf(lng) + "\n");*/
     }
 
     @Override
@@ -884,12 +907,8 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
     }
 
-    public void velocityVerlet(){
-
+    public void velocityVerlet() {
     }
-
-
 }

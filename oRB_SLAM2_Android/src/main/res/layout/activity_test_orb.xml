@@ -43,6 +43,7 @@
                 opencv:camera_id="any"
                 opencv:show_fps="true" /> <!--show the fps of camera capture-->
 
+            <!--user can choose to switch to NativeCameraView-->
             <org.opencv.android.NativeCameraView
                 android:id="@+id/tutorial1_activity_native_surface_view"
                 android:layout_width="170dip"
