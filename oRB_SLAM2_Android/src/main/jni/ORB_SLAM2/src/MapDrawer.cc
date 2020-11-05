@@ -38,7 +38,7 @@ MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath) :
 	//LOG("MapDrawer instantiating FileStorage obj/opening the calib file...");
 	//cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
 
-/*
+    /*
 	//check if the YAML file was opened successfully
     if (!fSettings.isOpened())
     {
@@ -73,6 +73,8 @@ MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath) :
 }
 
 void MapDrawer::DrawMapPoints() {
+    LOG("DrawMapPoints() called!");
+
     //array of MapPoints - get all the map pts from the map
 	const vector<MapPoint*> &vpMPs = mpMap->GetAllMapPoints();
 
@@ -88,10 +90,7 @@ void MapDrawer::DrawMapPoints() {
 		return;
 	}
 
-	//清除屏幕及深度缓存
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	//重置当前的模型观察矩阵
 	//glMatrixMode (GL_MODELVIEW);
 	//glLoadIdentity();
 	//glScalef(2.0f,2.0f,2.0f);

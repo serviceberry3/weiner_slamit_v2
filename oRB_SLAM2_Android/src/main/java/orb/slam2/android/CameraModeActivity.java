@@ -15,27 +15,27 @@ import android.widget.Toast;
 /**
  *
  * @author buptzhaofang@163.com Mar 24, 2016 1:00:27 PM
+ * @author nodog Nov 2020 - noah.weiner@yale.edu
  *
  */
 public class CameraModeActivity extends Activity implements OnClickListener{
     Button ChooseCalibration,finish;
-    TextView CalibrationTxt,VOCPathText;
+    TextView CalibrationTxt, VOCPathText;
 
-    private static final int REQUEST_CODE_2 = 2;   //TUM文件请求码
-    private static final int REQUEST_CODE_3 = 3;   //VOC文件请求码
-    private Intent fileChooserIntent ;
+    private static final int REQUEST_CODE_2 = 2;
+    private static final int REQUEST_CODE_3 = 3;
+
+    private Intent fileChooserIntent;
     public static final String EXTRA_FILE_CHOOSER = "file_chooser";
 
-    //private String PICPath = "/storage/emulated/0/SLAM/Data_set/rgbd1/rgb";
     private String VOCPath = "/storage/emulated/0/SLAM/ORBvoc.txt";
     private String TUMPath = "/storage/emulated/0/SLAM/List3.yaml";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_camera_mode);
 

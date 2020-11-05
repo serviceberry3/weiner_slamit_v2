@@ -77,9 +77,10 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/Viewer.o: \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/deque \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/legacy/compat.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp \
- jni/ORB_SLAM2/include/Frame.h jni/ORB_SLAM2/include/Posenet.h \
- jni/ORB_SLAM2/include/c_api.h jni/ORB_SLAM2/include/common.h \
- jni/ORB_SLAM2/include/delegate.h \
+ jni/ORB_SLAM2/include/Frame.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
+ jni/ORB_SLAM2/include/Posenet.h jni/ORB_SLAM2/include/c_api.h \
+ jni/ORB_SLAM2/include/common.h jni/ORB_SLAM2/include/delegate.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/opencv.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/photo/photo.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/photo/photo_c.h \
@@ -93,7 +94,6 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/Viewer.o: \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/valarray \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/openfabmap.hpp \
  jni/ORB_SLAM2/include/KeyFrameDatabase.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
  jni/ORB_SLAM2/include/LocalMapping.h jni/ORB_SLAM2/include/LoopClosing.h \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
  jni/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h \
@@ -456,6 +456,8 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 
 jni/ORB_SLAM2/include/Frame.h:
 
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
+
 jni/ORB_SLAM2/include/Posenet.h:
 
 jni/ORB_SLAM2/include/c_api.h:
@@ -489,8 +491,6 @@ jni/ORB_SLAM2/include/delegate.h:
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/openfabmap.hpp:
 
 jni/ORB_SLAM2/include/KeyFrameDatabase.h:
-
-/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 
 jni/ORB_SLAM2/include/LocalMapping.h:
 

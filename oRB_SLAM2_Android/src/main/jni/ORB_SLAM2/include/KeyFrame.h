@@ -140,7 +140,7 @@ public:
     long unsigned int mnBALocalForKF;
     long unsigned int mnBAFixedForKF;
 
-    // Variables used by the keyframe database
+    //Variables used by the keyframe database
     long unsigned int mnLoopQuery;
     int mnLoopWords;
     float mLoopScore;
@@ -148,32 +148,33 @@ public:
     int mnRelocWords;
     float mRelocScore;
 
-    // Variables used by loop closing
+    //Variables used by loop closing
     cv::Mat mTcwGBA;
     cv::Mat mTcwBefGBA;
     long unsigned int mnBAGlobalForKF;
 
-    // Calibration parameters
+    //Calibration parameters
     const float fx, fy, cx, cy, invfx, invfy, mbf, mb, mThDepth;
 
-    // Number of KeyPoints
+    //Number of KeyPoints
     const int N;
 
-    // KeyPoints, stereo coordinate and descriptors (all associated by an index)
+    //KeyPoints, stereo coordinate and descriptors (all associated by an index)
     const std::vector<cv::KeyPoint> mvKeys;
     const std::vector<cv::KeyPoint> mvKeysUn;
-    const std::vector<float> mvuRight; // negative value for monocular points
-    const std::vector<float> mvDepth; // negative value for monocular points
+
+    const std::vector<float> mvuRight; //negative value for monocular points
+    const std::vector<float> mvDepth; //negative value for monocular points
     const cv::Mat mDescriptors;
 
     //BoW
     DBoW2::BowVector mBowVec;
     DBoW2::FeatureVector mFeatVec;
 
-    // Pose relative to parent (this is computed when bad flag is activated)
+    //Pose relative to parent (this is computed when bad flag is activated)
     cv::Mat mTcp;
 
-    // Scale
+    //Scale
     const int mnScaleLevels;
     const float mfScaleFactor;
     const float mfLogScaleFactor;
@@ -181,7 +182,7 @@ public:
     const std::vector<float> mvLevelSigma2;
     const std::vector<float> mvInvLevelSigma2;
 
-    // Image bounds and calibration
+    //Image bounds and calibration
     const int mnMinX;
     const int mnMinY;
     const int mnMaxX;
@@ -189,7 +190,7 @@ public:
     const cv::Mat mK;
 
 
-    // The following variables need to be accessed trough a mutex to be thread safe.
+    //The following variables need to be accessed through a mutex to be thread safe.
 protected:
 
     // SE3 Pose and camera center
@@ -206,7 +207,7 @@ protected:
     KeyFrameDatabase* mpKeyFrameDB;
     ORBVocabulary* mpORBvocabulary;
 
-    // Grid over the image to speed up feature matching
+    //Grid over the image to speed up feature matching, stores KeyPoints found by FAST
     std::vector< std::vector <std::vector<size_t> > > mGrid;
 
     std::map<KeyFrame*,int> mConnectedKeyFrameWeights;

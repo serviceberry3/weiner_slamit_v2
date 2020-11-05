@@ -385,7 +385,7 @@ void System::Shutdown()
     mpViewer->RequestFinish();
 
     // Wait until all thread have effectively stopped
-    while(!mpLocalMapper->isFinished() || !mpLoopCloser->isFinished()  ||
+    while (!mpLocalMapper->isFinished() || !mpLoopCloser->isFinished()  ||
           !mpViewer->isFinished()      || mpLoopCloser->isRunningGBA())
     {
         usleep(5000);
@@ -412,12 +412,12 @@ void System::SaveTrajectoryTUM(const string &filename)
     f.open(filename.c_str());
     f << fixed;
 
-    // Frame pose is stored relative to its reference keyframe (which is optimized by BA and pose graph).
-    // We need to get first the keyframe pose and then concatenate the relative transformation.
-    // Frames not localized (tracking failure) are not saved.
+    //Frame pose is stored relative to its reference keyframe (which is optimized by BA and pose graph).
+    //We need to get first the keyframe pose and then concatenate the relative transformation.
+    //Frames not localized (tracking failure) are not saved.
 
-    // For each frame we have a reference keyframe (lRit), the timestamp (lT) and a flag
-    // which is true when tracking failed (lbL).
+    //For each frame we have a reference keyframe (lRit), the timestamp (lT) and a flag
+    //which is true when tracking failed (lbL).
     list<ORB_SLAM2::KeyFrame*>::iterator lRit = mpTracker->mlpReferences.begin();
     list<double>::iterator lT = mpTracker->mlFrameTimes.begin();
     list<bool>::iterator lbL = mpTracker->mlbLost.begin();

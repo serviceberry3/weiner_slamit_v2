@@ -630,7 +630,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        Log.i(TAG, "Drawing next GL frame...");
+        //Log.i(TAG, "Drawing next GL frame...");
         OrbNdkHelper.glesRender();
     }
 

@@ -23,12 +23,18 @@
 
 #include <mutex>
 
+#include <android/log.h>
+#define LOG_TAG "ORB_SLAM_MAPPOINT"
+
+#define LOG(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+
 namespace ORB_SLAM2
 {
 
 long unsigned int MapPoint::nNextId=0;
 mutex MapPoint::mGlobalMutex;
 
+//THIS IS THE CONSTRUCTOR WE'RE USING
 MapPoint::MapPoint(const cv::Mat &Pos, KeyFrame *pRefKF, Map* pMap):
     mnFirstKFid(pRefKF->mnId), mnFirstFrame(pRefKF->mnFrameId), nObs(0), mnTrackReferenceForFrame(0),
     mnLastFrameSeen(0), mnBALocalForKF(0), mnFuseCandidateForKF(0), mnLoopPointForKF(0), mnCorrectedByKF(0),
@@ -36,9 +42,9 @@ MapPoint::MapPoint(const cv::Mat &Pos, KeyFrame *pRefKF, Map* pMap):
     mpReplaced(static_cast<MapPoint*>(NULL)), mfMinDistance(0), mfMaxDistance(0), mpMap(pMap)
 {
     Pos.copyTo(mWorldPos);
-    mNormalVector = cv::Mat::zeros(3,1,CV_32F);
+    mNormalVector = cv::Mat::zeros(3, 1, CV_32F);
 
-    // MapPoints can be created from Tracking and Local Mapping. This mutex avoid conflicts with id.
+    //MapPoints can be created from Tracking and Local Mapping. This mutex avoid conflicts with id.
     unique_lock<mutex> lock(mpMap->mMutexPointCreation);
     mnId=nNextId++;
 }
@@ -65,7 +71,7 @@ MapPoint::MapPoint(const cv::Mat &Pos, Map* pMap, Frame* pFrame, const int &idxF
 
     pFrame->mDescriptors.row(idxF).copyTo(mDescriptor);
 
-    // MapPoints can be created from Tracking and Local Mapping. This mutex avoid conflicts with id.
+    //MapPoints can be created from Tracking and Local Mapping. This mutex avoid conflicts with id.
     unique_lock<mutex> lock(mpMap->mMutexPointCreation);
     mnId=nNextId++;
 }

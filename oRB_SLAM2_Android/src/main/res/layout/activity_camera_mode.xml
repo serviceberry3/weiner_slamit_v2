@@ -15,7 +15,7 @@
             android:layout_width="200dp"
             android:layout_height="52dp"
             android:layout_marginTop="12dip"
-            android:text="SELECT CALIB PATH"
+            android:text="Select calib filepath"
             android:background="@drawable/button3"
             android:textSize="20sp"
             android:textColor="#ffffff" />
@@ -38,7 +38,7 @@
             android:layout_width="200dp"
             android:layout_height="52dp"
             android:layout_marginTop="12dip"
-            android:text="Finish and start SLAM"
+            android:text="Finish and start"
             android:background="@drawable/button3"
             android:textSize="20sp"
             android:textColor="#ffffff" />
@@ -53,7 +53,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calibration file should be a .yaml file that includes the information of the camera"
+        android:text="Calibration file should be a .yaml file that includes the camera parameters"
         android:id="@+id/textView2"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp" />

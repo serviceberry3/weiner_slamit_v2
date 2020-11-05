@@ -22,6 +22,7 @@
 #define FRAME_H
 
 #include <vector>
+#include <mutex>
 
 #include "MapPoint.h"
 #include <DBoW2/BowVector.h>
@@ -47,58 +48,59 @@ class Frame
 public:
     Frame();
 
-    // Copy constructor.
+    //Copy constructor.
     Frame(const Frame &frame);
 
-    // Constructor for stereo cameras.
+    //Constructor for stereo cameras.
     Frame(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeStamp, ORBextractor* extractorLeft, ORBextractor* extractorRight, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
 
-    // Constructor for RGB-D cameras.
+    //Constructor for RGB-D cameras.
     Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeStamp, ORBextractor* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth);
 
-    // Constructor for Monocular cameras.
-    Frame(const cv::Mat &imGray, cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor,ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
-    const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter, std::vector<float> &keyPoints);
+    //Constructor for Monocular cameras.
+    Frame(const cv::Mat &imGray, cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor,ORBVocabulary* voc, cv::Mat &K,
+    cv::Mat &distCoef, const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter,
+    std::vector<float> &keyPoints, std::mutex &pnetMutex);
 
-    // Extract ORB on the image. 0 for left image and 1 for right image.
+    //Extract ORB on the image. 0 for left image and 1 for right image.
     void ExtractORB(int flag, const cv::Mat &im);
 
-    // Compute Bag of Words representation.
+    //Compute Bag of Words representation.
     void ComputeBoW();
 
-    // Set the camera pose.
+    //Set the camera pose.
     void SetPose(cv::Mat Tcw);
 
-    // Computes rotation, translation and camera center matrices from the camera pose.
+    //Computes rotation, translation and camera center matrices from the camera pose.
     void UpdatePoseMatrices();
 
-    // Returns the camera center.
+    //Returns the camera center.
     inline cv::Mat GetCameraCenter(){
         return mOw.clone();
     }
 
-    // Returns copy of inverse of rotation
+    //Returns copy of inverse of rotation
     inline cv::Mat GetRotationInverse(){
         return mRwc.clone();
     }
 
-    // Check if a MapPoint is in the frustum of the camera
-    // and fill variables of the MapPoint to be used by the tracking
+    //Check if a MapPoint is in the frustum of the camera
+    //and fill variables of the MapPoint to be used by the tracking
     bool isInFrustum(MapPoint* pMP, float viewingCosLimit);
 
-    // Compute the cell of a keypoint (return false if outside the grid)
+    //Compute the cell of a keypoint (return false if outside the grid)
     bool PosInGrid(const cv::KeyPoint &kp, int &posX, int &posY);
 
     vector<size_t> GetFeaturesInArea(const float &x, const float  &y, const float  &r, const int minLevel=-1, const int maxLevel=-1) const;
 
-    // Search a match for each keypoint in the left image to a keypoint in the right image.
-    // If there is a match, depth is computed and the right coordinate associated to the left keypoint is stored.
+    //Search a match for each keypoint in the left image to a keypoint in the right image.
+    //If there is a match, depth is computed and the right coordinate associated to the left keypoint is stored.
     void ComputeStereoMatches();
 
-    // Associate a "right" coordinate to a keypoint if there is valid depth in the depthmap.
+    //Associate a "right" coordinate to a keypoint if there is valid depth in the depthmap.
     void ComputeStereoFromRGBD(const cv::Mat &imDepth);
 
-    // Backprojects a keypoint (if stereo/depth info available) into 3D world coordinates.
+    //Backprojects a keypoint (if stereo/depth info available) into 3D world coordinates.
     cv::Mat UnprojectStereo(const int &i);
 
 public:
@@ -111,7 +113,7 @@ public:
     //Key feature extractor. **The right is used only in the stereo case.
     ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
 
-    // Frame timestamp.
+    //Frame timestamp.
     double mTimeStamp;
 
     // Calibration matrix and OpenCV distortion parameters.
@@ -126,6 +128,9 @@ public:
 
     int screenWidth = 720;
     int screenHeight = 480;
+
+    //lock on keyPoints
+    std::mutex* mMutex;
 
     //divide the available screen width pixels by PoseNet's required number of width pixels to get the number of real screen pixels
     //widthwise per posenet input image "pixel"
@@ -209,15 +214,15 @@ public:
 
 private:
 
-    // Undistort keypoints given OpenCV distortion parameters.
-    // Only for the RGB-D case. Stereo must be already rectified!
-    // (called in the constructor).
+    //Undistort keypoints given OpenCV distortion parameters.
+    //Only for the RGB-D case. Stereo must be already rectified!
+    //(called in the constructor).
     void UndistortKeyPoints();
 
-    // Computes image bounds for the undistorted image (called in the constructor).
+    //Computes image bounds for the undistorted image (called in the constructor).
     void ComputeImageBounds(const cv::Mat &imLeft);
 
-    // Assign keypoints to the grid for speed up feature matching (called in the constructor).
+    //Assign keypoints to the grid for speed up feature matching (called in the constructor).
     void AssignFeaturesToGrid();
 
     //Rotation, translation and camera center to be used locally only

@@ -21,13 +21,14 @@
 #include "KeyFrame.h"
 #include "Converter.h"
 #include "ORBmatcher.h"
-#include<mutex>
+#include <mutex>
 
 namespace ORB_SLAM2
 {
 
 long unsigned int KeyFrame::nNextId=0;
 
+//Constructor
 KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
     mnFrameId(F.mnId),  mTimeStamp(F.mTimeStamp), mnGridCols(FRAME_GRID_COLS), mnGridRows(FRAME_GRID_ROWS),
     mfGridElementWidthInv(F.mfGridElementWidthInv), mfGridElementHeightInv(F.mfGridElementHeightInv),
@@ -46,10 +47,13 @@ KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
     mnId=nNextId++;
 
     mGrid.resize(mnGridCols);
+
     for(int i=0; i<mnGridCols;i++)
     {
         mGrid[i].resize(mnGridRows);
-        for(int j=0; j<mnGridRows; j++)
+
+        //copy the FAST KeyPoints from the Frame to this KeyFrame mGrid
+        for (int j=0; j<mnGridRows; j++)
             mGrid[i][j] = F.mGrid[i][j];
     }
 
@@ -207,9 +211,12 @@ int KeyFrame::GetWeight(KeyFrame *pKF)
         return 0;
 }
 
+//add a point to this KeyFrame
 void KeyFrame::AddMapPoint(MapPoint *pMP, const size_t &idx)
 {
     unique_lock<mutex> lock(mMutexFeatures);
+
+    //add this MapPoint at passed index of mvpMapPoints
     mvpMapPoints[idx]=pMP;
 }
 
@@ -566,6 +573,7 @@ void KeyFrame::EraseConnection(KeyFrame* pKF)
         UpdateBestCovisibles();
 }
 
+//get the KeyPoints found by FAST
 vector<size_t> KeyFrame::GetFeaturesInArea(const float &x, const float &y, const float &r) const
 {
     vector<size_t> vIndices;

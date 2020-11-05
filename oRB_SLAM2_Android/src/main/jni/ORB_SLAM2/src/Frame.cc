@@ -53,11 +53,12 @@ Frame::Frame(const Frame &frame)
      mpReferenceKF(frame.mpReferenceKF), mnScaleLevels(frame.mnScaleLevels),
      mfScaleFactor(frame.mfScaleFactor), mfLogScaleFactor(frame.mfLogScaleFactor),
      mvScaleFactors(frame.mvScaleFactors), mvInvScaleFactors(frame.mvInvScaleFactors),
-     mvLevelSigma2(frame.mvLevelSigma2), mvInvLevelSigma2(frame.mvInvLevelSigma2)
+     mvLevelSigma2(frame.mvLevelSigma2), mvInvLevelSigma2(frame.mvInvLevelSigma2),
+     mMutex(frame.mMutex)
 {
-    for(int i=0;i<FRAME_GRID_COLS;i++)
-        for(int j=0; j<FRAME_GRID_ROWS; j++)
-            mGrid[i][j]=frame.mGrid[i][j];
+    for (int i = 0; i < FRAME_GRID_COLS; i++)
+        for (int j = 0; j < FRAME_GRID_ROWS; j++)
+            mGrid[i][j] = frame.mGrid[i][j];
 
     if (!frame.mTcw.empty()) {
         LOG("Frame() first constructor: this frame's mTcw matrix is not empty, so let's call SetPose()");
@@ -94,7 +95,8 @@ Frame::Frame(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timeSt
     threadLeft.join();
     threadRight.join();
 
-    if(mvKeys.empty())
+    //if no keypoints, return
+    if (mvKeys.empty())
         return;
 
     N = mvKeys.size();
@@ -147,7 +149,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
 
-    // ORB extraction
+    //ORB extraction
     ExtractORB(0, imGray);
 
     N = mvKeys.size();
@@ -188,7 +190,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
 //MONOCULAR CONSTRUCTOR
 //This is probably constructor we're using***
 Frame::Frame(const cv::Mat &imGray, cv::Mat &imRgb, const double &timeStamp, ORBextractor* extractor, ORBVocabulary* voc, cv::Mat &K, cv::Mat &distCoef,
-const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter, std::vector<float> &keyPoints)
+const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* interpreter, std::vector<float> &keyPoints, std::mutex &pnetMutex)
     :mpORBvocabulary(voc),
     mpORBextractorLeft(extractor), //the key feature extractor
     mpORBextractorRight(static_cast<ORBextractor*>(NULL)), //right is set to null since it's not used
@@ -200,6 +202,9 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
 {
     //Assign this frame a frame ID
     mnId = nNextId++;
+
+    //initialize mutex
+    //mMutex = new std::mutex(); //MEMORY LEAKAGE? WHEN IS IT DELETED?
 
     //Scale Level Info
     mnScaleLevels = mpORBextractorLeft->GetLevels();
@@ -223,7 +228,6 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
 
     //LOG("Frame(): finished resizing incoming RGBA frame, new size is %d x %d, call posenet", scaledImage.rows, scaledImage.cols);
 
-
     //now we wanna feed the scaled image into Posenet to see if there's a person in the image
     Person person = posenet.estimateSinglePose(imRgb, interpreter);
 
@@ -233,23 +237,28 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
     std::vector<KeyPoint> keyPts = person.getKeyPoints();
 
     int head = 0;
+    int numKeyPtsFound = keyPts.size();
 
-    for (int i = 0; i < keyPts.size(); i++) {
+    for (int i = 0; i < numKeyPtsFound; i++) {
         LOG("This keypoint #%d score is %f", i, keyPts[i].getScore());
         //if model was pretty confident this was a pt
         if (keyPts[i].score > 0.7) {
             LOG("Frame(): found confident enough Posenet keypoint (%f, %f), now adding it", keyPts[i].position.x, keyPts[i].position.y);
 
-            //since we're in C let's convert the keypoints now to be the correct coords for 720x480
+            {//critical section, locking mMutex ('''lock''' is the name of the unique_lock obj here)
+                unique_lock<mutex> lock(pnetMutex); //when the unique_lock is constructed it will lock the passed mutex,
+                                                 //and when gets deconstructed
+                                                 //(end of brackets) or exception is thrown (also gets deconstructed), it
+                                                 //will unlock it
 
+                //now we have the lock on currKeyPoints
 
-            LOG("Frame(): head1 is %d", head);
-            //add this keypoint to the array
-            keyPoints[head++] = keyPts[i].position.x * widthRatio;
-            LOG("Frame(): head2 is %d", head);
+                //add this keypoint to the array. since we're in C let's convert the keypoints now to be the correct coords for 720x480
+                keyPoints[head++] = keyPts[i].position.x * widthRatio;
 
-            keyPoints[head++] = keyPts[i].position.y * heightRatio;
-            LOG("Frame(): head3 is %d", head);
+                keyPoints[head++] = keyPts[i].position.y * heightRatio;
+
+            } //unlock pnetMutex
         }
     }
     //the keypoints that were found are now in keyPoints and are tied to the instance of Tracking that called this Frame constructor
@@ -268,21 +277,40 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
         return;
     }
 
+    //initialize mvKeysWrapped vector
+    //mvKeysWrapped = std::vector<KeyPointWrapper>(N + numKeyPtsFound);
+/*
+    //copy all keypoints to a wrapped version
+    for (int i = 0; i < N; i++) {
+        mvKeysWrapped[i] = KeyPointWrapper(mvKeys[i], false);
+    }
+
+    //inject 17 Posenet keypoints into the array
+    for (int i = 0; i < numKeyPtsFound; i++) {
+        if (keyPoints[i] == -1) break;
+        cv::KeyPoint newPt();
+
+        newPt.pt.x = keyPts[i].position.x;
+        newPt.pt.y = keyPts[i].position.y;
+        mvKeysWrapped[N + i] = KeyPointWrapper(newPt, true);
+    }*/
+
+
     //run undistortion function
     UndistortKeyPoints();
 
-    //Set no stereo information
-    mvuRight = vector<float>(N,-1);
-    mvDepth = vector<float>(N,-1);
+    //Set no stereo information (clear out stereo coord and depth vectors to -1)
+    mvuRight = vector<float>(N, -1);
+    mvDepth = vector<float>(N, -1);
 
     //create array of MapPoints the size of num of 2D keypoints found by ExtractORB
-    mvpMapPoints = vector<MapPoint*>(N, static_cast<MapPoint*>(NULL));
+    mvpMapPoints = vector<MapPoint*>(N, static_cast<MapPoint*>(NULL)); //initialize all to NULL
 
     //create array of bools the size of num of 2D keypoints found by ExtractORB, initialized to false
     mvbOutlier = vector<bool>(N, false);
 
     //This is done only for the first Frame (or after a change in the calibration)
-    if(mbInitialComputations)
+    if (mbInitialComputations)
     {
         ComputeImageBounds(imGray);
 
@@ -307,17 +335,23 @@ const float &bf, const float &thDepth, Posenet posenet, TfLiteInterpreter* inter
 
 void Frame::AssignFeaturesToGrid()
 {
-    int nReserve = 0.5f*N/(FRAME_GRID_COLS*FRAME_GRID_ROWS);
+    int nReserve = 0.5f * N / (FRAME_GRID_COLS*FRAME_GRID_ROWS);
+
     for(unsigned int i=0; i<FRAME_GRID_COLS;i++)
         for (unsigned int j=0; j<FRAME_GRID_ROWS;j++)
             mGrid[i][j].reserve(nReserve);
 
-    for(int i=0;i<N;i++)
+    //iterate over all keypoints found by FAST corner algo
+    for (int i=0; i<N; i++)
     {
+        //get this KeyPoints (undistorted)
         const cv::KeyPoint &kp = mvKeysUn[i];
 
         int nGridPosX, nGridPosY;
-        if(PosInGrid(kp,nGridPosX,nGridPosY))
+
+        //scale this KeyPoint from the 720x480 camera frame to the grid we're actually working with for drawing
+        if (PosInGrid(kp, nGridPosX, nGridPosY))
+            //add this KeyPoint to mGrid
             mGrid[nGridPosX][nGridPosY].push_back(i);
     }
 }
@@ -330,6 +364,8 @@ void Frame::ExtractORB(int flag, const cv::Mat &im)
         LOG("ExtractORB(): Running mpORBextractorLeft to extract features into mvKeys...");
         (*mpORBextractorLeft)(im, cv::Mat(), mvKeys, mDescriptors);
     }
+
+    //IGNORE, NEVER USED
     else
         (*mpORBextractorRight)(im,cv::Mat(), mvKeysRight, mDescriptorsRight);
 }
@@ -386,7 +422,7 @@ bool Frame::isInFrustum(MapPoint *pMP, float viewingCosLimit)
     if(dist < minDistance || dist > maxDistance)
         return false;
 
-   // Check viewing angle
+   //Check viewing angle
     cv::Mat Pn = pMP->GetNormal();
 
     const float viewCos = PO.dot(Pn)/dist;
@@ -394,10 +430,10 @@ bool Frame::isInFrustum(MapPoint *pMP, float viewingCosLimit)
     if(viewCos < viewingCosLimit)
         return false;
 
-    // Predict scale in the image
+    //Predict scale in the image
     const int nPredictedLevel = pMP->PredictScale(dist, mfLogScaleFactor);
 
-    // Data used by the tracking
+    //Data used by the tracking
     pMP->mbTrackInView = true;
     pMP->mTrackProjX = u;
     pMP->mTrackProjXR = u - mbf*invz;
@@ -436,6 +472,8 @@ vector<size_t> Frame::GetFeaturesInArea(const float &x, const float  &y, const f
         for(int iy = nMinCellY; iy<=nMaxCellY; iy++)
         {
             const vector<size_t> vCell = mGrid[ix][iy];
+
+
             if(vCell.empty())
                 continue;
 
@@ -463,15 +501,18 @@ vector<size_t> Frame::GetFeaturesInArea(const float &x, const float  &y, const f
     return vIndices;
 }
 
+//get the KeyPoint's position
 bool Frame::PosInGrid(const cv::KeyPoint &kp, int &posX, int &posY)
 {
-    posX = round((kp.pt.x-mnMinX)*mfGridElementWidthInv);
-    posY = round((kp.pt.y-mnMinY)*mfGridElementHeightInv);
+    //scale the KeyPoint to the grid we're working with
+    posX = round((kp.pt.x - mnMinX) * mfGridElementWidthInv);
+    posY = round((kp.pt.y - mnMinY) * mfGridElementHeightInv);
 
-    //Keypoint's coordinates are undistorted, which could cause to go out of the image
-    if(posX<0 || posX>=FRAME_GRID_COLS || posY<0 || posY>=FRAME_GRID_ROWS)
+    //Keypoint's coordinates are undistorted, which could cause to go out of the image. Check for that here
+    if (posX<0 || posX>=FRAME_GRID_COLS || posY<0 || posY>=FRAME_GRID_ROWS)
         return false;
 
+    //Success
     return true;
 }
 
@@ -487,9 +528,9 @@ void Frame::ComputeBoW()
 
 void Frame::UndistortKeyPoints()
 {
-    if(mDistCoef.at<float>(0)==0.0)
+    if (mDistCoef.at<float>(0)==0.0)
     {
-        mvKeysUn=mvKeys;
+        mvKeysUn = mvKeys;
         return;
     }
 

@@ -193,9 +193,15 @@ protected:
     //Initialization object (only for monocular)
     Initializer* mpInitializer;
 
-    //Local Map
+    //LOCAL MAP STUFF
+
+    //pointer to current reference KeyFrame
     KeyFrame* mpReferenceKF;
+
+    //list of the KeyFrames in our current map
     std::vector<KeyFrame*> mvpLocalKeyFrames;
+
+    //list of the points in our current Map
     std::vector<MapPoint*> mvpLocalMapPoints;
     
     // System

@@ -36,8 +36,9 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/Initializer.o: \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/valarray \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/contrib/openfabmap.hpp \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/set \
- jni/ORB_SLAM2/include/Frame.h jni/ORB_SLAM2/include/MapPoint.h \
- jni/ORB_SLAM2/include/KeyFrame.h \
+ jni/ORB_SLAM2/include/Frame.h \
+ /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
+ jni/ORB_SLAM2/include/MapPoint.h jni/ORB_SLAM2/include/KeyFrame.h \
  jni/Thirdparty/DBoW2/include/DBoW2/BowVector.h \
  jni/Thirdparty/DBoW2/include/DBoW2/FeatureVector.h \
  jni/Thirdparty/DBoW2/include/DBoW2/BowVector.h \
@@ -59,7 +60,6 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/Initializer.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/matrix.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/params.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/any.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/saving.h \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/nn_index.h \
@@ -88,15 +88,13 @@ obj/local/armeabi-v7a/objs/ORB_SLAM2/ORB_SLAM2/src/Initializer.o: \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/sampling.h \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/legacy/compat.hpp \
  /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp \
- jni/ORB_SLAM2/include/KeyFrameDatabase.h \
- /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
- jni/ORB_SLAM2/include/Map.h jni/ORB_SLAM2/include/Posenet.h \
- jni/ORB_SLAM2/include/c_api.h jni/ORB_SLAM2/include/common.h \
- jni/ORB_SLAM2/include/delegate.h jni/ORB_SLAM2/include/Optimizer.h \
- jni/ORB_SLAM2/include/LoopClosing.h jni/ORB_SLAM2/include/LocalMapping.h \
- jni/ORB_SLAM2/include/Tracking.h jni/ORB_SLAM2/include/Viewer.h \
- jni/ORB_SLAM2/include/FrameDrawer.h jni/ORB_SLAM2/include/MapDrawer.h \
- jni/ORB_SLAM2/include/System.h \
+ jni/ORB_SLAM2/include/KeyFrameDatabase.h jni/ORB_SLAM2/include/Map.h \
+ jni/ORB_SLAM2/include/Posenet.h jni/ORB_SLAM2/include/c_api.h \
+ jni/ORB_SLAM2/include/common.h jni/ORB_SLAM2/include/delegate.h \
+ jni/ORB_SLAM2/include/Optimizer.h jni/ORB_SLAM2/include/LoopClosing.h \
+ jni/ORB_SLAM2/include/LocalMapping.h jni/ORB_SLAM2/include/Tracking.h \
+ jni/ORB_SLAM2/include/Viewer.h jni/ORB_SLAM2/include/FrameDrawer.h \
+ jni/ORB_SLAM2/include/MapDrawer.h jni/ORB_SLAM2/include/System.h \
  /home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
  jni/ORB_SLAM2/include/Initializer.h \
  jni/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h \
@@ -370,6 +368,8 @@ jni/ORB_SLAM2/include/Initializer.h:
 
 jni/ORB_SLAM2/include/Frame.h:
 
+/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
+
 jni/ORB_SLAM2/include/MapPoint.h:
 
 jni/ORB_SLAM2/include/KeyFrame.h:
@@ -415,8 +415,6 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/params.h:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/any.h:
-
-/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/typeinfo:
 
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/flann/saving.h:
 
@@ -475,8 +473,6 @@ jni/ORB_SLAM2/include/ORBextractor.h:
 /home/nodog/Downloads/OpenCV-2.4.9-android-sdk/sdk/native/jni/include/opencv2/core/internal.hpp:
 
 jni/ORB_SLAM2/include/KeyFrameDatabase.h:
-
-/home/nodog/Android/Sdk/ndk/android-ndk-r17c-linux-x86_64/android-ndk-r17c/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 
 jni/ORB_SLAM2/include/Map.h:
 

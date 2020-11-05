@@ -33,95 +33,100 @@
 namespace ORB_SLAM2
 {
 
-class Tracking;
-class LoopClosing;
-class Map;
+    class Tracking;
+    class LoopClosing;
+    class Map;
 
-class LocalMapping
-{
-public:
-    LocalMapping(Map* pMap, const float bMonocular);
+    class LocalMapping
+    {
+    public:
+        LocalMapping(Map* pMap, const float bMonocular);
 
-    void SetLoopCloser(LoopClosing* pLoopCloser);
+        void SetLoopCloser(LoopClosing* pLoopCloser);
 
-    void SetTracker(Tracking* pTracker);
+        void SetTracker(Tracking* pTracker);
 
-    // Main function
-    void Run();
+        //Main function
+        void Run();
 
-    void InsertKeyFrame(KeyFrame* pKF);
+        void InsertKeyFrame(KeyFrame* pKF);
 
-    // Thread Synch
-    void RequestStop();
-    void RequestReset();
-    bool Stop();
-    void Release();
-    bool isStopped();
-    bool stopRequested();
-    bool AcceptKeyFrames();
-    void SetAcceptKeyFrames(bool flag);
-    bool SetNotStop(bool flag);
+        //Thread Synchronization
+        void RequestStop();
+        void RequestReset();
+        bool Stop();
+        void Release();
+        bool isStopped();
+        bool stopRequested();
+        bool AcceptKeyFrames();
+        void SetAcceptKeyFrames(bool flag);
+        bool SetNotStop(bool flag);
 
-    void InterruptBA();
+        void InterruptBA();
 
-    void RequestFinish();
-    bool isFinished();
+        void RequestFinish();
+        bool isFinished();
 
-    int KeyframesInQueue(){
-        unique_lock<std::mutex> lock(mMutexNewKFs);
-        return mlNewKeyFrames.size();
-    }
+        int KeyframesInQueue(){
+            unique_lock<std::mutex> lock(mMutexNewKFs);
+            return mlNewKeyFrames.size();
+        }
 
-protected:
+    protected:
 
-    bool CheckNewKeyFrames();
-    void ProcessNewKeyFrame();
-    void CreateNewMapPoints();
+        bool CheckNewKeyFrames();
+        void ProcessNewKeyFrame();
+        void CreateNewMapPoints();
 
-    void MapPointCulling();
-    void SearchInNeighbors();
+        void MapPointCulling();
+        void SearchInNeighbors();
 
-    void KeyFrameCulling();
+        void KeyFrameCulling();
 
-    cv::Mat ComputeF12(KeyFrame* &pKF1, KeyFrame* &pKF2);
+        cv::Mat ComputeF12(KeyFrame* &pKF1, KeyFrame* &pKF2);
 
-    cv::Mat SkewSymmetricMatrix(const cv::Mat &v);
+        cv::Mat SkewSymmetricMatrix(const cv::Mat &v);
 
-    bool mbMonocular;
+        bool mbMonocular;
 
-    void ResetIfRequested();
-    bool mbResetRequested;
-    std::mutex mMutexReset;
+        void ResetIfRequested();
+        bool mbResetRequested;
+        std::mutex mMutexReset;
 
-    bool CheckFinish();
-    void SetFinish();
-    bool mbFinishRequested;
-    bool mbFinished;
-    std::mutex mMutexFinish;
+        bool CheckFinish();
+        void SetFinish();
+        bool mbFinishRequested;
+        bool mbFinished;
+        std::mutex mMutexFinish;
 
-    Map* mpMap;
+        //pointer to our actual Map instance
+        Map* mpMap;
 
-    LoopClosing* mpLoopCloser;
-    Tracking* mpTracker;
+        LoopClosing* mpLoopCloser;
 
-    std::list<KeyFrame*> mlNewKeyFrames;
+        //our Tracking instance
+        Tracking* mpTracker;
 
-    KeyFrame* mpCurrentKeyFrame;
+        //list of new KeyFrames??
+        std::list<KeyFrame*> mlNewKeyFrames;
 
-    std::list<MapPoint*> mlpRecentAddedMapPoints;
+        KeyFrame* mpCurrentKeyFrame;
 
-    std::mutex mMutexNewKFs;
+        //list of MapPoints that were recently added to the map
+        std::list<MapPoint*> mlpRecentAddedMapPoints;
 
-    bool mbAbortBA;
+        std::mutex mMutexNewKFs;
 
-    bool mbStopped;
-    bool mbStopRequested;
-    bool mbNotStop;
-    std::mutex mMutexStop;
+        bool mbAbortBA;
 
-    bool mbAcceptKeyFrames;
-    std::mutex mMutexAccept;
-};
+        bool mbStopped;
+        bool mbStopRequested;
+        bool mbNotStop;
+        std::mutex mMutexStop;
+
+        bool mbAcceptKeyFrames;
+        std::mutex mMutexAccept;
+    };
 
 } //namespace ORB_SLAM
 
