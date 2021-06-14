@@ -1,0 +1,26 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Users/noah/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
+    "/Users/noah/Library/Android/sdk/ndk/21.0.6113669/build/cmake/platforms.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/abi-x86/OpenCVModules.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/abi-x86/OpenCVModules-release.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/OpenCVConfig-version.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/abi-x86/OpenCVConfig.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/OpenCVConfig.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/.cxx/cmake/debug/x86\" clean"
+  ],
+  "buildTargetsCommand": "/Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/.cxx/cmake/debug/x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {},
+  "toolchains": {
+    "3406272868": {
+      "cCompilerExecutable": "/Users/noah/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+      "cppCompilerExecutable": "/Users/noah/Library/Android/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": []
+}

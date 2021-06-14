@@ -5,8 +5,6 @@
     android:gravity="center_horizontal"
     android:background="@drawable/page2">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,20 +40,6 @@
                 android:visibility="gone"
                 opencv:camera_id="any"
                 opencv:show_fps="true" /> <!--show the fps of camera capture-->
-
-            <!--user can choose to switch to NativeCameraView-->
-            <org.opencv.android.NativeCameraView
-                android:id="@+id/tutorial1_activity_native_surface_view"
-                android:layout_width="170dip"
-                android:layout_height="120dip"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dip"
-                android:layout_marginTop="5dip"
-                android:background="@drawable/border"
-                android:visibility="gone"
-                opencv:camera_id="any"
-                opencv:show_fps="true" />
 
             <LinearLayout
                 android:orientation="vertical"

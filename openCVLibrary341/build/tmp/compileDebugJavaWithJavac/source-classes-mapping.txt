@@ -1,9 +1,9 @@
 org/opencv/videoio/Videoio.java
  org.opencv.videoio.Videoio
-org/opencv/objdetect/HOGDescriptor.java
- org.opencv.objdetect.HOGDescriptor
 org/opencv/objdetect/BaseCascadeClassifier.java
  org.opencv.objdetect.BaseCascadeClassifier
+org/opencv/objdetect/HOGDescriptor.java
+ org.opencv.objdetect.HOGDescriptor
 org/opencv/android/OpenCVLoader.java
  org.opencv.android.OpenCVLoader
 org/opencv/core/MatOfPoint3.java
@@ -44,10 +44,10 @@ org/opencv/core/RotatedRect.java
  org.opencv.core.RotatedRect
 org/opencv/features2d/FlannBasedMatcher.java
  org.opencv.features2d.FlannBasedMatcher
-org/opencv/ml/Boost.java
- org.opencv.ml.Boost
 org/opencv/videoio/VideoWriter.java
  org.opencv.videoio.VideoWriter
+org/opencv/ml/Boost.java
+ org.opencv.ml.Boost
 org/opencv/features2d/Feature2D.java
  org.opencv.features2d.Feature2D
 org/opencv/photo/MergeDebevec.java
@@ -99,10 +99,10 @@ org/opencv/ml/DTrees.java
  org.opencv.ml.DTrees
 org/opencv/core/MatOfFloat6.java
  org.opencv.core.MatOfFloat6
-org/opencv/core/MatOfPoint3f.java
- org.opencv.core.MatOfPoint3f
 org/opencv/ml/SVMSGD.java
  org.opencv.ml.SVMSGD
+org/opencv/core/MatOfPoint3f.java
+ org.opencv.core.MatOfPoint3f
 org/opencv/calib3d/StereoSGBM.java
  org.opencv.calib3d.StereoSGBM
 org/opencv/imgcodecs/Imgcodecs.java
@@ -125,42 +125,42 @@ org/opencv/core/MatOfRect.java
  org.opencv.core.MatOfRect
 org/opencv/core/MatOfInt4.java
  org.opencv.core.MatOfInt4
-org/opencv/photo/CalibrateDebevec.java
- org.opencv.photo.CalibrateDebevec
 org/opencv/photo/TonemapMantiuk.java
  org.opencv.photo.TonemapMantiuk
+org/opencv/photo/CalibrateDebevec.java
+ org.opencv.photo.CalibrateDebevec
 org/opencv/photo/AlignExposures.java
  org.opencv.photo.AlignExposures
 org/opencv/core/DMatch.java
  org.opencv.core.DMatch
 org/opencv/core/MatOfPoint2f.java
  org.opencv.core.MatOfPoint2f
-org/opencv/core/TermCriteria.java
- org.opencv.core.TermCriteria
 org/opencv/imgproc/Moments.java
  org.opencv.imgproc.Moments
+org/opencv/core/TermCriteria.java
+ org.opencv.core.TermCriteria
 org/opencv/features2d/BRISK.java
  org.opencv.features2d.BRISK
-org/opencv/android/CameraRenderer.java
- org.opencv.android.CameraRenderer
 org/opencv/android/Camera2Renderer.java
  org.opencv.android.Camera2Renderer
  org.opencv.android.Camera2Renderer$1
  org.opencv.android.Camera2Renderer$2
+org/opencv/android/CameraRenderer.java
+ org.opencv.android.CameraRenderer
 org/opencv/core/MatOfPoint.java
  org.opencv.core.MatOfPoint
 org/opencv/core/MatOfDouble.java
  org.opencv.core.MatOfDouble
-org/opencv/core/Algorithm.java
- org.opencv.core.Algorithm
-org/opencv/core/Mat.java
- org.opencv.core.Mat
 org/opencv/android/JavaCameraView.java
  org.opencv.android.JavaCameraView
  org.opencv.android.JavaCameraView$1
  org.opencv.android.JavaCameraView$CameraWorker
  org.opencv.android.JavaCameraView$JavaCameraFrame
  org.opencv.android.JavaCameraView$JavaCameraSizeAccessor
+org/opencv/core/Algorithm.java
+ org.opencv.core.Algorithm
+org/opencv/core/Mat.java
+ org.opencv.core.Mat
 org/opencv/ml/ANN_MLP.java
  org.opencv.ml.ANN_MLP
 org/opencv/ml/EM.java
@@ -173,8 +173,6 @@ org/opencv/video/DenseOpticalFlow.java
  org.opencv.video.DenseOpticalFlow
 org/opencv/android/Utils.java
  org.opencv.android.Utils
-org/opencv/core/Size.java
- org.opencv.core.Size
 org/opencv/android/CameraBridgeViewBase.java
  org.opencv.android.CameraBridgeViewBase
  org.opencv.android.CameraBridgeViewBase$1
@@ -183,14 +181,16 @@ org/opencv/android/CameraBridgeViewBase.java
  org.opencv.android.CameraBridgeViewBase$CvCameraViewListener2
  org.opencv.android.CameraBridgeViewBase$CvCameraViewListenerAdapter
  org.opencv.android.CameraBridgeViewBase$ListItemAccessor
+org/opencv/core/Size.java
+ org.opencv.core.Size
 org/opencv/BuildConfig.java
  org.opencv.BuildConfig
+org/opencv/android/FpsMeter.java
+ org.opencv.android.FpsMeter
 org/opencv/ml/KNearest.java
  org.opencv.ml.KNearest
 org/opencv/ml/RTrees.java
  org.opencv.ml.RTrees
-org/opencv/android/FpsMeter.java
- org.opencv.android.FpsMeter
 org/opencv/features2d/BOWTrainer.java
  org.opencv.features2d.BOWTrainer
 org/opencv/features2d/BFMatcher.java
@@ -210,10 +210,10 @@ org/opencv/photo/TonemapDrago.java
  org.opencv.photo.TonemapDrago
 org/opencv/imgproc/LineSegmentDetector.java
  org.opencv.imgproc.LineSegmentDetector
-org/opencv/features2d/AKAZE.java
- org.opencv.features2d.AKAZE
 org/opencv/photo/TonemapReinhard.java
  org.opencv.photo.TonemapReinhard
+org/opencv/features2d/AKAZE.java
+ org.opencv.features2d.AKAZE
 org/opencv/features2d/DescriptorExtractor.java
  org.opencv.features2d.DescriptorExtractor
 org/opencv/video/BackgroundSubtractorKNN.java
@@ -247,24 +247,24 @@ org/opencv/ml/NormalBayesClassifier.java
  org.opencv.ml.NormalBayesClassifier
 org/opencv/features2d/GFTTDetector.java
  org.opencv.features2d.GFTTDetector
-org/opencv/core/Point3.java
- org.opencv.core.Point3
 org/opencv/android/CameraGLRendererBase.java
  org.opencv.android.CameraGLRendererBase
+org/opencv/core/Point3.java
+ org.opencv.core.Point3
 org/opencv/dnn/Net.java
  org.opencv.dnn.Net
 org/opencv/photo/Photo.java
  org.opencv.photo.Photo
-org/opencv/ml/ANN_MLP_ANNEAL.java
- org.opencv.ml.ANN_MLP_ANNEAL
 org/opencv/photo/TonemapDurand.java
  org.opencv.photo.TonemapDurand
+org/opencv/ml/ANN_MLP_ANNEAL.java
+ org.opencv.ml.ANN_MLP_ANNEAL
 org/opencv/video/SparsePyrLKOpticalFlow.java
  org.opencv.video.SparsePyrLKOpticalFlow
-org/opencv/core/MatOfFloat4.java
- org.opencv.core.MatOfFloat4
 org/opencv/imgproc/Subdiv2D.java
  org.opencv.imgproc.Subdiv2D
+org/opencv/core/MatOfFloat4.java
+ org.opencv.core.MatOfFloat4
 org/opencv/photo/CalibrateCRF.java
  org.opencv.photo.CalibrateCRF
 org/opencv/core/TickMeter.java
@@ -273,10 +273,10 @@ org/opencv/features2d/BOWImgDescriptorExtractor.java
  org.opencv.features2d.BOWImgDescriptorExtractor
 org/opencv/android/InstallCallbackInterface.java
  org.opencv.android.InstallCallbackInterface
-org/opencv/core/MatOfDMatch.java
- org.opencv.core.MatOfDMatch
 org/opencv/calib3d/Calib3d.java
  org.opencv.calib3d.Calib3d
+org/opencv/core/MatOfDMatch.java
+ org.opencv.core.MatOfDMatch
 org/opencv/video/DualTVL1OpticalFlow.java
  org.opencv.video.DualTVL1OpticalFlow
 org/opencv/calib3d/StereoMatcher.java
@@ -287,11 +287,11 @@ org/opencv/core/KeyPoint.java
  org.opencv.core.KeyPoint
 org/opencv/photo/Tonemap.java
  org.opencv.photo.Tonemap
-org/opencv/core/Point.java
- org.opencv.core.Point
-org/opencv/utils/Converters.java
- org.opencv.utils.Converters
 org/opencv/ml/StatModel.java
  org.opencv.ml.StatModel
+org/opencv/utils/Converters.java
+ org.opencv.utils.Converters
+org/opencv/core/Point.java
+ org.opencv.core.Point
 org/opencv/ml/SVM.java
  org.opencv.ml.SVM

@@ -1699,6 +1699,7 @@ public class Imgproc {
     //javadoc: circle(img, center, radius, color)
     public static void circle(Mat img, Point center, int radius, Scalar color)
     {
+        
         circle_2(img.nativeObj, center.x, center.y, radius, color.val[0], color.val[1], color.val[2], color.val[3]);
         
         return;

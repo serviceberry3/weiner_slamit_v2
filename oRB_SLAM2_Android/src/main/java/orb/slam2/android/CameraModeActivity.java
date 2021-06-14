@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -12,13 +13,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+
 /**
  *
  * @author buptzhaofang@163.com Mar 24, 2016 1:00:27 PM
  * @author nodog Nov 2020 - noah.weiner@yale.edu
  *
  */
-public class CameraModeActivity extends Activity implements OnClickListener{
+public class CameraModeActivity extends Activity implements OnClickListener {
     Button ChooseCalibration,finish;
     TextView CalibrationTxt, VOCPathText;
 
@@ -30,6 +35,8 @@ public class CameraModeActivity extends Activity implements OnClickListener{
 
     private String VOCPath = "/storage/emulated/0/SLAM/ORBvoc.txt";
     private String TUMPath = "/storage/emulated/0/SLAM/List3.yaml";
+
+    private final String TAG = "CameraModeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +113,14 @@ public class CameraModeActivity extends Activity implements OnClickListener{
         }
     }
 
+    //use this OpenCV loader callback to instantiate Mat objects, otherwise we'll get an error about Mat not being found
+    public BaseLoaderCallback mLoaderCallback = new OpenCvLoaderCallback(this);
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OpenCvInit.tryInitDebug(this, mLoaderCallback);
+    }
 
     //get result back from file selection activity
     public void onActivityResult(int requestCode , int resultCode , Intent data){

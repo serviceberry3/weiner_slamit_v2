@@ -1,0 +1,22 @@
+Executable : /Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake
+arguments : 
+-H/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341
+-DCMAKE_CXX_FLAGS=-frtti -fexceptions
+-DCMAKE_FIND_ROOT_PATH=/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/.cxx/cmake/debug/prefab/arm64-v8a/prefab
+-DCMAKE_BUILD_TYPE=Debug
+-DCMAKE_TOOLCHAIN_FILE=/Users/noah/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake
+-DANDROID_ABI=arm64-v8a
+-DANDROID_NDK=/Users/noah/Library/Android/sdk/ndk/21.0.6113669
+-DANDROID_PLATFORM=android-16
+-DCMAKE_ANDROID_ARCH_ABI=arm64-v8a
+-DCMAKE_ANDROID_NDK=/Users/noah/Library/Android/sdk/ndk/21.0.6113669
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/build/intermediates/cmake/debug/obj/arm64-v8a
+-DCMAKE_MAKE_PROGRAM=/Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_SYSTEM_VERSION=16
+-B/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/.cxx/cmake/debug/arm64-v8a
+-GNinja
+jvmArgs : 
+
+Build command args:

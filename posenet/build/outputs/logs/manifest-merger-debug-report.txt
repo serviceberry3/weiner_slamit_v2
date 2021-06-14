@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
+ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
 	package
-		ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:2:3-50
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
+		ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:2:3-50
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:1-6:12
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:1-6:12
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml:1:11-69
 uses-sdk
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		ADDED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
-		INJECTED from /home/nodog/Documents/AndroidStudioProjects/master/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		ADDED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml
+		INJECTED from /Users/noah/Documents/files/DroneJob/weiner_slamit_v2/posenet/src/main/AndroidManifest.xml

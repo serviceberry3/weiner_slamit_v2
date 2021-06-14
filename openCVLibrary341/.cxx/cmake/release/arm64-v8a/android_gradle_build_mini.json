@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "/Users/noah/Library/Android/sdk/ndk/21.0.6113669/build/cmake/android.toolchain.cmake",
+    "/Users/noah/Library/Android/sdk/ndk/21.0.6113669/build/cmake/platforms.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/OpenCVConfig-version.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/abi-arm64-v8a/OpenCVConfig.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/OpenCVConfig.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/abi-arm64-v8a/OpenCVModules.cmake",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/src/sdk/native/jni/abi-arm64-v8a/OpenCVModules-release.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/.cxx/cmake/release/arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "/Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/.cxx/cmake/release/arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {}
+}

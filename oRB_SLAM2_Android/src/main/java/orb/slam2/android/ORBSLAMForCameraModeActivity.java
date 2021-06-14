@@ -193,7 +193,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
             }
             else if(RK4Flag == 2){
                 RK4Flag = 1;
-                for(int i = 0;i<3;i++){
+                for(int i = 0;i < 3; i++){
                     velocity[i] = velocity[i] + acceStep*2/6*(acce0[i]+4*acce1[i]+acce[i]);
                     acce0[i] = acce[i];
                 }
@@ -203,23 +203,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
 
     //callback fxn to execute when OpenCV is loaded
-    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
-        @Override
-        public void onManagerConnected(int status) {
-            switch (status) {
-                case LoaderCallbackInterface.SUCCESS:
-                {
-                    Log.i(TAG, "OpenCV loaded successfully");
-                    mOpenCvCameraView.enableView();
-                } break;
-
-                default:
-                {
-                    super.onManagerConnected(status);
-                } break;
-            }
-        }
-    };
+    private BaseLoaderCallback mLoaderCallback = new OpenCvLoaderCallback(this);
 
     //ERRORING - FIXED 10/08
     static {
@@ -640,11 +624,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
         super.onResume();
 
+        OpenCvInit.tryInitDebug(this, mLoaderCallback);
 
         mGLSurfaceView.onResume();
-
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
-        //mSensorManager.registerListener(this, linearAccelerometer, 200000);
 
         //register the listeners for all of the sensors we're using
         mSensorManager.registerListener(this, linearAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);

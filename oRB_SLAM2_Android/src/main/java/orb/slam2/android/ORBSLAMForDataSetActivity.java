@@ -30,6 +30,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import org.opencv.android.BaseLoaderCallback;
+
 /**
  * ORB Test Activity For DataSetMode
  * 
@@ -195,10 +197,16 @@ public class ORBSLAMForDataSetActivity extends Activity implements OnClickListen
 		OrbNdkHelper.glesRender();
 	}
 
+	//callback fxn to execute when OpenCV is loaded
+	private BaseLoaderCallback mLoaderCallback = new OpenCvLoaderCallback(this);
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+
+		OpenCvInit.tryInitDebug(this, mLoaderCallback);
+
 		mGLSurfaceView.onResume();
 	}
 

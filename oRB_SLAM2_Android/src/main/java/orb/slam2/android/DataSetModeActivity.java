@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.opencv.android.BaseLoaderCallback;
+
 /**
  * 
  * @author buptzhaofang@163.com Mar 24, 2016 1:00:15 PM
@@ -62,6 +64,16 @@ public class DataSetModeActivity extends Activity implements OnClickListener{
 			startActivityForResult(fileChooserIntent , REQUEST_CODE_3);
 		else
 			Toast.makeText(DataSetModeActivity.this, "can't find SDcard", Toast.LENGTH_LONG).show();*/
+	}
+
+	//use this OpenCV loader callback to instantiate Mat objects, otherwise we'll get an error about Mat not being found
+	public BaseLoaderCallback mLoaderCallback = new OpenCvLoaderCallback(this);
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		OpenCvInit.tryInitDebug(this, mLoaderCallback);
 	}
 
 	@Override
