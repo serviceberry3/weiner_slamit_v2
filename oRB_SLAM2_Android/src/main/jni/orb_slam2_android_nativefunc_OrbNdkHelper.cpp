@@ -95,6 +95,12 @@ JNIEXPORT jintArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_start
 	int size = w * h;
 	cv::Mat myimg(h, w, CV_8UC4, (unsigned char*) cbuf);
 	cv::Mat ima = s->TrackMonocular(myimg, curTimeStamp);
+
+	if (ima == nullptr) {
+		LOG("startCurrentORB(): ima came back NULL, returning immediately...");
+		return null;
+	}
+
 	jintArray resultArray = env->NewIntArray(ima.rows * ima.cols);
 	jint* resultPtr;
 
@@ -120,7 +126,7 @@ JNIEXPORT jintArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_start
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesInit
-(JNIEnv *env, jclass cls) {
+(JNIEnv* env, jclass cls) {
 	// 启用阴影平滑
 	glShadeModel(GL_SMOOTH);
 
@@ -146,7 +152,7 @@ JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesInit
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_glesRender
-(JNIEnv * env, jclass cls) {
+(JNIEnv* env, jclass cls) {
     //clear out the OpenGL buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -202,7 +208,7 @@ JNIEXPORT jfloatArray JNICALL Java_orb_slam2_android_nativefunc_OrbNdkHelper_sta
 	return resultArray;*/
 
 	//get pointer to the input image
-	const cv::Mat *im = (cv::Mat *) addr;
+	const cv::Mat* im = (cv::Mat*) addr;
 
 	//call TrackMonocular() in System class, passing the image frame from camera, along w/timestamp
     cv::Mat ima = s->TrackMonocular(*im, timestamp);

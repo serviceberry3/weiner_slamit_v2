@@ -103,11 +103,11 @@ public class DataSetModeActivity extends Activity implements OnClickListener{
 			case R.id.finish:
 				//make sure both dataset and calibration file paths have been selected
 				if (!TextUtils.isEmpty(PICPath)&&!TextUtils.isEmpty(TUMPath)&&!TextUtils.isEmpty(VOCPath)) {
-					Bundle bundle=new Bundle();
+					Bundle bundle = new Bundle();
 					bundle.putString("voc",VOCPath );
 					bundle.putString("calibration",TUMPath );
 					bundle.putString("images",PICPath );
-					Intent intent =new Intent(DataSetModeActivity.this,ORBSLAMForDataSetActivity.class);
+					Intent intent = new Intent(DataSetModeActivity.this,ORBSLAMForDataSetActivity.class);
 					intent.putExtras(bundle);
 					startActivity(intent);
 					finish();

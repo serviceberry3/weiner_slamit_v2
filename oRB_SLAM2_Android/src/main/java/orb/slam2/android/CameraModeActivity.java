@@ -91,8 +91,8 @@ public class CameraModeActivity extends Activity implements OnClickListener {
                     Bundle bundle = new Bundle();
 
                     //add the calibration and dataset files as strings to the intent
-                    bundle.putString("voc", VOCPath );
-                    bundle.putString("calibration", TUMPath );
+                    bundle.putString("voc", VOCPath);
+                    bundle.putString("calibration", TUMPath);
 
                     //make an intent to send over to the newly spawned activity
                     Intent intent = new Intent(CameraModeActivity.this, ORBSLAMForCameraModeActivity.class);

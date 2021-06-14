@@ -19,6 +19,174 @@
   },
   {
     "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/build-tools/27.0.3/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/build-tools/28.0.3/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/build-tools/29.0.2/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/build-tools/29.0.3/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/build-tools/30.0.2/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "WARN",
+    "message": "Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "WARN",
+    "message": "Mapping new ns http://schemas.android.com/repository/android/generic/02 to old ns http://schemas.android.com/repository/android/generic/01",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "WARN",
+    "message": "Mapping new ns http://schemas.android.com/sdk/android/repo/addon2/02 to old ns http://schemas.android.com/sdk/android/repo/addon2/01",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "WARN",
+    "message": "Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/02 to old ns http://schemas.android.com/sdk/android/repo/repository2/01",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "WARN",
+    "message": "Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/cmake/3.10.2.4988404/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/cmdline-tools/latest/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/emulator/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/extras/intel/Hardware_Accelerated_Execution_Manager/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/ndk/20.0.5594570/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/ndk/21.0.6113669/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/ndk/22.1.7171670/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/patcher/v4/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/platform-tools/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/platforms/android-23/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/platforms/android-27/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/platforms/android-28/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/platforms/android-29/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/platforms/android-30/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/sources/android-23/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/sources/android-29/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/system-images/android-28/google_apis_playstore/x86/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
+    "message": "Parsing /Users/noah/Library/Android/sdk/tools/package.xml",
+    "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
+    "tag": "release|arm64-v8a"
+  },
+  {
+    "level": "INFO",
     "message": "- CMake found in SDK at \u0027/Users/noah/Library/Android/sdk/cmake/3.10.2.4988404\u0027 had version \u00273.10.2\u0027",
     "file": "/Users/noah/Documents/files/DroneJob/weiner_slamit_v2/openCVLibrary341/CMakeLists.txt",
     "tag": "release|arm64-v8a"

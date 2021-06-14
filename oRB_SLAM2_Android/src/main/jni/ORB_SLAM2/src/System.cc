@@ -51,13 +51,13 @@ mbDeactivateLocalizationMode(false)
 	LOG("ORB_initiate (System() constructor called in System.cc)");
 
 
-    if(mSensor==MONOCULAR) {
+    if(mSensor == MONOCULAR) {
         LOG("Looking to initialize monocular system");
     }
-    else if(mSensor==STEREO) {
+    else if(mSensor == STEREO) {
 
     }
-    else if(mSensor==RGBD) {
+    else if(mSensor == RGBD) {
 
     }
 
@@ -162,8 +162,7 @@ mbDeactivateLocalizationMode(false)
     //Initialize the Viewer thread and launch
     mpViewer = new Viewer(this, mpFrameDrawer,mpMapDrawer,mpTracker,strSettingsFile);
 
-    if (bUseViewer)
-        mptViewer = new thread(&Viewer::Run, mpViewer);
+    if (bUseViewer) mptViewer = new thread(&Viewer::Run, mpViewer);
 
     mpTracker->SetViewer(mpViewer);
 
@@ -215,7 +214,7 @@ void System::drawGL(){
 
 cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp)
 {
-    if(mSensor!=STEREO)
+    if(mSensor != STEREO)
     {
         cerr << "ERROR: you called TrackStereo but input sensor was not set to STEREO." << endl;
         exit(-1);
@@ -307,6 +306,8 @@ cv::Mat System::TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const doub
 //actual used processing function for monocular ORB SLAM
 cv::Mat System::TrackMonocular(const cv::Mat &im, const double &timestamp)
 {
+    LOGI("System::TrackMonocular() called!");
+
     if (mSensor != MONOCULAR)
     {
     	LOG("ERROR: you called TrackMonocular but input sensor was not set to Monocular." );

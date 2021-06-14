@@ -282,6 +282,11 @@ namespace ORB_SLAM2
         //shortcut to the passed incoming camera frame
         mImGray = im;
 
+        if (im == nullptr) {
+            LOG("GrabImageMonocular(): im is NULL, returning immediately");
+            return nullptr;
+        }
+
         //do some color conversion
         if (mImGray.channels() == 3)
         {

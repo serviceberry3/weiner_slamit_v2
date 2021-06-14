@@ -31,6 +31,5 @@ public class OrbNdkHelper {
 	public native static float[] getRawPosenetPts();
 
 
-
 	//public native static void dataFusion(double curTimeStamp, double lat ,double lng, double accex, double accey,double accez,double gyrox, double gyroy,double gyroz);
 }

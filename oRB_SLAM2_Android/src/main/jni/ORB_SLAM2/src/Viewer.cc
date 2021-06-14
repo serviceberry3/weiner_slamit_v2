@@ -34,7 +34,7 @@ namespace ORB_SLAM2
         mpSystem(pSystem), mpFrameDrawer(pFrameDrawer),mpMapDrawer(pMapDrawer), mpTracker(pTracking),
         mbFinishRequested(false), mbFinished(true), mbStopped(false), mbStopRequested(false)
     {
-        LOG("Viewer(): constructor called");
+        LOGI("Viewer(): constructor called");
 
         //cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
 

@@ -330,7 +330,7 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
             Log.i(TAG, "Calib path is " + calibrationPath);
 
             Log.i(TAG, "Both paths found, OK");
-            Toast.makeText(ORBSLAMForCameraModeActivity.this, "Init has been started!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Init has been started!", Toast.LENGTH_LONG).show();
 
 
             //start initialization on a new thread (in background)
@@ -515,6 +515,12 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
 
                             //start up the ORB, passing native address of incoming camera frame, getting back a 4x4 camera pose matrix
                             resultfloat = OrbNdkHelper.startCurrentORBForCamera(timestamp, addr, w, h);
+
+                            if (resultfloat == null) {
+                                Log.e(TAG, "resultfloat came back NULL!!!!");
+                                return;
+                            }
+
                             Log.i(TAG, "Returned from startCurrentORB");
 
                             /*
@@ -625,6 +631,9 @@ public class ORBSLAMForCameraModeActivity extends Activity implements Renderer,C
         super.onResume();
 
         OpenCvInit.tryInitDebug(this, mLoaderCallback);
+
+        //assuming above call succeeded, let's now enable the OpenCvCameraView (top left corner)
+        mOpenCvCameraView.enableView();
 
         mGLSurfaceView.onResume();
 
